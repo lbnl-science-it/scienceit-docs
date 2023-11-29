@@ -1,0 +1,58 @@
+site_name: ScienceIT at Lawrence Berkeley National Laboratory
+
+nav:
+  - Home: index.md
+  - High Performance Computing:
+      - Account:
+          - Getting an Account: hpc/accounts/mylrc.md
+          - Logging in: hpc/accounts/loggingin.md
+          - Policies: hpc/accounts/policies.md
+      - Running Jobs:
+          - Slurm Overview: hpc/running/slurm_overview.md
+          - Example Scripts: hpc/running/script_examples.md
+          - Monitor Jobs: hpc/running/monitor_jobs.md
+          - GNU Parallel: hpc/running/gnu_parallel.md
+      - Software:
+          - Software Module Farm: hpc/software/software-module-farm.md
+          - Module Management: hpc/software/module-management.md
+      - Tutorials:
+          - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
+      - Frequently Asked Questions: hpc/faqs.md
+  - Data Management and Storage:
+      - Data Transfer: data/datatransfer_node.md
+      - Globus: data/globus.md
+      - Research Data Management: data/researchdata.md
+      - Scientific Project Storage Service: data/spss.md
+  - Cloud Computing:
+      - Cloud Overview: cloud/index.md
+      - Google Cloud Platform: cloud/gcp.md
+      - Amazon Web Services: cloud/aws.md
+  - Tutorials: tutorials/tutorials.md
+  - Training and Workshops: training.md
+
+plugins:
+  - search
+
+theme:
+  name: material
+  palette:
+    primary: black
+  logo: assets/scienceitlogo.png
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - search.highlight
+    - navigation.instant
+    - navigation.tabs
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css

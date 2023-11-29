@@ -1,0 +1,13 @@
+.md-header__button.md-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.md-nav__button.md-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.md-nav .md-nav--primary .md-nav--lifted .md-nav__title label {
+  display: none;
+}
