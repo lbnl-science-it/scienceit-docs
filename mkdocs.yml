@@ -15,8 +15,6 @@ nav:
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-      - Tutorials:
-          - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Frequently Asked Questions: hpc/faqs.md
   - Data Management and Storage:
       - Data Transfer: data/datatransfer_node.md
@@ -27,11 +25,13 @@ nav:
       - Cloud Overview: cloud/index.md
       - Google Cloud Platform: cloud/gcp.md
       - Amazon Web Services: cloud/aws.md
-  - Tutorials: tutorials/tutorials.md
+  - Tutorials:
+      - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
   - Training and Workshops: training.md
 
 plugins:
   - search
+  - mkdocs-jupyter
 
 theme:
   name: material
