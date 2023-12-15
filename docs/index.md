@@ -1,19 +1,21 @@
 ---
 hide:
     - navigation
+
+title: Science IT Documentation
 ---
 
 # **Science IT Documentation**
 
 The mission of the Science IT Group is to help scientists at Berkeley Lab maximize their productivity by providing modern computing resources, data storage facilities, and technical consulting services to support today's data-intensive research activities.
 
-###Science IT Consulting
+## Science IT Consulting
 
-- Drop into our Zoom Office Hours: Every Wednesday 10:30 until Noon.
+- Drop into Science IT Zoom Office Hours: Every Wednesday 10:30 until Noon.
 - Schedule a 1-1 Consulting Engagement
 - Email Science IT: scienceit@lbl.gov
 
-###High Performance Computing Helpdesk
+## High Performance Computing Helpdesk
 
 - Open a Ticket with HPC Support: hpcs@lbl.gov
 

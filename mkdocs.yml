@@ -3,7 +3,7 @@ site_name: Science IT Documentation
 nav:
   - Home: index.md
   - High Performance Computing:
-      - Account:
+      - Account: 
           - Getting an Account: hpc/accounts/mylrc.md
           - Logging in: hpc/accounts/loggingin.md
           - Policies: hpc/accounts/policies.md
@@ -19,9 +19,9 @@ nav:
       - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Training and Workshops: training.md
-      - Scientific Virtual Machines: index.md
-      - Data Center Co-Location: index.md
-      - Supported Research Clusters: index.md
+      - Scientific Virtual Machines: construction.md
+      - Data Center Co-Location: construction.md
+      - Supported Research Clusters: construction.md
   - Data Transfer & Storage:
       - Data Transfer: data/datatransfer_node.md
       - Globus at Berkeley Lab: data/globus.md
@@ -42,12 +42,19 @@ theme:
   palette:
     primary: custom
   logo: assets/scienceitlogo.png
+  font:
+    text: Roboto
+    code: Roboto Mono
   features:
     - content.code.annotate
     - content.code.copy
     - search.highlight
     - navigation.instant
     - navigation.tabs
+    - navigation.top
+    - navigation.path
+    - announce.dismiss
+    - navigation.footer
 
 markdown_extensions:
   - admonition

@@ -17,8 +17,17 @@
   display: none;
 }
 
+.md-grid {
+  max-width: 1440px; 
+}
+
 :root {
   --md-primary-fg-color--dark: #007681;
   --md-primary-fg-color--light: #B1B3B3;
   --md-primary-fg-color:  #00313C;
+  --md-text-font: "Montserrat"
+}
+
+.md-banner {
+  background-color: var(--md-primary-fg-color--dark);
 }
