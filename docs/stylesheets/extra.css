@@ -1,5 +1,5 @@
 .md-header__button.md-logo img {
-  width: 100px;
+  width: 50px;
   height: auto;
 }
 
@@ -10,4 +10,10 @@
 
 .md-nav .md-nav--primary .md-nav--lifted .md-nav__title label {
   display: none;
+}
+
+:root {
+  --md-primary-fg-color--dark:        #007681;
+  --md-primary-fg-color--light: #B1B3B3;
+  --md-primary-fg-color:  #00313C;
 }
