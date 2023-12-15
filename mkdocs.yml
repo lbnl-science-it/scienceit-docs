@@ -27,7 +27,7 @@ nav:
       - Globus at Berkeley Lab: data/globus.md
       - Research Data Management: data/researchdata.md
       - Scientific Project Storage Service: data/spss.md
-  - Cloud Service Providers:
+  - Cloud Computing:
       - Cloud Overview: cloud/index.md
       - Google Cloud Platform: cloud/gcp.md
       - Amazon Web Services: cloud/aws.md
