@@ -19,15 +19,14 @@ nav:
       - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Training and Workshops: training.md
-  - Data Transfer & Storage:
-      - Data Transfer: data/datatransfer_node.md
-      - Globus: data/globus.md
-      - Research Data Management: data/researchdata.md
-      - Scientific Project Storage Service: data/spss.md
-  - Hosting:
       - Scientific Virtual Machines: index.md
       - Data Center Co-Location: index.md
-      - Kubernetes Cluster: index.md
+      - Supported Research Clusters: index.md
+  - Data Transfer & Storage:
+      - Data Transfer: data/datatransfer_node.md
+      - Globus at Berkeley Lab: data/globus.md
+      - Research Data Management: data/researchdata.md
+      - Scientific Project Storage Service: data/spss.md
   - Cloud Service Providers:
       - Cloud Overview: cloud/index.md
       - Google Cloud Platform: cloud/gcp.md
