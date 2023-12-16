@@ -53,7 +53,6 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.path
-    - announce.dismiss
     - navigation.footer
 
 markdown_extensions:
