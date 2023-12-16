@@ -18,14 +18,48 @@
 }
 
 .md-grid {
-  max-width: 1440px; 
+  max-width: 900px; 
+}
+
+.md-content a {
+  color: var(--md-primary-fg-color--dark);
+  font-weight: bold;
+}
+
+.md-content a:hover {
+  text-decoration: underline;
+  color: var(--md-primary-fg-color--dark);
+}
+
+.md-announce a {
+  color: white;
+  font-weight: bold;
+}
+
+.md-announce a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.md-mission {
+  //border-radius: 20px;
+  max-width: 800px; 
+  //color: white;
+  //background-image: linear-gradient(#007681, #00313C);
+  //background-color: var(--md-primary-fg-color--light);
+  //padding: 20px;
+}
+
+.news {
+  background-color:#B0DFF1;
+  padding: 20px;
 }
 
 :root {
   --md-primary-fg-color--dark: #007681;
   --md-primary-fg-color--light: #B1B3B3;
   --md-primary-fg-color:  #00313C;
-  --md-text-font: "Montserrat"
+//  --md-header-font: "Montserrat"
 }
 
 .md-banner {
