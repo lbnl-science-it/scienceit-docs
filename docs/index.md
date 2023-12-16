@@ -53,6 +53,7 @@ Contact us to discuss code optimization, scaling, AI/ML workflows, and cloud com
 
 - **LRC**: Lawrencium Computing Cluster
 - **ES1**: Einsteinium GPU Computing Cluster
+- **SDRC**: Secure Research Data Cluster (for Confidential PII Computing)
 - **GCP**: Google Cloud Platform
 - **AWS**: Amazon Web Services
 - **SVM**: Scientific Virtual Machines
