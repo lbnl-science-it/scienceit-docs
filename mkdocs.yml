@@ -68,7 +68,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.snippets:
-      base_path: "/Users/AWSchmeder/projects/scienceit-docs/docs/"
+      base_path: [ "/home/runner/work/scienceit-docs/scienceit-docs", "/Users/AWSchmeder/projects/scienceit-docs/docs/" ]
       check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
