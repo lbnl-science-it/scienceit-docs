@@ -92,26 +92,37 @@ where $1, $2 and $3 are the three parameters required for each serial task
 
 3)  Task list: list of parameters for tasks in the format of one line for one task. The parameters required for each task must to be on the same line separated by an eliminators:
 
+```bash
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa
 ../blast/data/protein2.faa
+```
 
 In this example, although each task takes three parameters (run-blast.sh), only one parameter is provided in the task list task.lst. The 2nd parameter, which specifies the output, is correlated to output/{/.}.blst in blast.slurm. And the third parameter num_threads is fixed. However, If core# varies from task to task, task.lst could be revised as:
 
+```bash
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa 2
 ../blast/data/protein2.faa 4
+```
+
 For best practice, test your code on an interactive node before submitting jobs to clusters.
 
 In addition: task list can a sequence of commands, such as:
+
+```bash
 [user@n0002 ~] cat commands.lst
 echo “host = ” ‘`hostname`’
 sh -c “echo today date = ; date”
 sh -c “echo today date = ; date”
+```
 
+```bash
 [user@n0002 ~] parallel -j 2 < commands.lst
 host =  n0148.savio3
 today date = Sat Apr 18 14:07:33 PDT 2020
+```
 
-GNU Parallel man page
-GPU Parallel tutorial
+### Useful external links
+* [GNU Parallel man page](https://www.gnu.org/software/parallel/man.html) {{ ext }}
+* [GPU Parallel tutorial](https://www.gnu.org/software/parallel/parallel_tutorial.html) {{ ext }}

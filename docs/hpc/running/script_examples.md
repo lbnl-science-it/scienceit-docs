@@ -1,3 +1,7 @@
+Here we show some example job scripts that allow for various kinds of parallelization such as: jobs that use fewer cores than available on a node, GPU jobs, low-priority condo jobs, and long-running PCA jobs.
+
+Please refer to [Slurm Association](slurm_overview.md) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
+
 ## Example Set 1
 === "Simple Serial Job"
 
@@ -5,6 +9,7 @@
     #!/bin/bash
     #SBATCH --job-name=test
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --account=account_name
     #SBATCH --time=0:0:30
     ## Run command
@@ -18,6 +23,7 @@
     #SBATCH --job-name=test
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=20
     #SBATCH --cpus-per-task=1
@@ -36,6 +42,7 @@
     #SBATCH --job-name=job-name
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --nodes=2
     #SBATCH --cpus-per-task=2
     #SBATCH --time=2:00:00
@@ -65,6 +72,7 @@
     #SBATCH --job-name=test
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=1
     #SBATCH --cpus-per-task=4
@@ -81,6 +89,7 @@
     #SBATCH --job-name=test
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --ntasks=40     (1)
     #
     # Processors per task:
@@ -100,6 +109,7 @@
     #SBATCH --job-name=test
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --nodes=2
     #SBATCH --ntasks-per-node=20
     #SBATCH --cpus-per-task=1
@@ -117,6 +127,7 @@
     #SBATCH --job-name=test
     #SBATCH --account=account_name
     #SBATCH --partition=partition_name
+    #SBATCH --qos=qos_name
     #SBATCH --nodes=2
     #SBATCH --ntasks-per-node=4
     #SBATCH --cpus-per-task=5    (1)
@@ -134,7 +145,7 @@
 
 ## GPU Job
 
-Es1 partition consists of GPU nodes with three generations of NVIDIA GPU cards(V100, GTX 2080TI, A40). Please take a look at the details on this page. A compute node with different GPU types and numbers can be allocated using slurm in the following way.
+`es1` partition consists of GPU nodes with three generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](https://it.lbl.gov/resource/hpc/lawrencium/). A compute node with different GPU types and numbers can be allocated using slurm in the following way.
 
 * General format:  `--gres=gpu[type]:count`
 
@@ -152,13 +163,14 @@ Here’s how to request two CPUs for each GPU: the total of CPUs requested resul
 
 For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and --cpus-per-task=2 . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
 
-Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided here for the various GPU types). This is because the feature is associated with how many GPUs per node to request.
+Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](https://it.lbl.gov/resource/hpc/lawrencium/)). This is because the feature is associated with how many GPUs per node to request.
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name=test
 #SBATCH --account=account_name
 #SBATCH --partition=es1
+#SBATCH --qos=es_normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #
