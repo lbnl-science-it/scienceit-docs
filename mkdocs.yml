@@ -3,7 +3,7 @@ site_name: Science IT @ LBNL
 nav:
   - Home: index.md
   - High Performance Computing:
-      - Account: 
+      - Account:
           - Getting an Account: hpc/accounts/mylrc.md
           - Logging in: hpc/accounts/loggingin.md
           - Policies: hpc/accounts/policies.md
@@ -23,7 +23,7 @@ nav:
       - Data Center Co-Location: construction.md
       - Supported Research Clusters: construction.md
       - Secure Computing: construction.md
-      - Live Cluster Status: hpc/status.md 
+      - Live Cluster Status: hpc/status.md
   - Data Transfer & Storage:
       - Data Transfer: data/datatransfer_node.md
       - Globus at Berkeley Lab: data/globus.md
@@ -33,7 +33,7 @@ nav:
       - Cloud Overview: cloud/index.md
       - Google Cloud Platform: cloud/gcp.md
       - Amazon Web Services: cloud/aws.md
-  - Help: help.md      
+  - Help: help.md
 
 plugins:
   - search
@@ -67,7 +67,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.snippets:
-      base_path: [ "/home/runner/work/scienceit-docs/scienceit-docs/docs/", "/Users/AWSchmeder/projects/scienceit-docs/docs/" ]
+      base_path: ["docs"]
       check_paths: true
   - pymdownx.tabbed:
       alternate_style: true

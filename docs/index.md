@@ -14,9 +14,9 @@ title: Science IT Documentation
 
 ## **Top Pages**
 
-- [Getting Started with Lawrencium](https://it.lbl.gov/resource/hpc/for-users/getting-started/]) {{ext}}
+- [Getting Started with Lawrencium](https://it.lbl.gov/resource/hpc/for-users/getting-started/) {{ext}}
 - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/) {{ext}}
-- [HPC Clusters Live Status - Warewulf Overview](/hpc/status/) {{ext}}
+- [HPC Clusters Live Status - Warewulf Overview](hpc/status.md) {{ext}}
 - [HPC Clusters Live Status - Detailed](https://hpcs-stats.lbl.gov/cluster_utilization/state_cluster/) {{ ext }}
 - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) {{ext}}
 - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/) {{ext}}
