@@ -1,4 +1,4 @@
-site_name: Science IT Documentation
+site_name: Science IT @ LBNL
 
 nav:
   - Home: index.md
@@ -57,7 +57,6 @@ theme:
     - content.code.copy
     - search.highlight
     - navigation.instant
-    - navigation.tabs
     - navigation.top
     - navigation.path
     - navigation.footer
