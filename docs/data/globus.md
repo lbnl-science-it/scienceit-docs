@@ -1,4 +1,4 @@
-Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the instructions for access setup.
+Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](globus_instructions.md) for access setup.
 
 ## Additional Globus Features (ONLY for Berkeley Lab Users)
 
