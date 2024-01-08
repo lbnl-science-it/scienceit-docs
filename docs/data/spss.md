@@ -14,11 +14,11 @@ SPSS also offers compatibility with traditional POSIX-style file storage over NF
 
 ## Getting Started
 
-To get started with SPSS, please complete the SPSS Request Form, which will generate a support ticket. The service is free of cost for the first three months. Please only use the form to request storage from the capacity tier of SPSS. If you have any related questions, please contact scienceit@lbl.gov.
+To get started with SPSS, please complete the [SPSS Request Form](https://docs.google.com/forms/d/e/1FAIpQLSe272SNGppmEF2Kj3pVxtAnMUZZk1vfSfRFS6ZAX-7vIZDPVA/viewform), which will generate a support ticket. The service is free of cost for the first three months. Please only use the form to request storage from the capacity tier of SPSS. If you have any related questions, please contact scienceit@lbl.gov.
 
 ## Service Costs
 
-The price of the Raw capacity tier is $7/TB/month for NFS or Object Store buckets, based on configured capacity. To encourage uptake of the service, we offer a free three-month trial of SPSS to all Lab researchers.
+The price of the Raw capacity tier is **$7/TB/month** for NFS or Object Store buckets, based on configured capacity. To encourage uptake of the service, we offer a free three-month trial of SPSS to all Lab researchers.
 
 For comparison, here are the list prices for storage on AWS, GCP, and National Laboratories ($/TB/month):
 
@@ -33,4 +33,4 @@ For comparison, here are the list prices for storage on AWS, GCP, and National L
 | Google GCP Standard	| $20/Mo. |
 
 ## Service Level Agreements
-Use of SPSS requires consent to the terms of the Service Level Agreement. If you have any question, please contact ScienceIT@lbl.gov.
+Use of SPSS requires consent to the terms of the [Service Level Agreement](https://docs.google.com/document/d/15dxmD59ZgHR-lAMWCPAi06svSU-dnxAFdXs8LnUzh7s/edit?usp=sharing). If you have any question, please contact ScienceIT@lbl.gov.

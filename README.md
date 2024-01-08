@@ -1,6 +1,6 @@
 # Science-IT Docs Workflow
 
-We are using MkDocs with the Material for MkDocs theme to build our documentation site. Some inspiration is taken from similar technical documentation sites of [NERSC](docs.nersc.gov) and [Berkeley Research IT](https://docs-research-it.berkeley.edu/).
+We are using MkDocs with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme to build our documentation site. Some inspiration is taken from similar technical documentation sites of [NERSC](https://docs.nersc.gov) and [Berkeley Research IT](https://docs-research-it.berkeley.edu/).
 
 ## Installing MkDocs and Plugins
 The repository has a `requirements.txt` file which can be used to install the required mkdocs, mkdocs-material, and other plugins required to build the documentation by executing:
