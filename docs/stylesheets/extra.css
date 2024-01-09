@@ -37,7 +37,7 @@
   color: var(--md-primary-fg-color--dark);
 }
 
-.md-typeset .headerlink:focus, .md-typeset .headerlink:hover {
+.md-typeset .headerlink:focus, .md-typeset .headerlink:hover, .md-typeset :target>.headerlink {
   text-decoration: none;
   color: var(--md-primary-fg-color--dark);
 }
