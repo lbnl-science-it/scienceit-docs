@@ -49,6 +49,7 @@ theme:
   palette:
     primary: custom
   logo: assets/scienceitlogo.png
+  favicon: assets/favicon.png
   font:
     text: Roboto
     code: Roboto Mono
@@ -60,6 +61,7 @@ theme:
     - navigation.top
     - navigation.path
     - navigation.footer
+    - navigation.indexes
 
 markdown_extensions:
   - admonition
