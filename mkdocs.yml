@@ -73,6 +73,8 @@ markdown_extensions:
       check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
+  - toc:
+     permalink: true
 
 extra_css:
   - stylesheets/extra.css

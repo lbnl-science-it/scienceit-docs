@@ -37,6 +37,10 @@
   color: var(--md-primary-fg-color--dark);
 }
 
+.md-typeset .headerlink:focus, .md-typeset .headerlink:hover {
+  text-decoration: none;
+  color: var(--md-primary-fg-color--dark);
+}
 
 .md-announce a {
   color: white;
