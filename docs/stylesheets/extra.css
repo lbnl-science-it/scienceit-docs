@@ -32,7 +32,7 @@
   font-weight: bold;
 }
 
-.md-content a:hover, .md-nav__link[href]:focus, .md-nav__link[href]:hover {
+.md-content a:hover, .md-nav__link[href]:focus, .md-nav__link[href]:hover, .md-nav__link[for]:focus, .md-nav__link[for]:hover {
   text-decoration: underline;
   color: var(--md-primary-fg-color--dark);
 }
