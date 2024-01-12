@@ -6,7 +6,7 @@ nav:
       - Account:
           - Getting an Account: hpc/accounts/mylrc.md
           - Logging in: hpc/accounts/loggingin.md
-          - Policies: hpc/accounts/policies.md
+          - Multi-Factor Authentication: hpc/accounts/mfa.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
@@ -69,6 +69,8 @@ theme:
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.arithmatex
   - pymdownx.superfences
   - pymdownx.details

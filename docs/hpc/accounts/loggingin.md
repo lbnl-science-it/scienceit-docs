@@ -1,4 +1,7 @@
 
+!!! note "Multi-Factor Authentication (MFA)"
+    Please make sure you have configured [Multi-Factor Authentication (MFA)](mfa.md) before logging in for the first time.
+
 You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see Multi-Factor Authentication. Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as 
 
 ```sh 
