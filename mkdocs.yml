@@ -65,6 +65,7 @@ theme:
     - navigation.path
     - navigation.footer
     - navigation.indexes
+    - navigation.sections
 
 markdown_extensions:
   - admonition
@@ -77,7 +78,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
-     permalink: true
+      permalink: true
 
 extra_css:
   - stylesheets/extra.css

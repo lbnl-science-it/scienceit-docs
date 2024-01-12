@@ -1,7 +1,7 @@
 :root {
   --md-primary-fg-color--dark: #007681;
   --md-primary-fg-color--light: #B1B3B3;
-  --md-primary-fg-color:  #00313C;
+  --md-primary-fg-color: #00313C;
 }
 
 .md-header__button.md-logo img {
@@ -24,7 +24,7 @@
 }
 
 .md-grid {
-  max-width: 1280px; 
+  max-width: 1440px;
 }
 
 .md-content a {
@@ -32,12 +32,18 @@
   font-weight: bold;
 }
 
-.md-content a:hover, .md-nav__link[href]:focus, .md-nav__link[href]:hover, .md-nav__link[for]:focus, .md-nav__link[for]:hover {
+.md-content a:hover,
+.md-nav__link[href]:focus,
+.md-nav__link[href]:hover,
+.md-nav__link[for]:focus,
+.md-nav__link[for]:hover {
   text-decoration: underline;
   color: var(--md-primary-fg-color--dark);
 }
 
-.md-typeset .headerlink:focus, .md-typeset .headerlink:hover, .md-typeset :target>.headerlink {
+.md-typeset .headerlink:focus,
+.md-typeset .headerlink:hover,
+.md-typeset :target>.headerlink {
   text-decoration: none;
   color: var(--md-primary-fg-color--dark);
 }
@@ -64,16 +70,19 @@
 */
 
 .news {
-  background-color:#B0DFF1;
+  background-color: #B0DFF1;
   padding: 20px;
   border-radius: 20px;
 }
 
 iframe {
-  display: block;       /* iframes are inline by default */
+  display: block;
+  /* iframes are inline by default */
   background: #000;
-  border: none;         /* Reset default border */
-  height: 100vh;        /* Viewport-relative units */
+  border: none;
+  /* Reset default border */
+  height: 100vh;
+  /* Viewport-relative units */
   width: 100vw;
 }
 
