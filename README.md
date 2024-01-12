@@ -16,3 +16,7 @@ The repository has a `requirements.txt` file which can be used to install the re
 Pushing changes to the github repository will automatically run `mkdocs build` and publish the generated html pages on github pages. These are hosted on the `gh-pages` brach while the markdown source of the documentation lies on the `main` branch.
 
 This is achieved through Gihub Actions workflow file `.github/workflows/ci.yml`.
+
+## Pages migration status page
+
+A list of pages from https://it.lbl.gov/resource/hpc/ and their current location on the mkdocs site or if they are missing can be found on this repo's wiki at https://github.com/lbnl-science-it/scienceit-docs/wiki/Pages-migration-status.
