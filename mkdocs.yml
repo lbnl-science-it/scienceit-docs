@@ -3,8 +3,10 @@ site_name: Science IT @ LBNL
 nav:
   - Home: index.md
   - High Performance Computing:
+      - Getting Started: hpc/getting-started.md
       - Account:
-          - Getting an Account: hpc/accounts/mylrc.md
+          - Project Accounts: hpc/accounts/project-accounts.md
+          - User Accounts: hpc/accounts/user-accounts.md
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
       - Running Jobs:
@@ -15,9 +17,9 @@ nav:
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-      - Frequently Asked Questions: hpc/faqs.md
       - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
+      - Frequently Asked Questions: hpc/faqs.md
       - Training and Workshops: training.md
       - Scientific Virtual Machines: construction.md
       - Data Center Co-Location: construction.md
