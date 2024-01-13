@@ -14,7 +14,7 @@ title: Science IT Documentation
 
 ## **Top Pages**
 
-- [Getting Started with Lawrencium](https://it.lbl.gov/resource/hpc/for-users/getting-started/) {{ext}}
+- [Getting Started with Lawrencium](hpc/getting-started.md) 
 - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/) {{ext}}
 - [HPC Clusters Live Status - Warewulf Overview](hpc/status.md) {{ext}}
 - [HPC Clusters Live Status - Detailed](https://hpcs-stats.lbl.gov/cluster_utilization/state_cluster/) {{ ext }}
