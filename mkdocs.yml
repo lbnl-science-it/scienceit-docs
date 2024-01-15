@@ -17,6 +17,9 @@ nav:
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
+      - Open OnDemand:
+          - Open OnDemand Overview: hpc/openondemand/overview.md
+          - Jupyter Server: hpc/openondemand/jupyter-server.md
       - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Frequently Asked Questions: hpc/faqs.md
