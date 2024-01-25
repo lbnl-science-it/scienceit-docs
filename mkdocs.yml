@@ -31,6 +31,7 @@ nav:
       - Secure Computing: construction.md
       - Live Cluster Status: hpc/status.md
   - Data Transfer & Storage:
+      - Data Management Overview: data/index.md
       - Data Transfer: data/datatransfer_node.md
       - Globus at Berkeley Lab: data/globus.md
       - Globus Instructions: data/globus_instructions.md
