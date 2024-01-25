@@ -19,7 +19,7 @@ As described next, you can start a Jupyter notebook via the Open OnDemand servic
 
 4. Fill out the form presented to you and click on **Launch**. The option **Type of use** has two options:
     - *interactive_mode, for exploration*: choose this option for non-intensive computations (notebook runs on the OpenOnDemand server)
-    ![Jupyter Server Option](images/jupyter_interactive_.png)
+    ![Jupyter Server Option](images/jupyter_interactive.png)
     - *compute_mode*: choose this for intensive computations on compute nodes (the form will present you with additional options for nodes, cores and qos)
 
     Note that you can click on the **Use JupyterLab instead of Jupyter Notebok?** checkbox if you prefer the [JupyterLab](https://jupyterlab.readthedocs.io/en/latest/) interface. See below for an example of launching a jupyter server on a GPU partition in compute_mode.
