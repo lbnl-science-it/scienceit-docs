@@ -3,6 +3,7 @@ site_name: Science IT @ LBNL
 nav:
   - Home: index.md
   - High Performance Computing:
+      - Lawrencium Overview: hpc/index.md
       - Getting Started: hpc/getting-started.md
       - Account:
           - Project Accounts: hpc/accounts/project-accounts.md
