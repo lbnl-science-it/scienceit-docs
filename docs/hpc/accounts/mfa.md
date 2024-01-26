@@ -1,7 +1,7 @@
 # Multi-Factor Authentication (MFA)
 
 !!! note "Link to Token Management Page"
-    Visit the [Token Management web page](https://identity.lbl.gov/otptokens/login) to manage your MFA; detailed instructions are given below.
+    Visit the [Token Management web page](https://identity.lbl.gov/otptokens/login){:target="_blank"} {{ ext }} to manage your MFA; detailed instructions are given below.
 
 ## Introduction
 
@@ -16,7 +16,7 @@ All users are required to install and use an Authenticator app in their smart ph
 There are also desktop apps, but they somewhat negate the advantage of MFA being "something you have with you". But if you need a dekstop app, you can try to use the Authy desktop app by using the instructions in [this link](https://docs-research-it.berkeley.edu/services/high-performance-computing/user-guide/using-authy/).
 
 !!! note "YubiKey"
-    Lastly, it is also possible to use a [YubiKey](https://www.yubico.com/products/yubikey-5-overview/) as your MFA.  This has a significant setup cost and in person verification; if you are interested in this,  please email HPCS support at hpcshelp@lbl.gov for additional assistance.
+    Lastly, it is also possible to use a [YubiKey](https://www.yubico.com/products/yubikey-5-overview/){:target="_blank"} {{ ext }} as your MFA.  This has a significant setup cost and in person verification; if you are interested in this,  please email HPCS support at hpcshelp@lbl.gov for additional assistance.
 
 ## MFA Instructions
 
@@ -24,7 +24,7 @@ There are also desktop apps, but they somewhat negate the advantage of MFA being
 
 * In the Google Play store or iOS App Store on your smartphone or tablet, search for and install Google Authenticator (GA), Microsoft Authenticator, Authy and Duo.
 
-### **Step 2**: Visit and Login to [OTP Token Management Interface](https://identity.lbl.gov/otptokens/login)
+### **Step 2**: Visit and Login to [OTP Token Management Interface](https://identity.lbl.gov/otptokens/login){:target="_blank"} {{ ext }}
 
 * Berkeley Lab users can access the interface by clicking ‘Berkeley Lab Login’ in the top section.
 
@@ -92,7 +92,7 @@ If you’ve already set up your token but are unable to log into the cluster suc
   
     Test – and if needed, reset – your token or its PIN
 
-    Visit the [Token Management web page](https://identity.lbl.gov/otptokens/) to log in to this Token Management page.
+    Visit the [Token Management web page](https://identity.lbl.gov/otptokens/){:target="_blank"} {{ ext }} to log in to this Token Management page.
 
     A list of one or more tokens should then be displayed. From this list, find your relevant token: the one that you entered into Google Authenticator on the smartphone or tablet you’re currently using. (If you want to check this further, the “TOTP number” that appears in the box for your token, on the Token Management web page, should match the TOTP number in Google Authenticator’s window on your device.)
 

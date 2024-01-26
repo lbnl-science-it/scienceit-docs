@@ -38,8 +38,8 @@ A lot of software packages and tools are already built as Software Module Farm a
 
 ## Running Jobs
 
-When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](hpc/running/slurm_overview.md) and [Example Scripts](hpc/running/script_examples.md).
+When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](running/slurm_overview.md) and [Example Scripts](running/script_examples.md).
 
 ## Open OnDemand
 
-We provide interactive Apps, such as Jupyter notebooks, RStudio, MatLab, through the browser-based Open OnDemand service at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov). Use your LRC username and PIN+one-time password(OTP).
+We provide interactive Apps, such as Jupyter notebooks, RStudio, MatLab, through the browser-based Open OnDemand service at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }}. Use your LRC username and PIN+one-time password(OTP).
