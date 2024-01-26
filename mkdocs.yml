@@ -21,6 +21,7 @@ nav:
       - Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
+          - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
       - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Frequently Asked Questions: hpc/faqs.md
