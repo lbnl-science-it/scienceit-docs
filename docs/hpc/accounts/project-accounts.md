@@ -2,7 +2,7 @@
 
 The Lawrencium cluster is open to all Berkeley Lab researchers needing access to high performance computing. Research collaborations are also welcome provided that there is a LBNL PI.
 
-LBNL PIs wanting to obtain access to Lawrencium for their research project will need to complete the project request at myLRC portal, giving the details of the research activity along with a list of anticipated users. A unique group name will be created for the project and associated users. This group name will be used to setup allocations and report usage.
+LBNL PIs wanting to obtain access to Lawrencium for their research project will need to complete the project request at [myLRC portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }}, giving the details of the research activity along with a list of anticipated users. A unique group name will be created for the project and associated users. This group name will be used to setup allocations and report usage.
 
 There are three primary ways to obtain access to Lawrencium:
 
@@ -12,10 +12,10 @@ There are three primary ways to obtain access to Lawrencium:
 
 3. **Recharge use**: Berkeley lab researchers who want to use Lawrencium cluster at a minimal recharge rate, roughly at $0.01/SU. For details, please see Recharge Allocation Computing Allowance.
 
-To request a PCA, Condo or Recharge project on Lawrencium, please send your requests at myLRC. Make sure choosing the desired project type on the form.
+To request a PCA, Condo or Recharge project on Lawrencium, please send your requests at [myLRC portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }}. Make sure choosing the desired project type on the form.
 
 ### Changing Your ProjectID
-If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at hpcshelp@lbl.gov
+If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
 
 ### Allocations
 
