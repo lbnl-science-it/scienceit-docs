@@ -23,6 +23,18 @@
   display: none;
 }
 
+.md-nav__link {
+  color: #000 !important;
+}
+
+.md-nav__title {
+  color: #000 !important;
+}
+
+li.md-nav__item {
+  padding-left: 10px !important;
+}
+
 .md-grid {
   max-width: 1440px;
 }
