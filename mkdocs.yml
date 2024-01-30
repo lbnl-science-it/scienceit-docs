@@ -4,8 +4,10 @@ nav:
   - Home: index.md
   - High Performance Computing:
       - Lawrencium Overview: hpc/index.md
+      - Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
-      - Account:
+      - Frequently Asked Questions: hpc/faqs.md
+      - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
           - User Accounts: hpc/accounts/user-accounts.md
           - Logging in: hpc/accounts/loggingin.md
@@ -14,23 +16,21 @@ nav:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
           - Monitor Jobs: hpc/running/monitor_jobs.md
-          - GNU Parallel: hpc/running/gnu_parallel.md
-      - Software:
-          - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-      - Open OnDemand:
+          - GNU Parallel: hpc/running/gnu_parallel.md
+      - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
-      - Tutorials:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
-      - Frequently Asked Questions: hpc/faqs.md
+      - Science IT Services:
+        - Scientific Virtual Machines (SVM): construction.md
+        - Scientific Project Storage System (SPSS): construction.md
+        - Data Center Co-Location: construction.md
+        - Research Cluster Support: construction.md
+        - Secure Data Research Computing (SDRC): construction.md
+        - Software Module Farm: hpc/software/software-module-farm.md
       - Training and Workshops: training.md
-      - Scientific Virtual Machines: construction.md
-      - Data Center Co-Location: construction.md
-      - Supported Research Clusters: construction.md
-      - Secure Computing: construction.md
-      - Live Cluster Status: hpc/status.md
   - Data Transfer & Storage:
       - Data Management Overview: data/index.md
       - Data Transfer: data/datatransfer_node.md
@@ -74,6 +74,7 @@ theme:
     - navigation.footer
     - navigation.indexes
     - navigation.sections
+    - navigation.tabs
 
 markdown_extensions:
   - admonition
