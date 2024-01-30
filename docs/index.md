@@ -1,6 +1,7 @@
 ---
 hide:
     - title
+    - navigation
 
 title: Science IT Documentation
 
@@ -25,6 +26,7 @@ title: Science IT Documentation
 
 --8<-- "snippets/help.md"
 
+<!--
 ## **Computing Resources**
 
 - **LRC**: Lawrencium Computing Cluster
@@ -44,15 +46,17 @@ title: Science IT Documentation
     - Amazon AWS S3 Endpoint
     - GCP Google Cloud Storage Endpoint
     - Google Drive Endpoint
+-->
 
 ## **Other Resources**
 
-- [LBNL IT Division](https://it.lbl.gov){:target="_blank"} {{ ext }}
-- [NERSC Documentation](https://docs.nersc.gov){:target="_blank"} {{ ext }}
-- [Savio (UC Berkeley Research IT)](https://researchit.berkeley.edu){:target="_blank"} {{ ext }}
-- [LBL Scientific Data Division](https://crd.lbl.gov/divisions/scidata){:target="_blank"} {{ ext }}
-- [Software at LBNL](https://software.lbl.gov/){:target="_blank"} {{ ext }}
-- [Mac & PC Support (Workstation Support)](https://it.lbl.gov/group/it-support-services/workstation-support/){:target="_blank"} {{ ext }}
+- [LBNL IT Division Homepage](https://it.lbl.gov){:target="_blank"} {{ ext }}
+- [NERSC Technical Documentation](https://docs.nersc.gov){:target="_blank"} {{ ext }}
+- [Savio Documentation (UC Berkeley Research IT)](https://researchit.berkeley.edu){:target="_blank"} {{ ext }}
+- [LBNL Scientific Data Division](https://crd.lbl.gov/divisions/scidata){:target="_blank"} {{ ext }}
 - [Networking (LBLnet)](https://it.lbl.gov/service/networking/){:target="_blank"} {{ ext }}
+- [Software at LBNL](https://software.lbl.gov/){:target="_blank"} {{ ext }}
+- [Software Licensing](https://it.lbl.gov/service/software-licensing/){:target="_blank"} {{ ext }}
+- [Mac & PC Support (Workstation Support)](https://it.lbl.gov/group/it-support-services/workstation-support/){:target="_blank"} {{ ext }}
 
 Can't find what you are looking for? Email us: <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>
