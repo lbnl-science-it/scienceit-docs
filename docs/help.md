@@ -10,10 +10,3 @@ title: Science IT Help
 
 --8<-- "snippets/help.md"
 
-## Training
-
-...
-
-## Tutorials
-
-...
