@@ -2,3 +2,4 @@ mkdocs==1.5.*
 mkdocs-material==9.*
 mkdocs-jupyter==0.24.*
 mkdocs-macros-plugin==1.*
+mistune==3.0.1
