@@ -24,12 +24,12 @@ nav:
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       - Science IT Services:
-        - Scientific Virtual Machines (SVM): construction.md
-        - Scientific Project Storage System (SPSS): construction.md
-        - Data Center Co-Location: construction.md
-        - Research Cluster Support: construction.md
-        - Secure Data Research Computing (SDRC): construction.md
-        - Software Module Farm: hpc/software/software-module-farm.md
+          - Scientific Virtual Machines (SVM): construction.md
+          - Scientific Project Storage System (SPSS): construction.md
+          - Data Center Co-Location: construction.md
+          - Research Cluster Support: construction.md
+          - Secure Data Research Computing (SDRC): construction.md
+          - Software Module Farm: hpc/software/software-module-farm.md
       - Training and Workshops: training.md
   - Data Transfer & Storage:
       - Data Management Overview: data/index.md
@@ -73,7 +73,6 @@ theme:
     - navigation.path
     - navigation.footer
     - navigation.indexes
-    - navigation.sections
     - navigation.tabs
 
 markdown_extensions:
