@@ -1,6 +1,6 @@
 # Open OnDemand Overview
 
-We provide various interactive Apps through the browser-based Open OnDemand service available at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov).
+We provide various interactive Apps through the browser-based Open OnDemand service available at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }}.
 
 The available Apps/services include:
 
@@ -14,7 +14,7 @@ The available Apps/services include:
 
 ## Logging In
 
-1. Visit [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov) in your web browser.
+1. Visit [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }} in your web browser.
 2. Use your [LRC username](../accounts/user-accounts.md) and [PIN+one-time password(OTP)](../accounts/mfa.md).
     * These are the same credentials you use to login to Lawrencium vis SSH.
     * The username is only your LRC username and should not include the part after the @ sign.
