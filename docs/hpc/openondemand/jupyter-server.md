@@ -10,7 +10,7 @@ As described next, you can start a Jupyter notebook via the Open OnDemand servic
 
 ### Running a notebook
 
-1. Connect to [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov).
+1. Connect to [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }}.
 
 2. After logging in with your [LRC username]() and [one-time password(OTP)], you will get to the Open OnDemand welcome screen. Click the **Interactive Apps** pulldown.
 

@@ -9,13 +9,22 @@ Storage and Backup.
 
 Lawrencium is composed of multiple generations of hardware hence it is physically separated into several partitions to facilitate management and to meet the requirements to host Condo projects. The following table lists the hardware configuration for each individual partition.
 
+### CPU Partitions
 
-| Partition | Nodes | CPU | Cores | Memory | Infiniband | Accelerator | 
-| --------- | ----- | --- | ----- | ------ | ---------- | ----------- |
-| lr3       | 243   | Intel Xeon E5 2670 | 16 | 64GB | FDR | -  |
-|           |       | Intel Xeon E5 2670 v2 | 20 | 64 GB | FDR | - |
-| lr4 | 148 | Intel Xeon E5-2670v3 | 24 | 64GB | FDR | - |
+| Partition | Nodes | CPU | Cores | Memory | Infiniband | 
+| --------- | ----- | --- | ----- | ------ | ---------- | 
+| lr3       | 243   | Intel Xeon E5 2670 | 16 | 64GB  | FDR |
+|           |       | Intel Xeon E5 2670v2  | 20 | 64GB  | FDR |
+| lr4       | 148   | Intel Xeon E5-2670v3 | 24 | 64GB | FDR | 
+| lr5       | 192   | Intel Xeon E5-2680v4 | 28 | 64GB | FDR | 
+|           |       | Intel Xeon E5-2640v4 | 20 | 128GB | QDR |
+| lr6       | 88    | Intel Xeon Gold 6130 (Skylake) | 32 | 96GB or 128GB | FDR |
+|           | 156   | Intel Xeon Gold 5218 (Cascade) | 32 | 96GB | FDR |
+|           |       | Intel Xeon Gold 6230 (Cascade) | 40 | 128GB | FDR |
+| lr7       | 60    | Intel Xeon Gold 6330 | 56 | 256GB | HDR |
+| lr_bigmem | 2     | Intel Xeon Gold 5218 | 32 | 1584GB | EDR |
 
+### GPU Partition
 
 
 ## Storage and Backup
