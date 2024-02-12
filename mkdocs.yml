@@ -12,6 +12,14 @@ nav:
           - User Accounts: hpc/accounts/user-accounts.md
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
+      - Systems:
+          - Lawrencium: hpc/systems/lawrencium.md
+          - Einsteinium GPU Cluster: hpc/systems/einsteinium.md
+          - Californium: hpc/systems/californium.md
+          - Curium AMD Cluster: hpc/systems/curium.md
+          - Supported Research Clusters:
+              - ALSACC: hpc/systems/supported/alsacc.md
+              - CATAMOUNT: hpc/systems/supported/catamount.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
