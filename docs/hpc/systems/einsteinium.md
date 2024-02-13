@@ -2,7 +2,7 @@
 
 Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol Es and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
-Es1 is a 45-node partition consisting of multiple GPU node types to address the different research needs. These include:
+Es1 is a 47-node partition consisting of multiple GPU node types to address the different research needs. These include:
 
 
 | Partition | Accelerator | Nodes | CPU                  | Cores | Memory | Infiniband |

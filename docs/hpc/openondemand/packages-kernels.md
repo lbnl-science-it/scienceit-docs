@@ -48,11 +48,8 @@ Let us create a new python kernel that can run cupy (which we will install in ou
 ``` bash
 module load python/3.10.10
 module load cuda/12.2
-module load cudnn/8.9.5
-module load gcc/11.3.0
 
-export CUDA_PATH=$CUDA_DIR
-CC=gcc NVCC=nvcc python -m pip install --user --no-cache-dir cupy
+python -m pip install --user --no-cache-dir cupy-cuda12x
 ```
 
 Now to create a new jupyter kernel, with the current `PATH` and `LD_LIBRARY_PATH` variables set:
