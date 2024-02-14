@@ -1,12 +1,8 @@
 ---
-hide:
-    - title
-    - navigation
-
-title: Science IT Help
+title: Science IT Support
 ---
 
-# Science IT & HPC Support Resources
+# Science IT Consulting & HPC Support Resources
 
 --8<-- "snippets/help.md"
 
