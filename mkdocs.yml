@@ -12,14 +12,18 @@ nav:
           - User Accounts: hpc/accounts/user-accounts.md
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
-      - Systems:
+      - Computing Systems:
           - Lawrencium: hpc/systems/lawrencium.md
           - Einsteinium GPU Cluster: hpc/systems/einsteinium.md
           - Californium: hpc/systems/californium.md
           - Curium AMD Cluster: hpc/systems/curium.md
           - Supported Research Clusters:
+              - Secure Data Research Computing (SDRC): construction.md
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
+      - Data Transfer: 
+          - Using the lrc-xfer DTN: hpc/datatransfer_node.md
+          - Using Globus: hpc/globus_instructions.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
@@ -31,25 +35,46 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
-      - Science IT Services:
+      - Hosting Services:
           - Scientific Virtual Machines (SVM): construction.md
           - Scientific Project Storage System (SPSS): construction.md
           - Data Center Co-Location: construction.md
           - Research Cluster Support: construction.md
-          - Secure Data Research Computing (SDRC): construction.md
           - Software Module Farm: hpc/software/software-module-farm.md
       - Training and Workshops: training.md
-  - Data Transfer & Storage:
+  - Research Data Management:
       - Data Management Overview: data/index.md
-      - Data Transfer: data/datatransfer_node.md
-      - Globus at Berkeley Lab: data/globus.md
-      - Globus Instructions: data/globus_instructions.md
-      - Scientific Project Storage Service: data/spss.md
+      - Globus Transfer System: 
+          - Globus at Berkeley Lab: data/globus.md
+          - Globus on Lawrencium: hpc/globus_instructions.md
+          - Globus with Google Drive: construction.md
+          - Globus with Google Cloud Storage: construction.md
+          - Globus with AWS S3: construction.md
+          - Globus Personal: construction.md
+          - Globus Guest Collections: construction.md
+      - Storage Systems:
+          - Scientific Project Storage Service: data/spss.md
+          - Lawrencium Condo Storage: construction.md
+          - Dryad Publication Platform: construction.md
+      - Data Management Plans: 
+          - DMPTool: construction.md
+      - Data Science Training:
+          - Intro to Data Science for Postdocs: construction.md
+          - UC Berkeley DLab Workshops: construction.md
   - Cloud Computing:
       - Cloud Overview: cloud/index.md
-      - Google Cloud Platform: cloud/gcp.md
-      - Amazon Web Services: cloud/aws.md
-  - Help: help.md
+      - Cloud Cost Comparisons: construction.md
+      - Cloud Service Providers:
+          - Google Cloud Platform: cloud/gcp.md
+          - Amazon Web Services: cloud/aws.md
+          - Microsoft Azure Cloud: construction.md
+      - Cloud User Support: construction.md
+      - Cloud Training Resources: construction.md
+  - Support:
+      - HPC Help Desk: help.md
+      - Consulting Services: construction.md
+      - LabTech Conference: construction.md
+      - Presentations: construction.md
 
 plugins:
   - search
