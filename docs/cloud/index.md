@@ -1,3 +1,8 @@
-The IT Division encourages the use of cloud computing for science as an effective way to to meet specific research and computing needs. Many researchers have found that cloud computing works well for quickly bringing up computing infrastructure and that it scales well for bursty workloads such as data releases. Others have found that cloud tools for machine learning, search and workflow orchestration are very effective.
+# **Cloud Computing Services**
 
-To facilitate cloud use at Berkeley Lab, Science IT has secured master payer contracts with Amazon Web Services and Google Cloud Platform. These master payer agreements provide LBNL scientists, staff, and other affiliated researchers with access to the full suite of AWS and GCP services without use of a purchase order or need to create a contract vehicle.  This is considered a self-managed cloud offering as you are expected to manage your own usage of services in your chosen cloud environment.
+The Science IT Group acts as the primary point of contact for researchers at Berkeley Lab to access commercial cloud computing service providers. Berkeley Lab and/or Department of Energy has secured master payer contracts with Amazon Web Services and Google Cloud Platform. These master payer agreements provide LBNL scientists, staff, and other affiliated researchers with access to the full suite of AWS and GCP services without use of a purchase order or need to create a contract vehicle.  
+
+**Note:** Cloud computing services are a self-managed service offering. Users assume full responsibility for usage of cloud services. Users are responsible for all costs incurred by their cloud usage regardless of their budgetary constraints. Users are advised to shut down services and rented instances when not in use, and should implement appropriate security controls to prevent unauthorized use of API keys. 
+
+**Some users have unintentionally incurred extremely high costs due to user errors!**
+

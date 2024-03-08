@@ -1,4 +1,4 @@
-site_name: Science IT @ LBNL
+site_name: Science IT Technical Documentation
 
 nav:
   - Home: index.md
@@ -21,7 +21,7 @@ nav:
               - Secure Data Research Computing (SDRC): construction.md
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
-      - Data Transfer: 
+      - Data Transfer:
           - Using the lrc-xfer DTN: hpc/datatransfer_node.md
           - Using Globus: hpc/globus_instructions.md
       - Running Jobs:
@@ -35,15 +35,11 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
-      - Hosting Services:
-          - Scientific Virtual Machines (SVM): construction.md
-          - Scientific Project Storage System (SPSS): construction.md
-          - Data Center Co-Location: construction.md
-          - Research Cluster Support: construction.md
-          - Software Module Farm: hpc/software/software-module-farm.md
       - Training and Workshops: training.md
+  #- Scientific Computing:
+  #    - Jupyter: construction.md
   - Research Data Management:
-      - Data Management Overview: data/index.md
+      - Research Data Management Overview: data/index.md
       - Globus Transfer System: 
           - Globus at Berkeley Lab: data/globus.md
           - Globus on Lawrencium: hpc/globus_instructions.md
@@ -52,16 +48,19 @@ nav:
           - Globus with AWS S3: construction.md
           - Globus Personal: construction.md
           - Globus Guest Collections: construction.md
-      - Storage Systems:
+      - Rclone User-space Filesystem for Cloud Storage:
+          - Rclone on Lawrencium: hpc/globus_instructions.md
+          - Rclone on Desktop: hpc/globus_instructions.md
+      - Science IT Managed Storage Systems:
           - Scientific Project Storage Service: data/spss.md
           - Lawrencium Condo Storage: construction.md
-          - Dryad Publication Platform: construction.md
-      - Data Management Plans: 
+      - Data Management and Publication: 
           - DMPTool: construction.md
+          - Dryad Publication Platform: construction.md
       - Data Science Training:
           - Intro to Data Science for Postdocs: construction.md
           - UC Berkeley DLab Workshops: construction.md
-  - Cloud Computing:
+  - Cloud Computing Services:
       - Cloud Overview: cloud/index.md
       - Cloud Cost Comparisons: construction.md
       - Cloud Service Providers:
@@ -70,7 +69,19 @@ nav:
           - Microsoft Azure Cloud: construction.md
       - Cloud User Support: construction.md
       - Cloud Training Resources: construction.md
-  - Support:
+  #- Services:
+  #    - Scientific Virtual Machines (SVM): construction.md
+  #    - Scientific Project Storage System (SPSS): construction.md
+  #    - Data Center Co-Location: construction.md
+  #    - Research Cluster Support: construction.md
+  #    - Software Module Farm: hpc/software/software-module-farm.md
+  #    - Cloud Computing Services: construction.md
+  #    - Science IT Consulting: construction.md
+  #- AI:
+  #    - GPU: construction.md
+  #    - ChatGPT: construction.md
+  #    - Inferencing 
+  - Support & Training: 
       - HPC Help Desk: help.md
       - Consulting Services: construction.md
       - LabTech Conference: construction.md
