@@ -24,6 +24,8 @@ nav:
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/datatransfer_node.md
           - Using Globus: hpc/globus_instructions.md
+          - Rclone on Lawrencium: hpc/globus_instructions.md
+          - SPSS on Lawrencium: hpc/globus_instructions.md          
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
@@ -35,40 +37,29 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
+      #- Scientific Virtual Machines (SVM):
+      #    - SVM Overview: construction.md
       - Training and Workshops: training.md
-  #- Scientific Computing:
-  #    - Jupyter: construction.md
-  - Research Data Management:
-      - Research Data Management Overview: data/index.md
-      - Globus Transfer System: 
-          - Globus at Berkeley Lab: data/globus.md
-          - Globus on Lawrencium: hpc/globus_instructions.md
-          - Globus with Google Drive: construction.md
-          - Globus with Google Cloud Storage: construction.md
-          - Globus with AWS S3: construction.md
-          - Globus Personal: construction.md
-          - Globus Guest Collections: construction.md
-      - Rclone User-space Filesystem for Cloud Storage:
-          - Rclone on Lawrencium: hpc/globus_instructions.md
-          - Rclone on Desktop: hpc/globus_instructions.md
-      - Science IT Managed Storage Systems:
-          - Scientific Project Storage Service: data/spss.md
-          - Lawrencium Condo Storage: construction.md
-      - Data Management and Publication: 
-          - DMPTool: construction.md
-          - Dryad Publication Platform: construction.md
-      - Data Science Training:
-          - Intro to Data Science for Postdocs: construction.md
-          - UC Berkeley DLab Workshops: construction.md
-  - Cloud Computing Services:
-      - Cloud Overview: cloud/index.md
-      - Cloud Cost Comparisons: construction.md
-      - Cloud Service Providers:
-          - Google Cloud Platform: cloud/gcp.md
-          - Amazon Web Services: cloud/aws.md
-          - Microsoft Azure Cloud: construction.md
-      - Cloud User Support: construction.md
-      - Cloud Training Resources: construction.md
+  - Globus Transfer System:
+      - Globus Transfer System Overview: data/index.md
+      - Globus at Berkeley Lab: data/globus.md
+      - Globus Personal: construction.md
+      - Globus on Lawrencium: hpc/globus_instructions.md
+      - Globus with Google Drive: construction.md
+      - Globus with Google Cloud Storage: construction.md
+      - Globus with AWS S3: construction.md
+      - Globus Guest Collections: construction.md
+      - Globus Connect Server: data/globus.md
+      #- Globus with Scientific Project Storage Service (SPSS): data/spss.md
+  #- Cloud Services:
+  #    - Cloud Overview: cloud/index.md
+  #    - Cloud Cost Comparisons: construction.md
+  #    - Cloud Service Providers:
+  #        - Google Cloud Platform: cloud/gcp.md
+  #        - Amazon Web Services: cloud/aws.md
+  #        - Microsoft Azure Cloud: construction.md
+  #    - Cloud User Support: construction.md
+  #    - Cloud Training Resources: construction.md
   #- Services:
   #    - Scientific Virtual Machines (SVM): construction.md
   #    - Scientific Project Storage System (SPSS): construction.md
@@ -81,11 +72,16 @@ nav:
   #    - GPU: construction.md
   #    - ChatGPT: construction.md
   #    - Inferencing 
+  - Scientific Computing Demos:
+      - Scientific Computing Demos Overview: demos/index.md
+      - Intro to Data Science for Postdocs: construction.md
   - Support & Training: 
+      - Dryad Publication Platform: construction.md
       - HPC Help Desk: help.md
       - Consulting Services: construction.md
       - LabTech Conference: construction.md
       - Presentations: construction.md
+      - UC Berkeley DLab Workshops: construction.md
 
 plugins:
   - search
