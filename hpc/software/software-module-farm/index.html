@@ -1,0 +1,2152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Software module farm - Science IT Technical Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-FKL0607RGR"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-FKL0607RGR",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-FKL0607RGR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<div class="md-announce">
+📣 Schedule an engagement with <a href="https://go.lbl.gov/scienceit">Science IT Consulting</a> and get 10,000 free SU credits on Lawrencium
+</div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Science IT Technical Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software module farm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  High Performance Computing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../data/" class="md-tabs__link">
+          
+  
+    
+  
+  Globus Transfer System
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../demos/index.md" class="md-tabs__link">
+          
+  
+    
+  
+  Scientific Computing Demos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../construction/" class="md-tabs__link">
+          
+  
+    
+  
+  Support & Training
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
+
+    </a>
+    Science IT Technical Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    High Performance Computing
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Live Cluster Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faqs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account Management
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Account Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/project-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/user-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/loggingin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging in
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/mfa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Factor Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computing Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Computing Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/lawrencium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/einsteinium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Einsteinium GPU Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/californium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Californium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/curium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Curium AMD Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Supported Research Clusters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Supported Research Clusters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secure Data Research Computing (SDRC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/supported/alsacc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ALSACC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/supported/catamount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CATAMOUNT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Transfer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Data Transfer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datatransfer_node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the lrc-xfer DTN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../globus_instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Globus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../globus_instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rclone on Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../globus_instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SPSS on Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Running Jobs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Running Jobs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/slurm_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slurm Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/script_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/monitor_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitor Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/gnu_parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GNU Parallel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using Open OnDemand
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Using Open OnDemand
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open OnDemand Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/jupyter-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/packages-kernels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Packages and Kernels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/jupyter_gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Jupyter on GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and Workshops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../data/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Globus Transfer System
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Globus Transfer System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus at Berkeley Lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus Personal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../globus_instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus on Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus with Google Drive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus with Google Cloud Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus with AWS S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus Guest Collections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus Connect Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scientific Computing Demos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Scientific Computing Demos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../demos/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scientific Computing Demos Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro to Data Science for Postdocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Support & Training
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Support & Training
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dryad Publication Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HPC Help Desk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consulting Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LabTech Conference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UC Berkeley DLab Workshops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hpcs-software-module-farm" class="md-nav__link">
+    <span class="md-ellipsis">
+      HPCS Software Module Farm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-for-the-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages for the User
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Category
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licensed-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licensed Software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-software-by-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Software by Users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-python-packages-by-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Python Packages by Users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Software module farm</h1>
+
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Software Module Farm (SMF) service is offered to all Berkeley Lab users with compatible systems, regardless of whether or not the HPCS group manages that system.  Currently we support all Red Hat Enterprise Linux hosts using version 7 (or any rebuild thereof, including Scientific Linux and CentOS).  The HPCS team manages the SMF on a centralized storage device and allows the module tree to be mounted as a read-only NFS filesystem on any authorized host.  Users of existing module farms can receive assistance in migrating to this new service if desired, and any missing software packages will be added to the new SMF service during this process. All existing HPCS SLA customers are eligible to obtain this service free of charge; that is, it is included with all SLAs.  For systems not currently under SLA with the HPCS group, a nominal $25/month/host charge will be made to help cover maintenance and hardware costs.  A project ID will be required before any non-SLA host is permitted to mount the SMF. If you have any questions regarding the new HPCS SMF service, please send an email to hpcshelp@lbl.gov.</p>
+<h2 id="hpcs-software-module-farm">HPCS Software Module Farm<a class="headerlink" href="#hpcs-software-module-farm" title="Permanent link">&para;</a></h2>
+<p>The HPCS group manages a variety of clusters and standalone systems across the Lab. The HPCS Software Module Farm service provides a comprehensive and well-tested suite of software modules for clusters and individual systems to utilize. It also manages the modules in a hierarchical way so that the module dependencies are well-defined and organized. There are three types of software modules:</p>
+<ol>
+<li><strong>Tool</strong> – Tool modules are built and compiled with the default system GCC compiler. They have no dependencies.</li>
+<li><strong>Language</strong> – Language modules are compilers/interpreters for a specific language, such as GCC or Python.</li>
+<li><strong>Submodule</strong> – Submodules include libraries, subpackages, and other software which depend on a particular Language module (e.g., a particular version of Python). Due to this dependency, submodules will only be visible once the associated Language module is loaded. For example, the <code>numpy/1.6.1</code> module built against <code>python/2.7.3</code> will only be visible once the <code>python/2.7.3</code> module has been loaded.</li>
+</ol>
+<h2 id="advantages-for-the-user">Advantages for the User<a class="headerlink" href="#advantages-for-the-user" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The layout and architecture of our HPCS SMF is designed to make large suites of modules with numerous dependencies manageable for administrators and end-users alike.  Only those modules which are compatible with your environment and operating system are shown, and more modules become available as their dependencies are loaded.</li>
+<li>The HPCS SMF is a replica for HPCS Supercluster SMF that is used by clusters in our supercluster environment (including Lawrencium, nano and clusters in the environment). Existing supercluster users can have identical software environment on there local systems after mounting the HPCS SMF.</li>
+<li>All modules are fully tested on all supported operating systems, distributions, and versions.</li>
+<li>The HPCS team handles all the compilation and maintenance tasks, so you don’t have to!</li>
+<li>Licenses for selected commercial compilers (currently PGI and Intel) are provided at no extra cost to you.</li>
+<li>Leverage economies of scale by sharing unified maintenance efforts across the entire Laboratory.</li>
+</ul>
+<h2 id="software-category">Software Category<a class="headerlink" href="#software-category" title="Permanent link">&para;</a></h2>
+<p>HPCS group provides and maintains the system level modules. The purpose of it is to provide an ecosystem that most users rely on to accomplish their research and studies. The range of applications and libraries that HPCS supports on each system is different, and highly depends on the use case and frequency of how often a support request is received. Currently the following categories of applications and libraries are supported.</p>
+<ul>
+<li>Development Tools</li>
+<li>Data Processing and Visualization Tools</li>
+<li>Typesetting and Publishing Tools</li>
+<li>Miscellaneous Tools</li>
+</ul>
+<p>Table 1. Modules List</p>
+<table>
+<thead>
+<tr>
+<th>CATEGORY</th>
+<th>APPLICATION/LIBRARY NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Editor/IDE</td>
+<td>Emacs, Vim, make, cmake, cscope, ctags</td>
+</tr>
+<tr>
+<td>SCM</td>
+<td>Subversion, Git, Mercurial</td>
+</tr>
+<tr>
+<td>Debugger/Profiler/Tracer</td>
+<td>GDB, grpof, TotalView, Valgrind, TAU</td>
+</tr>
+<tr>
+<td>Language/Platform</td>
+<td>GCC, Intel (license required), PGI (license required), Perl, Python, Java, Boost, CUDA, UPC, Open MPI, PVM, TBB (license required), MPI4Py, IPython, R, MATLAB (license required)</td>
+</tr>
+<tr>
+<td>Math Libraries</td>
+<td>ACML, MKL (license required), ATLAS, FFTW, FFTW3, GSL, LAPACK, ScaLAPACK, NumPy, SciPy</td>
+</tr>
+<tr>
+<td>I/O Libraries</td>
+<td>HDF5, NetCDF, NCO, NCL</td>
+</tr>
+<tr>
+<td>Visualization</td>
+<td>Gnuplot, Grace, Graphviz, ImageMagick, MATLAB (license required), GNU Octave, ParaView, R, VisIt, VMD, yt, Matplotlib</td>
+</tr>
+<tr>
+<td>Typesetting/Publishing</td>
+<td>Tex Live, Ghostscript, Doxgen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="licensed-software">Licensed Software<a class="headerlink" href="#licensed-software" title="Permanent link">&para;</a></h2>
+<p>TotalView, Intel parallel Studio, Q-Chem, MATLAB, Ansys. </p>
+<h2 id="install-software-by-users">Install Software by Users<a class="headerlink" href="#install-software-by-users" title="Permanent link">&para;</a></h2>
+<p>Users are encourage to install domain scientific software packages or local software module farms in their home or group space
+Users don’t have admin rights, but most software can be installed with the flag –prefix=/dir/to/your/path</p>
+<h2 id="install-python-packages-by-users">Install Python Packages by Users<a class="headerlink" href="#install-python-packages-by-users" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Python modules: abundantly available but cannot be installed in the default location without admin rights.</li>
+<li>Install Python modules in ~/.local followed by export PYTHONPATH</li>
+<li><code>pip install –user package_name</code></li>
+<li><code>export PYTHONPATH</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>available<span class="w"> </span>python
+---------------------<span class="w"> </span>/global/software/sl-7.x86_64/modfiles/langs<span class="w"> </span>-----------------------------------
+python/2.7<span class="w">          </span>python/3.5<span class="w">          </span>python/3.6<span class="o">(</span>default<span class="o">)</span><span class="w"> </span>python/3.7<span class="w">          </span>python/3.7.6<span class="w">        </span>python/3.8.2-dll
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python/3.7
+
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>site<span class="w"> </span>--user-site
+/global/home/users/wfeinstein/.local/lib/python3.7/site-packages
+
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>ml-python
+...
+Successfully<span class="w"> </span>built<span class="w"> </span>ml-python
+Installing<span class="w"> </span>collected<span class="w"> </span>packages:<span class="w"> </span>ml-python
+Successfully<span class="w"> </span>installed<span class="w"> </span>ml-python-2.2
+
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>~/.local/lib/python3.7/site-packages:<span class="nv">$PYTHONPATH</span>
+</code></pre></div>
+<ul>
+<li>pip install: –install-option=”–prefix=$HOME/your_path” package_name</li>
+<li>Install from source code:  <code>python setup.py install –home=/home/user/package_dir</code></li>
+<li>Create a virtual environment: <code>python -m venv my_env</code></li>
+<li>Isolated Python environment: dev with different versions of Python</li>
+</ul>
+<p>Please use Service Now or send email to hpcshelp@lbl.gov for any inquiries or service requests.</p>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<p>Many tools and bundles such as OpenMPI are compiler specific.  To find what modules is available under specific language pack, run ls on the module dir, eg:</p>
+<blockquote>
+<p>ls -1 /global/software/sl-7.x86_64/modfiles/intel/2018.1.163/ antlr boost fftw hdf5 mkl nco ncview netcdf openmpi […]</p>
+</blockquote>
+<p>To find all languages that have Open MPI (and their matching versions), use:</p>
+<blockquote>
+<p>find /global/software/sl-7.x86_64/modfiles| grep openmpi
+/global/software/sl-7.x86_64/modfiles/intel/2016.4.072/openmpi/3.0.0-intel /global/software/sl-7.x86_64/modfiles/intel/2016.4.072/openmpi/2.0.2-intel /global/software/sl-7.x86_64/modfiles/intel/2016.4.072/openmpi/2.1.3-intel /global/software/sl-7.x86_64/modfiles/intel/2016.4.072/openmpi/3.0.1-intel /global/software/sl-7.x86_64/modfiles/intel/2016.4.072/openmpi/3.0.1-intel_ilp64 /global/software/sl-7.x86_64/modfiles/intel/2018.1.163/openmpi/3.0.1-intel /global/software/sl-7.x86_64/modfiles/intel/2018.1.163/openmpi/2.0.2-intel /global/software/sl-7.x86_64/modfiles/intel/2020.1.024.par/openmpi/4.1.1 /global/software/sl-7.x86_64/modfiles/intel/oneapi-2022.2/scg/openmpi/4.1.3 /global/software/sl-7.x86_64/modfiles/gcc/4.8.5/openmpi/2.0.2-gcc /global/software/sl-7.x86_64/modfiles/gcc/5.4.0/openmpi/2.0.2-gcc /global/software/sl-7.x86_64/modfiles/gcc/5.4.0/openmpi/3.0.1-gcc /global/software/sl-7.x86_64/modfiles/gcc/6.3.0/openmpi/2.0.2-gcc /global/software/sl-7.x86_64/modfiles/gcc/6.3.0/openmpi/3.0.1-gcc /global/software/sl-7.x86_64/modfiles/gcc/7.4.0/openmpi/4.0.1-gcc /global/software/sl-7.x86_64/modfiles/gcc/7.4.0/openmpi/3.0.1-gcc /global/software/sl-7.x86_64/modfiles/gcc/7.4.0/openmpi/2.0.2-gcc /global/software/sl-7.x86_64/modfiles/gcc/9.2.0/openmpi/4.0.1-gcc /global/software/sl-7.x86_64/modfiles/gcc/7.5.0/openmpi/2.1.1-gcc</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+
+            <a href="https://scienceit.lbl.gov" title="Lawrence Berkeley National Laboratory" class="md-footer__button md-logo" aria-label="Lawrence Berkeley National Laboratory" data-md-component="logo">
+                <img src="/scienceit-docs/assets/11_BL_IT_logo_white.png" alt="logo" />
+            </a>
+
+            <div class="md-copyright">
+                <a href="https://scienceit.lbl.gov">Science IT</a> - <a href="https://it.lbl.gov">IT Division</a> - <a href="https://lbl.gov">Lawrence Berkeley National Laboratory</a> | <a href="https://www.lbl.gov/terms-and-conditions/" target="_blank">Privacy & Security Notice</a>
+            </div>
+        </div>
+    </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+    
+  </body>
+</html>
