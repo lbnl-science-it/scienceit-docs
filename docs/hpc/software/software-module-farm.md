@@ -4,15 +4,15 @@
 
 !!! note "Software Module Farm (SMF) Service"
 
-    For an overview of the Software Module Farm (SMF) as a service on non-Lawrencium systems, please follow [this link](https://it.lbl.gov/service/scienceit/high-performance-computing/scientific-cluster-services/software-module-farm/){:target="_blank"} {{ ext }}. In this page, we will focus on the Software Module Farm (SMF) software and their usage on the Lawrencium cluster.
+    For an overview of the Software Module Farm (SMF) as a service on non-Lawrencium systems, please follow [this link](https://it.lbl.gov/service/scienceit/high-performance-computing/scientific-cluster-services/software-module-farm/){:target="_blank"} {{ ext }}. In this page, we will focus on the Software Module Farm (SMF) software packages and their usage on the Lawrencium cluster.
 
 
 The Software Module Farm provides a comprehensive and well-tested suite of software modules for Lawrencium users. Several types of software modules are available:
 
-1. **Tools**: Tool modules are built and compiled with the default system `gcc` compiler. They have no dependencies. For the current `rocky8` operating system, the `gcc` system compiler is `gcc@8.5.0`.
+1. **Tools**: Tool modules are built and compiled with the default system `gcc` compiler. They have no other dependencies. For the current `rocky8` operating system, the `gcc` system compiler is `gcc@8.5.0`.
 3. **Core Compilers**: Other common compilers and newer versions of `gcc`; for example: `gcc@11.4.0`.
 2. **Languages**: Language modules include additional compilers and interpreters for specific languages such as `python`, `R` and `julia`.
-3. **Submodules**:: Submodules include libraries and packages which depend on a particular compiler or language module. Due to this dependency, submodules will only be visible once the associated language or core compiler module has been loaded. For example, `hdf5` submodule is only visible once you load `gcc` and `openmpi` modules.
+3. **Submodules**: Submodules include libraries and packages which depend on a particular compiler or language module. Due to this dependency, submodules will only be visible once the associated language or core compiler module has been loaded. For example, `hdf5` submodule is only visible once you load `gcc` and `openmpi` modules.
 
 ## Software Category
 
@@ -43,12 +43,12 @@ TotalView, Intel parallel Studio, Q-Chem, MATLAB, Ansys.
 
 ## Install Software by Users
 Users are encourage to install domain scientific software packages or local software module farms in their home or group space
-Users don’t have admin rights, but most software can be installed with the flag –prefix=/dir/to/your/path
+Users don’t have admin rights, but most software can be installed with the flag `--prefix=/dir/to/your/path`
 
 ## Install Python Packages by Users
 * Python modules: abundantly available but cannot be installed in the default location without admin rights.
-* Install Python modules in ~/.local followed by export PYTHONPATH
-* `pip install –user package_name`
+* Install Python modules in `~/.local` followed by export `PYTHONPATH`
+* `pip install --user package_name`
 * `export PYTHONPATH`
 
 ```bash

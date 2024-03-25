@@ -4,41 +4,56 @@
 
     Work in progress...Links and details on this page might change
 
-Several of the packages provided in the software module farm to you were built using [Spack](https://spack.io){:target="_blank"} {{ ext }} . Users can install additional software available on Spack following the procedure described in this page.
+Several of the packages provided in the software module farm to you were built using [Spack](https://spack.io){:target="_blank"} {{ ext }}. We advise users to use [modules](module-management.md) for loading and working with the software module farm. Users who want to use Spack to load packages or to install additional software available on Spack should carefully read the details provided here in addition to following the Spack documentation and tutorials.
 
 !!! note "When to install software from Spack?"
 
-    We provide a collection of frequently used software stack to users through our software module farm. If you need a software that is not in the software module farm but is available on Spack, you may use Spack to install it in your user, group or scratch directory. Check if a package is available on Spack on this [website](https://packages.spack.io){:target="_blank"} {{ ext }}. In some cases, you may also want to install a software that is already available through the module farm but if you require a newer version.
+    We provide a collection of frequently used software stack to users through our software module farm. If you need a software that is not in the software module farm but is available on Spack, you may use Spack to install it in your user, group or scratch directory. You can check if a package is available on Spack on this [website](https://packages.spack.io){:target="_blank"} {{ ext }}. In some cases, you may also want to install a software that is already available through the module farm but if you require a newer version.
 
 ## Get Spack
 
-Clone spack from github:
+You can either load spack as a module or download directly from spack github repository. 
 
-``` bash
-git clone --branch=v0.21.1 https://github.com/spack/spack.git
-```
+!!! note "Two ways of getting spack on Lawrencium"
 
-Spack v0.21.1 is the version used to install the software module farm software.
+    === "Load module"
 
-## Setup Spack
+        ``` bash
+        module load spack
+        ```
 
-The next step is to setup the spack environment as follows:
 
-``` bash
-source $SPACK_ROOT/share/spack/setup-env.sh
-```
+    === "Download from github"
 
-where `$SPACK_ROOT` is the location of your spack download; for example, if you cloned spack from github on your home directory, then `$SPACK_ROOT` in the command above is `~/spack`.
+        Clone spack from github:
+
+        ``` bash
+        git clone --branch=v0.21.1 https://github.com/spack/spack.git
+        ```
+
+        Spack v0.21.1 is the version used to install the software module farm software.
+
+        **Setup Spack**
+
+        The next step is to setup the spack environment as follows:
+
+        ``` bash
+        source $SPACK_ROOT/share/spack/setup-env.sh
+        ```
+
+        where `$SPACK_ROOT` is the location of your spack download; for example, if you cloned spack from github on your home directory, then `$SPACK_ROOT` in the command above is `~/spack`.
 
 ## Configure Spack chaining
 
-To use the software already installed on the software module farm -- either to load through `spack load` or as dependencies for a new software that you may want to install -- add the following in the `~/.spack/linux/upstreams.yaml` file (you may need to create this file if it does not exist).
+To use the software already installed on the software module farm -- either to load through `spack load` or as dependencies for a new software that you may want to install -- add the following in the `~/.spack/upstreams.yaml` file (you may need to create this file if it does not exist).
 
 
 ``` yaml
 upstreams:
-  software-module-farm:
-    install_tree: /global/software/rocky-8.x86_64/software/gcc/28Feb24/__spack_path_placeholder__/__spack_path_placeholder__/__spack_path_placehol
+  spack-gcc-1:
+    install_tree: /global/software/rocky-8.x86_64/software/gcc/latest
+  spack-python-1:
+    install_tree: /global/software/rocky-8.x86_64/software/python/latest/3.10.12
 ```
 
 ## Adding compilers to Spack
@@ -57,7 +72,7 @@ To add additional compilers, use the `spack compiler find` command after loading
 spack load gcc@11.4.0
 spack compiler find
 ```
-will add the gcc 11.4.0 compilers set, the default `gcc` compiler set in our software module farm. 
+will add the `gcc 11.4.0` compilers to your Spack. You will then be able to load packages that require these compilers and also use them to compile new packages.
 
 You can list all the available compilers on Spack by:
 
@@ -75,7 +90,7 @@ To list the packages that are already installed and available to use:
 spack find
 ```
 
-For a fresh download of spack, one would expect this to produce an empty list; however, if you have configured Spack chaining correctly in the `~/.spack/linux/upstreams.yaml` file to point to the locations where the spack-installed software module farm packages lie, then those will be listed when you run `spack find`.
+For a fresh download of Spack, one would expect this to produce an empty list; however, if you have configured Spack chaining correctly in the `~/.spack/upstreams.yaml` file to point to the locations where the spack-installed software module farm packages lie, then those will be listed when you run `spack find`.
 
 To find a specific package (for example `hdf5`):
 
@@ -83,21 +98,25 @@ To find a specific package (for example `hdf5`):
 spack find hdf5
 ```
 
-might show you several versions of `hdf5` installed using different compilers. `spack find` can do a lot more; for example, if you want to find the spec of the spack installed package `hdf5` installed using `gcc@11.4.0`:
+might show you several versions of `hdf5` installed using different compilers. 
 
-``` bash
-spack find -v hdf5%gcc@11.4.0
-```
+!!! note "Spack software specs"
 
-whose output may look like:
+    `spack find` can do a lot more; for example, if you want to find the spec of the spack installed package `hdf5` installed using `gcc@11.4.0`:
 
-``` bash
--- linux-rocky8-x86_64 / gcc@11.4.0 -----------------------------
-hdf5@1.14.3~cxx~fortran~hl~ipo~java~map+mpi+shared~szip~threadsafe+tools api=default build_system=cmake build_type=Release generator=make
-==> 1 installed package
-```
+    ``` bash
+    spack find -v hdf5%gcc@11.4.0
+    ```
 
-In the above spec `~fortran` indicates that the particular spec of `hdf5` was built without Fortran support and `+mpi` indicates that it was built with MPI support.
+    whose output may look like:
+
+    ``` bash
+    -- linux-rocky8-x86_64 / gcc@11.4.0 -----------------------------
+    hdf5@1.14.3~cxx~fortran~hl~ipo~java~map+mpi+shared~szip~threadsafe+tools api=default build_system=cmake build_type=Release generator=make
+    ==> 1 installed package
+    ```
+
+    In the above spec `~fortran` indicates that the particular spec of `hdf5` was built without Fortran support and `+mpi` indicates that it was built with MPI support.
 
 !!! info "Loading spack installed packages"
 
@@ -127,5 +146,5 @@ spack info <packagename>
 
 !!! note "More information"
 
-    If you are interested in installing software through spack on lawrencium, we recommend that you go through the Basic Installation, Environments and Configuration tutorials [here](https://spack-tutorial.readthedocs.io/en/latest/){:target="_blank"} {{ ext }}. After that, please go through [this guide](install-using-spack.md). Please reach out to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) for any question or help needed for spack or other software installation realated issues on Lawrencium.
+    If you are interested in installing software through spack on lawrencium, we recommend that you go through the Basic Installation, Environments and Configuration tutorials [here](https://spack-tutorial.readthedocs.io/en/latest/){:target="_blank"} {{ ext }}. After that, please go through [this guide](install-using-spack.md). Please reach out to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) for any question or help needed for spack or other software installation related issues on Lawrencium.
 
