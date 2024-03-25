@@ -31,6 +31,8 @@ nav:
           - Module Management: hpc/software/module-management.md
           - Spack on Lawrencium: hpc/software/spack-on-lawrencium.md
           - Install Software using Spack: hpc/software/install-using-spack.md
+          - Languages:
+              - Python: hpc/software/languages/python.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
