@@ -14,67 +14,11 @@ The Software Module Farm provides a comprehensive and well-tested suite of softw
 2. **Languages**: Language modules include additional compilers and interpreters for specific languages such as `python`, `R` and `julia`.
 3. **Submodules**: Submodules include libraries and packages which depend on a particular compiler or language module. Due to this dependency, submodules will only be visible once the associated language or core compiler module has been loaded. For example, `hdf5` submodule is only visible once you load `gcc` and `openmpi` modules.
 
-## Software Category
+See the [Module Management](module-management.md) page for details on how to use the `module` command for module management on Lawrencium.
 
-HPCS group provides and maintains the system level modules. The purpose of it is to provide an ecosystem that most users rely on to accomplish their research and studies. The range of applications and libraries that HPCS supports on each system is different, and highly depends on the use case and frequency of how often a support request is received. Currently the following categories of applications and libraries are supported.
+## Software installation by Users
 
-* Development Tools
-* Data Processing and Visualization Tools
-* Typesetting and Publishing Tools
-* Miscellaneous Tools
-
-
-Table 1. Modules List
-
-| CATEGORY | APPLICATION/LIBRARY NAME |
-| -------- | ------------------------ |
-| Editor/IDE |	Emacs, Vim, make, cmake, cscope, ctags |
-| SCM      |	Subversion, Git, Mercurial |
-| Debugger/Profiler/Tracer |	GDB, grpof, TotalView, Valgrind, TAU |
-| Language/Platform |	GCC, Intel (license required), PGI (license required), Perl, Python, Java, Boost, CUDA, UPC, Open MPI, PVM, TBB (license required), MPI4Py, IPython, R, MATLAB (license required) |
-| Math Libraries |	ACML, MKL (license required), ATLAS, FFTW, FFTW3, GSL, LAPACK, ScaLAPACK, NumPy, SciPy |
-| I/O Libraries |	HDF5, NetCDF, NCO, NCL
-| Visualization |	Gnuplot, Grace, Graphviz, ImageMagick, MATLAB (license required), GNU Octave, ParaView, R, VisIt, VMD, yt, Matplotlib |
-| Typesetting/Publishing |	Tex Live, Ghostscript, Doxgen |
-
-
-## Licensed Software
-TotalView, Intel parallel Studio, Q-Chem, MATLAB, Ansys. 
-
-## Install Software by Users
-Users are encourage to install domain scientific software packages or local software module farms in their home or group space
-Users don’t have admin rights, but most software can be installed with the flag `--prefix=/dir/to/your/path`
-
-## Install Python Packages by Users
-* Python modules: abundantly available but cannot be installed in the default location without admin rights.
-* Install Python modules in `~/.local` followed by export `PYTHONPATH`
-* `pip install --user package_name`
-* `export PYTHONPATH`
-
-```bash
-[user@n0000 ~]$ module available python
---------------------- /global/software/sl-7.x86_64/modfiles/langs -----------------------------------
-python/2.7          python/3.5          python/3.6(default) python/3.7          python/3.7.6        python/3.8.2-dll
-[user@n0000 ~]$ module load python/3.7
-
-[user@n0000 ~]$ python3 -m site --user-site
-/global/home/users/wfeinstein/.local/lib/python3.7/site-packages
-
-[user@n0000 ~]$ pip install --user ml-python
-...
-Successfully built ml-python
-Installing collected packages: ml-python
-Successfully installed ml-python-2.2
-
-[user@n0000 ~]$ export PYTHONPATH=~/.local/lib/python3.7/site-packages:$PYTHONPATH
-```
-
-* pip install: –install-option=”–prefix=$HOME/your_path” package_name
-* Install from source code:  `python setup.py install –home=/home/user/package_dir`
-* Create a virtual environment: `python -m venv my_env`
-* Isolated Python environment: dev with different versions of Python
-
-Please use Service Now or send email to hpcshelp@lbl.gov for any inquiries or service requests.
+Users are encouraged to install domain scientific software packages or local software module farms in their home or group space. Users don’t have admin rights, but most software can be installed with the flag `--prefix=/dir/to/your/path`.
 
 ## Tips
 

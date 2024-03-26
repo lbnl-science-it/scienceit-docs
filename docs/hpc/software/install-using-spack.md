@@ -1,5 +1,11 @@
 # Install software using Spack
 
+!!! warning "Work in progress"
+
+    Work in progress...Links and details on this page might change
+
+    **Internal Note**: Some of the configuration yaml files given here can be added system wide to `etc/spack/` directory so that all users inherit them without having to copy to `~/.spack`. [Link to details of spack configuration scope](https://spack.readthedocs.io/en/latest/configuration.html).
+
 !!! warning "Spack on Lawrencium"
 
     Please read the [Spack on Lawrencium](spack-on-lawrencium.md) page before continuing with this page.
@@ -13,10 +19,10 @@ Throughout this page, we will take `hdf5` package as an example. `hdf5` is alrea
 Suppose you want to install an older version of `hdf5`. First check which versions are available from the output of `spack info hdf5`. Let's install verson `1.10.11`. Check whether Spack is able to concretize (i.e. solve for dependencies) using:
 
 ``` bash
-spack spec hdf5@1.10.11 %gcc@11.4.0
+spack spec hdf5@1.10.11 %gcc@11.4.0 ^openmpi@4.1.6
 ```
 
-If Spack is successful, you will see an output that shows the exact specs (including the compiler and other dependencies). `%gcc@11.4.0` indicates Spack which compiler we want to use to compile the `hdf5` library.
+If Spack is successful, you will see an output that shows the exact specs (including the compiler and other dependencies). `%gcc@11.4.0` indicates Spack which compiler we want to use to compile the `hdf5` library. And `^openmpi@4.1.6` indicates Spack to use this `openmpi` for its `mpi` dependency.
 
 Before installing your first Spack package, you should create `~/.spack/config.yaml`, and provide the locations of where you want spack to install and build packages. An example is shown below in which the build, cache and installation is done on the scratch filesystem.
 
@@ -40,7 +46,7 @@ Before installing your first Spack package, you should create `~/.spack/config.y
 You can now install this different version/variant of `hdf5`:
 
 ``` bash
-spack install hdf5@1.10.11 %gcc@11.4.0
+spack install hdf5@1.10.11 %gcc@11.4.0 ^openmpi@4.1.6
 ```
 
 !!! note "Variants"
@@ -84,5 +90,7 @@ To be able to import the module, you need to add the path of the modulefiles to 
 ``` bash
 module use /global/home/users/$USER/modulefiles
 ```
+
+You may still need to import modules that this package depends on; for example `gcc/11.4.0` and `openmpi/4.1.6` in our example of `hdf5/1.10.11`
 
 ## Using Spack environments
