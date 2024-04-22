@@ -101,3 +101,8 @@ iframe {
 .md-banner {
   background-color: var(--md-primary-fg-color--dark);
 }
+
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: medium
+}
