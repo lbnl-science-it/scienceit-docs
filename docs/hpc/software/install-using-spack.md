@@ -33,11 +33,10 @@ Before installing your first Spack package, you should create `~/.spack/config.y
       install_tree:
         root: /global/scratch/users/$USER/spack-install
       build_stage:
-        - /global/scratch/users/$USER/spack_temp/build
-        - /global/scratch/users/$USER/spack_temp/temp
-      source_cache:
-        - /global/scratch/users/$USER/spack_temp/cache
-      build_jobs: 4
+        - /global/scratch/users/$USER/spack-temp/build
+        - /global/scratch/users/$USER/spack-temp/temp
+      source_cache: /global/scratch/users/$USER/spack-temp/cache
+      build_jobs: 2
     ```
 
 
@@ -66,7 +65,7 @@ Instead of using `spack load`, it is possible to setup module files through spac
           - tcl
         arch_folder: false
         roots:
-          tcl: /global/home/users/$USER/modulefiles
+          tcl: /global/home/users/$USER/spack-modules
         tcl:
           all:
             autoload: direct

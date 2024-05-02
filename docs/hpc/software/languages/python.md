@@ -44,4 +44,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 !!! note "Using a conda environment"
 
-    TODO: Simple description and link to more details of using a conda environment
+    TODO: Simple description and link to more details for using a conda environment
