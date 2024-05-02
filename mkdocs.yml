@@ -33,6 +33,9 @@ nav:
           - Install Software using Spack: hpc/software/install-using-spack.md
           - Languages:
               - Python: hpc/software/languages/python.md
+          - MPI:
+              - Open MPI: hpc/software/mpi/openmpi.md
+              - Intel MPI: hpc/software/mpi/intelmpi.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
