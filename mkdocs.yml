@@ -25,12 +25,19 @@ nav:
           - Using the lrc-xfer DTN: hpc/datatransfer_node.md
           - Using Globus: hpc/globus_instructions.md
           - Rclone on Lawrencium: hpc/globus_instructions.md
-          - SPSS on Lawrencium: hpc/globus_instructions.md          
+          - SPSS on Lawrencium: hpc/globus_instructions.md
+      - Software:
+          - Software Module Farm: hpc/software/software-module-farm.md
+          - Module Management: hpc/software/module-management.md
+          - Spack on Lawrencium: hpc/software/spack-on-lawrencium.md
+          - Install Software using Spack: hpc/software/install-using-spack.md
+          - Languages:
+              - Python: hpc/software/languages/python.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
           - Monitor Jobs: hpc/running/monitor_jobs.md
-          - Module Management: hpc/software/module-management.md
+          #  - Module Management: hpc/software/module-management.md
           - GNU Parallel: hpc/running/gnu_parallel.md
       - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
@@ -71,11 +78,11 @@ nav:
   #- AI:
   #    - GPU: construction.md
   #    - ChatGPT: construction.md
-  #    - Inferencing 
+  #    - Inferencing
   - Scientific Computing Demos:
       - Scientific Computing Demos Overview: demos/index.md
       - Intro to Data Science for Postdocs: construction.md
-  - Support & Training: 
+  - Support & Training:
       - Dryad Publication Platform: construction.md
       - HPC Help Desk: help.md
       - Consulting Services: construction.md
