@@ -36,6 +36,10 @@ nav:
           - MPI:
               - Open MPI: hpc/software/mpi/openmpi.md
               - Intel MPI: hpc/software/mpi/intelmpi.md
+          - Libraries:
+              - FFTW: hpc/software/libraries/fftw.md
+              - HDF5: hpc/software/libraries/hdf5.md
+              - NetCDF: hpc/software/libraries/netcdf.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
