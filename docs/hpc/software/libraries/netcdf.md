@@ -6,8 +6,6 @@ NetCDF on Lawrencium can be loaded after loading a MPI library. For example, to 
 
 ``` bash
 [user@n0000 ~]$ module load gcc openmpi
-[user@n0000 ~]$ module avail
-
 [user@n0000 ~]$ module avail netcdf
 
 ------------- /global/software/rocky-8.x86_64/modules/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
@@ -18,7 +16,7 @@ As you can see on the output of `module avail netcdf`, a C version of the librar
 
 ## Compiling programs using netCDF library
 
-Let's look at an example of compiling a simple example fortran `simple_xy_rd.f90` from [Example netCDF programs](https://www.unidata.ucar.edu/software/netcdf/examples/programs/){:target="_blank"} {{ ext }} . The example creates a netcdf file with a two-dimensional array of sample data.
+Let's look at an example of compiling a simple fortran example `simple_xy_rd.f90` from [Example netCDF programs](https://www.unidata.ucar.edu/software/netcdf/examples/programs/){:target="_blank"} {{ ext }} . The example creates a netcdf file with a two-dimensional array of sample data.
 
 To compile using the `netcdf-fortran` library, we need the appropriate `CFLAGS` and `LDFLAGS` during compilation and linking. These can be obtained in Lawrencium using 
 
