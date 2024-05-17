@@ -5,12 +5,20 @@ A job can be a single core serial task, multi-core or MPI application. A job can
 
 Below we’ll show basic usage of GNU parallel and then provide an extended example illustrating submission of a Savio job that uses GNU parallel.
 
-For full documentation see the GNU parallel man page and GNU parallel tutorial.
+For full documentation see the [GNU parallel man page](https://www.gnu.org/software/parallel/man.html){:target="_blank"} {{ ext }} and [GNU parallel tutorial](https://www.gnu.org/software/parallel/parallel_tutorial.html){:target="_blank"} {{ ext }} .
+
+!!! info "Loading GNU parallel on Lawrencium"
+
+    GNU Parallel is available as a module on Lawrencium. To load GNU Parallel:
+
+    ``` bash
+    module load parallel
+    ```
 
 ## Basic Usage
-To motivate usage of GNU parallel, consider how you might automate running multiple individual tasks using a simple bash for loop. In this case, our example command involves copying a file. We will copy file1.in to file1.out, file2.in to file2.out, etc.
+To motivate usage of GNU parallel, consider how you might automate running multiple individual tasks using a simple bash for loop. In this case, our example command involves copying a file. We will copy `file1.in` to `file1.out`, `file2.in` to `file2.out`, etc.
 
-```bash
+``` bash
 for (( i=1; i <= 3; i++ )); do
 cp file${i}.in file${i}.out
 done
@@ -18,13 +26,13 @@ done
 
 That’s fine, but it won’t run the tasks in parallel. Let’s use GNU parallel to do it in parallel:
 
-```bash
+``` bash
 parallel -j 2 cp file{}.in file{}.out ::: 1 2 3
 ls file*out
 # file1.out file2.out file3.out
 ```
 
-Based on -j, that will use two cores to process the three tasks, staring the third task when a core becomes free from having finished either the first or second task. The ::: syntax separates the input values 1 2 3 from the command being run. Each input value is used in place of {} and cp command is run.
+Based on `-j`, that will use two cores to process the three tasks, staring the third task when a core becomes free from having finished either the first or second task. The `:::` syntax separates the input values `1 2 3` from the command being run. Each input value is used in place of `{}` and `cp` command is run.
 
 ### Extended example
 Here we’ll put it all together (and include even more useful syntax) to parallelize use of the bioinformatics software BLAST across multiple biological input sequences. Below are three sample files, including a SLURM job submission script where GNU parallel launches parallel tasks, a bash file to run a serial task and a task list.
