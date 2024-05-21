@@ -35,10 +35,6 @@ li.md-nav__item {
   padding-left: 10px !important;
 }
 
-.md-grid {
-  max-width: 1440px;
-}
-
 .md-content a {
   color: var(--md-primary-fg-color--dark);
   font-weight: bold;
