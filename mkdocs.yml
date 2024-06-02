@@ -33,6 +33,7 @@ nav:
           - Install Software using Spack: hpc/software/install-using-spack.md
           - Languages:
               - Python: hpc/software/languages/python.md
+              - Julia: hpc/software/languages/julia.md
           - MPI:
               - Open MPI: hpc/software/mpi/openmpi.md
               - Intel MPI: hpc/software/mpi/intelmpi.md
@@ -40,6 +41,7 @@ nav:
               - FFTW: hpc/software/libraries/fftw.md
               - HDF5: hpc/software/libraries/hdf5.md
               - NetCDF: hpc/software/libraries/netcdf.md
+              - MKL: hpc/software/libraries/mkl.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm_overview.md
           - Example Scripts: hpc/running/script_examples.md
