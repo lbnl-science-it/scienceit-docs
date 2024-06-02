@@ -2,7 +2,8 @@
 
 ## Python packages
 
-The `rocky-8` operating system in Lawrencium comes with `python@3.6.8`.
+The `rocky-8` operating system in Lawrencium comes with `python@3.6` and `python2.7`. To use these, 
+use the command `python3` and `python2` respectively.
 
 Other python modules are available on the Lawrencium software module farm. There are two basic (with only a few additional site-packages) python modules provided. To list these python modules:
 
