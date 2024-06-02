@@ -41,34 +41,36 @@ There are several ways to monitor usage:
 
 Here are some of the services provided via Open OnDemand.
 
-=== "Files App"
+!!! note "Services on Open OnDemand"
 
-    Access the Files App from the top menu bar under *Files > Home Directory*. Using the Files App, you can use your web browser to:
+    === "Files App"
 
-    * View files in the Lawrencium filesystem.
-    * Create and delete files and directories.
-    * Upload and download files from the Lawrencium filesystem to your computer.
-    * We recommend using Globus for large file transfers.
+        Access the Files App from the top menu bar under *Files > Home Directory*. Using the Files App, you can use your web browser to:
 
-    ![Files App](images/01.png)
+        * View files in the Lawrencium filesystem.
+        * Create and delete files and directories.
+        * Upload and download files from the Lawrencium filesystem to your computer.
+        * We recommend using Globus for large file transfers.
 
-    ![Files List](images/02.png)
+        ![Files App](images/01.png)
 
-=== "View Active Jobs"
+        ![Files List](images/02.png)
 
-    View and cancel active Slurm jobs from *Jobs > Active Jobs*. This includes jobs started via `sbatch` and `srun` as well as jobs started via Open OnDemand.
+    === "View Active Jobs"
 
-    ![View Active Jobs](images/03.png)
+        View and cancel active Slurm jobs from *Jobs > Active Jobs*. This includes jobs started via `sbatch` and `srun` as well as jobs started via Open OnDemand.
 
-    ![Active Jobs](images/04.png)
+        ![View Active Jobs](images/03.png)
 
-=== "Shell Access"
+        ![Active Jobs](images/04.png)
 
-    Open OnDemand allows Lawrencium shell access from the top menu bar under *Clusters > LRC Shell Access*.
+    === "Shell Access"
 
-    ![LRC Shell Access](images/05.png)
+        Open OnDemand allows Lawrencium shell access from the top menu bar under *Clusters > LRC Shell Access*.
 
-    ![Demo Shell](images/06.png)
+        ![LRC Shell Access](images/05.png)
+
+        ![Demo Shell](images/06.png)
 
 ## Interactive Apps
 
@@ -82,77 +84,65 @@ Additionally, Open OnDemand provides the following interactive apps.
 
 Click on a tab below to learn more about these interactive apps.
 
-=== "Desktop App"
+!!! note "Interactive Apps on Open OnDemand"
 
-    The Desktop App allows you to launch an interactive desktop on the Lawrencium cluster. You will be able to launch GUI applications directly on the desktop.
+    === "Desktop App"
 
-    **Steps:**
+        The Desktop App allows you to launch an interactive desktop on the Lawrencium cluster. You will be able to launch GUI applications directly on the desktop.
 
-    * Select *Desktop* from the *Interactive Apps* menu.
-    * Provide the job specifications you want for the Desktop app.
-    * Once Desktop is ready, click *Launch Desktop* and the Desktop will open in a new tab.
+        **Steps:**
 
-    !!! warning "Job run time"
-
-        Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down Desktop App by clicking *"Delete"* on the session under *My Interactive Sessions*.  
+        * Select *Desktop* from the *Interactive Apps* menu.
+        * Provide the job specifications you want for the Desktop app.
+        * Once Desktop is ready, click *Launch Desktop* and the Desktop will open in a new tab.
 
 
-=== "Jupyter Server"
+    === "Jupyter Server"
 
-    See the [Jupyter documentation page](jupyter-server.md) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
+        See the [Jupyter documentation page](jupyter-server.md) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
 
-    **Steps:**
-    
-    * Select *Jupyter Server* from the *Interactive Apps* menu.
-    * Provide the job specifications you want for the Jupyter server.
-    * Once Jupyter is ready, click *Connect to Jupyter* to access your Jupyter session.
+        **Steps:**
+        
+        * Select *Jupyter Server* from the *Interactive Apps* menu.
+        * Provide the job specifications you want for the Jupyter server.
+        * Once Jupyter is ready, click *Connect to Jupyter* to access your Jupyter session.
 
-    !!! warning "Job run time"
-    
-        Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down Jupyter by clicking *"Delete"* on the session under *My Interactive Sessions*.
+    === "MATLAB"
 
-=== "MATLAB"
+        The MATLAB app allows your to use [MATLAB](https://www.mathworks.com/products/matlab.html) GUI on Lawrencium cluster.
 
-    The MATLAB app allows your to use [MATLAB](https://www.mathworks.com/products/matlab.html) GUI on Lawrencium cluster.
+        **Steps:**
 
-    **Steps:**
-
-    * Select *MATLAB* from the *Interactive Apps* menu.
-    * Specify the amount of time you would like the MATLAB sessions to run.
-    * Once the MATLAB session is ready, click *Launch MATLAB* to access MATLAB GUI.
-
-    !!! warning "Job run time"
-    
-        Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down MATLAB by clicking *"Delete"* on the session under *My Interactive Sessions*.
+        * Select *MATLAB* from the *Interactive Apps* menu.
+        * Specify the amount of time you would like the MATLAB sessions to run.
+        * Once the MATLAB session is ready, click *Launch MATLAB* to access MATLAB GUI.
 
 
-=== "RStudio Server"
+    === "RStudio Server"
 
-    The RStudio server allows you to use [RStudio](https://www.rstudio.com/) on Lawrencium cluster.
+        The RStudio server allows you to use [RStudio](https://www.rstudio.com/) on Lawrencium cluster.
 
-    **Steps:**
+        **Steps:**
 
-    * Select *RStudio Server* from the *Interactive Apps* menu.
-    * Provide the job specification you want for the RStudio server.
-    * Once RStudio is ready, click *Connect to RStudio* to access RStudio.
+        * Select *RStudio Server* from the *Interactive Apps* menu.
+        * Provide the job specification you want for the RStudio server.
+        * Once RStudio is ready, click *Connect to RStudio* to access RStudio.
+        
+    === "VS Code Server"
 
-    !!! warning "Job run time"
-    
-        Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down RStudio by clicking *"Delete"* on the session under *My Interactive Sessions*.
-    
-=== "VS Code Server"
+        The VS Code server allows you to use [VS Code](https://code.visualstudio.com/) on Lawrencium cluster.
 
-    The VS Code server allows you to use [VS Code](https://code.visualstudio.com/) on Lawrencium cluster.
+        **Steps:**
 
-    **Steps:**
+        * Select *VS Code Server* from the *Interactive Apps* menu.
+        * Provide the job specification you want for the VS Code server.
+        * Once VS Code Server is ready, click *Connect to VS Code* to access VS Code.
 
-    * Select *VS Code Server* from the *Interactive Apps* menu.
-    * Provide the job specification you want for the VS Code server.
-    * Once VS Code Server is ready, click *Connect to VS Code* to access VS Code.
 
-    !!! warning "Job run time"
-    
-        Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down VS Code by clicking *"Delete"* on the session under *My Interactive Sessions*.
+!!! warning "Job run time"
+
+    Service units are charged based on job run time. The job may still be running if you close the window or log out. When you are done, shut down an interactive app by clicking *"Delete"* on the session under *My Interactive Sessions*.
+
 
 
 ## Troubleshooting Open OnDemand
