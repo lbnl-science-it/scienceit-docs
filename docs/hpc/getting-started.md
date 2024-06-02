@@ -28,9 +28,9 @@ You'll need to generate and enter a one-time password each time you log in.
 
 ## Data Movement and Storage
 
-To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](../globus_instructions) tool is typically your best choice: it can perform fast, reliable, unattended transfers. 
+To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](globus_instructions.md) tool is typically your best choice: it can perform fast, reliable, unattended transfers. 
 
-The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](../datatransfer_node).
+The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](datatransfer_node.md).
 
 ## Software Module Farm and Environment Modules
 
