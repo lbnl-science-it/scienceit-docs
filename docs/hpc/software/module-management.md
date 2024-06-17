@@ -1,7 +1,3 @@
-!!! warning "Work in progress"
-
-    Work in progress...including updating content to match new smf on rocky8
-
 The Software Module Farm (SMF) is managed by the Environment Modules to set the appropriate environment variables in your shell needed to make use of the individual software packages. 
 
 The following commands are available to manipulate modules in your environment:

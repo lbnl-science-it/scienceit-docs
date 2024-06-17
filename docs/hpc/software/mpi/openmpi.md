@@ -32,22 +32,30 @@ Currently Loaded Modules:
 
 Open MPI compiler wrappers `mpicc`, `mpicxx`, `mpifort` can be used to compile MPI applications. For hello world C/C++/Fortran examples:
 
-=== "C"
+!!! example "Examples"
 
-    ``` bash
-    mpicc -o helloc hello_world.c
-    ```
+    === "C"
 
-=== "C++"
+        ``` bash
+        mpicc -o helloc hello_world.c
+        ```
 
-    ``` bash
-    mpicxx -o hellocxx hello_world.cpp
-    ```
+        `mpicc` is the MPI wrapper to the gcc C compiler.
 
-=== "Fortran"
+    === "C++"
 
-    ``` bash
-    mpifort -o hellofortran hello_world.f90
-    ```
+        ``` bash
+        mpicxx -o hellocxx hello_world.cpp
+        ```
+
+        `mpicxx` is the MPI wrapper to the gcc C++ compiler.
+
+    === "Fortran"
+
+        ``` bash
+        mpifort -o hellofortran hello_world.f90
+        ```
+
+        `mpifort` is the MPI wrapper to the gfortran compiler.
 
 The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slrum job script.
