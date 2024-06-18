@@ -47,7 +47,7 @@ Open MPI compiler wrappers `mpiicx`, `mpiicpx`, `mpiifx` can be used to compile 
 Intel MPI applications can be launched using:
 
   * `mpirun` e.g.: `mpirun -np 2 ./helloc`
-  * `srun`: To launch an Intel MPI application using `srun`, please set the `I_MPI_PMI_LIBRARY` environment variable and pass `mpi=mpi2` argument as follows in your slurm script.
+  * `srun`: To launch an Intel MPI application using `srun`, please set the `I_MPI_PMI_LIBRARY` environment variable and pass `mpi=pmi2` argument as follows in your slurm script.
       ``` bash
       export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi2.so
       srun --mpi=pmi2 mpi_application

@@ -1,6 +1,6 @@
 # Globus for Lawrencium
 
-## Login:
+## Login
 
 * Open a browser and navigate to [https://globus.lbl.gov](https://globus.lbl.gov){:target="_blank"} {{ ext }}.
 * You may choose your institution from the drop-down list. If your institution is not listed, you may Sign in using Google or ORCID id. Ideally, the email associated with your Lawrencium user account shall be used to Sing in to Globus.
@@ -15,7 +15,7 @@
 
     ![Globus OTP](images/globus-1-3.png)
 
-## Search Endpoint:
+## Search Endpoint
 
 * Once authenticated, enter the endpoint name in the collection search bar
 
