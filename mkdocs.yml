@@ -23,14 +23,14 @@ nav:
               - CATAMOUNT: hpc/systems/supported/catamount.md
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/datatransfer_node.md
-          - Using Globus: hpc/globus_instructions.md
+          - Using Globus: data/globus_instructions.md
           - Rclone on Lawrencium: construction.md
           - SPSS on Lawrencium: construction.md
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-          - Spack on Lawrencium: hpc/software/spack-on-lawrencium.md
-          - Install Software using Spack: hpc/software/install-using-spack.md
+          #- Spack on Lawrencium: hpc/software/spack-on-lawrencium.md
+          #- Install Software using Spack: hpc/software/install-using-spack.md
           - Languages:
               - Python: hpc/software/languages/python.md
               - Julia: hpc/software/languages/julia.md
@@ -55,17 +55,17 @@ nav:
           - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
       #- Scientific Virtual Machines (SVM):
       #    - SVM Overview: construction.md
-      - Training and Workshops: training.md
+      #- Training and Workshops: training.md
   - Globus Transfer System:
-      - Globus Transfer System Overview: data/index.md
+      #- Globus Transfer System Overview: data/index.md
       - Globus at Berkeley Lab: data/globus.md
-      - Globus Personal: construction.md
-      - Globus on Lawrencium: hpc/globus_instructions.md
-      - Globus with Google Drive: construction.md
-      - Globus with Google Cloud Storage: construction.md
-      - Globus with AWS S3: construction.md
-      - Globus Guest Collections: construction.md
-      - Globus Connect Server: data/globus.md
+      #- Globus Personal: construction.md
+      - Globus on Lawrencium: data/globus_instructions.md
+      #- Globus with Google Drive: construction.md
+      #- Globus with Google Cloud Storage: construction.md
+      #- Globus with AWS S3: construction.md
+      #- Globus Guest Collections: construction.md
+      #- Globus Connect Server: data/globus.md
       #- Globus with Scientific Project Storage Service (SPSS): data/spss.md
   #- Cloud Services:
   #    - Cloud Overview: cloud/index.md
@@ -88,16 +88,16 @@ nav:
   #    - GPU: construction.md
   #    - ChatGPT: construction.md
   #    - Inferencing
-  - Scientific Computing Demos:
-      - Scientific Computing Demos Overview: demos/index.md
-      - Intro to Data Science for Postdocs: construction.md
+  #- Scientific Computing Demos:
+  #    - Scientific Computing Demos Overview: demos/index.md
+  #    - Intro to Data Science for Postdocs: construction.md
   - Support & Training:
-      - Dryad Publication Platform: construction.md
       - HPC Help Desk: help.md
-      - Consulting Services: construction.md
-      - LabTech Conference: construction.md
-      - Presentations: construction.md
-      - UC Berkeley DLab Workshops: construction.md
+  #   - Dryad Publication Platform: construction.md
+  #   - Consulting Services: construction.md
+  #   - LabTech Conference: construction.md
+  #   - Presentations: construction.md
+  #   - UC Berkeley DLab Workshops: construction.md
 
 plugins:
   - search
@@ -112,7 +112,7 @@ extra:
 
 theme:
   name: material
-  custom_dir: docs/overrides
+  #custom_dir: docs/overrides
   palette:
     primary: custom
   logo: assets/scienceitlogo.png
