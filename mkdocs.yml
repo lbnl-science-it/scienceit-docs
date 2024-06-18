@@ -112,7 +112,7 @@ extra:
 
 theme:
   name: material
-  #custom_dir: docs/overrides
+  custom_dir: docs/overrides
   palette:
     primary: custom
   logo: assets/scienceitlogo.png
