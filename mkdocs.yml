@@ -29,8 +29,6 @@ nav:
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-          #- Spack on Lawrencium: hpc/software/spack-on-lawrencium.md
-          #- Install Software using Spack: hpc/software/install-using-spack.md
           - Languages:
               - Python: hpc/software/languages/python.md
               - Julia: hpc/software/languages/julia.md
@@ -43,16 +41,16 @@ nav:
               - NetCDF: hpc/software/libraries/netcdf.md
               - MKL: hpc/software/libraries/mkl.md
       - Running Jobs:
-          - Slurm Overview: hpc/running/slurm_overview.md
-          - Example Scripts: hpc/running/script_examples.md
-          - Monitor Jobs: hpc/running/monitor_jobs.md
+          - Slurm Overview: hpc/running/slurm-overview.md
+          - Example Scripts: hpc/running/script-examples.md
+          - Monitor Jobs: hpc/running/monitor-jobs.md
           #  - Module Management: hpc/software/module-management.md
-          - GNU Parallel: hpc/running/gnu_parallel.md
+          - GNU Parallel: hpc/running/gnu-parallel.md
       - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
-          - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
+          - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
       #- Scientific Virtual Machines (SVM):
       #    - SVM Overview: construction.md
       #- Training and Workshops: training.md
@@ -60,7 +58,7 @@ nav:
       #- Globus Transfer System Overview: data/index.md
       - Globus at Berkeley Lab: data/globus.md
       #- Globus Personal: construction.md
-      - Globus on Lawrencium: data/globus_instructions.md
+      - Globus on Lawrencium: data/globus-instructions.md
       #- Globus with Google Drive: construction.md
       #- Globus with Google Cloud Storage: construction.md
       #- Globus with AWS S3: construction.md
