@@ -1,6 +1,6 @@
 Here we show some example job scripts that allow for various kinds of parallelization such as: jobs that use fewer cores than available on a node, GPU jobs, low-priority condo jobs, and long-running PCA jobs.
 
-Please refer to [Slurm Association](slurm_overview.md) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
+Please refer to [Slurm Association](slurm-overview.md) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
 
 ## Example Set 1
 === "Simple Serial Job"

@@ -39,7 +39,7 @@ ALSACC cluster users are entitled to access the following storage systems so ple
 
 ## Scheduler Configuration
 
-ALSACC cluster uses [SLURM](../../running/slurm_overview.md) as the scheduler to manage jobs on the cluster. To use the ALSACC resource, the partition `alsacc` must be used (`--partition=alsacc`) along with account `alsacc` (`--account=alsacc`). Currently there is no special limitation introduced to the `alsacc` partition thus no QoS configuration is required to use the ALSACC resources (a default QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days is enforced.
+ALSACC cluster uses [SLURM](../../running/slurm-overview.md) as the scheduler to manage jobs on the cluster. To use the ALSACC resource, the partition `alsacc` must be used (`--partition=alsacc`) along with account `alsacc` (`--account=alsacc`). Currently there is no special limitation introduced to the `alsacc` partition thus no QoS configuration is required to use the ALSACC resources (a default QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days is enforced.
 
 The job allocation on ALSACC is shared i.e. a node can be shared between multiple jobs. The different QoS arguments and their limits are shown below:
 

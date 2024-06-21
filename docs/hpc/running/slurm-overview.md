@@ -2,7 +2,7 @@ SLURM is a resource manager and job scheduling system developed by SchedMD. The 
 
 Slurm has three key functions: 
 
-1. Allocate   resources exclusively/non-exclusive to nodes, 
+1. Allocate resources exclusively/non-exclusive to nodes, 
 2. start/execute and monitor the resources on a node, and 
 3. arbitrate pending and queued work.  
 
@@ -10,11 +10,11 @@ Nodes are grouped together within a partition.  The partitions can also be consi
 
 There are several basic commands you will need to know to submit jobs, cancel jobs, and check status. These are:
 
-* sbatch – submit a job to the batch queue system, e.g., `sbatch myjob.sh`
-* squeue – check the current jobs in the batch queue system, e.g., `squeue`
-* sinfo – view the current status of the queues, e.g., `sinfo`
-* srun – to run interactive jobs, e.g., `srun –pty bash`
-* scancel – cancel a job, e.g., `scancel 123`
+* `sbatch` – submit a job to the batch queue system, e.g., `sbatch myjob.sh`
+* `squeue` – check the current jobs in the batch queue system, e.g., `squeue`
+* `sinfo` – view the current status of the queues, e.g., `sinfo`
+* `srun` – to run interactive jobs, e.g., `srun –pty bash`
+* `scancel` – cancel a job, e.g., `scancel 123`
 
 ## Slurm Association
 

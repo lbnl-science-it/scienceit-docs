@@ -1,6 +1,6 @@
-The Software Module Farm (SMF) is managed by the Environment Modules to set the appropriate environment variables in your shell needed to make use of the individual software packages. 
+The Software Module Farm (SMF) is managed by the [Lmod](https://lmod.readthedocs.io/en/latest/index.html){:target="_blank"} {{ ext }} Environment Module system to set the appropriate environment variables in your shell needed to make use of the individual software packages. 
 
-The following commands are available to manipulate modules in your environment:
+The following commands are some frequently useful commands to manipulate modules in your environment:
 
 ```bash
 module load SOFTWARE    # Load the module “SOFTWARE”
@@ -8,17 +8,48 @@ module unload SOFTWARE  # Unload the module “SOFTWARE”
 module available        # List all modules available for loading
 module list             # List all modules currently loaded
 ```
-There are more module commands that you can use. See the manual via command:
 
-```bash
-man module
-```
+## Finding Modules
+!!! note "module spider"
+
+    ```module spider SOFTWARE``` 
+
+    is a useful module command that lists the module(s) named `SOFTWARE` and information on additional modules that you may need to load before `SOFTWARE` is available to load
+
+    For example: 
+
+    ```bash
+
+    [user@n0000 ~]$ module spider hdf5
+
+    -------------------------------------------------------------------------
+      hdf5: hdf5/1.14.3
+    -------------------------------------------------------------------------
+
+    You will need to load all module(s) on any one of the lines below before 
+    the "hdf5/1.14.3" module is available to load.
+
+          gcc/10.5.0  openmpi/4.1.3
+          gcc/10.5.0  openmpi/4.1.6
+          gcc/11.4.0  openmpi/4.1.3
+          gcc/11.4.0  openmpi/4.1.6
+          intel-oneapi-compilers/2023.1.0  intel-oneapi-mpi/2021.10.0
+    
+        Help:
+          HDF5 is a data model, library, and file format for storing and 
+          managing data. It supports an unlimited variety of datatypes, 
+          and is designed for flexible and efficient I/O and for high volume 
+          and complex data.
+
+    ```
 
 Environment Modules are used to manage users’ runtime environments dynamically. This is accomplished by loading and unloading modulefiles which contain the application specific information for setting a user’s environment, primarily the shell environment variables, such as `PATH`, `LD_LIBRARY_PATH`, etc. Modules are useful in managing different applications, and different versions of the same application in a cluster environment.
 
 <!--
 Environment Modules allow a user to integrate the user’s own application environment with the system provided application environment together, hence allow a common interface for simplicity, while still maintain the diversity and flexibility. This is accomplished by allowing different categories of modulefiles to be chained together. The first category of the modulefiles are provided and maintained by the HPCS group, which include the commonly used applications and libraries, such as compilers, math libraries, I/O libraries, data processing and visualization tools, etc. We use a hierarchical structure to maintain the cleanness without losing the flexibility of it. The second category of the modulefiles are automatically chained for the group of users who belong to the same group on the cluster, if the modulefiles exist in the designated directory. This allows the same group of users to share some of the common applications that they use for collaboration and saves spaces. Normally the user group maintains these modulefiles. But HPCS can also provide assistance under support agreement and per request basis. The third category of the modulefiles can also be chained on demand by a user if the user chooses to use Environment Modules to manage user specific applications as well. To do that, user needs to append the location of the modulefiles to the environment variable `MODULEPATH`. This can be done in one of the following ways:
 -->
+
+## User Generated Modulefiles
 
 !!! note "User generated modulefiles"
 

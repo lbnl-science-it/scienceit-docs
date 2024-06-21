@@ -33,7 +33,7 @@ Job time is counted for interactive sessions as the total time the job runs. The
 
 There are several ways to monitor usage:
 
-* Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](../running/monitor_jobs.md).
+* Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](../running/monitor-jobs.md).
 * View currently running (and recent) sessions launched by Open OnDemand under `My Interactive Sessions`.
 * View all currently running jobs under `Jobs > Active Jobs`.
 
