@@ -6,6 +6,7 @@ nav:
       - Lawrencium Overview: hpc/index.md
       - Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
+      - Migrating to Rocky Linux 8: hpc/rocky8-migration.md
       - Frequently Asked Questions: hpc/faqs.md
       - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
@@ -22,8 +23,8 @@ nav:
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
       - Data Transfer:
-          - Using the lrc-xfer DTN: hpc/datatransfer_node.md
-          - Using Globus: data/globus_instructions.md
+          - Using the lrc-xfer DTN: hpc/data-transfer-node.md
+          - Using Globus: data/globus-instructions.md
           - Rclone on Lawrencium: construction.md
           - SPSS on Lawrencium: construction.md
       - Software:
@@ -143,6 +144,9 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css

@@ -15,6 +15,7 @@ hide:
     ---
 
     - [Getting Started with Lawrencium](hpc/getting-started.md) 
+    - [:simple-rockylinux: Migrating to Rocky Linux 8 ](hpc/rocky8-migration.md)
     - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/){:target="_blank"} {{ ext }} 
     - [MyLRC User Account Portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }} 
     - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html){:target="_blank"} {{ ext }}
@@ -66,29 +67,6 @@ hide:
     Contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a> to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
 </div>
-
-
-<!--
-## **Computing Resources**
-
-- **LRC**: Lawrencium Computing Cluster
-- **ES1**: Einsteinium GPU Computing Cluster
-- **SRDC**: Secure Research Data and Compute
-
-    *SDRC is a high-security HPC computing cluster jointly managed by Science IT @ LBL and UC Berkeley for confidential (PII) data processing and computing.*
-
-- **GCP**: Google Cloud Platform
-- **AWS**: Amazon Web Services
-
-## **Data Transfer and Storage**
-
-- **SPSS**: Scientific Project Storage System
-- **Globus** at Berkeley Lab
-    - LRC Data Transfer Endpoint
-    - Amazon AWS S3 Endpoint
-    - GCP Google Cloud Storage Endpoint
-    - Google Drive Endpoint
--->
 
 
 
