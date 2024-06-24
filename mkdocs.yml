@@ -19,14 +19,14 @@ nav:
           - Californium: hpc/systems/californium.md
           - Curium AMD Cluster: hpc/systems/curium.md
           - Supported Research Clusters:
-              - Secure Data Research Computing (SDRC): construction.md
+              #- Secure Data Research Computing (SDRC): construction.md
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/data-transfer-node.md
           - Using Globus: data/globus-instructions.md
-          - Rclone on Lawrencium: construction.md
-          - SPSS on Lawrencium: construction.md
+        #  - Rclone on Lawrencium: construction.md
+        #  - SPSS on Lawrencium: construction.md
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
@@ -45,15 +45,12 @@ nav:
           - Slurm Overview: hpc/running/slurm-overview.md
           - Example Scripts: hpc/running/script-examples.md
           - Monitor Jobs: hpc/running/monitor-jobs.md
-          #  - Module Management: hpc/software/module-management.md
           - GNU Parallel: hpc/running/gnu-parallel.md
       - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
-      #- Scientific Virtual Machines (SVM):
-      #    - SVM Overview: construction.md
       #- Training and Workshops: training.md
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
@@ -92,11 +89,6 @@ nav:
   #    - Intro to Data Science for Postdocs: construction.md
   - Support & Training:
       - HPC Help Desk: help.md
-  #   - Dryad Publication Platform: construction.md
-  #   - Consulting Services: construction.md
-  #   - LabTech Conference: construction.md
-  #   - Presentations: construction.md
-  #   - UC Berkeley DLab Workshops: construction.md
 
 plugins:
   - search
