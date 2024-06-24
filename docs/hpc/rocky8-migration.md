@@ -1,6 +1,8 @@
 # :simple-rockylinux: Migrating to Rocky Linux 8
 
-The process of [logging in to Lawrencium](accounts/loggingin.md) after upgrade to Rocky Linux 8 remains the same i.e. `ssh username@lrc-login.lbl.gov`. The job submission process using [slurm](running/script-examples.md) also remains the same. See [example slurm](running/script-examples.md) job submission scripts.
+!!! warning "Rocky 8"
+
+    On the first week of July 2024, the operating system of Lawrencium login and compute nodes were updated to Rocky Linux 8. The process of [logging in to Lawrencium](accounts/loggingin.md) after upgrade to Rocky Linux 8 remains the same. The job submission process using [slurm](running/slurm-overview.md) also remains the same. See [example slurm](running/script-examples.md) job submission scripts. There are, however, important changes that users need to be aware of which are listed below.
 
 ## New Software Module Farm
 
