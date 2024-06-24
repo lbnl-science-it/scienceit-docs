@@ -13,4 +13,4 @@ You will be prompted to enter your password. Enter your PIN+OTP without any spac
 !!! warning "Running jobs"
     The login nodes should not be used for running jobs. They should only be used to write scripts and submit jobs to the compute nodes.
 
-    More details on writing job scripts and submitting them can be found here.
+    More details on writing job scripts and submitting them can be found [here](../running/script-examples.md).

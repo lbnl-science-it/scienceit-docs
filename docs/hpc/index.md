@@ -21,7 +21,7 @@ Lawrencium cluster users are entitled to access the following storage systems so
 
 | Name | Location | Quota | Backup | Allocation | Description |
 | ---- | -------- | ----- | ------ | ---------- | ----------- |
-| HOME | `/global/home/users/$user` | 20GB | Yes | Per User | Home directory for permanant data storage |
+| HOME | `/global/home/users/$user` | 30GB | Yes | Per User | Home directory for permanant data storage |
 | GROUP-SW | `/global/home/groups-sw/$group` | 200GB | Yes | Per Group | Group directory for software and data sharing with backup |
 | GROUP | `/global/home/groups/$group` | 400GB | No | Per Group | Group directory for data sharing without backup |
 | SCRATCH | `/global/scratch/users/$user` | None | No | Per User | Scratch directory with Lustre high performance parallel file system |
