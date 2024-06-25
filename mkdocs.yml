@@ -54,9 +54,12 @@ nav:
       #- Training and Workshops: training.md
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
-      - Globus at Berkeley Lab: data/globus.md
+      - Globus: data/globus.md
       #- Globus Personal: construction.md
       - Globus on Lawrencium: data/globus-instructions.md
+      - Globus for Google Drive: data/globus-google-drive.md
+      - Using the Globus AWS S3 Connector: data/globus-aws-s3-connector.md
+      - Using the Globus Google Cloud Storage Connector: data/globus-google-cloud-storage-connector.md
       #- Globus with Google Drive: construction.md
       #- Globus with Google Cloud Storage: construction.md
       #- Globus with AWS S3: construction.md
