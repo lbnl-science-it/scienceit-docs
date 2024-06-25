@@ -57,7 +57,7 @@ hide:
     - [LBNL Library E-Book Collection](https://commons.lbl.gov/display/rst/E-Books){:target="_blank"} {{ ext }}
     - [Mac & PC Support Support](https://it.lbl.gov/group/it-support-services/workstation-support/){:target="_blank"} {{ ext }}
     - [NERSC Technical Documentation](https://docs.nersc.gov){:target="_blank"} {{ ext }}
-    - [UC Berkeley Research IT Documentation](https://researchit.berkeley.edu){:target="_blank"} {{ ext }}
+    - [UC Berkeley Research IT Documentation](https://docs-research-it.berkeley.edu/){:target="_blank"} {{ ext }}
 
 -   ### **Can't find what you are looking for?**
 
