@@ -10,7 +10,7 @@ With the OS upgrade comes a new software module farm. Various libraries, scienti
 
 ## Compiling Software
 
-With the new software module farm, if you want to use software packages that are not already available you will likely have to reinstall/rebuild your software packages. `gcc`, `intel-oneapi-compilers`, `llvm` and `nvhpc` compiler packages are available. For MPI packages, `openmpi` installed using a `gcc` compiler is only visible after loading the corresponding `gcc` compiler. Similarly, `intel-oneapi-mpi` package is only visible after loading the `intel-oneapi-compilers` package.
+With the new software module farm, if you want to use software packages that are not already available you will likely have to reinstall/rebuild your software packages. `gcc`, `intel-oneapi-compilers`, `llvm` and `nvhpc` compiler packages are available. For MPI packages, [`openmpi`](software/mpi/openmpi.md) installed using a `gcc` compiler is only visible after loading the corresponding `gcc` compiler. Similarly, [`intel-oneapi-mpi`](software/mpi/intelmpi.md) package is only visible after loading the `intel-oneapi-compilers` package.
 
 ## Python Packages
 
