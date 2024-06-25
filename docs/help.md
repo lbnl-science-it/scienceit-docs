@@ -6,7 +6,7 @@ title: Science IT Support
 
 --8<-- "snippets/help.md"
 
-## **HPC Training and Tutorials**
+## **HPC Training and Workshops**
 
-Click [here](https://it.lbl.gov/resource/hpc/for-users/training-and-tutorials/){:target="_blank"} {{ ext }} for a list of upcoming and previous HPC trainings and tutorials.
+Click [here](https://it.lbl.gov/service/scienceit/training-and-workshops/){:target="_blank"} {{ ext }} for a list of upcoming and previous HPC trainings and workshops.
 

@@ -24,7 +24,7 @@ nav:
               - CATAMOUNT: hpc/systems/supported/catamount.md
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/data-transfer-node.md
-          - Using Globus: data/globus-instructions.md
+          - Globus for Lawrencium: data/globus-instructions.md
         #  - Rclone on Lawrencium: construction.md
         #  - SPSS on Lawrencium: construction.md
       - Software:
@@ -56,7 +56,7 @@ nav:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
       #- Globus Personal: construction.md
-      - Globus on Lawrencium: data/globus-instructions.md
+      - Globus for Lawrencium: data/globus-instructions.md
       - Globus for Google Drive: data/globus-google-drive.md
       - Using the Globus AWS S3 Connector: data/globus-aws-s3-connector.md
       - Using the Globus Google Cloud Storage Connector: data/globus-google-cloud-storage-connector.md
