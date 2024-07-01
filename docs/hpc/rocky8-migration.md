@@ -20,5 +20,3 @@ With the new software module farm, if you want to use software packages that are
 
 Versions `4.4.0` and `4.3.0` of R are available to users. Some commonly used r-packages are already installed in the software module farm.
 
-
-## Open OnDemand

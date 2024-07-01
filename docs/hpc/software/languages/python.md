@@ -10,7 +10,7 @@ Other python modules are available on the Lawrencium software module farm. There
 ```
 $ module av python
 
--------- /global/software/rocky-8.x86_64/software/modules/stable/tcl/langs --------
+---------- /global/software/rocky-8.x86_64/modfiles/langs ----------
    python/3.10.12-gcc-11.4.0    python/3.11.6-gcc-11.4.0 (D)
 
 $ module load python/3.10.12
@@ -43,6 +43,3 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
 
-!!! note "Using a conda environment"
-
-    TODO: Simple description and link to more details for using a conda environment
