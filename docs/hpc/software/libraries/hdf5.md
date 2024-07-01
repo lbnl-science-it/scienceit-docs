@@ -8,7 +8,7 @@ HDF5 on Lawrencium can be loaded after loading a MPI library. For example, to lo
 [user@n0000 ~]$ module load gcc openmpi
 [user@n0000 ~]$ module avail hdf5
 
-------------- /global/software/rocky-8.x86_64/modules/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
+------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    hdf5/1.14.3
 ```
 ``` bash

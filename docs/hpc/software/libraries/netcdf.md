@@ -8,7 +8,7 @@ NetCDF on Lawrencium can be loaded after loading a MPI library. For example, to 
 [user@n0000 ~]$ module load gcc openmpi
 [user@n0000 ~]$ module avail netcdf
 
-------------- /global/software/rocky-8.x86_64/modules/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
+------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    netcdf-c/4.9.2    netcdf-fortran/4.6.1
 ```
 

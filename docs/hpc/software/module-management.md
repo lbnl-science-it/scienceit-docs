@@ -84,10 +84,10 @@ Below we demonstrate how to use these commands. Depending on which system you ha
 !!! note "module avail"
     ```
     [user@n0000.scs00 ~]$ module avail
-    ------------------------- /global/software/rocky-8.x86_64/modules/compilers ---------------------
+    ------------------------- /global/software/rocky-8.x86_64/modfiles/compilers ---------------------
       gcc/10.5.0    gcc/11.4.0 (D)    intel-oneapi-compilers/2023.1.0    llvm/17.0.4    nvhpc/23.9
 
-    ------------------------- /global/software/rocky-8.x86_64/modules/tools -------------------------
+    ------------------------- /global/software/rocky-8.x86_64/modfiles/tools -------------------------
       automake/1.16.5       ffmpeg/6.0              lmdb/0.9.31          proj/9.2.1         tcl/8.6.12
       awscli/1.29.41        gdal/3.7.3              m4/1.4.19            protobuf/3.24.3    tmux/3.3a
       bazel/6.1.1           glog/0.6.0              matlab/r2022a        qt/5.15.11         unixodbc/2.3.4
@@ -96,7 +96,7 @@ Below we demonstrate how to use these commands. Depending on which system you ha
       eigen/3.4.0           imagemagick/7.1.1-11    ninja/1.11.1         spack/0.20.1
       emacs/29.1            leveldb/1.23            parallel/20220522    swig/4.1.1
 
-    ------------------------- /global/software/rocky-8.x86_64/modules/langs -------------------------
+    ------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
       anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
 
     ```
@@ -123,13 +123,13 @@ On systems in which a hierarchical structure is used, some of modulefiles will o
     ``` bash
     [user@n0000 ~]$ module avail
 
-    ------------- /global/software/rocky-8.x86_64/modules/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 ------------
+    ------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 ------------
       boost/1.83.0      hmmer/3.4                        ncl/6.6.2         netcdf-fortran/4.6.1
       fftw/3.3.10       intel-oneapi-mkl/2023.2.0 (D)    nco/5.1.6         netlib-lapack/3.11.0   (D)
       gromacs/2023.3    lammps/20230802                  ncview/2.1.9      netlib-scalapack/2.2.0
       hdf5/1.14.3       mumps/5.5.1                      netcdf-c/4.9.2    petsc/3.20.1
 
-    ------------------------ /global/software/rocky-8.x86_64/modules/gcc/11.4.0 -----------------------
+    ------------------------ /global/software/rocky-8.x86_64/modfiles/gcc/11.4.0 -----------------------
       antlr/2.7.7                gsl/2.7.1                     openmpi/4.1.6   (L,D)
       blast-plus/2.14.1          idba/1.1.3                    picard/2.25.7
       bowtie2/2.5.1              intel-oneapi-mkl/2023.2.0     prodigal/2.6.3
@@ -158,7 +158,7 @@ For example, now `gromacs` can be loaded.
     ``` bash
     [user@n0000 ~]$ module show fftw
     ---------------------------------------------------------------------------------------------------------
-      /global/software/rocky-8.x86_64/modules/openmpi/4.1.6-4xq5u5r/gcc/11.4.0/fftw/3.3.10.lua:
+      /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0/fftw/3.3.10.lua:
     ---------------------------------------------------------------------------------------------------------
     whatis("Name : fftw")
     whatis("Version : 3.3.10")

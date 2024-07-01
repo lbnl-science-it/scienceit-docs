@@ -13,7 +13,7 @@ Currently Loaded Modules:
 
 [user@n0000 ~]$ module avail openmpi
 
--------------- /global/software/rocky-8.x86_64/modules/gcc/11.4.0 -----------
+-------------- /global/software/rocky-8.x86_64/modfiles/gcc/11.4.0 -----------
    openmpi/4.1.3    openmpi/4.1.6 (D)
 ```
 

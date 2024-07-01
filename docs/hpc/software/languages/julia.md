@@ -5,7 +5,7 @@ Julia is available on Lawrencium as a module.
 ``` bash
 $ module av julia
 
--------------- /global/software/rocky-8.x86_64/modules/langs ---------------
+-------------- /global/software/rocky-8.x86_64/modfiles/langs ---------------
    julia/1.10.2-11.4
 ```
 
