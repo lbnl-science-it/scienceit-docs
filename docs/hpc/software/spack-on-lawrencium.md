@@ -51,9 +51,9 @@ To use the software already installed on the software module farm -- either to l
 ``` yaml
 upstreams:
   gcc-1:
-    install_tree: /global/software/rocky-8.x86_64/software/gcc/18Mar24
+    install_tree: /global/software/rocky-8.x86_64/software/gcc/
   python-1:
-    install_tree: /global/software/rocky-8.x86_64/software/python/18Mar24/3.10.12
+    install_tree: /global/software/rocky-8.x86_64/software/python-3.10.12/
 ```
 
 ## Adding compilers to Spack
