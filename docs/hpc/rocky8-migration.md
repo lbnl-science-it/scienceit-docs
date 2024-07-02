@@ -14,9 +14,30 @@ With the new software module farm, if you want to use software packages that are
 
 ## Python Packages
 
-`Anaconda3 2024.2` (Python 3.11) is available on the new software module farm. Additionally, two other versions of Python with minimal additional packages (mpi4py, numpy, matplotlib, scipy, h5py, pip) are provided. Please note that the linear algebra backend for `numpy` in these two python packages (`python/3.11.6-gcc-11.4.0` and `python/3.10.12-gcc-11.4.0`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library.
+`Anaconda3 2024.2` (Python 3.11) is available on the new software module farm. It can be loaded as:
+
+``` bash
+module load anaconda3
+```
+
+Additionally, two other versions of Python with minimal additional packages (mpi4py, numpy, matplotlib, scipy, h5py, pip) are provided. Please note that the linear algebra backend for `numpy` in these two python packages (`python/3.11.6-gcc-11.4.0` and `python/3.10.12-gcc-11.4.0`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library.
+
+[Click here](openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
 ## R Packages
 
-Versions `4.4.0` and `4.3.0` of R are available to users. Some commonly used r-packages are already installed in the software module farm.
+Version `4.4.0` of R is available to users; the R module can be loaded as:
+``` bash
+module load r
+```
+Some commonly used r-packages are already installed with the `r` module available on the system. To view the list of already installed packages on your terminal or R-studio session on Open OnDemand, use the following command in the R command prompt:
+
+``` R
+installed.packages()
+```
+
+A module `r-spatial` is available for a standard set of R packages for spatial data:
+``` bash
+module load r-spatial
+```
 
