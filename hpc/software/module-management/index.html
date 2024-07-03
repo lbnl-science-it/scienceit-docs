@@ -1,0 +1,2358 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../software-module-farm/">
+      
+      
+        <link rel="next" href="../compilers/intel/">
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Module Management - Science IT Technical Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-FKL0607RGR"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-FKL0607RGR",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-FKL0607RGR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#finding-modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Science IT Technical Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  High Performance Computing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../data/globus/" class="md-tabs__link">
+          
+  
+    
+  
+  Globus Transfer System
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../help/" class="md-tabs__link">
+          
+  
+    
+  
+  Support & Training
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
+
+    </a>
+    Science IT Technical Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    High Performance Computing
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Live Cluster Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rocky8-migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrating to Rocky Linux 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faqs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account Management
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Account Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/project-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/user-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/loggingin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging in
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/mfa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Factor Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computing Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Computing Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/lawrencium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/einsteinium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Einsteinium GPU Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/californium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Californium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/curium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Curium AMD Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_5" id="__nav_2_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Supported Research Clusters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Supported Research Clusters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/supported/alsacc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ALSACC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/supported/catamount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CATAMOUNT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Transfer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Data Transfer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-transfer-node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the lrc-xfer DTN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus for Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software-module-farm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Module Farm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Module Management
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Module Management
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-modules-usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Modules Usage Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-generated-modulefiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Generated Modulefiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_3" id="__nav_2_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compilers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            Compilers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compilers/intel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_4" id="__nav_2_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Languages
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Languages
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../languages/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../languages/julia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_5" id="__nav_2_9_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MPI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            MPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/openmpi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open MPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/intelmpi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel MPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_6" id="__nav_2_9_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Libraries
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            Libraries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/fftw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFTW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/hdf5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HDF5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/netcdf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NetCDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/mkl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MKL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Running Jobs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Running Jobs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/slurm-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slurm Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/script-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/monitor-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitor Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/gnu-parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GNU Parallel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using Open OnDemand
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Using Open OnDemand
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open OnDemand Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/jupyter-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openondemand/packages-kernels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Packages and Kernels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/jupyter-gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Jupyter on GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Globus Transfer System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Globus Transfer System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus for Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus-google-drive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus for Google Drive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus-aws-s3-connector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the Globus AWS S3 Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the Globus Google Cloud Storage Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Support & Training
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Support & Training
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HPC Help Desk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-modules-usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Modules Usage Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-generated-modulefiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Generated Modulefiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Module Management</h1>
+
+<p>The Software Module Farm (SMF) is managed by the <a href="https://lmod.readthedocs.io/en/latest/index.html" target="_blank">Lmod</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> Environment Module system to set the appropriate environment variables in your shell needed to make use of the individual software packages. </p>
+<p>Environment Modules are used to manage users’ runtime environments dynamically. This is accomplished by loading and unloading modulefiles which contain the application specific information for setting a user’s environment, primarily the shell environment variables, such as <code>PATH</code>, <code>LD_LIBRARY_PATH</code>, etc. Modules are useful in managing different applications, and different versions of the same application in a cluster environment.</p>
+<p>The following commands are some frequently useful commands to manipulate modules in your environment:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>SOFTWARE<span class="w">    </span><span class="c1"># Load the module “SOFTWARE”</span>
+module<span class="w"> </span>unload<span class="w"> </span>SOFTWARE<span class="w">  </span><span class="c1"># Unload the module “SOFTWARE”</span>
+module<span class="w"> </span>available<span class="w">        </span><span class="c1"># List all modules available for loading</span>
+module<span class="w"> </span>list<span class="w">             </span><span class="c1"># List all modules currently loaded</span>
+</code></pre></div>
+<h2 id="finding-modules">Finding Modules<a class="headerlink" href="#finding-modules" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">module spider</p>
+<p><code>module spider SOFTWARE</code> </p>
+<p>is a useful module command that lists the module(s) named <code>SOFTWARE</code> and information on additional modules that you may need to load before <code>SOFTWARE</code> is available to load</p>
+<p>For example: </p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>hdf5
+
+-------------------------------------------------------------------------
+<span class="w">  </span>hdf5:<span class="w"> </span>hdf5/1.14.3
+-------------------------------------------------------------------------
+
+You<span class="w"> </span>will<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>all<span class="w"> </span>module<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>any<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span>below<span class="w"> </span>before<span class="w"> </span>
+the<span class="w"> </span><span class="s2">&quot;hdf5/1.14.3&quot;</span><span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>to<span class="w"> </span>load.
+
+<span class="w">      </span>gcc/10.5.0<span class="w">  </span>openmpi/4.1.3
+<span class="w">      </span>gcc/10.5.0<span class="w">  </span>openmpi/4.1.6
+<span class="w">      </span>gcc/11.4.0<span class="w">  </span>openmpi/4.1.3
+<span class="w">      </span>gcc/11.4.0<span class="w">  </span>openmpi/4.1.6
+<span class="w">      </span>intel-oneapi-compilers/2023.1.0<span class="w">  </span>intel-oneapi-mpi/2021.10.0
+
+<span class="w">    </span>Help:
+<span class="w">      </span>HDF5<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>data<span class="w"> </span>model,<span class="w"> </span>library,<span class="w"> </span>and<span class="w"> </span>file<span class="w"> </span>format<span class="w"> </span><span class="k">for</span><span class="w"> </span>storing<span class="w"> </span>and<span class="w"> </span>
+<span class="w">      </span>managing<span class="w"> </span>data.<span class="w"> </span>It<span class="w"> </span>supports<span class="w"> </span>an<span class="w"> </span>unlimited<span class="w"> </span>variety<span class="w"> </span>of<span class="w"> </span>datatypes,<span class="w"> </span>
+<span class="w">      </span>and<span class="w"> </span>is<span class="w"> </span>designed<span class="w"> </span><span class="k">for</span><span class="w"> </span>flexible<span class="w"> </span>and<span class="w"> </span>efficient<span class="w"> </span>I/O<span class="w"> </span>and<span class="w"> </span><span class="k">for</span><span class="w"> </span>high<span class="w"> </span>volume<span class="w"> </span>
+<span class="w">      </span>and<span class="w"> </span>complex<span class="w"> </span>data.
+</code></pre></div>
+<p>This means that you will need to load the appropriate compiler + mpi library combination before being able to load the corresponding hdf5 module. For example, you can do the following:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0
+module<span class="w"> </span>load<span class="w"> </span>openmpi/4.1.6
+module<span class="w"> </span>load<span class="w"> </span>hdf5
+</code></pre></div>
+</div>
+<!--
+Environment Modules allow a user to integrate the user’s own application environment with the system provided application environment together, hence allow a common interface for simplicity, while still maintain the diversity and flexibility. This is accomplished by allowing different categories of modulefiles to be chained together. The first category of the modulefiles are provided and maintained by the HPCS group, which include the commonly used applications and libraries, such as compilers, math libraries, I/O libraries, data processing and visualization tools, etc. We use a hierarchical structure to maintain the cleanness without losing the flexibility of it. The second category of the modulefiles are automatically chained for the group of users who belong to the same group on the cluster, if the modulefiles exist in the designated directory. This allows the same group of users to share some of the common applications that they use for collaboration and saves spaces. Normally the user group maintains these modulefiles. But HPCS can also provide assistance under support agreement and per request basis. The third category of the modulefiles can also be chained on demand by a user if the user chooses to use Environment Modules to manage user specific applications as well. To do that, user needs to append the location of the modulefiles to the environment variable `MODULEPATH`. This can be done in one of the following ways:
+-->
+
+<h2 id="environment-modules-usage-examples">Environment Modules Usage Examples<a class="headerlink" href="#environment-modules-usage-examples" title="Permanent link">&para;</a></h2>
+<p>There are some basic commands that users will need to know to work with the Environment Modules system, which all starts with the primary “module” command, and followed by a subcommand listed below (“|” means “or”, e.g., “module add” and “module load” are equivalent). For detail usage instruction of the “module” command please run “man module”.</p>
+<ul>
+<li><code>module avail</code> – List all available modulefiles in the current <code>MODULEPATH</code>.</li>
+<li><code>module list</code> – List loaded modules.</li>
+<li><code>module add|load modulefile …</code> – Load modulefile(s) into the shell environment.</li>
+<li><code>module rm|unload modulefile</code> … – Remove modulefile(s) from the shell environment.</li>
+<li><code>module swap|switch [modulefile1] modulefile2</code> – Switch loaded modulefile1 with modulefile2.</li>
+<li><code>module show|display modulefile …</code> – Display information about one or more modulefiles.</li>
+<li><code>module whatis [modulefile …]</code> – Display the information about the modulefile(s).</li>
+<li><code>module purge</code> – Unload all loaded modulefiles.</li>
+</ul>
+<p>Below we demonstrate how to use these commands. Depending on which system you have access to and when you are reading this instruction, what you see here could be different from the actual output from the system that you work on. </p>
+<div class="admonition note">
+<p class="admonition-title">module avail</p>
+<div class="highlight"><pre><span></span><code>[user@n0000.scs00 ~]$ module avail
+------------------------- /global/software/rocky-8.x86_64/modfiles/compilers ---------------------
+  gcc/10.5.0    gcc/11.4.0 (D)    intel-oneapi-compilers/2023.1.0    llvm/17.0.4    nvhpc/23.9
+
+------------------------- /global/software/rocky-8.x86_64/modfiles/tools -------------------------
+  automake/1.16.5       ffmpeg/6.0              lmdb/0.9.31          proj/9.2.1         tcl/8.6.12
+  awscli/1.29.41        gdal/3.7.3              m4/1.4.19            protobuf/3.24.3    tmux/3.3a
+  bazel/6.1.1           glog/0.6.0              matlab/r2022a        qt/5.15.11         unixodbc/2.3.4
+  cmake/3.27.7          gmake/4.4.1             mercurial/6.4.5      rclone/1.63.1      valgrind/3.20.0
+  code-server/4.12.0    gurobi/10.0.0           nano/7.2             snappy/1.1.10      vim/9.0.0045
+  eigen/3.4.0           imagemagick/7.1.1-11    ninja/1.11.1         spack/0.20.1
+  emacs/29.1            leveldb/1.23            parallel/20220522    swig/4.1.1
+
+------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
+  anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">module list</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
+No<span class="w"> </span>modules<span class="w"> </span>loaded
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">module load</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>openmpi
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
+
+Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.4.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>ucx/1.14.1<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>openmpi/4.1.6
+</code></pre></div>
+</div>
+<p>On systems in which a hierarchical structure is used, some of modulefiles will only be available after the root modulefile is loaded. The Lawrencium cluster uses a hierarchical structure for several packages that depend on a particular compiler and/or MPI package. For example, after loading <code>gcc/11.4.0</code> and <code>openmpi/4.1.6</code> in the example above, <code>module avail</code> will show new packages that can now be loaded:</p>
+<div class="admonition note">
+<p class="admonition-title">hierarchical structure</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>avail
+
+-------------<span class="w"> </span>/global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0<span class="w"> </span>------------
+<span class="w">  </span>boost/1.83.0<span class="w">      </span>hmmer/3.4<span class="w">                        </span>ncl/6.6.2<span class="w">         </span>netcdf-fortran/4.6.1
+<span class="w">  </span>fftw/3.3.10<span class="w">       </span>intel-oneapi-mkl/2023.2.0<span class="w"> </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>nco/5.1.6<span class="w">         </span>netlib-lapack/3.11.0<span class="w">   </span><span class="o">(</span>D<span class="o">)</span>
+<span class="w">  </span>gromacs/2023.3<span class="w">    </span>lammps/20230802<span class="w">                  </span>ncview/2.1.9<span class="w">      </span>netlib-scalapack/2.2.0
+<span class="w">  </span>hdf5/1.14.3<span class="w">       </span>mumps/5.5.1<span class="w">                      </span>netcdf-c/4.9.2<span class="w">    </span>petsc/3.20.1
+
+------------------------<span class="w"> </span>/global/software/rocky-8.x86_64/modfiles/gcc/11.4.0<span class="w"> </span>-----------------------
+<span class="w">  </span>antlr/2.7.7<span class="w">                </span>gsl/2.7.1<span class="w">                     </span>openmpi/4.1.6<span class="w">   </span><span class="o">(</span>L,D<span class="o">)</span>
+<span class="w">  </span>blast-plus/2.14.1<span class="w">          </span>idba/1.1.3<span class="w">                    </span>picard/2.25.7
+<span class="w">  </span>bowtie2/2.5.1<span class="w">              </span>intel-oneapi-mkl/2023.2.0<span class="w">     </span>prodigal/2.6.3
+<span class="w">  </span>cuda/11.8.0<span class="w">                </span>intel-oneapi-tbb/2021.10.0<span class="w">    </span>samtools/1.17
+<span class="w">  </span>cuda/12.2.1<span class="w">         </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>netlib-lapack/3.11.0<span class="w">          </span>ucx/1.14.1<span class="w">      </span><span class="o">(</span>L<span class="o">)</span>
+<span class="w">  </span>cudnn/8.7.0.84-11.8<span class="w">        </span>openblas/0.3.24<span class="w">               </span>udunits/2.2.28
+<span class="w">  </span>cudnn/8.9.0-12.2.1<span class="w">  </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>openmpi/4.1.3<span class="w">                 </span>vcftools/0.1.16
+</code></pre></div>
+</div>
+<p>For example, now <code>gromacs</code> can be loaded.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>sadhikari@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gromacs
+<span class="o">[</span>sadhikari@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
+
+Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.4.0<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>openmpi/4.1.6<span class="w">   </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>intel-oneapi-tbb/2021.10.0<span class="w">   </span><span class="m">7</span><span class="o">)</span><span class="w"> </span>netlib-lapack/3.11.0
+<span class="w">  </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>ucx/1.14.1<span class="w">   </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>fftw/3.3.10<span class="w">     </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>intel-oneapi-mkl/2023.2.0<span class="w">    </span><span class="m">8</span><span class="o">)</span><span class="w"> </span>gromacs/2023.3
+</code></pre></div>
+</div>
+<p><code>module show</code> command displays information about the module.</p>
+<div class="admonition note">
+<p class="admonition-title">module show</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>show<span class="w"> </span>fftw
+---------------------------------------------------------------------------------------------------------
+<span class="w">  </span>/global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0/fftw/3.3.10.lua:
+---------------------------------------------------------------------------------------------------------
+whatis<span class="o">(</span><span class="s2">&quot;Name : fftw&quot;</span><span class="o">)</span>
+whatis<span class="o">(</span><span class="s2">&quot;Version : 3.3.10&quot;</span><span class="o">)</span>
+whatis<span class="o">(</span><span class="s2">&quot;Target : x86_64&quot;</span><span class="o">)</span>
+whatis<span class="o">(</span><span class="s2">&quot;Short description : FFTW is a C subroutine library for computing the discrete Fourier transform (DFT)</span>
+<span class="s2">in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/od</span>
+<span class="s2">d data, i.e. the discrete cosine/sine transforms or DCT/DST). We believe that FFTW, which is free software, s</span>
+<span class="s2">hould become the FFT library of choice for most applications.&quot;</span><span class="o">)</span>
+help<span class="o">([[</span>Name<span class="w">   </span>:<span class="w"> </span>fftw<span class="o">]])</span>
+help<span class="o">([[</span>Version:<span class="w"> </span><span class="m">3</span>.3.10<span class="o">]])</span>
+help<span class="o">([[</span>Target<span class="w"> </span>:<span class="w"> </span>x86_64<span class="o">]])</span>
+<span class="o">]])</span>
+help<span class="o">([[</span>FFTW<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>C<span class="w"> </span>subroutine<span class="w"> </span>library<span class="w"> </span><span class="k">for</span><span class="w"> </span>computing<span class="w"> </span>the<span class="w"> </span>discrete<span class="w"> </span>Fourier
+transform<span class="w"> </span><span class="o">(</span>DFT<span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>one<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>dimensions,<span class="w"> </span>of<span class="w"> </span>arbitrary<span class="w"> </span>input<span class="w"> </span>size,<span class="w"> </span>and
+of<span class="w"> </span>both<span class="w"> </span>real<span class="w"> </span>and<span class="w"> </span>complex<span class="w"> </span>data<span class="w"> </span><span class="o">(</span>as<span class="w"> </span>well<span class="w"> </span>as<span class="w"> </span>of<span class="w"> </span>even/odd<span class="w"> </span>data,<span class="w"> </span>i.e.<span class="w"> </span>the
+discrete<span class="w"> </span>cosine/sine<span class="w"> </span>transforms<span class="w"> </span>or<span class="w"> </span>DCT/DST<span class="o">)</span>.<span class="w"> </span>We<span class="w"> </span>believe<span class="w"> </span>that<span class="w"> </span>FFTW,<span class="w"> </span>which
+is<span class="w"> </span>free<span class="w"> </span>software,<span class="w"> </span>should<span class="w"> </span>become<span class="w"> </span>the<span class="w"> </span>FFT<span class="w"> </span>library<span class="w"> </span>of<span class="w"> </span>choice<span class="w"> </span><span class="k">for</span><span class="w"> </span>most
+applications.<span class="o">]])</span>
+depends_on<span class="o">(</span><span class="s2">&quot;openmpi/4.1.6&quot;</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">&quot;PATH&quot;</span>,<span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktu</span>
+<span class="s2">eip6tnwqf2qstog7on4pyfk/bin&quot;</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">&quot;MANPATH&quot;</span>,<span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npb</span>
+<span class="s2">ktueip6tnwqf2qstog7on4pyfk/share/man&quot;</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">&quot;PKG_CONFIG_PATH&quot;</span>,<span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.1</span>
+<span class="s2">0-cf4npbktueip6tnwqf2qstog7on4pyfk/lib/pkgconfig&quot;</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">&quot;CMAKE_PREFIX_PATH&quot;</span>,<span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3</span>
+<span class="s2">.10-cf4npbktueip6tnwqf2qstog7on4pyfk/.&quot;</span><span class="o">)</span>
+append_path<span class="o">(</span><span class="s2">&quot;MANPATH&quot;</span>,<span class="s2">&quot;&quot;</span><span class="o">)</span>
+</code></pre></div>
+</div>
+<p>The <code>module purge</code> command unloads all currently loaded modulefiles.</p>
+<div class="admonition note">
+<p class="admonition-title">module purge</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>purge
+<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
+No<span class="w"> </span>modules<span class="w"> </span>loaded
+</code></pre></div>
+</div>
+<h2 id="user-generated-modulefiles">User Generated Modulefiles<a class="headerlink" href="#user-generated-modulefiles" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">User generated modulefiles</p>
+<p>Users can generate their own modulefiles to load user-specific applications. The path of the modulefiles needs to be appended to the <code>MODULEPATH</code> environment variable as follows:</p>
+<p>1). For bash users, please add the following to ~/.bashrc:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MODULEPATH</span><span class="o">=</span><span class="nv">$MODULEPATH</span>:/location/to/my/modulefiles
+</code></pre></div>
+<p>2). For csh/tcsh users, please add the following to ~/.cshrc:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">setenv </span>MODULEPATH ”<span class="nv">$MODULEPATH</span>”:/location/to/my/modulefiles
+</code></pre></div>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+
+            <a href="https://scienceit.lbl.gov" title="Lawrence Berkeley National Laboratory" class="md-footer__button md-logo" aria-label="Lawrence Berkeley National Laboratory" data-md-component="logo">
+                <img src="/assets/11_BL_IT_logo_white.png" alt="logo" />
+            </a>
+
+            <div class="md-copyright">
+                <a href="https://scienceit.lbl.gov">Science IT</a> - <a href="https://it.lbl.gov">IT Division</a> - <a href="https://lbl.gov">Lawrence Berkeley National Laboratory</a> | <a href="https://www.lbl.gov/terms-and-conditions/" target="_blank">Privacy & Security Notice</a>
+            </div>
+        </div>
+    </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
