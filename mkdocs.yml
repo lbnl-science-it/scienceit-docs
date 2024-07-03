@@ -19,17 +19,16 @@ nav:
           - Californium: hpc/systems/californium.md
           - Curium AMD Cluster: hpc/systems/curium.md
           - Supported Research Clusters:
-              #- Secure Data Research Computing (SDRC): construction.md
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/data-transfer-node.md
           - Globus for Lawrencium: data/globus-instructions.md
-        #  - Rclone on Lawrencium: construction.md
-        #  - SPSS on Lawrencium: construction.md
       - Software:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
+          - Compilers:
+              - Intel: hpc/software/compilers/intel.md
           - Languages:
               - Python: hpc/software/languages/python.md
               - Julia: hpc/software/languages/julia.md
@@ -51,21 +50,13 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
-      #- Training and Workshops: training.md
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
-      #- Globus Personal: construction.md
       - Globus for Lawrencium: data/globus-instructions.md
       - Globus for Google Drive: data/globus-google-drive.md
       - Using the Globus AWS S3 Connector: data/globus-aws-s3-connector.md
       - Using the Globus Google Cloud Storage Connector: data/globus-google-cloud-storage-connector.md
-      #- Globus with Google Drive: construction.md
-      #- Globus with Google Cloud Storage: construction.md
-      #- Globus with AWS S3: construction.md
-      #- Globus Guest Collections: construction.md
-      #- Globus Connect Server: data/globus.md
-      #- Globus with Scientific Project Storage Service (SPSS): data/spss.md
   #- Cloud Services:
   #    - Cloud Overview: cloud/index.md
   #    - Cloud Cost Comparisons: construction.md
@@ -97,6 +88,11 @@ plugins:
   - search
   - mkdocs-jupyter
   - macros
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: false
+      enable_creation_date: false
+      enabled: true
 
 extra:
   ext: <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>
