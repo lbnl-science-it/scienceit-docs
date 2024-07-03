@@ -1,5 +1,7 @@
 The Software Module Farm (SMF) is managed by the [Lmod](https://lmod.readthedocs.io/en/latest/index.html){:target="_blank"} {{ ext }} Environment Module system to set the appropriate environment variables in your shell needed to make use of the individual software packages. 
 
+Environment Modules are used to manage users’ runtime environments dynamically. This is accomplished by loading and unloading modulefiles which contain the application specific information for setting a user’s environment, primarily the shell environment variables, such as `PATH`, `LD_LIBRARY_PATH`, etc. Modules are useful in managing different applications, and different versions of the same application in a cluster environment.
+
 The following commands are some frequently useful commands to manipulate modules in your environment:
 
 ```bash
@@ -43,29 +45,17 @@ module list             # List all modules currently loaded
 
     ```
 
-Environment Modules are used to manage users’ runtime environments dynamically. This is accomplished by loading and unloading modulefiles which contain the application specific information for setting a user’s environment, primarily the shell environment variables, such as `PATH`, `LD_LIBRARY_PATH`, etc. Modules are useful in managing different applications, and different versions of the same application in a cluster environment.
+    This means that you will need to load the appropriate compiler + mpi library combination before being able to load the corresponding hdf5 module. For example, you can do the following:
+
+    ``` bash
+    module load gcc/11.4.0
+    module load openmpi/4.1.6
+    module load hdf5
+    ```
 
 <!--
 Environment Modules allow a user to integrate the user’s own application environment with the system provided application environment together, hence allow a common interface for simplicity, while still maintain the diversity and flexibility. This is accomplished by allowing different categories of modulefiles to be chained together. The first category of the modulefiles are provided and maintained by the HPCS group, which include the commonly used applications and libraries, such as compilers, math libraries, I/O libraries, data processing and visualization tools, etc. We use a hierarchical structure to maintain the cleanness without losing the flexibility of it. The second category of the modulefiles are automatically chained for the group of users who belong to the same group on the cluster, if the modulefiles exist in the designated directory. This allows the same group of users to share some of the common applications that they use for collaboration and saves spaces. Normally the user group maintains these modulefiles. But HPCS can also provide assistance under support agreement and per request basis. The third category of the modulefiles can also be chained on demand by a user if the user chooses to use Environment Modules to manage user specific applications as well. To do that, user needs to append the location of the modulefiles to the environment variable `MODULEPATH`. This can be done in one of the following ways:
 -->
-
-## User Generated Modulefiles
-
-!!! note "User generated modulefiles"
-
-    Users can generate their own modulefiles to load user-specific applications. The path of the modulefiles needs to be appended to the `MODULEPATH` environment variable as follows:
-
-    1). For bash users, please add the following to ~/.bashrc:
-
-    ```bash
-    export MODULEPATH=$MODULEPATH:/location/to/my/modulefiles
-    ```
-
-    2). For csh/tcsh users, please add the following to ~/.cshrc:
-
-    ```csh
-    setenv MODULEPATH ”$MODULEPATH”:/location/to/my/modulefiles
-    ```
 
 ## Environment Modules Usage Examples
 There are some basic commands that users will need to know to work with the Environment Modules system, which all starts with the primary “module” command, and followed by a subcommand listed below (“|” means “or”, e.g., “module add” and “module load” are equivalent). For detail usage instruction of the “module” command please run “man module”.
@@ -195,4 +185,22 @@ The `module purge` command unloads all currently loaded modulefiles.
     [user@n0000 ~]$ module purge
     [user@n0000 ~]$ module list
     No modules loaded
+    ```
+
+## User Generated Modulefiles
+
+!!! note "User generated modulefiles"
+
+    Users can generate their own modulefiles to load user-specific applications. The path of the modulefiles needs to be appended to the `MODULEPATH` environment variable as follows:
+
+    1). For bash users, please add the following to ~/.bashrc:
+
+    ```bash
+    export MODULEPATH=$MODULEPATH:/location/to/my/modulefiles
+    ```
+
+    2). For csh/tcsh users, please add the following to ~/.cshrc:
+
+    ```csh
+    setenv MODULEPATH ”$MODULEPATH”:/location/to/my/modulefiles
     ```
