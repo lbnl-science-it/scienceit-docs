@@ -40,6 +40,10 @@ With the OS upgrade comes a new software module farm. Various libraries, scienti
 
 If you want to use software packages that are not already available to you in the new software module farm, you will have to reinstall/rebuild your software packages. `gcc`, `intel-oneapi-compilers`, `llvm` and `nvhpc` compiler packages are available. For MPI packages, [`openmpi`](software/mpi/openmpi.md) installed using a `gcc` compiler is only visible after loading the corresponding `gcc` compiler. Similarly, [`intel-oneapi-mpi`](software/mpi/intelmpi.md) package is only visible after loading the `intel-oneapi-compilers` package.
 
+The default `gcc` compiler is `gcc/11.4.0` available through `module load gcc`. Two other `gcc` versions are available: `gcc/10.5.0` and `gcc/13.2.0`. 
+
+`intel-oneapi-compilers` version `2023.1.0` is available which consists of both the intel classic compilers `icc, icpc, ifort` and the newer intel oneAPI compilers: `icx, icpx, ifx`. Some links to additional resources on Intel documentation site for the particular versions of compilers in this module can be found [here](software/compilers/intel.md).
+
 ## Python Packages
 
 `Anaconda3 2024.2` (Python 3.11) is available on the new software module farm. It can be loaded as:

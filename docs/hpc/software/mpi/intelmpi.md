@@ -42,6 +42,8 @@ Open MPI compiler wrappers `mpiicx`, `mpiicpx`, `mpiifx` can be used to compile 
 
         `mpiifx` is the MPI wrapper to the Intel(R) oneAPI Fortran Compiler `ifx`.
 
+The `intel-oneapi-mpi` package also comes with MPI wrapper to the Intel Classic Compilers: `mpiicc`, `mpiicpc` and `mpiifort`.
+
 ## Running MPI applications using Intel MPI
 
 Intel MPI applications can be launched using:
@@ -53,6 +55,3 @@ Intel MPI applications can be launched using:
       srun --mpi=pmi2 mpi_application
       ```
 
-## References
-* [Porting Guide for ICC users to DPCPP or ICX](https://www.intel.com/content/www/us/en/developer/articles/guide/porting-guide-for-icc-users-to-dpcpp-or-icx.html){:target="_blank"} {{ ext }}
-* [Porting Guide for IFORT to IFX](https://www.intel.com/content/www/us/en/developer/articles/guide/porting-guide-for-ifort-to-ifx.html){:target="_blank"} {{ ext }}
