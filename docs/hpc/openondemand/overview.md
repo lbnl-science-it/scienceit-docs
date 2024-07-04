@@ -15,12 +15,14 @@ The available Apps/services include:
 ## Logging In
 
 1. Visit [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }} in your web browser.
+2. Use your Berkeley Lab Identity to login to Open OnDemand.
+<!---
 2. Use your [LRC username](../accounts/user-accounts.md) and [PIN+one-time password(OTP)](../accounts/mfa.md).
     * These are the same credentials you use to login to Lawrencium vis SSH.
     * The username is only your LRC username and should not include the part after the @ sign.
     * Correct username format: `yourusername`
     * Incorrect username format: `yourusername@lbl.gov`
-
+--->
 ## Service Unit Charges
 
 Open OnDemand apps may launch Slurm jobs on your behalf when requested. Open OnDemand refers to these jobs as *"interactive sessions."* Since these are just Slurm jobs, service units are charged for interactive sessions the same way normal jobs are charged.

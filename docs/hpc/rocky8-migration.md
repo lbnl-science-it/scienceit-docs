@@ -4,6 +4,11 @@
 
     On the first week of July 2024, the operating system of Lawrencium's login and compute nodes were updated to Rocky Linux 8. The process of [logging in to Lawrencium](accounts/loggingin.md) after upgrade to Rocky Linux 8 remains the same. The job submission process using [slurm](running/slurm-overview.md) also remains the same. See [example slurm](running/script-examples.md) job submission scripts. There are, however, important changes some of which are listed below.
 
+!!! warning "Open OnDemand"
+
+    * Open OnDemand now uses the standard Berkeley Lab login.
+    * Some users may have trouble accessing Open OnDemand with an error message that says "Failed to map user". Our team is aware of the problem and is working to resolve the issue.
+
 ## New Software Module Farm
 
 With the OS upgrade comes a new software module farm. Various libraries, scientific applications and utilities are available and can be accessed via the [Lmod](https://lmod.readthedocs.io/en/latest/index.html){:target="_blank"} {{ ext }} Environment Module system. In addition to previously available `module` commands such as `module avail`, `module load` and `module unload`, a new useful command is `module spider` which helps in finding a module with instructions on any additional modules that you may have to load before loading a particular module. 
@@ -52,7 +57,7 @@ The default `gcc` compiler is `gcc/11.4.0` available through `module load gcc`. 
 module load anaconda3
 ```
 
-Two other versions of Python with minimal additional packages (`mpi4py, numpy, matplotlib, scipy, h5py, pip`) are provided. Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library.
+Two other versions of Python with minimal additional packages (`mpi4py, numpy, matplotlib, scipy, h5py, pip, jax, pandas`) are provided. Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library.
 
 As before, several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](openondemand/jupyter-server.md) on [Open OnDemand](openondemand/overview.md). [Click here](openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
