@@ -2121,6 +2121,13 @@
 <p class="admonition-title">Rocky 8</p>
 <p>On the first week of July 2024, the operating system of Lawrencium's login and compute nodes were updated to Rocky Linux 8. The process of <a href="../accounts/loggingin/">logging in to Lawrencium</a> after upgrade to Rocky Linux 8 remains the same. The job submission process using <a href="../running/slurm-overview/">slurm</a> also remains the same. See <a href="../running/script-examples/">example slurm</a> job submission scripts. There are, however, important changes some of which are listed below.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Open OnDemand</p>
+<ul>
+<li>Open OnDemand now uses the standard Berkeley Lab login.</li>
+<li>Some users may have trouble accessing Open OnDemand with an error message that says "Failed to map user". Our team is aware of the problem and is working to resolve the issue.</li>
+</ul>
+</div>
 <h2 id="new-software-module-farm">New Software Module Farm<a class="headerlink" href="#new-software-module-farm" title="Permanent link">&para;</a></h2>
 <p>With the OS upgrade comes a new software module farm. Various libraries, scientific applications and utilities are available and can be accessed via the <a href="https://lmod.readthedocs.io/en/latest/index.html" target="_blank">Lmod</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> Environment Module system. In addition to previously available <code>module</code> commands such as <code>module avail</code>, <code>module load</code> and <code>module unload</code>, a new useful command is <code>module spider</code> which helps in finding a module with instructions on any additional modules that you may have to load before loading a particular module. </p>
 <details class="note">
@@ -2156,7 +2163,7 @@ the<span class="w"> </span><span class="s2">&quot;hdf5/1.14.3&quot;</span><span 
 <p><code>Anaconda3 2024.2</code> (Python 3.11) is available on the new software module farm. It can be loaded as:</p>
 <div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3
 </code></pre></div>
-<p>Two other versions of Python with minimal additional packages (<code>mpi4py, numpy, matplotlib, scipy, h5py, pip</code>) are provided. Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library whereas the Anaconda distribution (<code>anaconda3/2024.02-1-11.4</code>) uses the Intel MKL library.</p>
+<p>Two other versions of Python with minimal additional packages (<code>mpi4py, numpy, matplotlib, scipy, h5py, pip, jax, pandas</code>) are provided. Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library whereas the Anaconda distribution (<code>anaconda3/2024.02-1-11.4</code>) uses the Intel MKL library.</p>
 <p>As before, several Jupyter kernels are available to access <code>tensorflow</code> and <code>pytorch</code> conda environments from the <a href="../openondemand/jupyter-server/">Jupyter server</a> on <a href="../openondemand/overview/">Open OnDemand</a>. <a href="../openondemand/packages-kernels/">Click here</a> for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.</p>
 <h2 id="r-packages">R Packages<a class="headerlink" href="#r-packages" title="Permanent link">&para;</a></h2>
 <p>Version <code>4.4.0</code> of R is available to users; the R module can be loaded as:
@@ -2188,7 +2195,7 @@ Some commonly used r-packages are already installed with the R module available 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
   </span>
 
     
