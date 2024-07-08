@@ -12,9 +12,35 @@ There are several basic commands you will need to know to submit jobs, cancel jo
 
 * `sbatch` – submit a job to the batch queue system, e.g., `sbatch myjob.sh`
 * `squeue` – check the current jobs in the batch queue system, e.g., `squeue`
+
+    By default, `squeue` command will list all the jobs in the queue system. To list only the jobs pertaining to your username $USER, use the command:
+
+    ``` bash
+    squeue -u $USER
+    ```
+
 * `sinfo` – view the current status of the queues, e.g., `sinfo`
-* `srun` – to run interactive jobs, e.g., `srun –pty bash`
-* `scancel` – cancel a job, e.g., `scancel 123`
+* `scancel` – cancel a job, e.g., `scancel 1234567`
+* `srun` – to run interactive jobs
+
+!!! note "Interactive job using `srun`"
+
+    You can use `srun` to request and run an interactive job. The following example (please change the `account_name` and the `partition_name` according to your needs) requests a `lr4` node for 1 hour.
+
+    ``` bash
+    srun -p lr4 -A account_name -q lr_normal -N 1 -t 1:00:00 --pty bash
+    ```
+
+    The prompt will change to indicate that you are on the compute node allocated for the interactive job once the interactive job starts:
+
+    ``` bash
+    srun: job 7566529 queued and waiting for resources
+    srun: job 7566529 has been allocated resources
+    [user@n0105 ~]$ 
+    ```
+
+    If you are done working on the interactive job before the allocated time, you can release the resource by using `exit` on the interactive node. 
+    
 
 ## Slurm Association
 
