@@ -2071,11 +2071,30 @@
 <p>There are several basic commands you will need to know to submit jobs, cancel jobs, and check status. These are:</p>
 <ul>
 <li><code>sbatch</code> – submit a job to the batch queue system, e.g., <code>sbatch myjob.sh</code></li>
-<li><code>squeue</code> – check the current jobs in the batch queue system, e.g., <code>squeue</code></li>
-<li><code>sinfo</code> – view the current status of the queues, e.g., <code>sinfo</code></li>
-<li><code>srun</code> – to run interactive jobs, e.g., <code>srun –pty bash</code></li>
-<li><code>scancel</code> – cancel a job, e.g., <code>scancel 123</code></li>
+<li>
+<p><code>squeue</code> – check the current jobs in the batch queue system, e.g., <code>squeue</code></p>
+<p>By default, <code>squeue</code> command will list all the jobs in the queue system. To list only the jobs pertaining to your username $USER, use the command:</p>
+<div class="highlight"><pre><span></span><code>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>sinfo</code> – view the current status of the queues, e.g., <code>sinfo</code></p>
+</li>
+<li><code>scancel</code> – cancel a job, e.g., <code>scancel 1234567</code></li>
+<li><code>srun</code> – to run interactive jobs</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Interactive job using <code>srun</code></p>
+<p>You can use <code>srun</code> to request and run an interactive job. The following example (please change the <code>account_name</code> and the <code>partition_name</code> according to your needs) requests a <code>lr4</code> node for 1 hour.</p>
+<div class="highlight"><pre><span></span><code>srun<span class="w"> </span>-p<span class="w"> </span>lr4<span class="w"> </span>-A<span class="w"> </span>account_name<span class="w"> </span>-q<span class="w"> </span>lr_normal<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</code></pre></div>
+<p>The prompt will change to indicate that you are on the compute node allocated for the interactive job once the interactive job starts:</p>
+<div class="highlight"><pre><span></span><code>srun:<span class="w"> </span>job<span class="w"> </span><span class="m">7566529</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+srun:<span class="w"> </span>job<span class="w"> </span><span class="m">7566529</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+<span class="o">[</span>user@n0105<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>
+</code></pre></div>
+<p>If you are done working on the interactive job before the allocated time, you can release the resource by using <code>exit</code> on the interactive node. </p>
+</div>
 <h2 id="slurm-association">Slurm Association<a class="headerlink" href="#slurm-association" title="Permanent link">&para;</a></h2>
 <p>A Slurm job submission script includes a list of SLURM directives (or commands) to tell the job scheduler what to do.  This information, such as user account, cluster partition and QoS (Quality of Service), have to be paired correctly in your job submission scripts. The Slurm command ‘sacctmgr‘ provide accounts, partitions and the QoSs that available to you as a user.
 <div class="highlight"><pre><span></span><code>sacctmgr<span class="w"> </span>show<span class="w"> </span>association<span class="w"> </span>-p<span class="w"> </span><span class="nv">user</span><span class="o">=</span><span class="nv">$USER</span>
@@ -2113,7 +2132,7 @@ perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_lowprio,es_normal|||
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 21, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 8, 2024</span>
   </span>
 
     
