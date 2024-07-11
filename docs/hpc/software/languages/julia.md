@@ -26,6 +26,8 @@ julia>
 
 ## Using Julia through Jupyter on Open OnDemand
 
+A Julia kernel has been added to Jupyter on Open OnDemand that allows you to use Julia on the Jupyter server on Open OnDemand.
+<!---
 To use a Julia notebook on the Jupyter app of Open OnDemand, install `IJulia` as follows on the Julia prompt:
 
 ``` julia
@@ -35,3 +37,4 @@ julia> Pkg.add("IJulia")
 ```
 
 When you install `IJulia` as a user, a jupyter kernel specification is added in your home directory at `~/.local/share/jupyter/kernels` and the kernel will be available on Open OnDemand Jupyter environment under `File > New Notebook` and under `Kernel > Change Kernel`. Additional information on installing `IJulia` and installing additional Julia kernels can be found [here](https://julialang.github.io/IJulia.jl/stable/manual/installation/){:target="_blank"} {{ ext }} .
+--->

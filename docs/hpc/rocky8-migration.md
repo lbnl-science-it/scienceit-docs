@@ -57,15 +57,28 @@ The default `gcc` compiler is `gcc/11.4.0` available through `module load gcc`. 
 
 ## Python Packages
 
-`Anaconda3 2024.2` (Python 3.11) is available on the new software module farm. It can be loaded as:
+!!! note "Anaconda3"
 
-``` bash
-module load anaconda3
-```
+    `Anaconda3 2024.2` (Python 3.11) is available on the new software module farm. It can be loaded as:
+
+    ``` bash
+    module load anaconda3
+    ```
 
 Two other versions of Python with minimal additional packages (`mpi4py, numpy, matplotlib, scipy, h5py, pip, jax, pandas`) are provided. Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library.
 
-As before, several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](openondemand/jupyter-server.md) on [Open OnDemand](openondemand/overview.md). [Click here](openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
+
+!!! note "Intel Distribution of Python"
+
+    Additionally the [Intel Distribution of Python (Python 3.9)](https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-for-python.html#gs.c1qvsx){:target="_blank"} {{ ext }} is available, and can be loaded as:
+
+    ``` bash
+    module load intelpython
+    ```
+
+    When you load `intelpython`, `intel-oneapi-compilers` and `intel-oneapi-mpi` are also loaded because we have added `mpi4py` package linked to Intel MPI library to the Intel Distribution of Python.
+
+As before, several Jupyter kernels are available to access `ml/tensorflow` and `ml/pytorch` conda environments from the [Jupyter server](openondemand/jupyter-server.md) on [Open OnDemand](openondemand/overview.md). [Click here](openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
 ## R Packages
 

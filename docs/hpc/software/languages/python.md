@@ -44,3 +44,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../openondemand/jupyter-server.md) on [Open OnDemand](../../openondemand/overview.md). [Click here](../../openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
+
+## Intel Distribution of Python
+
+Additionally the [Intel Distribution of Python (Python 3.9)](https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-for-python.html#gs.c1qvsx){:target="_blank"} {{ ext }} is available, and can be loaded as:
+
+``` bash
+module load intelpython
+```
+
+When you load `intelpython`, `intel-oneapi-compilers` and `intel-oneapi-mpi` are also loaded because we have added `mpi4py` package linked to Intel MPI library to the Intel Distribution of Python.
