@@ -4,10 +4,16 @@
 
     On the first week of July 2024, the operating system of Lawrencium's login and compute nodes were updated to Rocky Linux 8. The process of [logging in to Lawrencium](accounts/loggingin.md) after upgrade to Rocky Linux 8 remains the same. The job submission process using [slurm](running/slurm-overview.md) also remains the same. See [example slurm](running/script-examples.md) job submission scripts. There are, however, important changes some of which are listed below.
 
-!!! warning "Open OnDemand"
+!!! warning "Open OnDemand Changes and Known Issues"
 
     * Open OnDemand now uses the standard Berkeley Lab login.
-    * Some users may have trouble accessing Open OnDemand with an error message that says "Failed to map user". Our team is aware of the problem and is working to resolve the issue.
+    * Some users may have trouble accessing Open OnDemand. We are aware of the problem and working on a fix.
+    * To access your `scratch` directory from Jupyter on Open OnDemand please create a symlink to your scratch directory on your home directory:
+
+    ``` bash
+
+        ln -s /global/scratch/users/$USER scratch
+    ```
 
 ## New Software Module Farm
 

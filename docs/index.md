@@ -26,7 +26,6 @@ hide:
 
     - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/) {{ext}}
     - [HPC Clusters Live Status - Warewulf Overview](hpc/status.md) {{ext}}
-    - [HPC Clusters Live Status - Detailed View](https://hpcs-stats.lbl.gov/cluster_utilization/state_cluster/) {{ ext }}
 
 -   ### **HPC Helpdesk**
 
