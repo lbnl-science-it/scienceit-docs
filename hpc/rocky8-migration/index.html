@@ -2122,11 +2122,14 @@
 <p>On the first week of July 2024, the operating system of Lawrencium's login and compute nodes were updated to Rocky Linux 8. The process of <a href="../accounts/loggingin/">logging in to Lawrencium</a> after upgrade to Rocky Linux 8 remains the same. The job submission process using <a href="../running/slurm-overview/">slurm</a> also remains the same. See <a href="../running/script-examples/">example slurm</a> job submission scripts. There are, however, important changes some of which are listed below.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Open OnDemand</p>
+<p class="admonition-title">Open OnDemand Changes and Known Issues</p>
 <ul>
 <li>Open OnDemand now uses the standard Berkeley Lab login.</li>
-<li>Some users may have trouble accessing Open OnDemand with an error message that says "Failed to map user". Our team is aware of the problem and is working to resolve the issue.</li>
+<li>Some users may have trouble accessing Open OnDemand. We are aware of the problem and working on a fix.</li>
+<li>To access your <code>scratch</code> directory from Jupyter on Open OnDemand please create a symlink to your scratch directory on your home directory:</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/global/scratch/users/<span class="nv">$USER</span><span class="w"> </span>scratch
+</code></pre></div>
 </div>
 <h2 id="new-software-module-farm">New Software Module Farm<a class="headerlink" href="#new-software-module-farm" title="Permanent link">&para;</a></h2>
 <p>With the OS upgrade comes a new software module farm. Various libraries, scientific applications and utilities are available and can be accessed via the <a href="https://lmod.readthedocs.io/en/latest/index.html" target="_blank">Lmod</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> Environment Module system. In addition to previously available <code>module</code> commands such as <code>module avail</code>, <code>module load</code> and <code>module unload</code>, a new useful command is <code>module spider</code> which helps in finding a module with instructions on any additional modules that you may have to load before loading a particular module. </p>
@@ -2195,7 +2198,7 @@ Some commonly used r-packages are already installed with the R module available 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
   </span>
 
     
