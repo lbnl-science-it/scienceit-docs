@@ -8,11 +8,11 @@
 
     * Open OnDemand now uses the standard Berkeley Lab login.
     * Some users may have trouble accessing Open OnDemand. We are aware of the problem and working on a fix.
-    * To access your `scratch` directory from Jupyter on Open OnDemand please create a symlink to your scratch directory on your home directory:
+    * To access your `scratch` directory from Jupyter on Open OnDemand please create a symlink to your scratch directory; for example to create a symlink to scratch on your home directory:
 
     ``` bash
 
-        ln -s /global/scratch/users/$USER scratch
+        ln -s /global/scratch/users/$USER $HOME/scratch
     ```
 
 ## New Software Module Farm
