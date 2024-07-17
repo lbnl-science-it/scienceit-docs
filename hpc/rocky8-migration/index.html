@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -704,10 +704,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -750,7 +746,7 @@
         
   
   <span class="md-ellipsis">
-    Lawrencium
+    CPU Clusters
   </span>
   
 
@@ -771,49 +767,7 @@
         
   
   <span class="md-ellipsis">
-    Einsteinium GPU Cluster
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../systems/californium/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Californium
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../systems/curium/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Curium AMD Cluster
+    GPU Cluster
   </span>
   
 
@@ -831,6 +785,12 @@
   
     
     
+      
+        
+      
+        
+      
+        
       
         
       
@@ -846,10 +806,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_7_5" id="__nav_2_7_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -860,8 +820,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3">
             <span class="md-nav__icon md-icon"></span>
             Supported Research Clusters
           </label>
@@ -900,6 +860,69 @@
   
   <span class="md-ellipsis">
     CATAMOUNT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/supported/dirac1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DIRAC1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/supported/etna/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETNA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/supported/mhg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MHG
   </span>
   
 
@@ -2126,9 +2149,9 @@
 <ul>
 <li>Open OnDemand now uses the standard Berkeley Lab login.</li>
 <li>Some users may have trouble accessing Open OnDemand. We are aware of the problem and working on a fix.</li>
-<li>To access your <code>scratch</code> directory from Jupyter on Open OnDemand please create a symlink to your scratch directory on your home directory:</li>
+<li>To access your <code>scratch</code> directory from Jupyter on Open OnDemand please create a symlink to your scratch directory; for example to create a symlink to scratch on your home directory:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/global/scratch/users/<span class="nv">$USER</span><span class="w"> </span>scratch
+<div class="highlight"><pre><span></span><code><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/global/scratch/users/<span class="nv">$USER</span><span class="w"> </span><span class="nv">$HOME</span>/scratch
 </code></pre></div>
 </div>
 <h2 id="new-software-module-farm">New Software Module Farm<a class="headerlink" href="#new-software-module-farm" title="Permanent link">&para;</a></h2>
@@ -2208,7 +2231,7 @@ Some commonly used r-packages are already installed with the R module available 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 17, 2024</span>
   </span>
 
     
