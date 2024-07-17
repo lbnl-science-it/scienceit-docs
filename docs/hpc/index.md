@@ -8,10 +8,10 @@ Unlike DOE computing user-facilities such as NERSC which offer leadership-tier p
 
 Lawrencium is composed of multiple generations of hardware hence it is separated into several partitions to facilitate management and to meet the requirements to host Condo projects. The following table lists the hardware configuration for each individual partition.
 
-* [Lawrencium Intel CPU Cluster](systems/lawrencium.md)
-* [Es1 (Einsteinium) GPU Cluster](systems/einsteinium.md)
-* [Cf1 (Californium) Intel Phi Cluster](systems/californium.md)
-* [Cm1 (Curium) AMD Cluster](systems/curium.md)
+* [Lawrencium Intel CPU Cluster](systems/lawrencium.md#lawrencium-linux-cluster)
+* [Es1 (Einsteinium) GPU Cluster](systems/einsteinium.md#es1-einsteinium-gpu-cluster)
+* [Cf1 (Californium) Intel Phi Cluster](systems/lawrencium.md#cf1-californium-intel-phi-cluster)
+* [Cm1 (Curium) AMD Cluster](systems/lawrencium.md#cm1-curium-amd-cluster)
 
 In addition, there are several **Supported Research Clusters**; more information on each of these can be found by selecting the desired supported cluster under `Computing Systems > Supported Research Clusters`.
 

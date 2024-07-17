@@ -14,13 +14,16 @@ nav:
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
       - Computing Systems:
-          - Lawrencium: hpc/systems/lawrencium.md
-          - Einsteinium GPU Cluster: hpc/systems/einsteinium.md
-          - Californium: hpc/systems/californium.md
-          - Curium AMD Cluster: hpc/systems/curium.md
+          - CPU Clusters: hpc/systems/lawrencium.md
+          - GPU Cluster: hpc/systems/einsteinium.md
+          #- Californium: hpc/systems/californium.md
+          #- Curium AMD Cluster: hpc/systems/curium.md
           - Supported Research Clusters:
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
+              - DIRAC1: hpc/systems/supported/dirac1.md
+              - ETNA: hpc/systems/supported/etna.md
+              - MHG: hpc/systems/supported/mhg.md
       - Data Transfer:
           - Using the lrc-xfer DTN: hpc/data-transfer-node.md
           - Globus for Lawrencium: data/globus-instructions.md
