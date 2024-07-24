@@ -2,8 +2,21 @@
 
 ## Python packages
 
+There are multiple variants of Python available on LRC/BRC systems. 
+
+- System Python ( Python2/3 available from the OS. These tend to be older or legacy releases)
+- Python Releases maintained by HPCS (Available with a select set of python packages) 
+- Anaconda Environments
+
+
+## System Python 
+
 The `rocky-8` operating system in Lawrencium comes with `python@3.6` and `python2.7`. To use these, 
-use the command `python3` and `python2` respectively.
+use the command `python3` and `python2` respectively. These are minimal python environemnts 
+
+
+
+## Python (HPCS)
 
 Other python modules are available on the Lawrencium software module farm. There are two basic (with only a few additional site-packages) python modules provided. To list these python modules:
 
