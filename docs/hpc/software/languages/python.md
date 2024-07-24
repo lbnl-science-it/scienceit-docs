@@ -18,7 +18,7 @@ use the command `python3` and `python2` respectively. These are minimal python e
 
 ## Python (HPCS)
 
-Other python modules are available on the Lawrencium software module farm. There are two basic (with only a few additional site-packages) python modules provided. To list these python modules:
+Other python modules are available on the Lawrencium software module farm. There are smaller Python environments with a select set of python libraries referred here as site-packages. To list these python modules:
 
 ```
 $ module av python
