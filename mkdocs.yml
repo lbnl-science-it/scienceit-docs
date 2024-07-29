@@ -21,6 +21,7 @@ nav:
           - Supported Research Clusters:
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
+              - CATSCAN: hpc/systems/supported/catscan.md
               - DIRAC1: hpc/systems/supported/dirac1.md
               - ETNA: hpc/systems/supported/etna.md
               - MHG: hpc/systems/supported/mhg.md
