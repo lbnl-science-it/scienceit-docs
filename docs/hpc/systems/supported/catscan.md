@@ -64,7 +64,7 @@ At the moment, there is no resource manager/scheduler. Depending on how the reso
 
 ## Additional Notes
 
-### Authentication:
+### Authentication
 
 Currently authentication is LDAP -- the same credentials that you would use to access gmail.lbl.gov. We are in the process of evaluating OTP over ssh keys, or simply OTP.
 
