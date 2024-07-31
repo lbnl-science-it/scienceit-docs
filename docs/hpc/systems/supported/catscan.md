@@ -94,7 +94,7 @@ The suggested default name and location should be fine. You will be prompted for
 
 ## Storage for Data
 
-Each user will be granted space under /clusterfs/bebb/users for data. There is also a group directory to which the group has write permission. This directory should be used for custom builds of software of which the group may want to take advantage. This is modeled after what we offer on our clusters in 1275, but this is your cluster so you can choose to use it how you desire.
+Each user will be granted space under `/clusterfs/bebb/users` for data. There is also a group directory to which the group has write permission. This directory should be used for custom builds of software of which the group may want to take advantage. This is modeled after what we offer on our clusters in 1275, but this is your cluster so you can choose to use it how you desire.
 
 ## Software Module Farm:
 
