@@ -68,7 +68,7 @@ At the moment, there is no resource manager/scheduler. Depending on how the reso
 
 Currently authentication is LDAP -- the same credentials that you would use to access gmail.lbl.gov. We are in the process of evaluating OTP over ssh keys, or simply OTP.
 
-### Accessing the Compute nodes:
+### Accessing the Compute nodes
 
 You will need to generate ssh-keys for intra-cluster access to the compute nodes. 
 
@@ -96,11 +96,11 @@ The suggested default name and location should be fine. You will be prompted for
 
 Each user will be granted space under `/clusterfs/bebb/users` for data. There is also a group directory to which the group has write permission. This directory should be used for custom builds of software of which the group may want to take advantage. This is modeled after what we offer on our clusters in 1275, but this is your cluster so you can choose to use it how you desire.
 
-## Software Module Farm:
+## Software Module Farm
 
 See [Documentation on using "modules"](/hpc/software/module-management/).
 
-### Apptainer (formerly known as Singularity):
+### Apptainer (formerly known as Singularity)
 
 Some of you have expressed the need to import custom software built on different architectures. Instead of re-inventing this on the catscan architecture, you can use Apptainer. 
 
