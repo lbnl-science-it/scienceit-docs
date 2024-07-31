@@ -108,6 +108,6 @@ Apptainer enables users to have full control of their environment. Apptainer can
 
 To get started, check out these links:
 
-[Documentation on using Singularity on a cluster called Savio that we manage on UCB cluster](http://research-it.berkeley.edu/services/high-performance-computing/using-singularity-savio)
+[Documentation on using Singularity on a cluster called Savio that we manage on UCB cluster](http://research-it.berkeley.edu/services/high-performance-computing/using-singularity-savio){:target="_blank"} {{ ext }}
 
 [Singularity documentation from SDSC (one of the top users of the tool in the community)](https://www.sdsc.edu/education_and_training/tutorials1/running_singularity_on_comet_feb_2019.html){:target="_blank"} {{ ext }}
