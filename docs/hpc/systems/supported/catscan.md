@@ -8,7 +8,7 @@ Sports a 269Tb zfs filesystem for data and computational scratch space on /pool0
 
 Compute nodes: n0000, n0001, n0002, n0003
 
-## Cluster Configuration:
+## Cluster Configuration
 
 | Node | Access | Storage | Filesystems | Description of Use | CPU | CORES | MEMORY | GPU |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
