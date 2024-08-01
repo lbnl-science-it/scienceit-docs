@@ -10,5 +10,5 @@
 
 ??? question "How do I transfer data to and from the cluster?"
 
-    For more details, please see the examples on the data movement and storage page.
+    For more details, please see the examples on the [Using the lrc-xfer DTN page](data-transfer-node.md).
 
