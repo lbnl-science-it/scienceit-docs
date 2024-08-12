@@ -49,7 +49,7 @@ e.g., blast.slurm, where gnu-parallel flags are setup and independent tasks are 
 #SBATCH --time=2:00:00
 ## Command(s) to run (example):
 #
-module load  bio/blast/1.13.0 parallel/20200222
+module load  bio/blast-plus parallel
 export WDIR=/your/desired/path
 cd $WDIR
 export JOBS_PER_NODE=$SLURM_CPUS_ON_NODE
@@ -92,7 +92,7 @@ Otherwise, job rerun will not start when the same logfile exists
 
 ```bash
 #!/bin/bash
-module load  bio/blast/1.13.0 parallel/20200222
+module load  bio/blast-plus parallel
 
 blastp -query $1 -db ../blast/db/img_v400_PROT.00 -out $2  -outfmt 7 -max_target_seqs 10 -num_threads $3
 ```
