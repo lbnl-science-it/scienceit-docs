@@ -61,9 +61,9 @@ hide:
 -   ### **Can't find what you are looking for?**
 
     ---
+    * [Ask a LLM Model in the CBorg AI Portal](https://cborg.lbl.gov/){:target="_blank"} {{ ext }}.
 
-
-    Contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a> to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
+    * Contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a> to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
 </div>
 
