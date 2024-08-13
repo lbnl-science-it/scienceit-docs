@@ -12,3 +12,29 @@
 
     For more details, please see the examples on the [Using the lrc-xfer DTN page](data-transfer-node.md).
 
+??? question "What is the maximum runtime / walltime you can assign a job?"
+
+    It depends on the `qos` and the information can be obtained using the following command
+
+    ``` bash
+    sacctmgr show qos name=lr_normal,lr_debug,lr_interactive,cm1_debug,cm1_normal,es_debug,es_normal,cf_debug,cf_normal,es_lowprio,cf_lowprio format=name,maxtres,maxwall,mintres
+    ```
+
+    The maximum runtime / walltime is shown on the `MaxWall` column. The output may look like the following:
+
+    ``` bash
+          Name       MaxTRES     MaxWall       MinTRES 
+    ---------- ------------- ----------- ------------- 
+      lr_debug        node=4    03:00:00         cpu=1 
+     lr_normal                3-00:00:00         cpu=1 
+     cf_normal       node=64  3-00:00:00         cpu=1 
+      cf_debug        node=4    01:00:00         cpu=1 
+     es_normal       node=64  3-00:00:00 cpu=2,gres/g+ 
+      es_debug        node=4    03:00:00 cpu=2,gres/g+ 
+     cm1_debug        node=4    01:00:00         cpu=1 
+    cm1_normal       node=64  3-00:00:00         cpu=1 
+    es_lowprio                           cpu=2,gres/g+ 
+    cf_lowprio                                         
+    lr_intera+        cpu=32  3-00:00:00               
+    ```
+
