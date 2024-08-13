@@ -1,5 +1,4 @@
 site_name: Science IT Technical Documentation
-
 nav:
   - Home: index.md
   - High Performance Computing:
@@ -16,8 +15,6 @@ nav:
       - Computing Systems:
           - CPU Clusters: hpc/systems/lawrencium.md
           - GPU Cluster: hpc/systems/einsteinium.md
-          #- Californium: hpc/systems/californium.md
-          #- Curium AMD Cluster: hpc/systems/curium.md
           - Supported Research Clusters:
               - ALSACC: hpc/systems/supported/alsacc.md
               - CATAMOUNT: hpc/systems/supported/catamount.md
@@ -32,6 +29,7 @@ nav:
           - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
           - Compilers:
+              - GCC: hpc/software/compilers/gcc.md
               - Intel: hpc/software/compilers/intel.md
           - Languages:
               - Python: hpc/software/languages/python.md
