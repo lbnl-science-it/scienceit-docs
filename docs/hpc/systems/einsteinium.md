@@ -1,12 +1,40 @@
 # Es1 (Einsteinium) GPU Cluster
 
-Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol Es and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
+Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
-Es1 is a 47-node partition consisting of multiple GPU node types to address the different research needs. These include:
+Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:
 
 
-| Partition | Accelerator | Nodes | CPU                  | Cores | Memory | Infiniband |
-| --------- | ----- | -------------------- | ----- | ------ | ---------- | ----------- |
-| es1       | 2X NVIDIA V100 | 15    | Intel Xeon E5-2623   | 8     | 64GB   | FDR        | 
-|           | 4X NVIDIA 2080TI |   12    | Intel Xeon Silver 4212 | 8   | 96GB   | FDR        | 
-|           | 4X NVIDIA A40 |  14     | AMD EPYC 7742        | 64    | 512 GB | FDR        | 4X A40      |
+| Partition | Accelerator | Nodes | GPU Cards per Node | Memory per GPU Card | CPU   | Cores | Memory | Infiniband |
+| --------- | ----------- | ----- | ------------------ | --------------------| ----- | ----- | ------ | ----------- |
+| es1       | NVIDIA V100 | 15 | 2 | 32 GB | Intel Xeon E5-2623   | 8     | 64GB/192GB   | FDR        | 
+|           | NVIDIA 2080TI | 12 | 4 | 11 GB | Intel Xeon Silver 4212 | 8   | 96GB   | FDR        | 
+|           | NVIDIA A40 |  14 | 4 | 48 GB |AMD EPYC 7742        | 64    | 512 GB | FDR        |
+<!--|           | NVIDIA H100 | 2  | 8 | 80 GB | Intel Xeon Platinum 8480+    | 112 | 1 TB | NDR |
+
+!!! note "H100 and CBORG"
+
+    Currently, we have 3 NVIDIA H100 nodes in our datacenter but only 2 are available on slurm to users. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} {{ ext }}.
+
+
+-->
+
+## Example slurm script 
+
+Here is an example slurm script that requests one NVIDIA A40 GPU card.
+
+``` bash
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es1
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --gres=gpu:A40:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+```
