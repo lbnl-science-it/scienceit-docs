@@ -2,7 +2,11 @@
 
 **Lawrencium** is the platform for the [LBNL Condo Cluster Computing (LC3)](https://it.lbl.gov/service/scienceit/high-performance-computing/lrc/computing-on-lawrencium/condo-cluster-service/){:target="_blank"} {{ ext }} program, which provides a sustainable way to meet the midrange computing requirement for Berkeley Lab. Lawrencium is part of the LBNL Supercluster and shares the same Supercluster infrastructure. This includes the system management software, software module farm, scheduler, storage and backend network infrastructure.
 
-Unlike DOE computing user-facilities such as NERSC which offer leadership-tier performance but suffer from long wait times, Lawrencium provides medium-tier performace with low wait times.
+Unlike DOE computing user-facilities such as NERSC which offer leadership-tier performance but suffer from long wait times, Lawrencium provides medium-tier performance with low wait times.
+
+!!! note "Berkeley Data Center"
+    
+    Lawrencium is located at the Berkeley Data Center in Building 50B-1275. The datacenter is a 5000 sq. ft. facility dedicated for Berkeley Lab's scientific computing resources such as Lawrencium.
 
 ## Hardware Configuration
 
