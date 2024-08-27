@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
     
     
       
@@ -2291,7 +2291,7 @@
 <h2 id="logging-in">Logging In<a class="headerlink" href="#logging-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Visit <a href="https://lrc-ondemand.lbl.gov" target="_blank">https://lrc-ondemand.lbl.gov</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> in your web browser.</li>
-<li>Use your Berkeley Lab Identity to login to Open OnDemand.</li>
+<li>Login using CILogon. At the login page, please select the appropriate institute. If you have a Berkeley Lab identity please select Lawrence Berkeley National Laboratory and use your Berkeley Lab Identity to login to Open OnDemand.</li>
 </ol>
 <!---
 2. Use your [LRC username](../accounts/user-accounts.md) and [PIN+one-time password(OTP)](../accounts/mfa.md).
@@ -2301,10 +2301,10 @@
     * Incorrect username format: `yourusername@lbl.gov`
 --->
 <h2 id="service-unit-charges">Service Unit Charges<a class="headerlink" href="#service-unit-charges" title="Permanent link">&para;</a></h2>
-<p>Open OnDemand apps may launch Slurm jobs on your behalf when requested. Open OnDemand refers to these jobs as <em>"interactive sessions."</em> Since these are just Slurm jobs, service units are charged for interactive sessions the same way normal jobs are charged.</p>
+<p>Open OnDemand apps may launch Slurm jobs on your behalf when you request sessions on a slurm partition. Open OnDemand refers to these jobs as <em>"interactive sessions."</em> Since these are just Slurm jobs, service units are charged for interactive sessions the same way normal jobs are charged.</p>
 <div class="admonition note">
-<p class="admonition-title">Interactive_mode, for exploration</p>
-<p>Interactive sessions running on nodes whose hostnames end in <code>.ood0</code> do not cost service units. Sessions can be run on <code>.ood0</code> nodes by choosing <code>interactive_mode, for exploration</code> under <strong>Type of use</strong> when launching Open OnDemand jobs. Nodes ending in <code>.ood0</code> are shared nodes that are provied for low-intensity jobs. These should be treated like login nodes (that is, no intensive computation is allowed).</p>
+<p class="admonition-title">Interactive, for exploration/debugging mode</p>
+<p>Interactive sessions running on nodes whose hostnames end in <code>.ood0</code> do not cost service units. Sessions can be run on <code>.ood0</code> nodes by choosing <code>interactive, for exploration/debugging</code> versions of the apps. Nodes ending in <code>.ood0</code> are shared nodes that are provied for low-intensity jobs. These should be treated like login nodes (that is, intensive computation is not allowed).</p>
 </div>
 <p>Job time is counted for interactive sessions as the total time the job runs. The job starts running as soon as a node is allocated for the job. <em>The interactive session may still be running even if you do not have it open in your web browser.</em> You can view all currently running interactive sessions under My Interactive Sessions. When you are done, you may stop an interactive session by clicking “Delete” on the session.</p>
 <p>There are several ways to monitor usage:</p>
@@ -2442,7 +2442,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 27, 2024</span>
   </span>
 
     
@@ -2497,7 +2497,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
     
   </body>

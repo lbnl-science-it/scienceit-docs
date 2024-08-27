@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
     
     
       
@@ -2208,15 +2208,14 @@
 <div class="admonition warning">
 <p class="admonition-title">Open OnDemand Changes and Known Issues</p>
 <ul>
-<li>Open OnDemand now uses the standard Berkeley Lab login.</li>
-<li>Some users may have trouble accessing Open OnDemand. We are aware of the problem and working on a fix.</li>
+<li>Open OnDemand now uses the CILogon for user authentication.</li>
 <li>To access your <code>scratch</code> directory from Jupyter on Open OnDemand please create a symlink to your scratch directory on your home directory:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="w">    </span>ln<span class="w"> </span>-s<span class="w"> </span>/global/scratch/users/<span class="nv">$USER</span><span class="w"> </span>scratch
 </code></pre></div>
 </div>
 <p>The Jupyter Notebook is a web application that enables you to create and share documents that can contain a mix of live code, equations, visualizations, and explanatory text. This is an introduction to using Jupyter notebooks on Lawrencium.</p>
-<p>Before getting started, make sure you have <a href="../../accounts/project-accounts/">access to the Lawrencium cluster</a>, as you will need your LRC username and one-time password to log in.</p>
+<p>Before getting started, make sure you have <a href="../../accounts/project-accounts/">access to the Lawrencium cluster</a>.</p>
 <p>As described next, you can start a Jupyter notebook via the Open OnDemand service, which allows you to operate completely via your web browser on your local computer (e.g., your laptop).</p>
 <h2 id="jupyter-notebooks-on-open-ondemand">Jupyter notebooks on Open OnDemand<a class="headerlink" href="#jupyter-notebooks-on-open-ondemand" title="Permanent link">&para;</a></h2>
 <h3 id="running-a-notebook">Running a notebook<a class="headerlink" href="#running-a-notebook" title="Permanent link">&para;</a></h3>
@@ -2225,20 +2224,14 @@
 <p>Connect to <a href="https://lrc-ondemand.lbl.gov" target="_blank">https://lrc-ondemand.lbl.gov</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
 </li>
 <li>
-<p>After logging in with your <a href="">LRC username</a> and [one-time password(OTP)], you will get to the Open OnDemand welcome screen. Click the <strong>Interactive Apps</strong> pulldown.</p>
+<p>After <a href="../overview/">logging in</a>, you will get to the Open OnDemand welcome screen. Click the <strong>Interactive Apps</strong> pulldown.</p>
 </li>
 <li>
-<p>Choose the Jupyter Server option from the list of apps.
+<p>Choose the <strong>Jupyter Server</strong> option from the list of apps. Choose the <strong>Jupyter Server - interactive for exploration/debugging</strong> only if you are writing/debugging code and not doing any computationally intensive tasks.
 <img alt="Jupyter App Selection" src="../images/jupyter_select.png" /></p>
 </li>
 <li>
-<p>Fill out the form presented to you and click on <strong>Launch</strong>. The option <strong>Type of use</strong> has two options:</p>
-<ul>
-<li><em>interactive_mode, for exploration</em>: choose this option for non-intensive computations (notebook runs on the OpenOnDemand server)
-<img alt="Jupyter Server Option" src="../images/jupyter_interactive.png" /></li>
-<li><em>compute_mode</em>: choose this for intensive computations on compute nodes (the form will present you with additional options for nodes, cores and qos)</li>
-</ul>
-<p>Note that you can click on the <strong>Use JupyterLab instead of Jupyter Notebok?</strong> checkbox if you prefer the <a href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> interface. See below for an example of launching a jupyter server on a GPU partition in compute_mode.</p>
+<p>Fill out the form presented to you and click on <strong>Launch</strong>. An example of filling this form is shown in the next section.</p>
 </li>
 <li>
 <p>Once the server is ready, you will be able to click on the <strong>Connect to Jupyter</strong> button to get a jupyter notebook.</p>
@@ -2249,43 +2242,45 @@
 <li>
 <p>Select the following parameters to lauch a jupyter server on one GPU card of a A40 GPU node using a normal priority queue (with 16 CPU cores):</p>
 <ul>
-<li>Type of use: <strong>compute_mode</strong></li>
 <li>SLURM Partition: <strong>es1</strong></li>
 <li>Name of SLURM Quality of Service (QoS): <strong>es_normal</strong></li>
 <li>Number of nodes: <strong>1</strong></li>
-<li>GPU card cound and/or type: <strong>A40:1</strong></li>
+<li>Select GPU Type from dropdown: <strong>es1: NVidia A40 (40 GB) 1-4x</strong></li>
+<li>Select number of GPU cards to use: <strong>1</strong></li>
 <li>Number of CPU cores per Node: <strong>16</strong> </li>
 </ul>
-<p>Please also choose or enter the <strong>SLURM Project/Account Name</strong>, the <strong>Wall Clock Time</strong>, and <strong>Name of the job</strong> according to your needs.
-<img alt="Jupyter Compute Option" src="../images/jupyter_compute.png" /></p>
+<p>Please also choose or enter the <strong>SLURM Project/Account Name</strong>, the <strong>Wall Clock Time</strong>, and <strong>Name of the job</strong> according to your needs.</p>
+<div class="admonition note">
+<p class="admonition-title">Example form for choosing a A40 GPU card</p>
+<p><img alt="Jupyter Compute Option" src="../images/jupyter_compute.png" /></p>
+</div>
 </li>
 <li>
-<p>Upon clicking <strong>Lauch</strong>, you may have to wait for the requested resource to be allocated. </p>
+<p>Upon clicking <strong>Launch</strong>, you may have to wait for the requested resource to be allocated. </p>
 </li>
 <li>
 <p>When the server is ready, click on the <strong>Connect to Jupyter</strong> button to open your jupyter server session. 
     <img alt="Jupyter Connect" src="../images/jupyter_connect.png" /></p>
 </li>
 <li>
-<p>After clicking on <strong>Connect to Jupyter</strong>, your home directory will be displayed. From the <strong>New</strong> dropdown menu (next to <strong>Upload</strong> near the top right) select one of the Notebook or Other options:
-    <img alt="Jupyter Files" src="../images/jupyter_files.png" /></p>
+<p>After clicking on <strong>Connect to Jupyter</strong>, you will enter the classic Jupyter or Jupyterlab environment. </p>
 <ul>
-<li>Under New &gt; Notebook, you will find several Jupyter kernels with different Python versions and packages that you can choose according to your requirements.</li>
-<li>Under New &gt; Other, you have options to create a new text file, folder or open a terminal session.</li>
+<li>Under File &gt; New &gt; Notebook, you will find several Jupyter kernels with different Python versions and packages that you can choose according to your requirements. These include:<ul>
+<li>Python 3 (ipykernel) - python through <code>anaconda3/2023.02-1-11.4</code> module</li>
+<li>torch 2.3.1 py3.11.7 - PyTorch 2.3.1 through <code>ml/pytorch/2.3.1-py3.11.7</code> module</li>
+<li>tf 2.15.0 py3.10.0 - TensorFlow 2.15.0 through <code>ml/tensorflow/2.15.0-py3.10.0</code> module</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<p>To move between your Notebook and the control page that allows you to see your files and select any running Notebooks or terminals, click on <strong>Running</strong> tab under the Jupyter banner in the upper left corner.
-    <img alt="Jupyter Running" src="../images/jupyter_running.png" /></p>
-</li>
-<li>
-<p>You can have your session continue to operate in the background by selecting the <strong>Logout</strong> button.</p>
+<p>You can have your session continue to operate in the background by selecting the <strong>Logout</strong> button (upper right hand corner) on Open OnDemand.</p>
 </li>
 <li>
 <p>To terminate a running Notebook, select the <strong>My Interactive Sessions</strong> tab on the Open OnDemand menu and click on <strong>Delete</strong>.</p>
 </li>
 </ol>
-<p>Further information about working with Jupyter Notebooks can be found in the <a href="https://docs.jupyter.org/en/latest/" target="_blank">Jupyter Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
+<p>Further information about working with Jupyter Notebooks can be found in the <a href="https://docs.jupyter.org/en/latest/" target="_blank">Jupyter Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> and <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">JupyerLab Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></p>
 
 
 
@@ -2306,7 +2301,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 27, 2024</span>
   </span>
 
     
@@ -2361,7 +2356,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
     
   </body>

@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
     
     
       
@@ -698,6 +698,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GPU Cluster
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -707,6 +718,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-slurm-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example slurm script
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2087,6 +2126,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-slurm-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example slurm script
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2101,14 +2157,16 @@
 
 
 <h1 id="es1-einsteinium-gpu-cluster">Es1 (Einsteinium) GPU Cluster<a class="headerlink" href="#es1-einsteinium-gpu-cluster" title="Permanent link">&para;</a></h1>
-<p>Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol Es and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.</p>
-<p>Es1 is a 47-node partition consisting of multiple GPU node types to address the different research needs. These include:</p>
+<p>Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol <code>Es</code> and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.</p>
+<p>Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:</p>
 <table>
 <thead>
 <tr>
 <th>Partition</th>
 <th>Accelerator</th>
 <th>Nodes</th>
+<th>GPU Cards per Node</th>
+<th>Memory per GPU Card</th>
 <th>CPU</th>
 <th>Cores</th>
 <th>Memory</th>
@@ -2118,17 +2176,21 @@
 <tbody>
 <tr>
 <td>es1</td>
-<td>2X NVIDIA V100</td>
+<td>NVIDIA V100</td>
 <td>15</td>
+<td>2</td>
+<td>32 GB</td>
 <td>Intel Xeon E5-2623</td>
 <td>8</td>
-<td>64GB</td>
+<td>64GB/192GB</td>
 <td>FDR</td>
 </tr>
 <tr>
 <td></td>
-<td>4X NVIDIA 2080TI</td>
+<td>NVIDIA 2080TI</td>
 <td>12</td>
+<td>4</td>
+<td>11 GB</td>
 <td>Intel Xeon Silver 4212</td>
 <td>8</td>
 <td>96GB</td>
@@ -2136,8 +2198,10 @@
 </tr>
 <tr>
 <td></td>
-<td>4X NVIDIA A40</td>
+<td>NVIDIA A40</td>
 <td>14</td>
+<td>4</td>
+<td>48 GB</td>
 <td>AMD EPYC 7742</td>
 <td>64</td>
 <td>512 GB</td>
@@ -2145,6 +2209,31 @@
 </tr>
 </tbody>
 </table>
+<!--|           | NVIDIA H100 | 2  | 8 | 80 GB | Intel Xeon Platinum 8480+    | 112 | 1 TB | NDR |
+
+!!! note "H100 and CBORG"
+
+    Currently, we have 3 NVIDIA H100 nodes in our datacenter but only 2 are available on slurm to users. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.
+
+
+-->
+
+<h2 id="example-slurm-script">Example slurm script<a class="headerlink" href="#example-slurm-script" title="Permanent link">&para;</a></h2>
+<p>Here is an example slurm script that requests one NVIDIA A40 GPU card.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=test</span>
+<span class="c1">#SBATCH --account=account_name</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
+<span class="c1">#SBATCH --gres=gpu:A40:1</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
+python<span class="w"> </span>train.py
+</code></pre></div>
 
 
 
@@ -2165,7 +2254,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 27, 2024</span>
   </span>
 
     
@@ -2220,7 +2309,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
     
   </body>
