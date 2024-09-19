@@ -54,3 +54,18 @@ module load intelpython
 ```
 
 When you load `intelpython`, `intel-oneapi-compilers` and `intel-oneapi-mpi` are also loaded because we have added `mpi4py` package linked to Intel MPI library to the Intel Distribution of Python.
+
+## Using Dask
+
+[Dask](https://www.dask.org/){:target="_blank"} {{ ext }} is available both in the `anaconda3` and `intelpython` modules. Dask can be useful when you are working with large datasets that don't fit in the memory of a single machine. Dask implements lazy evaluation, task scheduling and data chunking that makes it useful when performing analysis on large datasets.
+
+!!! note "Dask JupyterLab Extension"
+
+    Dask JupyterLab Extension can be used to manage Dask clusters and monitor it through various dashboard plots in JupyterLab panes.
+
+    To install dask-labextension once you have a python module loaded:
+
+    ``` bash
+    python -m pip install dask-labextension
+    ```
+
