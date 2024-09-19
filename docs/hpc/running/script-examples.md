@@ -1,6 +1,6 @@
 Here we show some example job scripts that allow for various kinds of parallelization such as: jobs that use fewer cores than available on a node, GPU jobs, low-priority condo jobs, and long-running PCA jobs.
 
-Please refer to [Slurm Association](slurm-overview.md) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
+Please refer to [Slurm Association](slurm-overview.md#slurm-association) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
 
 ## Example Set 1
 === "Simple Serial Job"
@@ -163,7 +163,7 @@ Here’s how to request two CPUs for each GPU: the total of CPUs requested resul
 
 For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and --cpus-per-task=2 . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
 
-Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](https://it.lbl.gov/resource/hpc/lawrencium/)). This is because the feature is associated with how many GPUs per node to request.
+Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](../systems/einsteinium.md)). This is because the feature is associated with how many GPUs per node to request.
 
 ```bash
 #!/bin/bash
