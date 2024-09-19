@@ -28,4 +28,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install --upgrade -r requirements.txt
-      - run: mkdocs gh-deploy --force
+      - name: Build and deploy
+        env:
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+        run: mkdocs gh-deploy --force
