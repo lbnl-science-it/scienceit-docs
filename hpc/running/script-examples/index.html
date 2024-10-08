@@ -2344,6 +2344,9 @@ mpirun<span class="w"> </span>./a.out
 <li>
 <p>A40: <code>--gres=gpu:A40:1</code> (up to 4 GPUs)</p>
 </li>
+<li>
+<p>H100: <code>--gres=gpu:H100:1</code> (up to 8 GPUs)</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -2353,9 +2356,9 @@ mpirun<span class="w"> </span>./a.out
 <p>Note that in the <code>--gres=gpu:n</code> specification, <code>n</code> must be between 1 and the number of GPUs on a single node (which is provided <a href="../../systems/einsteinium/">here for the various GPU types</a>). This is because the feature is associated with how many GPUs per node to request.</p>
 <p>Examples:</p>
 <ul>
-<li>Request one V100 card: --cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1</li>
-<li>Request two A40 cards: --cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2</li>
-<li>Request three H100 cards: --cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3</li>
+<li>Request one V100 card: <code>--cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1</code></li>
+<li>Request two A40 cards: <code>--cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2</code></li>
+<li>Request three H100 cards: <code>--cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --job-name=test</span>
