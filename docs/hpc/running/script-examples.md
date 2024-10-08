@@ -156,6 +156,8 @@ Please refer to [Slurm Association](slurm-overview.md#slurm-association) on how 
     * V100 : `--gres=gpu:V100:1`(up to 2 GPUs)
 
     * A40: `--gres=gpu:A40:1` (up to 4 GPUs)
+    
+    * H100: `--gres=gpu:H100:1` (up to 8 GPUs)
 
 To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU. This ratio should be one:two.
 
@@ -167,9 +169,9 @@ Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the num
 
 Examples:
 
-* Request one V100 card: --cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1
-* Request two A40 cards: --cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2
-* Request three H100 cards: --cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3
+* Request one V100 card: `--cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1`
+* Request two A40 cards: `--cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2`
+* Request three H100 cards: `--cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3`
 
 ```bash
 #!/bin/bash
