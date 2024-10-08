@@ -16,7 +16,7 @@ Es1 is a partition consisting of multiple GPU node types to address the differen
 
 !!! note "H100 and CBORG"
 
-    Currently, we have 3 NVIDIA H100 nodes in our datacenter but only 2 are available on slurm to users. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} {{ ext }}.
+    Currently, we have five NVIDIA H100 nodes in our datacenter but only three are available on slurm to users. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} {{ ext }}.
 
 ## How to specify desired GPU card(s)
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
