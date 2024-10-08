@@ -165,6 +165,12 @@ For instance, in the above example, one GPU was requested via `--gres=gpu:1`, an
 
 Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](../systems/einsteinium.md)). This is because the feature is associated with how many GPUs per node to request.
 
+Examples:
+
+* Request one V100 card: --cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1
+* Request two A40 cards: --cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2
+* Request three H100 cards: --cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3
+
 ```bash
 #!/bin/bash
 #SBATCH --job-name=test
