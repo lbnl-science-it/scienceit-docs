@@ -2227,8 +2227,19 @@
 </tr>
 <tr>
 <td></td>
+<td>NVIDIA A100</td>
+<td>1</td>
+<td>4</td>
+<td>80 GB</td>
+<td>AMD EPYC 7713</td>
+<td>64</td>
+<td>512 GB</td>
+<td>NDR</td>
+</tr>
+<tr>
+<td></td>
 <td>NVIDIA H100</td>
-<td>2</td>
+<td>3</td>
 <td>8</td>
 <td>80 GB</td>
 <td>Intel Xeon Platinum 8480+</td>
@@ -2249,6 +2260,7 @@
 <li>Request one V100 card: <code>--cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1</code>  </li>
 <li>Request two A40 cards: <code>--cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2</code></li>
 <li>Request three H100 cards: <code>--cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3</code>  </li>
+<li>Request one A100 cards: <code>--cpus-per-task=16 --gres=gpu:A100:1 --ntasks 1</code>  </li>
 </ul>
 <h2 id="example-slurm-script">Example slurm script<a class="headerlink" href="#example-slurm-script" title="Permanent link">&para;</a></h2>
 <p>Here is an example slurm script that requests one NVIDIA A40 GPU card.</p>
