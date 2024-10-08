@@ -10,7 +10,8 @@ Es1 is a partition consisting of multiple GPU node types to address the differen
 | es1       | NVIDIA V100 | 15 | 2 | 32 GB | Intel Xeon E5-2623   | 8     | 64GB/192GB   | FDR        | 
 |           | NVIDIA 2080TI | 12 | 4 | 11 GB | Intel Xeon Silver 4212 | 8   | 96GB   | FDR        | 
 |           | NVIDIA A40 |  30 | 4 | 48 GB |AMD EPYC 7742        | 64    | 512 GB | FDR        |
-|           | NVIDIA A100 | 1  | 4 | 80 GB | AMD EPYC 7713     | 64 | 512 GB | NDR |
+|           | NVIDIA A100 | 1  | 4 | 80 GB | AMD EPYC 7713     | 64 | 512 GB | HDR |
+|           | NVIDIA GRTX8000 | 1  | 4 | 80 GB | AMD EPYC 7713     | 64 | 512 GB | HDR |
 |           | NVIDIA H100 | 3  | 8 | 80 GB | Intel Xeon Platinum 8480+    | 112 | 1 TB | NDR |
 
 !!! note "H100 and CBORG"
