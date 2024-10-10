@@ -5,7 +5,7 @@ Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the
 Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:
 
 
-| Accelerator | Nodes | GPU per Node/GPU Memory | CPU Processor | CPU Cores | Memory | Infiniband |
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband |
 | ----------- | ----- | ------------------ --------------------| ----- | ----- | ------ | ----------- |
 | NVIDIA V100 |  15 | 2x 32 GB | Intel Xeon E5-2623   | 8     | 64GB/192GB   | FDR        | 
 | NVIDIA 2080TI |  12 | 4x 11 GB | Intel Xeon Silver 4212 | 8   | 96GB   | FDR        | 
