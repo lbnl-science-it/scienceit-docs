@@ -31,6 +31,10 @@ Additional site-packages installed in these python modules are: `numpy`, `scipy`
     ```
     to install a python package to `~/.local` directory. The package libraries are usually installed in a sub-directory for each python version; for example: `~/.local/lib/python3.10/site-packages/`
 
+!!! note "Choosing python modules" 
+
+    Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library whereas the Anaconda distribution (`anaconda3/2024.02-1-11.4`) uses the Intel MKL library. We have found that linear algebra operations are generally faster using `numpy` through the `anaconda3` module.
+
 ## Anaconda environment
 
 We also provide `anaconda3` python environment that has many popular scientific and numerical python libraries pre-installed. To load the `anaconda3` module:
