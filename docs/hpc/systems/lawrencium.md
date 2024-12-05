@@ -19,8 +19,11 @@ Today Lawrencium consists of multiple generations of compute nodes with the Lr7 
 |           |       | Intel Xeon E5 2670v2 | 20    | 64GB   | FDR |
 | lr_bigmem | 2     | Intel Xeon Gold 5218 | 32    | 1.5TB | EDR |
 
+!!! note "LRC Jobscript Generator"
 
-## Cm1 (Curium) AMD Cluster
+    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting these different systems.
+
+## Curium AMD Cluster
 
 Curium is a AMD EPYC processor partition within the Lawrencium cluster. The system is named after the chemical element with symbol Cm and atomic number 98 which was discovered at Lawrence Berkeley National Laboratory in 1944 and in honor of Marie and Pierre Curie, both known for their research on radioactivity. 
 

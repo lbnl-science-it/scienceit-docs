@@ -6,7 +6,7 @@ LBNL PIs wanting to obtain access to Lawrencium for their research project will 
 
 There are three primary ways to obtain access to Lawrencium:
 
-1. **LBNL PIs**: requesting a block of no-cost computing time via a PI Computing Allowance (PCA). This option is currently offered to all eligible Berkeley Lab PIs. For additional details on please see PI Computing Allowance.
+1. **LBNL PIs**: requesting a block of no-cost computing time via a PI Computing Allowance (PCA). This option is currently offered to all eligible Berkeley Lab PIs. For additional details on please see [PI Computing Allowance](https://it.lbl.gov/service/scienceit/high-performance-computing/lrc/computing-on-lawrencium/pi-computing-allowance/) {:target="_blank"} {{ ext }}.
 
 2. **Condo projects**: purchasing and contributing Condo nodes to the cluster. This option is open to any Berkeley Lab staff, and provides ongoing, priority access to you and your research affiliates who are members of the Condo. For details, please see Condo Cluster Service.
 
