@@ -17,7 +17,7 @@ Pushing changes to the github repository will automatically run `mkdocs build` a
 
 This is achieved through Gihub Actions workflow file `.github/workflows/ci.yml`.
 
-## Pages migration status page instruction
+## Pages migration status page instruction for something
 
 A list of pages from https://it.lbl.gov/resource/hpc/ and their current location on the mkdocs site or if they are missing can be found on this repo's wiki at https://github.com/lbnl-science-it/scienceit-docs/wiki/Pages-migration-status.
 
