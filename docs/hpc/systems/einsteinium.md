@@ -16,17 +16,18 @@ Es1 is a partition consisting of multiple GPU node types to address the differen
 
 !!! note "H100 and CBORG"
 
-    Currently, we have five NVIDIA H100 nodes in our datacenter but only three are available on slurm to users. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} {{ ext }}.
+    Currently, we have five NVIDIA H100 nodes in our datacenter, four of which are available to users through slurm. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov){:target="_blank"} {{ ext }}.
 
 ## How to specify desired GPU card(s)
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
 
 Examples:
 
-* Request one V100 card: `--cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1`  
-* Request two A40 cards: `--cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2`
-* Request three H100 cards: `--cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3`  
-* Request one A100 cards: `--cpus-per-task=16 --gres=gpu:A100:1 --ntasks 1`  
+* Request one V100 card: `--cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1`  
+* Request two A40 cards: `--cpus-per-task=16 --gres=gpu:A40:2 --ntasks=2`
+* Request three H100 cards: `--cpus-per-task=14 --gres=gpu:H100:3 --ntasks=3`  
+* Request one A100 cards: `--cpus-per-task=16 --gres=gpu:A100:1 --ntasks=1`  
+* Request four GRTX8000 cards: `--cpus-per-task=16 --gres==gpu:GRTX8000:4 --ntasks=4` 
 
 ## Example slurm script 
 
