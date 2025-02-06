@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../globus-instructions/">
+        <link rel="prev" href="../pytorch/">
       
       
-        <link rel="next" href="../globus-aws-s3-connector/">
+        <link rel="next" href="../../mpi/openmpi/">
       
       
-      <link rel="icon" href="../../assets/favicon.png">
+      <link rel="icon" href="../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Globus for Google Drive - Science IT Technical Documentation</title>
+        <title>TensorFlow - Science IT Technical Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#globus-for-google-drive" class="md-skip">
+        <a href="#tensorflow" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +96,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Globus for Google Drive
+              TensorFlow
             
           </span>
         </div>
@@ -184,7 +184,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -199,11 +199,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../hpc/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -219,13 +221,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../globus/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../data/globus/" class="md-tabs__link">
           
   
     
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../help/" class="md-tabs__link">
+        <a href="../../../../help/" class="md-tabs__link">
           
   
     
@@ -280,9 +280,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     Science IT Technical Documentation
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -314,6 +314,8 @@
       
   
   
+    
+  
   
   
     
@@ -346,19 +348,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../hpc/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -369,13 +374,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             High Performance Computing
@@ -391,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/status/" class="md-nav__link">
+      <a href="../../../status/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -412,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/rocky8-migration/" class="md-nav__link">
+      <a href="../../../rocky8-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/faqs/" class="md-nav__link">
+      <a href="../../../faqs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/project-accounts/" class="md-nav__link">
+      <a href="../../../accounts/project-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -544,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/user-accounts/" class="md-nav__link">
+      <a href="../../../accounts/user-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -565,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/loggingin/" class="md-nav__link">
+      <a href="../../../accounts/loggingin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -586,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/mfa/" class="md-nav__link">
+      <a href="../../../accounts/mfa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -661,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/lawrencium/" class="md-nav__link">
+      <a href="../../../systems/lawrencium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/einsteinium/" class="md-nav__link">
+      <a href="../../../systems/einsteinium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/alsacc/" class="md-nav__link">
+      <a href="../../../systems/supported/alsacc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/catamount/" class="md-nav__link">
+      <a href="../../../systems/supported/catamount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -797,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/catscan/" class="md-nav__link">
+      <a href="../../../systems/supported/catscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -818,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/dirac1/" class="md-nav__link">
+      <a href="../../../systems/supported/dirac1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -839,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/etna/" class="md-nav__link">
+      <a href="../../../systems/supported/etna/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -860,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/mhg/" class="md-nav__link">
+      <a href="../../../systems/supported/mhg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -941,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/data-transfer-node/" class="md-nav__link">
+      <a href="../../../data-transfer-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../globus-instructions/" class="md-nav__link">
+      <a href="../../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -988,8 +993,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1013,11 +1020,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" checked>
         
           
           <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
@@ -1031,7 +1038,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_9">
             <span class="md-nav__icon md-icon"></span>
             Software
@@ -1045,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/software-module-farm/" class="md-nav__link">
+      <a href="../../software-module-farm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1066,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/module-management/" class="md-nav__link">
+      <a href="../../module-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1131,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/compilers/gcc/" class="md-nav__link">
+      <a href="../../compilers/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/compilers/intel/" class="md-nav__link">
+      <a href="../../compilers/intel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1227,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/python/" class="md-nav__link">
+      <a href="../../languages/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1248,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/julia/" class="md-nav__link">
+      <a href="../../languages/julia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/R/" class="md-nav__link">
+      <a href="../../languages/R/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1295,8 +1302,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1310,11 +1319,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_9_5" id="__nav_2_9_5_label" tabindex="0">
@@ -1328,7 +1337,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_9_5">
             <span class="md-nav__icon md-icon"></span>
             Machine Learning
@@ -1342,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/ml/pytorch/" class="md-nav__link">
+      <a href="../pytorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1360,10 +1369,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../hpc/software/ml/tensorflow/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TensorFlow
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1372,6 +1401,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading Tensorflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-slurm-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example SLURM script
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1436,7 +1503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/mpi/openmpi/" class="md-nav__link">
+      <a href="../../mpi/openmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1457,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/mpi/intelmpi/" class="md-nav__link">
+      <a href="../../mpi/intelmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1534,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/fftw/" class="md-nav__link">
+      <a href="../../libraries/fftw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1555,7 +1622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/hdf5/" class="md-nav__link">
+      <a href="../../libraries/hdf5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1576,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/netcdf/" class="md-nav__link">
+      <a href="../../libraries/netcdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1597,7 +1664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/mkl/" class="md-nav__link">
+      <a href="../../libraries/mkl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1682,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/slurm-overview/" class="md-nav__link">
+      <a href="../../../running/slurm-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1703,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/script-examples/" class="md-nav__link">
+      <a href="../../../running/script-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1724,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/monitor-jobs/" class="md-nav__link">
+      <a href="../../../running/monitor-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1745,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/gnu-parallel/" class="md-nav__link">
+      <a href="../../../running/gnu-parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1822,7 +1889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/overview/" class="md-nav__link">
+      <a href="../../../openondemand/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/jupyter-server/" class="md-nav__link">
+      <a href="../../../openondemand/jupyter-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/packages-kernels/" class="md-nav__link">
+      <a href="../../../openondemand/packages-kernels/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1885,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/jupyter-gpu/" class="md-nav__link">
+      <a href="../../../../tutorials/jupyter-gpu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1918,10 +1985,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1938,20 +2003,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1962,7 +2024,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Globus Transfer System
@@ -1976,7 +2038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../globus/" class="md-nav__link">
+      <a href="../../../../data/globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1997,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../globus-instructions/" class="md-nav__link">
+      <a href="../../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2015,30 +2077,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Globus for Google Drive
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../data/globus-google-drive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2047,44 +2089,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-guest-collection-in-gdrive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating a Guest Collection in Gdrive
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-shared-collection-in-gdrive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating a Shared Collection in Gdrive
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2097,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../globus-aws-s3-connector/" class="md-nav__link">
+      <a href="../../../../data/globus-aws-s3-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2118,7 +2122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../globus-google-cloud-storage-connector/" class="md-nav__link">
+      <a href="../../../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,7 +2192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/" class="md-nav__link">
+      <a href="../../../../help/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2236,18 +2240,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-a-guest-collection-in-gdrive" class="md-nav__link">
+  <a href="#loading-tensorflow" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Guest Collection in Gdrive
+      Loading Tensorflow
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-shared-collection-in-gdrive" class="md-nav__link">
+  <a href="#example-slurm-script" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Shared Collection in Gdrive
+      Example SLURM script
     </span>
   </a>
   
@@ -2268,45 +2272,33 @@
                   
 
 
-<h1 id="globus-for-google-drive">Globus for Google Drive<a class="headerlink" href="#globus-for-google-drive" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Search for <a href="https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/">LBNL Gdrive Access</a> (or use the link just above) and click on the endpoint.</li>
-</ul>
-<p><img alt="Endpoints" src="../images/globus-google-drive/endpoints-1.png" />
-<img alt="Overview" src="../images/globus-google-drive/endpoints-2.png" /></p>
-<h2 id="creating-a-guest-collection-in-gdrive">Creating a Guest Collection in Gdrive<a class="headerlink" href="#creating-a-guest-collection-in-gdrive" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Click on the "Collections" tab and authenticate if prompted by hitting the "Continue" button. Consent to allow Globus to manage the collection</li>
-<li>Click Add a Guest Collection</li>
-</ul>
-<p><img alt="Guest Collections" src="../images/globus-google-drive/guest-collection-1.png" /></p>
-<ul>
-<li>Enter the drive path you want to view and select a display name for the collection, then click Create Collection.</li>
-</ul>
-<p><img alt="Create a New Collection" src="../images/globus-google-drive/guest-collection-2.png" />
-<img alt="Permissions" src="../images/globus-google-drive/guest-collection-3.png" /></p>
-<ul>
-<li>Return to the Endpoint tab and search for your new collection by the Display Name you gave it.</li>
-</ul>
-<p><img alt="Collection Search" src="../images/globus-google-drive/guest-collection-4.png" /></p>
-<ul>
-<li>Open the new collection in the File Manager, and you are ready to transfer files to or from your LBNL Gdrive Collection!</li>
-</ul>
-<p><img alt="File Manager" src="../images/globus-google-drive/guest-collection-5.png" /></p>
-<h2 id="creating-a-shared-collection-in-gdrive">Creating a Shared Collection in Gdrive<a class="headerlink" href="#creating-a-shared-collection-in-gdrive" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Find the "LBNL Gdrive Access" Endpoint in the Globus UI</li>
-<li>Click on the Collections Tab and click "Add a Guest Collection"</li>
-<li>Browse to the folder in your Google Drive that you wish to share and give it a Display Name. Click Create Collection.</li>
-</ul>
-<p><img alt="Create a New Guest Collection" src="../images/globus-google-drive/shared-collection-1.png" />
-<img alt="Permissions" src="../images/globus-google-drive/shared-collection-2.png" /></p>
-<ul>
-<li>Select Add Permissions - Share With (Here the "/" is the root of the folder you browsed to when creating this share. In this example, it is "My Drive/Fernsler's Demo Share/" in user fernsler's LBNL Google Drive)</li>
-<li>Enter the name/email of a collaborator you wish to share with, and give them appropriate permissions. By default, read only access to shares is active. Click Add Permission to create the share.  Globus will send the user you are sharing the folder with an email and they will be able to find the Collection you shared by its Display Name in the endpoint tab search (in this example, it is “Share with Wei”)  </li>
-</ul>
-<p><img alt="Shared with" src="../images/globus-google-drive/shared-collection-3.png" />
-<img alt="File Manager" src="../images/globus-google-drive/shared-collection-4.png" /></p>
+<h1 id="tensorflow">Tensorflow<a class="headerlink" href="#tensorflow" title="Permanent link">&para;</a></h1>
+<h2 id="loading-tensorflow">Loading Tensorflow<a class="headerlink" href="#loading-tensorflow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ml/tensorflow
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tensorflow versions</p>
+<p>Use <code>module spider tensorflow</code> to get information on the versions of pytorch available as modules.</p>
+</div>
+<p><code>module load ml/tensorflow</code> will load other dependent modules such as <code>cuda</code>.</p>
+<p>If you use jupyter server on <a href="../../../openondemand/overview/">lrc-openondemand</a>, tensorflow kernels <code>tf 2.15.0</code> ard <code>tf 2.14.0</code> are available.  </p>
+<h2 id="example-slurm-script">Example SLURM script<a class="headerlink" href="#example-slurm-script" title="Permanent link">&para;</a></h2>
+<p>The follow SLURM script shows how to run a tensorflow script on 1 H100 GPU card.
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=&quot;TensorFlowCIFAR10&quot;</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=14</span>
+<span class="c1">#SBATCH --output=tf_job.out</span>
+<span class="c1">#SBATCH --error=tf_job.err</span>
+<span class="c1">#SBATCH --time=0:40:0</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --account=&lt;ACCOUNT_NAME&gt;</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --gres=gpu:H100:1</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/tensorflow
+srun<span class="w"> </span>python<span class="w"> </span>cifar10.py
+</code></pre></div></p>
 
 
 
@@ -2327,7 +2319,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2025</span>
   </span>
 
     
@@ -2379,10 +2371,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
