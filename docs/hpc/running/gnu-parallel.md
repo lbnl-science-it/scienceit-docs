@@ -1,9 +1,9 @@
 
-GNU Parallel is a shell tool for executing jobs in parallel on one or multiple computers. It’s a helpful tool for automating the parallelization of multiple (often serial) jobs, in particular allowing one to group jobs into a single SLURM submission to take advantage of the multiple cores on a given Lawrencium node.
+GNU Parallel is a shell tool for executing jobs in parallel on one or more computers. It’s a helpful tool for automating the parallelization of multiple (often serial) jobs, in particular allowing one to group jobs into a single SLURM submission to take advantage of the multiple cores on a given Lawrencium node.
 
 A job can be a single core serial task, multi-core or MPI application. A job can also be a command that reads from a pipe. The typical input is a list of parameters required for each task. GNU parallel can then split the input and pipe it into commands in parallel. GNU parallel makes sure output from the commands is the same output as you would get had you run the commands sequentially, and output names can be easily correlated to input file names for easy post-data processing. This makes it possible to use output from GNU parallel as input for other programs.
 
-Below we’ll show basic usage of GNU parallel and then provide an extended example illustrating submission of a Savio job that uses GNU parallel.
+Below we’ll show basic usage of GNU parallel and then provide an extended example illustrating submission of a job that uses GNU parallel.
 
 For full documentation see the [GNU parallel man page](https://www.gnu.org/software/parallel/man.html){:target="_blank"} {{ ext }} and [GNU parallel tutorial](https://www.gnu.org/software/parallel/parallel_tutorial.html){:target="_blank"} {{ ext }} .
 

@@ -41,4 +41,4 @@ rsync -avpz file-at-local $USER@lrc-xfer.lbl.gov:/global/home/user/$USER
 ## Data Transfer Examples On Windows
 
 * WinSCP: SFTP client and FTP client for Microsoft Windows
-* FileZella: multi-platform program via SFTP
+* FileZilla: multi-platform program via SFTP
