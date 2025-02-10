@@ -5,8 +5,7 @@ hide:
   - navigation
 ---
 
-# **Science IT Technical Documentation**
-
+# Science IT Technical Documentation
 
 <div class="grid cards" markdown>
 
@@ -15,7 +14,6 @@ hide:
     ---
 
     - [:fontawesome-solid-computer: Getting Started with Lawrencium](hpc/getting-started.md) 
-    - [:simple-rockylinux: Migrating to Rocky Linux 8 ](hpc/rocky8-migration.md)
     - [:simple-jupyter: Open OnDemand Portal](https://lrc-ondemand.lbl.gov/){:target="_blank"} {{ ext }} 
     - [MyLRC User Account Portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }} 
     - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html){:target="_blank"} {{ ext }}

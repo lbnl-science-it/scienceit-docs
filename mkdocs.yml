@@ -5,7 +5,7 @@ nav:
       - Lawrencium Overview: hpc/index.md
       - Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
-      - Migrating to Rocky Linux 8: hpc/rocky8-migration.md
+      #- Migrating to Rocky Linux 8: hpc/rocky8-migration.md
       - Frequently Asked Questions: hpc/faqs.md
       - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
@@ -31,6 +31,7 @@ nav:
           - Compilers:
               - GCC: hpc/software/compilers/gcc.md
               - Intel: hpc/software/compilers/intel.md
+              - NVHPC: hpc/software/compilers/nvhpc.md
           - Languages:
               - Python: hpc/software/languages/python.md
               - Julia: hpc/software/languages/julia.md
