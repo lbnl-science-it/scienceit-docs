@@ -47,6 +47,7 @@ nav:
               - HDF5: hpc/software/libraries/hdf5.md
               - NetCDF: hpc/software/libraries/netcdf.md
               - MKL: hpc/software/libraries/mkl.md
+              - CUDA: hpc/software/libraries/cuda.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm-overview.md
           - Example Scripts: hpc/running/script-examples.md
