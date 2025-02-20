@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../intel/">
+        <link rel="prev" href="../mkl/">
       
       
-        <link rel="next" href="../../languages/python/">
+        <link rel="next" href="../../../running/slurm-overview/">
       
       
       <link rel="icon" href="../../../../assets/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>NVHPC - Science IT Technical Documentation</title>
+        <title>CUDA - Science IT Technical Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nvhpc-nvidia-hpc-sdk" class="md-skip">
+        <a href="#cuda-toolkit" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NVHPC
+              CUDA
             
           </span>
         </div>
@@ -1068,10 +1068,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1087,11 +1085,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_3" >
         
           
           <label class="md-nav__link" for="__nav_2_8_3" id="__nav_2_8_3_label" tabindex="0">
@@ -1105,7 +1103,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_8_3">
             <span class="md-nav__icon md-icon"></span>
             Compilers
@@ -1119,7 +1117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gcc/" class="md-nav__link">
+      <a href="../../compilers/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1140,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intel/" class="md-nav__link">
+      <a href="../../compilers/intel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1158,30 +1156,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NVHPC
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../compilers/nvhpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,62 +1168,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#cuda-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      CUDA Versions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#target-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Target Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1568,8 +1490,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1589,11 +1513,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_7" checked>
         
           
           <label class="md-nav__link" for="__nav_2_8_7" id="__nav_2_8_7_label" tabindex="0">
@@ -1607,7 +1531,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_8_7">
             <span class="md-nav__icon md-icon"></span>
             Libraries
@@ -1621,7 +1545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/fftw/" class="md-nav__link">
+      <a href="../fftw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1642,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/hdf5/" class="md-nav__link">
+      <a href="../hdf5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1663,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/netcdf/" class="md-nav__link">
+      <a href="../netcdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1684,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/mkl/" class="md-nav__link">
+      <a href="../mkl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1702,10 +1626,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../libraries/cuda/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1714,6 +1658,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#additional-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2281,33 +2254,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cuda-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      CUDA Versions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#target-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Target Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#additional-references" class="md-nav__link">
     <span class="md-ellipsis">
       Additional References
@@ -2331,44 +2277,17 @@
                   
 
 
-<h1 id="nvhpc-nvidia-hpc-sdk">NVHPC: NVIDIA HPC SDK<a class="headerlink" href="#nvhpc-nvidia-hpc-sdk" title="Permanent link">&para;</a></h1>
-<p>The NVIDIA HPC SDK version 23.11 is available on Lawrencium. You can load the <code>nvhpc</code> module as:</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>nvhpc/23.11
+<h1 id="cuda-toolkit">CUDA Toolkit<a class="headerlink" href="#cuda-toolkit" title="Permanent link">&para;</a></h1>
+<p>The NVIDIA CUDA Toolkit, consisting of Nvidia-GPU-accelerated libraries, C/C++ compiler and various related tools, is available under <code>gcc</code> compiler tree. <code>cuda/11.8.0</code> and <code>cuda/12.2.1</code> are available after loading a <code>gcc</code> module. For example:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0
+module<span class="w"> </span>load<span class="w"> </span>cuda/12.2.1
 </code></pre></div>
-<p>The <code>nvhpc</code> module consists of the following compilers:</p>
-<ul>
-<li>C: <code>nvc</code>,</li>
-<li>C++: <code>nvc++</code> </li>
-<li>Fortran: <code>nvfortran</code></li>
-</ul>
-<p>The CUDA C and CUDA C++ compiler driver <a href="https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html" target="_blank"><code>nvcc</code></a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is also present in the module.</p>
-<h2 id="cuda-versions">CUDA Versions<a class="headerlink" href="#cuda-versions" title="Permanent link">&para;</a></h2>
-<p><code>nvhpc/23.11</code> includes two CUDA toolkit versions: <code>CUDA 11.8</code> and <code>CUDA 12.3</code>. You can choose a particular version by using the compiler flag <code>-gpu</code>; for example, use  <code>-gpu=cuda11.8</code> to choose <code>CUDA 11.8</code> when compiling a program using <code>nvhpc</code> compilers.</p>
-<h2 id="target-architecture">Target Architecture<a class="headerlink" href="#target-architecture" title="Permanent link">&para;</a></h2>
-<p>The <code>-tp=&lt;target&gt;</code> flag can be used to specify a target processor when compiling using <code>nvhpc</code> compilers.</p>
-<div class="admonition note">
-<p class="admonition-title">-fast</p>
-<p><code>-fast</code> compiler option is useful to choose an optimal set of vectorization options, but can lead to an auto-selection of the <code>-tp</code> option. This might mean that your compiled code may not work on all Lawrencium partitions as Lawrencium includes a wide range of hardware across several partitions.</p>
-</div>
-<h2 id="mpi">MPI<a class="headerlink" href="#mpi" title="Permanent link">&para;</a></h2>
-<p><code>nvhpc</code> module includes a version of openmpi. MPI wrapper programs such as <code>mpicc</code>, <code>mpicxx</code> and <code>mpifort</code> are available once <code>nvhpc</code> is loaded. </p>
-<div class="admonition info">
-<p class="admonition-title">Running MPI programs</p>
-<p>To run MPI jobs compiled with the <code>nvhpc</code> module on Lawrencium, use <code>mpirun</code> instead of <code>srun</code>. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Special considerations</p>
-<p>For some GPU nodes with AMD CPU hosts such as <code>A40</code> nodes, we have found that the following environment variable needs to be set when using <code>nvhpc</code>'s <code>mpirun</code> command to launch MPI jobs:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PMIX_MCA_psec</span><span class="o">=</span>native
-</code></pre></div>
-<p>In addition, <code>--bind-to core</code> which is the default for <code>mpirun</code> might not work; in which case, you can try <code>--bind-to none</code> or <code>--bind-to socket</code>. For example:</p>
-<div class="highlight"><pre><span></span><code>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span><span class="w"> </span>--bind-to<span class="w"> </span>socket<span class="w"> </span>./program
-</code></pre></div>
-</div>
+<p>loads CUDA Toolkit version 12.2.1. The environment variable <code>CUDA_HOME</code> is set by the <code>cuda</code> module.</p>
 <h2 id="additional-references">Additional References<a class="headerlink" href="#additional-references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://docs.nvidia.com/hpc-sdk/archive/23.11/index.html" target="_blank">NVIDIA HPC SDK Version 23.11 Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
-<li><a href="https://docs.nvidia.com/hpc-sdk/archive/23.11/hpc-sdk-release-notes/index.html" target="_blank">NVIDIA HPC SDK Version 23.11 Release Notes</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
+<li><a href="https://developer.nvidia.com/cuda-toolkit" target="_blank">CUDA Toolkit Information</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
+<li><a href="https://docs.nvidia.com/cuda/archive/12.2.1/" target="_blank">CUDA Toolkit 12.2.1 Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
+<li><a href="https://docs.nvidia.com/cuda/archive/11.8.0/" target="_blank">CUDA Toolkit 11.8.0 Documentation</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
 </ul>
 
 
