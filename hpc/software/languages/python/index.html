@@ -89,6 +89,23 @@
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<h4> LR3 nodes will be decommissioned on March 7, 2025. Please migrate your workload to other partitions.</h4>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
     </div>
     
     
@@ -2333,9 +2350,12 @@
 
 <h1 id="using-python-on-lawrencium">Using Python on Lawrencium<a class="headerlink" href="#using-python-on-lawrencium" title="Permanent link">&para;</a></h1>
 <h2 id="python-packages">Python packages<a class="headerlink" href="#python-packages" title="Permanent link">&para;</a></h2>
-<p>The <code>rocky-8</code> operating system in Lawrencium comes with <code>python@3.6</code> and <code>python2.7</code>. To use these, 
-use the command <code>python3</code> and <code>python2</code> respectively.</p>
-<p>Other python modules are available on the Lawrencium software module farm. There are two basic (with only a few additional site-packages) python modules provided. To list these python modules:</p>
+<div class="admonition info">
+<p class="admonition-title">Python 2</p>
+<p>The <code>rocky-8</code> operating system in Lawrencium has installation of <code>Python 3.6</code> and <code>Python 2.7</code>. To use these, 
+use the command <code>python3</code> and <code>python2</code> respectively without loading other python modules.</p>
+</div>
+<p>Several Python modules are available on the Lawrencium software module farm. There are two basic (with only a few additional site-packages) python modules provided. To list these python modules:</p>
 <div class="highlight"><pre><span></span><code>$ module av python
 
 ---------- /global/software/rocky-8.x86_64/modfiles/langs ----------
@@ -2347,30 +2367,46 @@ Python 3.10.12 (main, Mar 22 2024, 00:44:12) [GCC 11.4.0] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt; 
 </code></pre></div>
-<p>Additional site-packages installed in these python modules are: <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>mpi4py</code>, <code>h5py</code>,<code>netCDF4</code>, <code>pandas</code>, <code>geopandas</code>, <code>ipython</code> and <code>pyproj</code>.</p>
+<p>To load one of these modules use: <code>module load python/3.10.12</code> or <code>module load python/3.11.6</code>. Additional site-packages installed in these python modules are: <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>mpi4py</code>, <code>h5py</code>,<code>netCDF4</code>, <code>pandas</code>, <code>geopandas</code>, <code>ipython</code> and <code>pyproj</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">User installation of python packages</p>
 <p>You can use pip to install or upgrade packages.</p>
 <p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span><span class="nv">$PACKAGENAME</span><span class="w"> </span>
 </code></pre></div>
-to install a python package to <code>~/.local</code> directory. The package libraries are usually installed in a sub-directory for each python version; for example: <code>~/.local/lib/python3.10/site-packages/</code></p>
+to install a python package to <code>~/.local</code> directory. The package libraries are usually installed in a sub-directory for each python version; for example: <code>~/.local/lib/python3.10/site-packages/</code>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Choosing python modules</p>
-<p>Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library whereas the Anaconda distribution (<code>anaconda3/2024.02-1-11.4</code>) uses the Intel MKL library. We have found that linear algebra operations are generally faster using <code>numpy</code> through the <code>anaconda3</code> module.</p>
+<p>Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library whereas the Anaconda distributions (<code>anaconda3/2024.02</code> and <code>anaconda3/2024.10</code>) use the Intel MKL library. Some linear algebra operations can be faster using <code>numpy</code> through the <code>anaconda3</code> module.</p>
 </div>
 <h2 id="anaconda-environment">Anaconda environment<a class="headerlink" href="#anaconda-environment" title="Permanent link">&para;</a></h2>
-<p>We also provide <code>anaconda3</code> python environment that has many popular scientific and numerical python libraries pre-installed. To load the <code>anaconda3</code> module:</p>
-<div class="highlight"><pre><span></span><code>$ module load anaconda3
+<p>We also provide <code>anaconda3/2024.02</code> and <code>anaconda3/2024.10</code> python environments that have many popular scientific and numerical python libraries pre-installed. </p>
+<div class="admonition info">
+<p class="admonition-title">Examples of loading anaconda3</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">anaconda3/2024.02</label><label for="__tabbed_1_2">anaconda3/2024.10</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>$ module load anaconda3/2024.02
 $ python
-Python 3.11.5 (main, Sep 11 2023, 13:54:46) [GCC 11.2.0] on linux
+Python 3.11.7 (main, Dec 15 2023, 18:12:31) [GCC 11.2.0] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; 
+&gt;&gt;&gt;
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>$ module load anaconda3/2024.10
+$ python
+Python 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <p>Several Jupyter kernels are available to access <code>tensorflow</code> and <code>pytorch</code> conda environments from the <a href="../../../openondemand/jupyter-server/">Jupyter server</a> on <a href="../../../openondemand/overview/">Open OnDemand</a>. <a href="../../../openondemand/packages-kernels/">Click here</a> for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.</p>
 <h2 id="intel-distribution-of-python">Intel Distribution of Python<a class="headerlink" href="#intel-distribution-of-python" title="Permanent link">&para;</a></h2>
 <p>Additionally the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-for-python.html#gs.c1qvsx" target="_blank">Intel Distribution of Python (Python 3.9)</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is available, and can be loaded as:</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intelpython
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intelpython/3.9.19
 </code></pre></div>
 <p>When you load <code>intelpython</code>, <code>intel-oneapi-compilers</code> and <code>intel-oneapi-mpi</code> are also loaded because we have added <code>mpi4py</code> package linked to Intel MPI library to the Intel Distribution of Python.</p>
 <h2 id="using-dask">Using Dask<a class="headerlink" href="#using-dask" title="Permanent link">&para;</a></h2>
@@ -2402,7 +2438,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2025</span>
   </span>
 
     
@@ -2454,7 +2490,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
