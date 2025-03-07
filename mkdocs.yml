@@ -119,6 +119,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - announce.dismiss
     - content.code.annotate
     - content.code.copy
     - search.highlight
