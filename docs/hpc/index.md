@@ -12,10 +12,10 @@ Unlike DOE computing user-facilities such as NERSC which offer leadership-tier p
 
 Lawrencium is composed of multiple generations of hardware hence it is separated into several partitions to facilitate management and to meet the requirements to host Condo projects. The following table lists the hardware configuration for each individual partition.
 
-* [Lawrencium Intel CPU Cluster](systems/lawrencium.md#lawrencium-linux-cluster)
-* [Es1 (Einsteinium) GPU Cluster](systems/einsteinium.md#es1-einsteinium-gpu-cluster)
-* [Cf1 (Californium) Intel Phi Cluster](systems/lawrencium.md#cf1-californium-intel-phi-cluster)
-* [Cm1 (Curium) AMD Cluster](systems/lawrencium.md#cm1-curium-amd-cluster)
+* [Lawrencium CPU Cluster](systems/lawrencium.md#lawrencium-linux-cluster)
+* [Einsteinium GPU Cluster](systems/einsteinium.md#es1-einsteinium-gpu-cluster)
+* [Californium Intel Phi Cluster](systems/lawrencium.md#cf1-californium-intel-phi-cluster)
+* [Curium AMD Cluster](systems/lawrencium.md#cm1-curium-amd-cluster)
 
 In addition, there are several **Supported Research Clusters**; more information on each of these can be found by selecting the desired supported cluster under `Computing Systems > Supported Research Clusters`.
 
@@ -44,7 +44,6 @@ Condo users who would need to run outside of their condo contributions are also 
 
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | 
 | --------- | ----- | ------------------------- | ----------------------- |
-| lr3       | Exclusive   | free                      | free |
 | lr4       | Exclusive   | 0.5                       | $0.005 per Core CPU Hour |
 | lr5       | Exclusive   | 0.75                      | $0.0075 per Core CPU Hour |
 | lr6       | Exclusive   | 1.0                       | $0.01 per Core CPU Hour |
@@ -66,7 +65,7 @@ Condo users who would need to run outside of their condo contributions are also 
 
 ## Scheduler Configuration 
 
-Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr3, lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
 * For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 * If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
@@ -79,4 +78,4 @@ Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview.md) as the
     A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. All accounts are given equal shares value of 1.  All users under each account associated within a partition is subjected to decay’g in priority based on the resources used and the overall parent account usage. Usage is a value between 0.0 and 1.0 that associates proportional usage of the system. A value of 0 indicates that the association is over-served. In other words that account has used its share of the resources and will be given a lower value of shares compared to users who have not used as much resources.
 
 * Job prioritization is based on Age, Fairshare, Partition and QOS. Note: `lr_lowprio` qos jobs are not given any prioritization and some QOS have higher values than others.
-* If a node feature is not provided, the job will be dispatched to nodes based on a predefined order, for `lr3` the order is: `lr3_c16`, `lr3_c20`; for `lr5` the order is: `lr5_c28`, `lr5_c20`.
+* If a node feature is not provided, the job will be dispatched to nodes based on a predefined order; for `lr5` the order is: `lr5_c28`, `lr5_c20`.
