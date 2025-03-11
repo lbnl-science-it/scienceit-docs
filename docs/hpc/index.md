@@ -1,4 +1,4 @@
-# **High Performance Computing**
+# High Performance Computing
 
 **Lawrencium** is the platform for the [LBNL Condo Cluster Computing (LC3)](https://it.lbl.gov/service/scienceit/high-performance-computing/lrc/computing-on-lawrencium/condo-cluster-service/){:target="_blank"} {{ ext }} program, which provides a sustainable way to meet the midrange computing requirement for Berkeley Lab. Lawrencium is part of the LBNL Supercluster and shares the same Supercluster infrastructure. This includes the system management software, software module farm, scheduler, storage and backend network infrastructure.
 
@@ -12,10 +12,8 @@ Unlike DOE computing user-facilities such as NERSC which offer leadership-tier p
 
 Lawrencium is composed of multiple generations of hardware hence it is separated into several partitions to facilitate management and to meet the requirements to host Condo projects. The following table lists the hardware configuration for each individual partition.
 
-* [Lawrencium CPU Cluster](systems/lawrencium.md#lawrencium-linux-cluster)
-* [Einsteinium GPU Cluster](systems/einsteinium.md#es1-einsteinium-gpu-cluster)
-* [Californium Intel Phi Cluster](systems/lawrencium.md#cf1-californium-intel-phi-cluster)
-* [Curium AMD Cluster](systems/lawrencium.md#cm1-curium-amd-cluster)
+* [Lawrencium CPU Cluster](systems/lawrencium.md)
+* [Einsteinium GPU Cluster](systems/einsteinium.md)
 
 In addition, there are several **Supported Research Clusters**; more information on each of these can be found by selecting the desired supported cluster under `Computing Systems > Supported Research Clusters`.
 
@@ -38,22 +36,23 @@ Lawrencium cluster users are entitled to access the following storage systems so
 
 ## Recharge Model
 
-Lawrencium is a Lab-fund platform for Lawrencium Condo program. LBNL has made a significant investment in developing this platform to meet the midrange computing requirement at Berkeley Lab. The primary purpose is to provide a sustainable way to host all the condo projects while meeting the computing requirements from other users. To achieve this goal, condo users are allowed to run within their condo contributions for free. However normal users who would like to use the Lawrencium cluster are subject to the LBNL recharge rate. 
+LBNL has made a significant investment in developing this platform to meet the midrange computing requirement at Berkeley Lab. The primary purpose is to provide a sustainable way to host all the condo projects while meeting the computing requirements from other users. To achieve this goal, condo users are allowed to run within their condo contributions for free. However normal users who would like to use the Lawrencium cluster are subject to the LBNL recharge rate. 
 
 Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.
 
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | 
-| --------- | ----- | ------------------------- | ----------------------- |
-| lr4       | Exclusive   | 0.5                       | $0.005 per Core CPU Hour |
+| --------- | ----------- | ------------------------- | ----------------------- |
+| lr4       | Exclusive   | 0                         | free |
 | lr5       | Exclusive   | 0.75                      | $0.0075 per Core CPU Hour |
 | lr6       | Exclusive   | 1.0                       | $0.01 per Core CPU Hour |
-| lr7       | Shared    | 1.0                       | $0.01 per Core CPU Hour | 
-| cf1       | Exclusive    | 0.4                       | $0.004 per Core CPU Hour |
-| lr_bigmem | Exclusive     | 1.5                       | $0.015 per Core CPU Hour |
-| es1       | Shared    | 1.0                       | $0.01 per Core CPU Hour |
-| cm1       | Shared    | 0.75                      | $0.0075 per Core CPU Hour |
-| cm2       | Shared     | 1.0                       | $0.01 per Core CPU Hour |
-| ood_inter | Shared     | 1.0                       | $0.01 per Core CPU Hour | 
+| lr7       | Shared      | 1.0                       | $0.01 per Core CPU Hour | 
+| lr8       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
+| cf1       | Exclusive   | 0.4                       | $0.004 per Core CPU Hour |
+| lr_bigmem | Exclusive   | 1.5                       | $0.015 per Core CPU Hour |
+| es1       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
+| cm1       | Shared      | 0.75                      | $0.0075 per Core CPU Hour |
+| cm2       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
+| ood_inter | Shared      | 1.0                       | $0.01 per Core CPU Hour | 
 
 !!! note "Usage Calculation"
 

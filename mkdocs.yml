@@ -13,7 +13,7 @@ nav:
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
       - Computing Systems:
-          - CPU Clusters: hpc/systems/lawrencium.md
+          - CPU Cluster: hpc/systems/lawrencium.md
           - GPU Cluster: hpc/systems/einsteinium.md
           - Supported Research Clusters:
               - ALSACC: hpc/systems/supported/alsacc.md
