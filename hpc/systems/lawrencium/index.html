@@ -20,7 +20,7 @@
     
     
       
-        <title>CPU Clusters - Science IT Technical Documentation</title>
+        <title>CPU Cluster - Science IT Technical Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpu-clusters" class="md-skip">
+        <a href="#cpu-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CPU Clusters
+              CPU Cluster
             
           </span>
         </div>
@@ -675,7 +675,7 @@
           
   
   <span class="md-ellipsis">
-    CPU Clusters
+    CPU Cluster
   </span>
   
 
@@ -686,7 +686,7 @@
         
   
   <span class="md-ellipsis">
-    CPU Clusters
+    CPU Cluster
   </span>
   
 
@@ -708,27 +708,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lawrencium-linux-cluster" class="md-nav__link">
+  <a href="#lawrencium" class="md-nav__link">
     <span class="md-ellipsis">
-      Lawrencium Linux Cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#curium-amd-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Curium AMD Cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cf1-californium-intel-phi-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cf1 (Californium) Intel Phi Cluster
+      Lawrencium
     </span>
   </a>
   
@@ -2287,27 +2269,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lawrencium-linux-cluster" class="md-nav__link">
+  <a href="#lawrencium" class="md-nav__link">
     <span class="md-ellipsis">
-      Lawrencium Linux Cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#curium-amd-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Curium AMD Cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cf1-californium-intel-phi-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cf1 (Californium) Intel Phi Cluster
+      Lawrencium
     </span>
   </a>
   
@@ -2328,10 +2292,14 @@
                   
 
 
-<h1 id="cpu-clusters">CPU Clusters<a class="headerlink" href="#cpu-clusters" title="Permanent link">&para;</a></h1>
-<h2 id="lawrencium-linux-cluster">Lawrencium Linux Cluster<a class="headerlink" href="#lawrencium-linux-cluster" title="Permanent link">&para;</a></h2>
-<p>Lawrencium is a x86 Intel processor general purpose cluster that is suitable for running a wide diversity of scientific applications. The system is named after the chemical element 103 which was discovered at Lawrence Berkeley National Laboratory in 1958 and in honor of Ernest Orlando Lawrence, the inventor of the cyclotron. The original Lawrencium system was built as a 200-node cluster and debuted as #500 on the Top500 supercomputing list in Nov 2008.</p>
-<p>Lawrencium consists of multiple generations of compute nodes with the <code>lr7</code> partition being the most recent addition and the <code>lr7</code> partition the oldest still in production. Below are the current partitions in production.</p>
+<h1 id="cpu-cluster">CPU Cluster<a class="headerlink" href="#cpu-cluster" title="Permanent link">&para;</a></h1>
+<h2 id="lawrencium">Lawrencium<a class="headerlink" href="#lawrencium" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">About Lawrencium Cluster</p>
+<p>Lawrencium is a general purpose cluster that is suitable for running a wide variety of scientific applications. The system is named after the chemical element 103 which was discovered at Lawrence Berkeley National Laboratory in 1958 and in honor of Ernest Orlando Lawrence, the inventor of the cyclotron. </p>
+<p>The original Lawrencium system was built as a 200-node cluster and debuted as #500 on the Top500 supercomputing list in Nov 2008.</p>
+</div>
+<p>Lawrencium consists of multiple generations of compute nodes with the <code>lr8</code> partition being the most recent addition and the <code>lr4</code> partition the oldest still in production. In addition, there is a <code>lr_bigmem</code> partition with 1.5TB memory per node, and <code>cm1, cm2, cf1</code> partitions (details in the table below).</p>
 <table>
 <thead>
 <tr>
@@ -2344,6 +2312,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>lr8</td>
+<td>20</td>
+<td>AMD EPYC 9534</td>
+<td>128</td>
+<td>768GB</td>
+<td>HDR</td>
+</tr>
 <tr>
 <td>lr7</td>
 <td>132</td>
@@ -2408,20 +2384,36 @@
 <td>1.5TB</td>
 <td>EDR</td>
 </tr>
+<tr>
+<td>cm1</td>
+<td>14</td>
+<td>AMD EPYC 7401</td>
+<td>48</td>
+<td>256GB</td>
+<td>FDR</td>
+</tr>
+<tr>
+<td>cm2</td>
+<td>3</td>
+<td>AMD EPYC 7454</td>
+<td>64</td>
+<td>256GB</td>
+<td>EDR</td>
+</tr>
+<tr>
+<td>cf1</td>
+<td>72</td>
+<td>Intel Xeon Phi 7210</td>
+<td>256</td>
+<td>192GB</td>
+<td>FDR</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">LRC Jobscript Generator</p>
 <p>You can use the <a href="https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html">LRC Jobscript Generator</a> page to generate sample slurm job submission scripts targeting these different systems.</p>
 </div>
-<h2 id="curium-amd-cluster">Curium AMD Cluster<a class="headerlink" href="#curium-amd-cluster" title="Permanent link">&para;</a></h2>
-<p>Curium is a AMD EPYC processor partition within the Lawrencium cluster. The system is named after the chemical element with symbol Cm and atomic number 98 which was discovered at Lawrence Berkeley National Laboratory in 1944 and in honor of Marie and Pierre Curie, both known for their research on radioactivity. </p>
-<p>The system consists of multiple generations of compute nodes with the Cm2 partition being the most recent addition and the Cm1 partition the oldest still in production. Below are the current partitions in production.</p>
-<p>Cm1 consists of 14 ea. Supermicro nodes each equipped with 2 ea. AMD EPYC Naples 7401 24-core 2.0Ghz processors and 256GB 2666Mhz memory. Each node also has 4 ea. 4TB disk drives configured as a fast local scratch. The compute nodes are connected by a Mellanox FDR 56Gb/s infiniband interconnect for low latency and for moving big data.</p>
-<p>Cm2 consists of 20 ea. Dell nodes each equipped with 2 ea. AMD EPYC Rome 7454 32-core 2.35Ghz processors and 256GB 3200Mhz memory. Users who need to develop and tune their code for the new AMD architecture in order to run at the National centers may want to use this system. It is scheduled to go into production in early 2021.</p>
-<h2 id="cf1-californium-intel-phi-cluster">Cf1 (Californium) Intel Phi Cluster<a class="headerlink" href="#cf1-californium-intel-phi-cluster" title="Permanent link">&para;</a></h2>
-<p>Californium is an Intel Phi Knights Landing processor partition within the Lawrencium cluster. The system is named after the radioactive chemical element with the symbol Cf and atomic number 98. The element was first synthesized in 1950 at the Lawrence Berkeley National Laboratory (then the University of California Radiation Laboratory), by bombarding curium with alpha particles (helium-4 ions).</p>
-<p>The partition consists of 70 Dell nodes each equipped with a single Intel Phi Knights Landing 7210 64-core 1.3Ghz processor and 192GB 2400Mhz memory. Users of the NERSC Cori system can use these nodes for development.</p>
 
 
 
@@ -2442,7 +2434,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 11, 2025</span>
   </span>
 
     
