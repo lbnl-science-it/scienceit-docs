@@ -5,7 +5,6 @@ nav:
       - Lawrencium Overview: hpc/index.md
       - Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
-      #- Migrating to Rocky Linux 8: hpc/rocky8-migration.md
       - Frequently Asked Questions: hpc/faqs.md
       - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
