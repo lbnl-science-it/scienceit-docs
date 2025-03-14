@@ -98,7 +98,7 @@ Each user will be granted space under `/clusterfs/bebb/users` for data. There is
 
 ## Software Module Farm
 
-See [Documentation on using "modules"](/hpc/software/module-management/).
+See [Documentation on using "modules"](../../software/module-management.md).
 
 ### Apptainer (formerly known as Singularity)
 
