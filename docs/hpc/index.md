@@ -43,24 +43,24 @@ Condo users who would need to run outside of their condo contributions are also 
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | 
 | --------- | ----------- | ------------------------- | ----------------------- |
 | lr4       | Exclusive   | 0                         | free |
-| lr5       | Exclusive   | 0.75                      | $0.0075 per Core CPU Hour |
-| lr6       | Exclusive   | 1.0                       | $0.01 per Core CPU Hour |
+| lr5       | Exclusive   | 0.50                      | $0.0050 per Core CPU Hour |
+| lr6       | Exclusive   | 0.75                      | $0.0075 per Core CPU Hour |
 | lr7       | Shared      | 1.0                       | $0.01 per Core CPU Hour | 
 | lr8       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
-| cf1       | Exclusive   | 0.4                       | $0.004 per Core CPU Hour |
 | lr_bigmem | Exclusive   | 1.5                       | $0.015 per Core CPU Hour |
-| es1       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
+| cf1       | Exclusive   | 0.4                       | $0.004 per Core CPU Hour |
 | cm1       | Shared      | 0.75                      | $0.0075 per Core CPU Hour |
 | cm2       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
+| es1       | Shared      | 1.0                       | $0.01 per Core CPU Hour |
 | ood_inter | Shared      | 1.0                       | $0.01 per Core CPU Hour | 
 
 !!! note "Usage Calculation"
 
-    The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one lr5 node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since **lr5** nodes are allocated **exclusively** to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: 
+    The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one `lr5` node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since **lr5** nodes are allocated **exclusively** to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: 
     
-    **$0.0075/(core * hour) * 1 node * 24 cores/node * 24 hours = $4.32**
+    **$0.0050/(core * hour) * 1 node * 24 cores/node * 24 hours = $2.88**
     
-    instead of: $0.0075/(core*hour) * 1 core * 24 hours = $0.18.
+    instead of: $0.0050/(core*hour) * 1 core * 24 hours = $0.12.
 
 ## Scheduler Configuration 
 
