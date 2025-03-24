@@ -2375,14 +2375,14 @@
 <tr>
 <td>lr5</td>
 <td>Exclusive</td>
-<td>0.75</td>
-<td>$0.0075 per Core CPU Hour</td>
+<td>0.50</td>
+<td>$0.0050 per Core CPU Hour</td>
 </tr>
 <tr>
 <td>lr6</td>
 <td>Exclusive</td>
-<td>1.0</td>
-<td>$0.01 per Core CPU Hour</td>
+<td>0.75</td>
+<td>$0.0075 per Core CPU Hour</td>
 </tr>
 <tr>
 <td>lr7</td>
@@ -2397,22 +2397,16 @@
 <td>$0.01 per Core CPU Hour</td>
 </tr>
 <tr>
-<td>cf1</td>
-<td>Exclusive</td>
-<td>0.4</td>
-<td>$0.004 per Core CPU Hour</td>
-</tr>
-<tr>
 <td>lr_bigmem</td>
 <td>Exclusive</td>
 <td>1.5</td>
 <td>$0.015 per Core CPU Hour</td>
 </tr>
 <tr>
-<td>es1</td>
-<td>Shared</td>
-<td>1.0</td>
-<td>$0.01 per Core CPU Hour</td>
+<td>cf1</td>
+<td>Exclusive</td>
+<td>0.4</td>
+<td>$0.004 per Core CPU Hour</td>
 </tr>
 <tr>
 <td>cm1</td>
@@ -2427,6 +2421,12 @@
 <td>$0.01 per Core CPU Hour</td>
 </tr>
 <tr>
+<td>es1</td>
+<td>Shared</td>
+<td>1.0</td>
+<td>$0.01 per Core CPU Hour</td>
+</tr>
+<tr>
 <td>ood_inter</td>
 <td>Shared</td>
 <td>1.0</td>
@@ -2436,9 +2436,9 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Usage Calculation</p>
-<p>The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one lr5 node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since <strong>lr5</strong> nodes are allocated <strong>exclusively</strong> to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: </p>
-<p><strong>$0.0075/(core * hour) * 1 node * 24 cores/node * 24 hours = $4.32</strong></p>
-<p>instead of: $0.0075/(core*hour) * 1 core * 24 hours = $0.18.</p>
+<p>The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one <code>lr5</code> node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since <strong>lr5</strong> nodes are allocated <strong>exclusively</strong> to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: </p>
+<p><strong>$0.0050/(core * hour) * 1 node * 24 cores/node * 24 hours = $2.88</strong></p>
+<p>instead of: $0.0050/(core*hour) * 1 core * 24 hours = $0.12.</p>
 </div>
 <h2 id="scheduler-configuration">Scheduler Configuration<a class="headerlink" href="#scheduler-configuration" title="Permanent link">&para;</a></h2>
 <p>Lawrencium cluster uses <a href="running/slurm-overview/">SLURM to submit jobs</a> as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (<code>lr4, lr5, lr6, es1, cm1, cm2</code> must be specified (<code>--partition=xxx</code>) along with account (<code>--account=xxx</code>). Currently the available QoS (Quality of Service)s are <code>lr_normal</code> and <code>lr_debug</code> and <code>lr_lowprio</code>. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.</p>
@@ -2476,7 +2476,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 24, 2025</span>
   </span>
 
     
