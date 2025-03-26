@@ -1,17 +1,13 @@
 # AlphaFold 3 on LRC
-AlphaFold 3 is a new AI model developed by Google DeepMind and Isomorphic Labs for generating 3D predictions of biological systems. The software package and the public database is now available ont the cluster.
+[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git) is a new AI model developed by [Google DeepMind](https://deepmind.google/) and [Isomorphic Labs](https://www.isomorphiclabs.com/) for generating 3D predictions of biological systems. The software package and the public database is now available ont the Lawrencium cluster.
 
 ## Genetic Databases 
-The genetic database required for AlphaFold 3 is saved under the shared directory /clusterfs/collections/Alphafold3/public-db on the cluster.
+The genetic database required for AlphaFold 3 is saved under the shared directory `/clusterfs/collections/Alphafold3/public-db on the cluster`.
 
 ## Model Parameters
-The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind Subject to following terms of use.  
+The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to  terms"[Model Parameters Terms of Use](https://github.com/google-deepmind/alphafold3/blob/v3.0.0/WEIGHTS_TERMS_OF_USE.md)".
 
-Model Parameters Terms of Use
-Model Parameters Prohibited Use Policy
-Model Output Terms of Use Policy
-
-All Lawrencium users abide to above terms. Users can request the model parameters directly from Google DeepMind by filling out this form. If you have any questions about fields of the form then you may send us an inquiry at hpcshelp@lbl.gov. Once you get response and directions from Google DeepMind on obtaining model parameter you may save these parameter in your home directory or project directory(if you are sharing with your group members) inside directory "model_param". The parameters file is a single file approximately 1GB in size.
+Lawrencium users interested in using AlphaFOld 3 are abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this [form](https://forms.gle/svvpY4u2jsHEwWYS6). If you have any questions about fields of the form then you may send us an inquiry at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov). Once you get response and directions from Google DeepMind on obtaining model parameter you may save these parameter in your home directory or project directory(if you are sharing with your group members) inside directory "model_param". The parameters file is a single file approximately 1GB in size.
 
 ## Loading AlphaFold 3 module
 
