@@ -1,12 +1,12 @@
 ---
-hide:
-    - title
-    - navigation
-
-title: Science IT Help
+title: Science IT Support
 ---
 
-# Science IT & HPC Support Resources
+# **Support & Training Resources**
 
 --8<-- "snippets/help.md"
+
+## **HPC Training and Workshops**
+
+Click [here](https://it.lbl.gov/service/scienceit/training-and-workshops/){:target="_blank"} {{ ext }} for a list of upcoming and previous HPC trainings and workshops.
 

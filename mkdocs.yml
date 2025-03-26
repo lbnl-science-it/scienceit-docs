@@ -1,5 +1,4 @@
-site_name: Science IT @ LBNL
-
+site_name: Science IT Technical Documentation
 nav:
   - Home: index.md
   - High Performance Computing:
@@ -12,47 +11,101 @@ nav:
           - User Accounts: hpc/accounts/user-accounts.md
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
-      - Running Jobs:
-          - Slurm Overview: hpc/running/slurm_overview.md
-          - Example Scripts: hpc/running/script_examples.md
-          - Monitor Jobs: hpc/running/monitor_jobs.md
+      - Computing Systems:
+          - CPU Cluster: hpc/systems/lawrencium.md
+          - GPU Cluster: hpc/systems/einsteinium.md
+          - Supported Research Clusters:
+              - ALSACC: hpc/systems/supported/alsacc.md
+              - CATAMOUNT: hpc/systems/supported/catamount.md
+              - CATSCAN: hpc/systems/supported/catscan.md
+              - DIRAC1: hpc/systems/supported/dirac1.md
+              - ETNA: hpc/systems/supported/etna.md
+              - MHG: hpc/systems/supported/mhg.md
+      - Data Transfer:
+          - Using the lrc-xfer DTN: hpc/data-transfer-node.md
+          - Globus for Lawrencium: data/globus-instructions.md
+      - Software:
+          - Software Module Farm: hpc/software/software-module-farm.md
           - Module Management: hpc/software/module-management.md
-          - GNU Parallel: hpc/running/gnu_parallel.md
+          - Compilers:
+              - GCC: hpc/software/compilers/gcc.md
+              - Intel: hpc/software/compilers/intel.md
+              - NVHPC: hpc/software/compilers/nvhpc.md
+          - Languages:
+              - Python: hpc/software/languages/python.md
+              - Julia: hpc/software/languages/julia.md
+              - R: hpc/software/languages/R.md
+          - Machine Learning:
+              - PyTorch: hpc/software/ml/pytorch.md
+              - TensorFlow: hpc/software/ml/tensorflow.md
+          - MPI:
+              - Open MPI: hpc/software/mpi/openmpi.md
+              - Intel MPI: hpc/software/mpi/intelmpi.md
+          - Libraries:
+              - FFTW: hpc/software/libraries/fftw.md
+              - HDF5: hpc/software/libraries/hdf5.md
+              - NetCDF: hpc/software/libraries/netcdf.md
+              - MKL: hpc/software/libraries/mkl.md
+              - CUDA: hpc/software/libraries/cuda.md
+      - Running Jobs:
+          - Slurm Overview: hpc/running/slurm-overview.md
+          - Example Scripts: hpc/running/script-examples.md
+          - Monitor Jobs: hpc/running/monitor-jobs.md
+          - GNU Parallel: hpc/running/gnu-parallel.md
       - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
-          - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
-      - Science IT Services:
-          - Scientific Virtual Machines (SVM): construction.md
-          - Scientific Project Storage System (SPSS): construction.md
-          - Data Center Co-Location: construction.md
-          - Research Cluster Support: construction.md
-          - Secure Data Research Computing (SDRC): construction.md
-          - Software Module Farm: hpc/software/software-module-farm.md
-      - Training and Workshops: training.md
-  - Data Transfer & Storage:
-      - Data Management Overview: data/index.md
-      - Data Transfer: data/datatransfer_node.md
-      - Globus at Berkeley Lab: data/globus.md
-      - Globus Instructions: data/globus_instructions.md
-      - Scientific Project Storage Service: data/spss.md
-  - Cloud Computing:
-      - Cloud Overview: cloud/index.md
-      - Google Cloud Platform: cloud/gcp.md
-      - Amazon Web Services: cloud/aws.md
-  - Help: help.md
+          - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
+  - Globus Transfer System:
+      #- Globus Transfer System Overview: data/index.md
+      - Globus: data/globus.md
+      - Globus for Lawrencium: data/globus-instructions.md
+      - Globus for Google Drive: data/globus-google-drive.md
+      - Using the Globus AWS S3 Connector: data/globus-aws-s3-connector.md
+      - Using the Globus Google Cloud Storage Connector: data/globus-google-cloud-storage-connector.md
+  #- Cloud Services:
+  #    - Cloud Overview: cloud/index.md
+  #    - Cloud Cost Comparisons: construction.md
+  #    - Cloud Service Providers:
+  #        - Google Cloud Platform: cloud/gcp.md
+  #        - Amazon Web Services: cloud/aws.md
+  #        - Microsoft Azure Cloud: construction.md
+  #    - Cloud User Support: construction.md
+  #    - Cloud Training Resources: construction.md
+  #- Services:
+  #    - Scientific Virtual Machines (SVM): construction.md
+  #    - Scientific Project Storage System (SPSS): construction.md
+  #    - Data Center Co-Location: construction.md
+  #    - Research Cluster Support: construction.md
+  #    - Software Module Farm: hpc/software/software-module-farm.md
+  #    - Cloud Computing Services: construction.md
+  #    - Science IT Consulting: construction.md
+  #- AI:
+  #    - GPU: construction.md
+  #    - ChatGPT: construction.md
+  #    - Inferencing
+  #- Scientific Computing Demos:
+  #    - Scientific Computing Demos Overview: demos/index.md
+  #    - Intro to Data Science for Postdocs: construction.md
+  - Support & Training:
+      - HPC Help Desk: help.md
 
 plugins:
   - search
   - mkdocs-jupyter
   - macros
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: false
+      enable_creation_date: false
+      enabled: true
 
 extra:
   ext: <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>
   analytics:
     provider: google
-    property: G-FKL0607RGR
+    property: !ENV GOOGLE_ANALYTICS_KEY
 
 theme:
   name: material
@@ -65,6 +118,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - announce.dismiss
     - content.code.annotate
     - content.code.copy
     - search.highlight
@@ -89,6 +143,9 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css

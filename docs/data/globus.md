@@ -1,18 +1,29 @@
-Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](globus_instructions.md) for access setup.
+Globus is a free data transfer and storage service that lets you efficiently, securely, reliably, and quickly move large amounts of data between different resources (e.g., a personal computer, the Lawrencium cluster, Google Drive, Cloud Storage, and others) and to also share data on those resources with others.
 
-## Additional Globus Features (ONLY for Berkeley Lab Users)
+Globus addresses many of the common challenges faced by researchers in moving, sharing, and archiving large volumes of data. With Globus, you hand-off data movement tasks to a hosted service that manages the entire operation, monitoring performance and errors, retrying failed transfers, correcting problems automatically whenever possible, and reporting status to keep you informed of the process.
 
-All Berkeley Lab users can use Globus to access and transfer files in/out of their Berkeley Lab Google drive also. Details on how to access LBL Google drive via Globus please refer to this instructions (LBL Only)
+Science IT provides many Globus endpoints to help automate data transfers. Globus endpoints are authenticated against your active LBL account credentials, however some endpoints like Lawrencium or Cloud Storage might require additional credentials or authentication methods to function properly.
 
-The lab now features the following connectors:
+LBL's main Globus UI is available at [https://globus.lbl.gov](https://globus.lbl.gov){:target="_blank"} {{ ext }}.
 
-* For AWS buckets, browse the available collections in the Globus UI using the left hand side menu item “Collections” and look for “LBNL AWS S3 Collection” (`UUID 9c6d5242-306a-4997-a69f-e79345086d68`)
-* For Google Cloud Platform, browse for "LBNL Google Cloud Storage Collection” (`UUID 54047297-0b17-4dd9-ba50-ba1dc2063468`)
-* For Google Drive, browse for “LBNL Gdrive Access” (`UUID 37286b85-fa2d-41bd-8110-f3ed7df32d62`)
-* To facilitate browsing, please be sure the “Used Recently” option is not selected.
+Current managed endpoints with general availability are:
 
-If you are interested in AWS buckets, please refer to this documentation.
+| Name | Globus Endpoint Name | Documentation |
+| ---- | -------------------- | ------------- |
+| Google Drive | [LBNL Gdrive Access](https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/overview) | [Globus for Google Drive](globus-google-drive.md) |
+| Lawrencium | [lbnl#lrc](https://globus.lbl.gov/file-manager/collections/45afb626-a4bd-11e8-96f0-0a6d4e044368/overview) | [Globus for Lawrencium](globus-instructions.md) |
+| Amazon Web Services S3 | [LBNL AWS S3 Collection](https://globus.lbl.gov/file-manager/collections/9c6d5242-306a-4997-a69f-e79345086d68/overview) | [Using the Globus AWS S3 Connector](globus-aws-s3-connector.md) |
+| Google Cloud Storage | [LBNL Google Cloud Storage Collection](https://globus.lbl.gov/file-manager/collections/54047297-0b17-4dd9-ba50-ba1dc2063468/overview) | [Using the Globus Google Cloud Storage Connector](globus-google-cloud-storage-connector.md) |
 
-With Globus Plus you can use Globus Connect Personal between personal machines for transfers to any of the currently supported connectors and collections.  To request membership in Globus Plus, log into https://globus.lbl.gov and navigate to settings using the left side menu bar.  Select the Globus Plus tab and “LBNL IT Plus Sponsor” and follow the directions.
+If you are interested in using Google Cloud or Amazon, please reach out to [scienceit@lbl.gov](mailto:scienceit@lbl.gov) for more information on setting up a GCP or AWS account.
 
-If you see a connector you would like us to support, please send email to hpcshelp@lbl.gov.
+## Setting up a Globus Connect Personal Endpoint
+
+Even when there is not an LBL managed endpoint available it can still be useful to have access to the transfer and retry features of Globus. You can do this using Globus Connect Personal to configure an endpoint on your personal device. In general, it is always faster to use endpoints managed by LBL, but Globus Connect Personal can be useful for transfer to or from a local laptop or computer.
+
+You can find instructions for downloading and installing the Globus Connect Personal on the [Globus web site](https://docs.globus.org/globus-connect-personal/){:target="_blank"} {{ ext }}.
+
+
+Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](globus-instructions.md) for access setup.
+
+If you see a connector you would like us to support, please send email to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).

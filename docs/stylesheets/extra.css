@@ -5,7 +5,7 @@
 }
 
 .md-header__button.md-logo img {
-  width: 100px;
+  width: 85px;
   height: auto;
 }
 
@@ -33,10 +33,6 @@
 
 li.md-nav__item {
   padding-left: 10px !important;
-}
-
-.md-grid {
-  max-width: 1440px;
 }
 
 .md-content a {
@@ -100,4 +96,9 @@ iframe {
 
 .md-banner {
   background-color: var(--md-primary-fg-color--dark);
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: medium
 }
