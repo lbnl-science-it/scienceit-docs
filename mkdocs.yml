@@ -39,6 +39,8 @@ nav:
               - PyTorch: hpc/software/ml/pytorch.md
               - TensorFlow: hpc/software/ml/tensorflow.md
               - Alphafold3: hpc/software/ml/alphafold3.md
+          - Applications:
+              - VASP: hpc/software/applications/vasp.md
           - MPI:
               - Open MPI: hpc/software/mpi/openmpi.md
               - Intel MPI: hpc/software/mpi/intelmpi.md
