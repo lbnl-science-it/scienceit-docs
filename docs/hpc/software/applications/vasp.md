@@ -1,6 +1,8 @@
 # VASP on Lawrencium
 
-Separate VASP binaries targeting CPU or GPU partitions are available on Lawrencium.
+The Vienna Ab initio Simulation Package (VASP) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the [VASP: Access Request form](https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog) to be added to the linux groups authorized to use VASP. Please, provide the proof of purchase with this request. Please feel free to reach out to us at hpcshelp@lbl.gov if you would like us to update the version of the package. 
+
+VASP binaries provided on Lawrencium are compiled targeting CPU or GPU partitions. Following guidelines can help users to run vasp calculation.
 
 ## VASP CPU Binary (Intel Compiler)
 
@@ -71,7 +73,8 @@ module load vasp/6.4.1-gpu
     mpirun -np 2 vasp_std
     ```
 
+## Compiling VASP 
 
-
+Users can also compile the package on their own in their home or group space. Please reach out to us if you help setting up makefile for GNU, intel or nvhpc compilers. 
     
 
