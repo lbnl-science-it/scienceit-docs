@@ -75,9 +75,6 @@ module load vasp/6.4.1-gpu
 
 ## Compiling VASP 
 
-If you are willing to compile the package on your own in your home or group space for any specific reasons. Following guidelines would help. 
-
-
-
+Users can also compile the package on their own in their home or group space. Please reach out to us if you help setting up makefile for GNU, intel or nvhpc compilers. 
     
 
