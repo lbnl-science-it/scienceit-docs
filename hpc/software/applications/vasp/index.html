@@ -1531,6 +1531,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#compiling-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling VASP
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2376,6 +2385,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#compiling-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling VASP
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2392,7 +2410,8 @@
 
 
 <h1 id="vasp-on-lawrencium">VASP on Lawrencium<a class="headerlink" href="#vasp-on-lawrencium" title="Permanent link">&para;</a></h1>
-<p>Separate VASP binaries targeting CPU or GPU partitions are available on Lawrencium.</p>
+<p>The Vienna Ab initio Simulation Package (VASP) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog">VASP: Access Request form</a> to be added to the linux groups authorized to use VASP. Please, provide the proof of purchase with this request. Please feel free to reach out to us at hpcshelp@lbl.gov if you would like us to update the version of the package. </p>
+<p>VASP binaries provided on Lawrencium are compiled targeting CPU or GPU partitions. Following guidelines can help users to run vasp calculation.</p>
 <h2 id="vasp-cpu-binary-intel-compiler">VASP CPU Binary (Intel Compiler)<a class="headerlink" href="#vasp-cpu-binary-intel-compiler" title="Permanent link">&para;</a></h2>
 <p>The <code>vasp/6.4.1-cpu-intel</code> module is compiled using the intel compiler and mpi modules. To load the module:</p>
 <div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-compilers/2023.1.0
@@ -2451,6 +2470,8 @@ module<span class="w"> </span>load<span class="w"> </span>vasp/6.4.1-gpu
 mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span><span class="w"> </span>vasp_std
 </code></pre></div>
 </div>
+<h2 id="compiling-vasp">Compiling VASP<a class="headerlink" href="#compiling-vasp" title="Permanent link">&para;</a></h2>
+<p>Users can also compile the package on their own in their home or group space. Please reach out to us if you help setting up makefile for GNU, intel or nvhpc compilers. </p>
 
 
 
@@ -2471,7 +2492,7 @@ mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 3, 2025</span>
   </span>
 
     
