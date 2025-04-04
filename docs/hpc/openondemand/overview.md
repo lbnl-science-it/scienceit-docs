@@ -16,20 +16,14 @@ The available Apps/services include:
 
 1. Visit [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }} in your web browser.
 2. Login using CILogon. At the login page, please select the appropriate institute. If you have a Berkeley Lab identity please select Lawrence Berkeley National Laboratory and use your Berkeley Lab Identity to login to Open OnDemand.
-<!---
-2. Use your [LRC username](../accounts/user-accounts.md) and [PIN+one-time password(OTP)](../accounts/mfa.md).
-    * These are the same credentials you use to login to Lawrencium vis SSH.
-    * The username is only your LRC username and should not include the part after the @ sign.
-    * Correct username format: `yourusername`
-    * Incorrect username format: `yourusername@lbl.gov`
---->
+
 ## Service Unit Charges
 
 Open OnDemand apps may launch Slurm jobs on your behalf when you request sessions on a slurm partition. Open OnDemand refers to these jobs as *"interactive sessions."* Since these are just Slurm jobs, service units are charged for interactive sessions the same way normal jobs are charged.
 
 !!! note "Interactive, for exploration/debugging mode"
 
-    Interactive sessions running on nodes whose hostnames end in `.ood0` do not cost service units. Sessions can be run on `.ood0` nodes by choosing `interactive, for exploration/debugging` versions of the apps. Nodes ending in `.ood0` are shared nodes that are provied for low-intensity jobs. These should be treated like login nodes (that is, intensive computation is not allowed).
+    Interactive sessions running on nodes whose hostnames end in `.ood0` do not cost service units. Sessions can be run on `.ood0` nodes by choosing `interactive, for exploration/debugging` versions of the apps. Nodes ending in `.ood0` are shared nodes that are provided for low-intensity jobs. These should be treated like login nodes (that is, intensive computation is not allowed). Interactive sessions running on `.ood0` nodes are charged at 1 SU per CPU-hour.
 
 Job time is counted for interactive sessions as the total time the job runs. The job starts running as soon as a node is allocated for the job. *The interactive session may still be running even if you do not have it open in your web browser.* You can view all currently running interactive sessions under My Interactive Sessions. When you are done, you may stop an interactive session by clicking “Delete” on the session.
 
