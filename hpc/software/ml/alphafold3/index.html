@@ -2456,29 +2456,32 @@
 <p>The genetic database required for AlphaFold 3 is saved under the shared directory <code>/clusterfs/collections/Alphafold3/public-db</code> on the cluster.</p>
 <h2 id="model-parameters">Model Parameters<a class="headerlink" href="#model-parameters" title="Permanent link">&para;</a></h2>
 <p>The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms <a href="https://github.com/google-deepmind/alphafold3/blob/v3.0.0/WEIGHTS_TERMS_OF_USE.md" target="_blank">Model Parameters Terms of Use</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
-<p>Lawrencium users interested in using AlphaFOld 3 are abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this <a href="https://forms.gle/svvpY4u2jsHEwWYS6">form</a>. If you have any questions about fields of the form then you may send us an inquiry at <a href="mailto:hpcshelp@lbl.gov">hpcshelp@lbl.gov</a>. Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory <code>model_param</code>. The parameters file is a single file approximately 1GB in size.</p>
+<p>Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this <a href="https://forms.gle/svvpY4u2jsHEwWYS6">form</a>. If you have any questions about fields of the form then you may send us an inquiry at <a href="mailto:hpcshelp@lbl.gov">hpcshelp@lbl.gov</a>. Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory <code>model_param</code>. The parameters file is a single file approximately 1GB in size.</p>
 <h2 id="loading-alphafold-3-module">Loading AlphaFold 3 module<a class="headerlink" href="#loading-alphafold-3-module" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3
 </code></pre></div>
-<p>The <code>ml/alphafold3</code> module defines various environment variables such as <code>ALPHAFOLD_DIR</code> and <code>DB_DIR</code> that can be used to run a job as shown below. Users will have to setup environment variable for <code>MODEL_PARAMETERS_DIR</code> before running the script ot it can be setup directly in the script as shown below.</p>
+<p>The <code>ml/alphafold3</code> module defines various environment variables such as <code>ALPHAFOLD_DIR</code> and <code>DB_DIR</code> that can be used to run a job as shown below. Users will have to setup environment variable for <code>MODEL_PARAMETERS_DIR</code> before running the script or it can be setup directly in the job submission script as shown below.</p>
 <h2 id="running">Running<a class="headerlink" href="#running" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Things to note</p>
+<p class="admonition-title">Note</p>
 <ul>
-<li>Use <code>python /app/alphafold/run_alphafold.py</code> when using the <code>alphafold3.sif</code> image from the <code>ml/alphafold3</code> image. This is different from the official instructions on the <code>alphafold3</code> github page.</li>
+<li>Use <code>python /app/alphafold/run_alphafold.py</code> when using the <code>alphafold3.sif</code> image from the <code>ml/alphafold3</code> module. This is different from the official instructions on the <code>alphafold3</code> github page. See the sample slurm script below.</li>
 </ul>
 </div>
-<p>Below is a sample script to run the alphafold3 container after loading <code>ml/alphafold3</code> module:</p>
+<p>Below is a sample script to run <code>alphafold3</code> after loading <code>ml/alphafold3</code> module. It assumes the presence of <code>fold_input.json</code> in <code>$HOME/af_input</code> and saves output to <code>$HOME/af_output</code>. Please pay close attention to different options, path and variables and make changes as necessary.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --account=&lt;account&gt;</span>
 <span class="c1">#SBATCH --partition=es1</span>
-<span class="c1">#SBATCH --gres=gpu:A40:1</span>
-<span class="c1">#SBATCH --mincpus=16</span>
+<span class="c1">#SBATCH --gres=gpu:H100:1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=14</span>
 <span class="c1">#SBATCH --nodes=1</span>
 <span class="c1">#SBATCH --qos=es_normal</span>
-<span class="c1">#SBATCH --time=1:30:0</span>
+<span class="c1">#SBATCH --time=1:30:00</span>
 
 module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3
+
+<span class="c1"># export MODEL_PARAMETERS_DIR variable according to where they are saved</span>
 <span class="c1">#If model parameters are saved in your home directory</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_PARAMETERS_DIR</span><span class="o">=</span>/global/home/users/<span class="nv">$USER</span>/model_param
 
@@ -2516,7 +2519,7 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2025</span>
   </span>
 
     
