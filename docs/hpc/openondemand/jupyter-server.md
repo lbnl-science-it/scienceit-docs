@@ -43,7 +43,7 @@ As described next, you can start a Jupyter notebook via the Open OnDemand servic
 
 4. After clicking on **Connect to Jupyter**, you will enter the classic Jupyter or Jupyterlab environment. 
     - Under File > New > Notebook, you will find several Jupyter kernels with different Python versions and packages that you can choose according to your requirements. These include:
-        * Python 3 (ipykernel) - python through `anaconda3/2023.02-1-11.4` module
+        * Python 3 (ipykernel) - python through `anaconda3/2024.02-1-11.4` module
         * torch 2.3.1 py3.11.7 - PyTorch 2.3.1 through `ml/pytorch/2.3.1-py3.11.7` module
         * tf 2.15.0 py3.10.0 - TensorFlow 2.15.0 through `ml/tensorflow/2.15.0-py3.10.0` module
 
