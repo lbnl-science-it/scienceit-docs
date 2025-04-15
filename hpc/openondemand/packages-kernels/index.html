@@ -2096,6 +2096,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-apptainer-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using apptainer images
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2619,6 +2628,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-apptainer-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using apptainer images
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2653,48 +2671,58 @@ conda<span class="w"> </span>list
 <p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span><span class="nv">$PACKAGENAME</span><span class="w"> </span>
 </code></pre></div>
 to install the python package to <code>$HOME/.local</code>.</p>
-<p>So, if you need to install additional packages, simply load the desired Python module in the usual way and then use <code>pip</code> to install in your <code>home</code> directory. For example, you can install the <code>cupy</code> package (needed in the next section) with:</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3
+<p>So, if you need to install additional packages, you can load the desired Python module and then use <code>pip</code> to install in your <code>home</code> directory. For example, you can install the <code>cupy</code> package with:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
 module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0
 module<span class="w"> </span>load<span class="w"> </span>cuda/12.2.1
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--no-cache-dir<span class="w"> </span>cupy-cuda12x
 </code></pre></div>
-<p>If you would like to install packages with <code>conda install</code> you will need to create a conda environment in which to install packages and then create a kernel associated with your Conda environment as discussed in the next section.</p>
+<p>Package installed in this manner in your <code>$HOME/.local/lib/python3.xx</code> will be available to the <strong>Python 3 (ipykernel)</strong> jupyter kernel provided through the <code>anaconda3/2024.02</code> module.</p>
+<p>You can also install packages in a virtual environment or a conda environment and create a kernel associated with that environment. See examples in the next sections.</p>
 <h2 id="adding-new-kernels">Adding New Kernels<a class="headerlink" href="#adding-new-kernels" title="Permanent link">&para;</a></h2>
-<p>Jupyter supports notebooks in dozens of languages, including Python, R, and Julia. Not all of these languages or packages are supported by default in our Open OnDemand jupyter server. The ability to create custom kernels is useful if you need to create your own kernel for a language that is not supported by default or if you want to customize the environment, for example create a jupyter kernel for a conda environment. </p>
-<!--
-If you’d like to use a language or packages not already indicated in the drop-down menu discussed in step 6 above, you can create your own kernel. You may also need to create your own kernel for a language already supported if you want to customize your environment. For example, to set UNIX environment variables (such as `$PYTHONPATH` if you have packages installed in non-standard locations) or source a script before running your notebook can be achieved by creating your own kernel. Or, if you’d like to work within a Conda environment when using your notebook, you’ll also need to create a kernel.
--->
-
+<p>Jupyter supports notebooks in dozens of languages, including Python, R, and Julia. Not all of these languages or packages are supported by default in our Open OnDemand jupyter server. The ability to create custom kernels is useful if you need to create your own kernel for a language that is not supported by default or if you want to customize the environment, for example create a jupyter kernel for a virtual environment or a conda environment. </p>
 <p>To list the available jupyter kernels:</p>
 <div class="highlight"><pre><span></span><code>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </code></pre></div>
-<p>Let us create a new python kernel that can run <code>cupy</code> (which we have installed in our home directory using <code>pip</code>). To create a new jupyter kernel, with the current <code>PATH</code> and <code>LD_LIBRARY_PATH</code> variables set:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>cupy<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;Cupy Kernel&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                            </span>--env<span class="w"> </span>PATH<span class="w"> </span><span class="nv">$PATH</span><span class="w"> </span><span class="se">\ </span>
+<div class="admonition example">
+<p class="admonition-title">Example: Add a kernel for a virtual environment</p>
+<p>As an example, let us create a virtual environment in our <code>$SCRATCH</code> directory called <code>cudapython</code> that installs the <a href="https://nvidia.github.io/cuda-python/latest/" target="_blank">CUDA Python</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> packages.</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
+module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0<span class="w"> </span>cuda/12.2.1
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$SCRATCH</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./cudapython
+<span class="nb">source</span><span class="w"> </span>cudapython/bin/activate
+
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>cuda-python<span class="w"> </span>cuda-parallel<span class="w"> </span>cuda-cooperative<span class="w"> </span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>cuda-core<span class="w"> </span>numba-cuda<span class="w"> </span>nvmath-python<span class="w"> </span>ipykernel
+
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>cudapython<span class="w">  </span><span class="se">\</span>
+<span class="w">                            </span>--display-name<span class="w"> </span><span class="s2">&quot;CUDA Python&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--env<span class="w"> </span>PATH<span class="w"> </span><span class="nv">$PATH</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                            </span>--env<span class="w"> </span>LD_LIBRARY_PATH<span class="w"> </span><span class="nv">$LD_LIBRARY_PATH</span>
 </code></pre></div>
-<p>The above command will create a <code>kernel.json</code> file in <code>~/.local/share/jupyter/kernels/cupy</code>. You can manually edit this file to edit the paths and environment variables. The new kernel will show up on the jupyter server app on Open OnDemand. Depending on your packages and whether you had to import additional module before installing the package, you may not have to pass the <code>--env PATH</code> and <code>--env LD_LIBRARY_PATH</code> values in the command above.</p>
+<p>The above command will create a <code>kernel.json</code> file in <code>~/.local/share/jupyter/kernels/cudapython</code>. You can manually edit this file to edit the paths and environment variables. The new kernel will show up on the jupyter server app on Open OnDemand. Depending on your packages and whether you had to import additional module before installing the package, you may not have to pass the <code>--env PATH</code> and <code>--env LD_LIBRARY_PATH</code> values in the command above. In this examples, the <code>PATH</code> and <code>LD_LIBRARY_PATH</code> variables exported are important because of the <code>cuda-python</code> packages make use of <code>cuda/12.2.1</code> module that we imported.</p>
+</div>
 <h3 id="manually-creating-a-new-kernel">Manually creating a new kernel<a class="headerlink" href="#manually-creating-a-new-kernel" title="Permanent link">&para;</a></h3>
 <p>To add a new kernel to your Jupyter environment, you can also manually create a subdirectory within <code>$HOME/.local/share/jupyter/kernels</code>. Within the subdirectory, you’ll need a configuration file, <code>kernel.json</code>. Each new kernel should have its own subdirectory containing a configuration file.</p>
-<p>As an example, below is the content of <code>~/.local/share/jupyter/kernels/cupy/kernel.json</code> file that we just created using the <code>python -m ipykernel install</code> command. You can create and/or edit this file as needed; for instance, if you want to edit the <code>PATH</code> or <code>LD_LIBRARY_PATH</code> environment variables. Depending on your packages and whether you need to import a module, you may not have to e</p>
+<p>As an example, below is the content of <code>~/.local/share/jupyter/kernels/cudapython/kernel.json</code> file that we just created using the <code>python -m ipykernel install</code> command in the previous section. You can create and/or edit this file as needed. Note that below we have used $SCRATCH instead of the actual path but you will need to provide the full path to your python executable. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w"> </span><span class="nt">&quot;argv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;/global/software/rocky-8.x86_64/manual/modules/langs/anaconda3/2024.02-1/bin/python&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;$SCRATCH/cudapython/bin/python&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;ipykernel_launcher&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;{connection_file}&quot;</span>
 <span class="w"> </span><span class="p">],</span>
-<span class="w"> </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cupy Kernel&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUDA Python&quot;</span><span class="p">,</span>
 <span class="w"> </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
 <span class="w"> </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;debugger&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w"> </span><span class="p">},</span>
 <span class="w"> </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/cuda-12.2.1-c2hl2dx3hxmrylvdof6mjus4rfjq3d5i/bin:/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-8.5.0/gcc-11.4.0-nfcdl6bpyabpnhhasfzu6y4ge4kfskvl/bin:/global/software/rocky-8.x86_64/manual/modules/langs/anaconda3/2024.02-1/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/global/home/groups/allhands/bin&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/cuda-12.2.1-c2hl2dx3hxmrylvdof6mjus4rfjq3d5i/lib</span>
-<span class="s2">64&quot;</span>
+<span class="w">  </span><span class="nt">&quot;PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/location/to/path1:/location/to/path2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/location/to/path1:/location/to/path2&quot;</span>
 <span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2710,7 +2738,7 @@ conda<span class="w"> </span>activate<span class="w"> </span><span class="nv">$E
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span><span class="nv">$ENV_NAME</span>
 </code></pre></div>
 <p>From example, below we give an example of a custom python kernel in a conda environment that uses <code>python=3.12</code> and install <code>numpy=2.0.0</code> from <code>conda-forge</code> channel. </p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
 conda<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span>numpy2test<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>ipykernel
 conda<span class="w"> </span>activate<span class="w"> </span>numpy2test
 conda<span class="w"> </span>config<span class="w"> </span>--env<span class="w"> </span>-add<span class="w"> </span>channels<span class="w"> </span>conda-forge
@@ -2718,6 +2746,35 @@ conda<span class="w"> </span>install<span class="w"> </span><span class="nv">num
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>numpy2<span class="w"> </span>--display-name<span class="o">=</span><span class="s2">&quot;Numpy v2 (Python 3.12)&quot;</span>
 </code></pre></div>
 <p>Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand. </p>
+<h3 id="using-apptainer-images">Using apptainer images<a class="headerlink" href="#using-apptainer-images" title="Permanent link">&para;</a></h3>
+<p>It is also possible to create custom kernels using container images. For example, if you would like to use the NVIDIA RAPIDS docker image, first you need to convert it to an apptainer <code>sif</code> file. This can be done using <code>apptainer pull</code> command in your <code>scratch</code> directory as:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$SCRATCH</span>
+
+apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvcr.io/nvidia/rapidsai/notebooks:25.04-cuda12.8-py3.12
+</code></pre></div>
+<p>You can then manually create a <code>kernel.json</code> file in <code>~/.local/share/jupyter/kernels/rapids</code> with the following content.</p>
+<div class="highlight"><pre><span></span><code><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;argv&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">     </span><span class="s2">&quot;apptainer&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;exec&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;--nv&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;/path/to/notebooks_25.04-cuda11.8-py3.12.sif&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;python&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;-m&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;ipykernel_launcher&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;-f&quot;</span>,
+<span class="w">     </span><span class="s2">&quot;{connection_file}&quot;</span>
+<span class="w">    </span><span class="o">]</span>,
+<span class="w">    </span><span class="s2">&quot;display_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;RAPIDS 25.04 Kernel&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;language&quot;</span>:<span class="w"> </span><span class="s2">&quot;python&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;metadata&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">     </span><span class="s2">&quot;debugger&quot;</span>:<span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 
 
 
@@ -2738,7 +2795,7 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 2, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 15, 2025</span>
   </span>
 
     
