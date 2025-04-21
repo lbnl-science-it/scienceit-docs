@@ -7,7 +7,7 @@ The genetic database required for AlphaFold 3 is saved under the shared director
 ## Model Parameters
 The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms [Model Parameters Terms of Use](https://github.com/google-deepmind/alphafold3/blob/v3.0.0/WEIGHTS_TERMS_OF_USE.md){:target="_blank"} {{ ext }}.
 
-Lawrencium users interested in using AlphaFOld 3 are abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this [form](https://forms.gle/svvpY4u2jsHEwWYS6). If you have any questions about fields of the form then you may send us an inquiry at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov). Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory `model_param`. The parameters file is a single file approximately 1GB in size.
+Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this [form](https://forms.gle/svvpY4u2jsHEwWYS6). If you have any questions about fields of the form then you may send us an inquiry at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov). Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory `model_param`. The parameters file is a single file approximately 1GB in size.
 
 ## Loading AlphaFold 3 module
 
@@ -15,26 +15,29 @@ Lawrencium users interested in using AlphaFOld 3 are abide to above terms. Users
 module load ml/alphafold3
 ```
 
-The `ml/alphafold3` module defines various environment variables such as `ALPHAFOLD_DIR` and `DB_DIR` that can be used to run a job as shown below. Users will have to setup environment variable for `MODEL_PARAMETERS_DIR` before running the script ot it can be setup directly in the script as shown below.
+The `ml/alphafold3` module defines various environment variables such as `ALPHAFOLD_DIR` and `DB_DIR` that can be used to run a job as shown below. Users will have to setup environment variable for `MODEL_PARAMETERS_DIR` before running the script or it can be setup directly in the job submission script as shown below.
 ## Running 
 
-!!! note "Things to note"
+!!! note "Note"
 
-    * Use `python /app/alphafold/run_alphafold.py` when using the `alphafold3.sif` image from the `ml/alphafold3` image. This is different from the official instructions on the `alphafold3` github page.
+    * Use `python /app/alphafold/run_alphafold.py` when using the `alphafold3.sif` image from the `ml/alphafold3` module. This is different from the official instructions on the `alphafold3` github page. See the sample slurm script below.
 
-Below is a sample script to run the alphafold3 container after loading `ml/alphafold3` module:
+Below is a sample script to run `alphafold3` after loading `ml/alphafold3` module. It assumes the presence of `fold_input.json` in `$HOME/af_input` and saves output to `$HOME/af_output`. Please pay close attention to different options, path and variables and make changes as necessary.
 
 ``` bash
 #!/bin/bash
 #SBATCH --account=<account>
 #SBATCH --partition=es1
-#SBATCH --gres=gpu:A40:1
-#SBATCH --mincpus=16
+#SBATCH --gres=gpu:H100:1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=14
 #SBATCH --nodes=1
 #SBATCH --qos=es_normal
-#SBATCH --time=1:30:0
+#SBATCH --time=1:30:00
 
 module load ml/alphafold3
+
+# export MODEL_PARAMETERS_DIR variable according to where they are saved
 #If model parameters are saved in your home directory
 export MODEL_PARAMETERS_DIR=/global/home/users/$USER/model_param
 

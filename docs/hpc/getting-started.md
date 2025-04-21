@@ -1,9 +1,5 @@
 # Getting Started
 
-!!! info "About this page"
-
-    An overview of HPC User Documentation
-
 ## Project Accounts
 
 There are three primary ways/projects to obtain access to Lawrencium:
@@ -13,6 +9,10 @@ There are three primary ways/projects to obtain access to Lawrencium:
 * Recharge: charged at a minimal recharge rate roughly at $0.01/SU
 
 !!! question "[How to get a Project Account on Lawrencium?](accounts/project-accounts.md)"
+
+!!! note "Project Group Directories"
+
+    Project group directories are not created by default. If you would like to create group directories where your group members can share data and software, please send a request to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
 
 ## User Accounts
 

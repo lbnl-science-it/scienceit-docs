@@ -60,6 +60,8 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
+      - Acknowledgement: hpc/acknowledgement.md
+
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
@@ -67,30 +69,11 @@ nav:
       - Globus for Google Drive: data/globus-google-drive.md
       - Using the Globus AWS S3 Connector: data/globus-aws-s3-connector.md
       - Using the Globus Google Cloud Storage Connector: data/globus-google-cloud-storage-connector.md
-  #- Cloud Services:
-  #    - Cloud Overview: cloud/index.md
-  #    - Cloud Cost Comparisons: construction.md
-  #    - Cloud Service Providers:
-  #        - Google Cloud Platform: cloud/gcp.md
-  #        - Amazon Web Services: cloud/aws.md
-  #        - Microsoft Azure Cloud: construction.md
-  #    - Cloud User Support: construction.md
-  #    - Cloud Training Resources: construction.md
-  #- Services:
-  #    - Scientific Virtual Machines (SVM): construction.md
-  #    - Scientific Project Storage System (SPSS): construction.md
-  #    - Data Center Co-Location: construction.md
-  #    - Research Cluster Support: construction.md
-  #    - Software Module Farm: hpc/software/software-module-farm.md
-  #    - Cloud Computing Services: construction.md
-  #    - Science IT Consulting: construction.md
-  #- AI:
-  #    - GPU: construction.md
-  #    - ChatGPT: construction.md
-  #    - Inferencing
-  #- Scientific Computing Demos:
-  #    - Scientific Computing Demos Overview: demos/index.md
-  #    - Intro to Data Science for Postdocs: construction.md
+  - Cloud Services:
+     - Cloud Services: cloud/index.md
+     - Cloud Service Providers:
+         - Amazon Web Services: cloud/aws.md
+         - Google Cloud Platform: cloud/gcp.md
   - Support & Training:
       - HPC Help Desk: help.md
 
@@ -131,6 +114,7 @@ theme:
     - navigation.footer
     - navigation.indexes
     - navigation.tabs
+    - navigation.tabs.sticky
 
 markdown_extensions:
   - admonition
