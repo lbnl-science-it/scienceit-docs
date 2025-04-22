@@ -1,4 +1,6 @@
 site_name: Science IT Technical Documentation
+site_description: Science IT at LBNL technical documentation for HPC, Cloud and Data
+site_url: https://scienceit-docs.lbl.gov
 nav:
   - Home: index.md
   - High Performance Computing:
