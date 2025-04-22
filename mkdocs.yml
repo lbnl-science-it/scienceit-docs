@@ -86,6 +86,30 @@ plugins:
       fallback_to_build_date: false
       enable_creation_date: false
       enabled: true
+  - llmstxt:
+      full_output: llms-full.txt
+      sections: 
+        Usage and Help:
+          - index.md
+          - help.md
+        High Performance Computing:
+          - hpc/*.md
+          - hpc/accounts/*.md
+          - hpc/systems/supported/*.md
+          - hpc/software/*.md
+          - hpc/software/compilers/*.md
+          - hpc/software/languages/*.md
+          - hpc/software/ml/*.md
+          - hpc/software/applications/*.md
+          - hpc/software/mpi/*.md
+          - hpc/software/libraries/*.md
+          - hpc/running/*.md
+          - hpc/openondemand/*.md
+        Data Transfer:
+          - data/*.md
+        Cloud:
+          - cloud/*.md
+
 
 extra:
   ext: <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>

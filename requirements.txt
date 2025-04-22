@@ -4,3 +4,4 @@ mkdocs-jupyter==0.24.*
 mkdocs-macros-plugin==1.*
 mistune==3.0.*
 mkdocs-git-revision-date-localized-plugin==1.2.*
+mkdocs-llmstxt==0.2.*
