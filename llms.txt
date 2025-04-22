@@ -1,0 +1,70 @@
+# Science IT Technical Documentation
+
+> Science IT at LBNL technical documentation for HPC, Cloud and Data
+
+## Usage and Help
+
+- [Home](https://scienceit-docs.lbl.gov/index.md)
+- [HPC Help Desk](https://scienceit-docs.lbl.gov/help/index.md)
+
+## High Performance Computing
+
+- [Lawrencium Overview](https://scienceit-docs.lbl.gov/hpc/index.md)
+- [Acknowledgement](https://scienceit-docs.lbl.gov/hpc/acknowledgement/index.md)
+- [Using the lrc-xfer DTN](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md)
+- [Frequently Asked Questions](https://scienceit-docs.lbl.gov/hpc/faqs/index.md)
+- [Getting Started](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
+- [Live Cluster Status](https://scienceit-docs.lbl.gov/hpc/status/index.md)
+- [Logging in](https://scienceit-docs.lbl.gov/hpc/accounts/loggingin/index.md)
+- [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md)
+- [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
+- [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
+- [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md)
+- [Open OnDemand Overview](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md)
+- [Adding Packages and Kernels](https://scienceit-docs.lbl.gov/hpc/openondemand/packages-kernels/index.md)
+- [GNU Parallel](https://scienceit-docs.lbl.gov/hpc/running/gnu-parallel/index.md)
+- [Monitor Jobs](https://scienceit-docs.lbl.gov/hpc/running/monitor-jobs/index.md)
+- [Example Scripts](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md)
+- [Slurm Overview](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md)
+- [Module Management](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md)
+- [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md)
+- [VASP](https://scienceit-docs.lbl.gov/hpc/software/applications/vasp/index.md)
+- [GCC](https://scienceit-docs.lbl.gov/hpc/software/compilers/gcc/index.md)
+- [Intel](https://scienceit-docs.lbl.gov/hpc/software/compilers/intel/index.md)
+- [NVHPC](https://scienceit-docs.lbl.gov/hpc/software/compilers/nvhpc/index.md)
+- [R](https://scienceit-docs.lbl.gov/hpc/software/languages/R/index.md)
+- [Julia](https://scienceit-docs.lbl.gov/hpc/software/languages/julia/index.md)
+- [Python](https://scienceit-docs.lbl.gov/hpc/software/languages/python/index.md)
+- [CUDA](https://scienceit-docs.lbl.gov/hpc/software/libraries/cuda/index.md)
+- [FFTW](https://scienceit-docs.lbl.gov/hpc/software/libraries/fftw/index.md)
+- [HDF5](https://scienceit-docs.lbl.gov/hpc/software/libraries/hdf5/index.md)
+- [MKL](https://scienceit-docs.lbl.gov/hpc/software/libraries/mkl/index.md)
+- [NetCDF](https://scienceit-docs.lbl.gov/hpc/software/libraries/netcdf/index.md)
+- [Alphafold3](https://scienceit-docs.lbl.gov/hpc/software/ml/alphafold3/index.md)
+- [PyTorch](https://scienceit-docs.lbl.gov/hpc/software/ml/pytorch/index.md)
+- [TensorFlow](https://scienceit-docs.lbl.gov/hpc/software/ml/tensorflow/index.md)
+- [Intel MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/intelmpi/index.md)
+- [Open MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/openmpi/index.md)
+- [GPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)
+- [CPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/lawrencium/index.md)
+- [ALSACC](https://scienceit-docs.lbl.gov/hpc/systems/supported/alsacc/index.md)
+- [CATAMOUNT](https://scienceit-docs.lbl.gov/hpc/systems/supported/catamount/index.md)
+- [CATSCAN](https://scienceit-docs.lbl.gov/hpc/systems/supported/catscan/index.md)
+- [DIRAC1](https://scienceit-docs.lbl.gov/hpc/systems/supported/dirac1/index.md)
+- [ETNA](https://scienceit-docs.lbl.gov/hpc/systems/supported/etna/index.md)
+- [MHG](https://scienceit-docs.lbl.gov/hpc/systems/supported/mhg/index.md)
+
+## Data Transfer
+
+- [Using the Globus AWS S3 Connector](https://scienceit-docs.lbl.gov/data/globus-aws-s3-connector/index.md)
+- [Using the Globus Google Cloud Storage Connector](https://scienceit-docs.lbl.gov/data/globus-google-cloud-storage-connector/index.md)
+- [Globus for Google Drive](https://scienceit-docs.lbl.gov/data/globus-google-drive/index.md)
+- [Globus for Lawrencium](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md)
+- [Globus](https://scienceit-docs.lbl.gov/data/globus/index.md)
+
+## Cloud
+
+- [Cloud Services](https://scienceit-docs.lbl.gov/cloud/index.md)
+- [Amazon Web Services](https://scienceit-docs.lbl.gov/cloud/aws/index.md)
+- [Google Cloud Platform](https://scienceit-docs.lbl.gov/cloud/gcp/index.md)
+
