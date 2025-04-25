@@ -107,7 +107,13 @@ LBNL has made a significant investment in developing this platform to meet the m
 
 Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.
 
+### CPU Partitions Recharge Rates
+
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | lr4 | Exclusive | 0 | free | | lr5 | Exclusive | 0.50 | $0.0050 per Core CPU Hour | | lr6 | Exclusive | 0.75 | $0.0075 per Core CPU Hour | | lr7 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr8 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr_bigmem | Exclusive | 1.5 | $0.015 per Core CPU Hour | | cf1 | Exclusive | 0.4 | $0.004 per Core CPU Hour | | cm1 | Shared | 0.75 | $0.0075 per Core CPU Hour | | cm2 | Shared | 1.0 | $0.01 per Core CPU Hour | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour | | ood_inter | Shared | 1.0 | $0.01 per Core CPU Hour |
+
+### GPU Partitions Recharge Rates
+
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | es0 | Shared | 0 | free | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour |
 
 Usage Calculation
 
@@ -2326,19 +2332,21 @@ mpifort -o hellofortran hello_world.f90
 
 The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slrum job script.
 
-# Es1 (Einsteinium) GPU Cluster
+# Einsteinium GPU Cluster
 
-Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
+Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
-Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:
+## `es1` Partition
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB/192GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA H100 | 5 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |
+`es1` is a partition consisting of multiple GPU node types to address the different research needs. These include:
+
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA H100 | 5 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB or 192GB | FDR |
 
 H100 and CBORG
 
 Currently, we have five NVIDIA H100 nodes in our datacenter, four of which are available to users through slurm. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov) .
 
-## How to specify desired GPU card(s)
+### How to specify desired GPU card(s)
 
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
 
@@ -2350,7 +2358,7 @@ Examples:
 - Request one A100 cards: `--cpus-per-task=16 --gres=gpu:A100:1 --ntasks=1`
 - Request four GRTX8000 cards: `--cpus-per-task=16 --gres==gpu:GRTX8000:4 --ntasks=4`
 
-## Example slurm script
+Example slurm script on `es1`
 
 Here is an example slurm script that requests one NVIDIA A40 GPU card.
 
@@ -2364,6 +2372,65 @@ Here is an example slurm script that requests one NVIDIA A40 GPU card.
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gres=gpu:A40:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es1
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=14
+#SBATCH --gres=gpu:H100:4
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+## `es0` Partition
+
+`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](../../#gpu-partitions-recharge-rates).
+
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR |
+
+Example slurm script on `es0`
+
+```
+#!/bin/bash
+#SBATCH --job-name=testes0
+#SBATCH --account=account_name
+#SBATCH --partition=es0
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=testes0
+#SBATCH --account=account_name
+#SBATCH --partition=es0
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:4
 #SBATCH --time=1:00:00
 
 module load ml/pytorch

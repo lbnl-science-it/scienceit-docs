@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#es1-einsteinium-gpu-cluster" class="md-skip">
+        <a href="#einsteinium-gpu-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -740,6 +740,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#es1-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      es1 Partition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="es1 Partition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#how-to-specify-desired-gpu-cards" class="md-nav__link">
     <span class="md-ellipsis">
       How to specify desired GPU card(s)
@@ -747,11 +757,16 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#example-slurm-script" class="md-nav__link">
+  <a href="#es0-partition" class="md-nav__link">
     <span class="md-ellipsis">
-      Example slurm script
+      es0 Partition
     </span>
   </a>
   
@@ -2563,6 +2578,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#es1-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      es1 Partition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="es1 Partition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#how-to-specify-desired-gpu-cards" class="md-nav__link">
     <span class="md-ellipsis">
       How to specify desired GPU card(s)
@@ -2570,11 +2595,16 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#example-slurm-script" class="md-nav__link">
+  <a href="#es0-partition" class="md-nav__link">
     <span class="md-ellipsis">
-      Example slurm script
+      es0 Partition
     </span>
   </a>
   
@@ -2595,9 +2625,126 @@
                   
 
 
-<h1 id="es1-einsteinium-gpu-cluster">Es1 (Einsteinium) GPU Cluster<a class="headerlink" href="#es1-einsteinium-gpu-cluster" title="Permanent link">&para;</a></h1>
-<p>Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol <code>Es</code> and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.</p>
-<p>Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:</p>
+<h1 id="einsteinium-gpu-cluster">Einsteinium GPU Cluster<a class="headerlink" href="#einsteinium-gpu-cluster" title="Permanent link">&para;</a></h1>
+<p>Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol <code>Es</code> and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.</p>
+<h2 id="es1-partition"><code>es1</code> Partition<a class="headerlink" href="#es1-partition" title="Permanent link">&para;</a></h2>
+<p><code>es1</code> is a partition consisting of multiple GPU node types to address the different research needs. These include:</p>
+<table>
+<thead>
+<tr>
+<th>Accelerator</th>
+<th>Nodes</th>
+<th>GPUs per Node/GPU Memory</th>
+<th>CPU Processor</th>
+<th>CPU Cores</th>
+<th>CPU RAM</th>
+<th>Infiniband</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA H100</td>
+<td>5</td>
+<td>8x 80 GB</td>
+<td>Intel Xeon Platinum 8480+</td>
+<td>112</td>
+<td>1 TB</td>
+<td>NDR</td>
+</tr>
+<tr>
+<td>NVIDIA A100</td>
+<td>1</td>
+<td>4x 80 GB</td>
+<td>AMD EPYC 7713</td>
+<td>64</td>
+<td>512 GB</td>
+<td>HDR</td>
+</tr>
+<tr>
+<td>NVIDIA A40</td>
+<td>30</td>
+<td>4x 48 GB</td>
+<td>AMD EPYC 7742</td>
+<td>64</td>
+<td>512 GB</td>
+<td>FDR</td>
+</tr>
+<tr>
+<td>NVIDIA GRTX8000</td>
+<td>1</td>
+<td>4x 48 GB</td>
+<td>AMD EPYC 7713</td>
+<td>64</td>
+<td>512 GB</td>
+<td>HDR</td>
+</tr>
+<tr>
+<td>NVIDIA V100</td>
+<td>15</td>
+<td>2x 32 GB</td>
+<td>Intel Xeon E5-2623</td>
+<td>8</td>
+<td>64GB or 192GB</td>
+<td>FDR</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">H100 and CBORG</p>
+<p>Currently, we have five NVIDIA H100 nodes in our datacenter, four of which are available to users through slurm. One H100 node (8 GPUs) is used for LLM inference by <a href="http://cborg.lbl.gov" target="_blank">CBORG</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
+</div>
+<h3 id="how-to-specify-desired-gpu-cards">How to specify desired GPU card(s)<a class="headerlink" href="#how-to-specify-desired-gpu-cards" title="Permanent link">&para;</a></h3>
+<p>Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#</p>
+<p>Examples:</p>
+<ul>
+<li>Request one V100 card: <code>--cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1</code>  </li>
+<li>Request two A40 cards: <code>--cpus-per-task=16 --gres=gpu:A40:2 --ntasks=2</code></li>
+<li>Request three H100 cards: <code>--cpus-per-task=14 --gres=gpu:H100:3 --ntasks=3</code>  </li>
+<li>Request one A100 cards: <code>--cpus-per-task=16 --gres=gpu:A100:1 --ntasks=1</code>  </li>
+<li>Request four GRTX8000 cards: <code>--cpus-per-task=16 --gres==gpu:GRTX8000:4 --ntasks=4</code> </li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example slurm script on <code>es1</code></p>
+<p>Here is an example slurm script that requests one NVIDIA A40 GPU card.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Single GPU on a A40 node</label><label for="__tabbed_1_2">4 GPUs on a H100 node</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=test</span>
+<span class="c1">#SBATCH --account=account_name</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
+<span class="c1">#SBATCH --gres=gpu:A40:1</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
+python<span class="w"> </span>train.py
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=test</span>
+<span class="c1">#SBATCH --account=account_name</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=4</span>
+<span class="c1">#SBATCH --cpus-per-task=14</span>
+<span class="c1">#SBATCH --gres=gpu:H100:4</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
+python<span class="w"> </span>train.py
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="es0-partition"><code>es0</code> Partition<a class="headerlink" href="#es0-partition" title="Permanent link">&para;</a></h2>
+<p><code>es0</code> is a partition with NVIDIA 2080 TI GPUs that do not incur <a href="../../#gpu-partitions-recharge-rates">Service Unit (SU) charges</a>.</p>
 <table>
 <thead>
 <tr>
@@ -2620,83 +2767,47 @@
 <td>96GB</td>
 <td>FDR</td>
 </tr>
-<tr>
-<td>NVIDIA V100</td>
-<td>15</td>
-<td>2x 32 GB</td>
-<td>Intel Xeon E5-2623</td>
-<td>8</td>
-<td>64GB/192GB</td>
-<td>FDR</td>
-</tr>
-<tr>
-<td>NVIDIA GRTX8000</td>
-<td>1</td>
-<td>4x 48 GB</td>
-<td>AMD EPYC 7713</td>
-<td>64</td>
-<td>512 GB</td>
-<td>HDR</td>
-</tr>
-<tr>
-<td>NVIDIA A40</td>
-<td>30</td>
-<td>4x 48 GB</td>
-<td>AMD EPYC 7742</td>
-<td>64</td>
-<td>512 GB</td>
-<td>FDR</td>
-</tr>
-<tr>
-<td>NVIDIA A100</td>
-<td>1</td>
-<td>4x 80 GB</td>
-<td>AMD EPYC 7713</td>
-<td>64</td>
-<td>512 GB</td>
-<td>HDR</td>
-</tr>
-<tr>
-<td>NVIDIA H100</td>
-<td>5</td>
-<td>8x 80 GB</td>
-<td>Intel Xeon Platinum 8480+</td>
-<td>112</td>
-<td>1 TB</td>
-<td>NDR</td>
-</tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">H100 and CBORG</p>
-<p>Currently, we have five NVIDIA H100 nodes in our datacenter, four of which are available to users through slurm. One H100 node (8 GPUs) is used for LLM inference by <a href="http://cborg.lbl.gov" target="_blank">CBORG</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
-</div>
-<h2 id="how-to-specify-desired-gpu-cards">How to specify desired GPU card(s)<a class="headerlink" href="#how-to-specify-desired-gpu-cards" title="Permanent link">&para;</a></h2>
-<p>Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#</p>
-<p>Examples:</p>
-<ul>
-<li>Request one V100 card: <code>--cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1</code>  </li>
-<li>Request two A40 cards: <code>--cpus-per-task=16 --gres=gpu:A40:2 --ntasks=2</code></li>
-<li>Request three H100 cards: <code>--cpus-per-task=14 --gres=gpu:H100:3 --ntasks=3</code>  </li>
-<li>Request one A100 cards: <code>--cpus-per-task=16 --gres=gpu:A100:1 --ntasks=1</code>  </li>
-<li>Request four GRTX8000 cards: <code>--cpus-per-task=16 --gres==gpu:GRTX8000:4 --ntasks=4</code> </li>
-</ul>
-<h2 id="example-slurm-script">Example slurm script<a class="headerlink" href="#example-slurm-script" title="Permanent link">&para;</a></h2>
-<p>Here is an example slurm script that requests one NVIDIA A40 GPU card.</p>
+<div class="admonition example">
+<p class="admonition-title">Example slurm script on <code>es0</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Single GPU</label><label for="__tabbed_2_2">Four GPUs on a node</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=test</span>
+<span class="c1">#SBATCH --job-name=testes0</span>
 <span class="c1">#SBATCH --account=account_name</span>
-<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --partition=es0</span>
 <span class="c1">#SBATCH --qos=es_normal</span>
 <span class="c1">#SBATCH --nodes=1</span>
 <span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --cpus-per-task=16</span>
-<span class="c1">#SBATCH --gres=gpu:A40:1</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
 <span class="c1">#SBATCH --time=1:00:00</span>
 
 module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
 python<span class="w"> </span>train.py
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=testes0</span>
+<span class="c1">#SBATCH --account=account_name</span>
+<span class="c1">#SBATCH --partition=es0</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=4</span>
+<span class="c1">#SBATCH --cpus-per-task=2</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
+python<span class="w"> </span>train.py
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
 
@@ -2717,7 +2828,7 @@ python<span class="w"> </span>train.py
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 25, 2025</span>
   </span>
 
     

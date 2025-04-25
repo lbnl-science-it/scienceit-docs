@@ -2527,6 +2527,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Recharge Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-partitions-recharge-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Partitions Recharge Rates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-partitions-recharge-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Partitions Recharge Rates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2658,6 +2682,7 @@
 <h2 id="recharge-model">Recharge Model<a class="headerlink" href="#recharge-model" title="Permanent link">&para;</a></h2>
 <p>LBNL has made a significant investment in developing this platform to meet the midrange computing requirement at Berkeley Lab. The primary purpose is to provide a sustainable way to host all the condo projects while meeting the computing requirements from other users. To achieve this goal, condo users are allowed to run within their condo contributions for free. However normal users who would like to use the Lawrencium cluster are subject to the LBNL recharge rate. </p>
 <p>Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.</p>
+<h3 id="cpu-partitions-recharge-rates">CPU Partitions Recharge Rates<a class="headerlink" href="#cpu-partitions-recharge-rates" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2736,6 +2761,31 @@
 </tr>
 </tbody>
 </table>
+<h3 id="gpu-partitions-recharge-rates">GPU Partitions Recharge Rates<a class="headerlink" href="#gpu-partitions-recharge-rates" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Shared or Exclusive</th>
+<th>SU to Core CPU Hour Ratio</th>
+<th>Effective Recharge Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>es0</td>
+<td>Shared</td>
+<td>0</td>
+<td>free</td>
+</tr>
+<tr>
+<td>es1</td>
+<td>Shared</td>
+<td>1.0</td>
+<td>$0.01 per Core CPU Hour</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Usage Calculation</p>
 <p>The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one <code>lr5</code> node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since <strong>lr5</strong> nodes are allocated <strong>exclusively</strong> to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: </p>
@@ -2778,7 +2828,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 24, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 25, 2025</span>
   </span>
 
     

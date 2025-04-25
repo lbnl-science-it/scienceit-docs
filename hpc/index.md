@@ -29,7 +29,13 @@ LBNL has made a significant investment in developing this platform to meet the m
 
 Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.
 
+### CPU Partitions Recharge Rates
+
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | lr4 | Exclusive | 0 | free | | lr5 | Exclusive | 0.50 | $0.0050 per Core CPU Hour | | lr6 | Exclusive | 0.75 | $0.0075 per Core CPU Hour | | lr7 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr8 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr_bigmem | Exclusive | 1.5 | $0.015 per Core CPU Hour | | cf1 | Exclusive | 0.4 | $0.004 per Core CPU Hour | | cm1 | Shared | 0.75 | $0.0075 per Core CPU Hour | | cm2 | Shared | 1.0 | $0.01 per Core CPU Hour | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour | | ood_inter | Shared | 1.0 | $0.01 per Core CPU Hour |
+
+### GPU Partitions Recharge Rates
+
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | es0 | Shared | 0 | free | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour |
 
 Usage Calculation
 

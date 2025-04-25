@@ -1,16 +1,18 @@
-# Es1 (Einsteinium) GPU Cluster
+# Einsteinium GPU Cluster
 
-Es1 or Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
+Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
-Es1 is a partition consisting of multiple GPU node types to address the different research needs. These include:
+## `es1` Partition
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB/192GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA H100 | 5 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |
+`es1` is a partition consisting of multiple GPU node types to address the different research needs. These include:
+
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA H100 | 5 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB or 192GB | FDR |
 
 H100 and CBORG
 
 Currently, we have five NVIDIA H100 nodes in our datacenter, four of which are available to users through slurm. One H100 node (8 GPUs) is used for LLM inference by [CBORG](http://cborg.lbl.gov) .
 
-## How to specify desired GPU card(s)
+### How to specify desired GPU card(s)
 
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
 
@@ -22,7 +24,7 @@ Examples:
 - Request one A100 cards: `--cpus-per-task=16 --gres=gpu:A100:1 --ntasks=1`
 - Request four GRTX8000 cards: `--cpus-per-task=16 --gres==gpu:GRTX8000:4 --ntasks=4`
 
-## Example slurm script
+Example slurm script on `es1`
 
 Here is an example slurm script that requests one NVIDIA A40 GPU card.
 
@@ -36,6 +38,65 @@ Here is an example slurm script that requests one NVIDIA A40 GPU card.
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gres=gpu:A40:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es1
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=14
+#SBATCH --gres=gpu:H100:4
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+## `es0` Partition
+
+`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](../../#gpu-partitions-recharge-rates).
+
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR |
+
+Example slurm script on `es0`
+
+```
+#!/bin/bash
+#SBATCH --job-name=testes0
+#SBATCH --account=account_name
+#SBATCH --partition=es0
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=testes0
+#SBATCH --account=account_name
+#SBATCH --partition=es0
+#SBATCH --qos=es_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:4
 #SBATCH --time=1:00:00
 
 module load ml/pytorch
