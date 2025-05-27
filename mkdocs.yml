@@ -60,6 +60,7 @@ nav:
       - Using Open OnDemand:
           - Open OnDemand Overview: hpc/openondemand/overview.md
           - Jupyter Server: hpc/openondemand/jupyter-server.md
+          - Jupyter AI with Ollama: hpc/openondemand/jupyter-ai-ollama.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
           - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
       - Acknowledgement: hpc/acknowledgement.md
