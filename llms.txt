@@ -21,6 +21,7 @@
 - [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
 - [Jupyter AI with Ollama](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-ai-ollama/index.md)
 - [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md)
+- [Ollama with Jupyter and VS Code](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/index.md)
 - [Open OnDemand Overview](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md)
 - [Adding Packages and Kernels](https://scienceit-docs.lbl.gov/hpc/openondemand/packages-kernels/index.md)
 - [GNU Parallel](https://scienceit-docs.lbl.gov/hpc/running/gnu-parallel/index.md)

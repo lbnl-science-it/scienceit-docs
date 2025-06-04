@@ -29,7 +29,7 @@ To use [Jupyter AI](https://jupyter-ai.readthedocs.io/) on LRC Open Ondemand, fo
 
    - Enter the hours to run on Jupyter Server (default value is 1 hour).
 
-   Example form for choosing two GTX2080TI GPU cards on es0 partition
+   Example form for choosing one GTX2080TI GPU card on es0 partition
 
 1. Click **Launch**. Upon clicking **Launch**, you may have to wait for the requested resource to be allocated.
 

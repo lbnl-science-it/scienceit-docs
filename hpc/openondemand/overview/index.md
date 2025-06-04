@@ -5,6 +5,7 @@ We provide various interactive Apps through the browser-based Open OnDemand serv
 The available Apps/services include:
 
 - Jupyter notebooks
+- Ollama
 - RStudio
 - Matlab
 - VS Code
