@@ -18,26 +18,9 @@ If you click on **Connect to Jupyter**, you will get a Jupyter Lab instance with
 
 Jupyter AI Interface
 
-You can use [`ollama` python](https://github.com/ollama/ollama-python) module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
+### Changing model on Jupyter AI
 
-`ollama-python` example
-
-```
-import ollama
-import os
-client = Client(host=os.environ["OLLAMA_HOST"])
-response = client.chat(model='llama3.2:1b', 
-                    messages=[{'role': 'user', 'content': 'Hello'}])
-
-```
-
-## Ollama on VS Code
-
-If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
-
-VS Code Continue Interface
-
-Because `ollama` is running when you start the **Ollama - JupyterAI & VS Code Continue** app, you can open a terminal either through Ollama on Jupyter or through Ollama on VS Code to list the available models using the `ollama list` command.
+To change the model, you will need to type in the model name from the list of currently available models; for example: `devstral:24b`, `gemma3:12b`. A complete list can be obtained by using the `ollama list` command on a terminal (File > New > Terminal).
 
 `ollama list`
 
@@ -62,3 +45,24 @@ gemma3:12b-it-qat        5d4fa005e7bb    8.9 GB    4 weeks ago
 gemma3:1b                8648f39daa8f    815 MB    4 weeks ago    
 
 ```
+
+### Using `ollama` python library on Jupyter notebooks
+
+You can use [`ollama` python](https://github.com/ollama/ollama-python) module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
+
+`ollama-python` example
+
+```
+import ollama
+import os
+client = Client(host=os.environ["OLLAMA_HOST"])
+response = client.chat(model='llama3.2:1b', 
+                    messages=[{'role': 'user', 'content': 'Hello'}])
+
+```
+
+## Ollama on VS Code
+
+If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
+
+VS Code Continue Interface

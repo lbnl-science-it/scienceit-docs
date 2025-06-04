@@ -2074,6 +2074,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Ollama on Jupyter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-model-on-jupyter-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing model on Jupyter AI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-ollama-python-library-on-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using ollama python library on Jupyter notebooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2615,6 +2639,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Ollama on Jupyter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-model-on-jupyter-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing model on Jupyter AI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-ollama-python-library-on-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using ollama python library on Jupyter notebooks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2664,23 +2712,8 @@
 <summary>Jupyter AI Interface</summary>
 <p><img alt="Jupyter AI Interface" src="../images/jupyter-ai-chat.png" /></p>
 </details>
-<p>You can use <a href="https://github.com/ollama/ollama-python" target="_blank"><code>ollama</code> python</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> module to interact with Ollama in a notebook using the default <code>Python 3 (ipykernel)</code> kernel. For example:</p>
-<div class="admonition note">
-<p class="admonition-title"><code>ollama-python</code> example</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ollama</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OLLAMA_HOST&quot;</span><span class="p">])</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;llama3.2:1b&#39;</span><span class="p">,</span> 
-                    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello&#39;</span><span class="p">}])</span>
-</code></pre></div>
-</div>
-<h2 id="ollama-on-vs-code">Ollama on VS Code<a class="headerlink" href="#ollama-on-vs-code" title="Permanent link">&para;</a></h2>
-<p>If you click on <strong>Connect to VS Code</strong>, you will get a VS Code server instance with <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue" target="_blank">Continue</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.</p>
-<details class="note">
-<summary>VS Code Continue Interface</summary>
-<p><img alt="VS Code Continue Interface" src="../images/vscode-continue.png" /></p>
-</details>
-<p>Because <code>ollama</code> is running when you start the <strong>Ollama - JupyterAI &amp; VS Code Continue</strong> app, you can open a terminal either through Ollama on Jupyter or through Ollama on VS Code to list the available models using the <code>ollama list</code> command.</p>
+<h3 id="changing-model-on-jupyter-ai">Changing model on Jupyter AI<a class="headerlink" href="#changing-model-on-jupyter-ai" title="Permanent link">&para;</a></h3>
+<p>To change the model, you will need to type in the model name from the list of currently available models; for example: <code>devstral:24b</code>, <code>gemma3:12b</code>. A complete list can be obtained by using the <code>ollama list</code> command on a terminal (File &gt; New &gt; Terminal).</p>
 <details class="note">
 <summary><code>ollama list</code></summary>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>user@hostname<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ollama<span class="w"> </span>list
@@ -2702,6 +2735,23 @@ gemma3:12b<span class="w">               </span>f4031aab637d<span class="w">    
 gemma3:12b-it-qat<span class="w">        </span>5d4fa005e7bb<span class="w">    </span><span class="m">8</span>.9<span class="w"> </span>GB<span class="w">    </span><span class="m">4</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">    </span>
 gemma3:1b<span class="w">                </span>8648f39daa8f<span class="w">    </span><span class="m">815</span><span class="w"> </span>MB<span class="w">    </span><span class="m">4</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">    </span>
 </code></pre></div>
+</details>
+<h3 id="using-ollama-python-library-on-jupyter-notebooks">Using <code>ollama</code> python library on Jupyter notebooks<a class="headerlink" href="#using-ollama-python-library-on-jupyter-notebooks" title="Permanent link">&para;</a></h3>
+<p>You can use <a href="https://github.com/ollama/ollama-python" target="_blank"><code>ollama</code> python</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> module to interact with Ollama in a notebook using the default <code>Python 3 (ipykernel)</code> kernel. For example:</p>
+<div class="admonition note">
+<p class="admonition-title"><code>ollama-python</code> example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ollama</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OLLAMA_HOST&quot;</span><span class="p">])</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;llama3.2:1b&#39;</span><span class="p">,</span> 
+                    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello&#39;</span><span class="p">}])</span>
+</code></pre></div>
+</div>
+<h2 id="ollama-on-vs-code">Ollama on VS Code<a class="headerlink" href="#ollama-on-vs-code" title="Permanent link">&para;</a></h2>
+<p>If you click on <strong>Connect to VS Code</strong>, you will get a VS Code server instance with <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue" target="_blank">Continue</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.</p>
+<details class="note">
+<summary>VS Code Continue Interface</summary>
+<p><img alt="VS Code Continue Interface" src="../images/vscode-continue.png" /></p>
 </details>
 
 
