@@ -19,24 +19,8 @@ If you click on **Connect to Jupyter**, you will get a Jupyter Lab instance with
 ??? note "Jupyter AI Interface"
     ![Jupyter AI Interface](images/jupyter-ai-chat.png)
 
-You can use [`ollama` python](https://github.com/ollama/ollama-python){:target="_blank"} {{ ext }} module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
-
-!!! note "`ollama-python` example"
-    ``` python
-    import ollama
-    import os
-    client = Client(host=os.environ["OLLAMA_HOST"])
-    response = client.chat(model='llama3.2:1b', 
-                        messages=[{'role': 'user', 'content': 'Hello'}])
-    ```
-
-## Ollama on VS Code
-If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue){:target="_blank"} {{ ext }} extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
-
-??? note "VS Code Continue Interface"
-    ![VS Code Continue Interface](images/vscode-continue.png)
-
-Because `ollama` is running when you start the **Ollama - JupyterAI & VS Code Continue** app, you can open a terminal either through Ollama on Jupyter or through Ollama on VS Code to list the available models using the `ollama list` command.
+### Changing model on Jupyter AI
+To change the model, you will need to type in the model name from the list of currently available models; for example: `devstral:24b`, `gemma3:12b`. A complete list can be obtained by using the `ollama list` command on a terminal (File > New > Terminal).
 
 ??? note "`ollama list`"
     ``` bash
@@ -59,3 +43,24 @@ Because `ollama` is running when you start the **Ollama - JupyterAI & VS Code Co
     gemma3:12b-it-qat        5d4fa005e7bb    8.9 GB    4 weeks ago    
     gemma3:1b                8648f39daa8f    815 MB    4 weeks ago    
     ```
+
+### Using `ollama` python library on Jupyter notebooks
+You can use [`ollama` python](https://github.com/ollama/ollama-python){:target="_blank"} {{ ext }} module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
+
+!!! note "`ollama-python` example"
+    ``` python
+    import ollama
+    import os
+    client = Client(host=os.environ["OLLAMA_HOST"])
+    response = client.chat(model='llama3.2:1b', 
+                        messages=[{'role': 'user', 'content': 'Hello'}])
+    ```
+
+## Ollama on VS Code
+If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue){:target="_blank"} {{ ext }} extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
+
+??? note "VS Code Continue Interface"
+    ![VS Code Continue Interface](images/vscode-continue.png)
+
+
+
