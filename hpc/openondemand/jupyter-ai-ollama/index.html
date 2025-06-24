@@ -13,10 +13,6 @@
         <link rel="canonical" href="https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-ai-ollama/">
       
       
-        <link rel="prev" href="../ollama-jupyter-vscode/">
-      
-      
-        <link rel="next" href="../packages-kernels/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -24,7 +20,7 @@
     
     
       
-        <title>Jupyter AI with Ollama - Science IT Technical Documentation</title>
+        <title>Using Jupyter AI with Ollama - Science IT Technical Documentation</title>
       
     
     
@@ -121,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jupyter AI with Ollama
+              Using Jupyter AI with Ollama
             
           </span>
         </div>
@@ -199,12 +195,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../" class="md-tabs__link">
           
   
@@ -340,8 +334,6 @@
       
   
   
-    
-  
   
   
     
@@ -374,17 +366,14 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           
@@ -400,13 +389,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             High Performance Computing
@@ -1923,14 +1912,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
       
         
       
@@ -1948,11 +1933,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
         
           
           <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
@@ -1966,7 +1951,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_10">
             <span class="md-nav__icon md-icon"></span>
             Using Open OnDemand
@@ -2031,37 +2016,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Jupyter AI with Ollama
-  </span>
-  
-
-      </a>
-      
     </li>
   
 
@@ -2568,50 +2522,7 @@
 
 
 <h1 id="using-jupyter-ai-with-ollama">Using Jupyter AI with Ollama<a class="headerlink" href="#using-jupyter-ai-with-ollama" title="Permanent link">&para;</a></h1>
-<p>To use <a href="https://jupyter-ai.readthedocs.io/" target="_blank">Jupyter AI</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> on LRC Open Ondemand, follow the following steps. In the example, we will use <code>es0</code> partition as an example, but you are free to use other partitions that are available to you. However, note that Large Language Models (LLMs) work faster and more efficiently on GPU nodes.</p>
-<ol>
-<li>
-<p>Choose the <strong>Jupyter Server</strong> option from the list of apps. Select the following parameters in the form presented:</p>
-<ul>
-<li>Choose <code>anaconda3/2024.10-1-11.4</code> option for the anaconda version.</li>
-<li>Type in (or copy) the following additional modules in the <strong>Extra software modules you wish to use</strong> textbox (two modules are separated by a space):
-<div class="highlight"><pre><span></span><code>ai/jupyter-ai/2.31.4 ai/ollama/0.6.8
-</code></pre></div></li>
-<li>(Optional) Type in a <strong>Name of the job</strong>.</li>
-<li>Choose a <strong>SLURM Partition</strong> from the list. <code>es0</code> or <code>es1</code> is recommended. If you choose <code>es1</code> then you will have to choose a <strong>GPU Type from a dropdown</strong>.</li>
-<li>Choose <strong>SLURM Project/Account Name</strong> and <strong>QoS</strong> according to the availability on the dropdowns and your needs. For <strong>Qos</strong>, you can choose <code>lr_normal</code> or <code>es_normal</code> if you are unsure.</li>
-<li>Select number of GPU cards to use. The number of GPU cards to use can range from 1 to the maximum number specified in the <strong>GPU Type dropdown box</strong>. Start with <strong>1</strong> to check if that is enough for your use.</li>
-<li>
-<p>Select the number of CPU cores per node.     If you are on <code>es0</code>, use 2 cores per GPU. If you are on <code>es1</code>, use the following CPU cores / GPU to guide your choice per node.</p>
-<ul>
-<li><code>V100</code>: 2 cores per GPU</li>
-<li><code>A40</code>: 16 cores per GPU</li>
-<li><code>H100</code>: 14 cores per GPU</li>
-</ul>
-</li>
-<li>
-<p>Enter the hours to run on Jupyter Server (default value is 1 hour). </p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Example form for choosing one GTX2080TI GPU card on es0 partition</p>
-<p><img alt="Jupyter AI Option" src="../images/jupyter-ai-ood-example.png" /></p>
-</div>
-</li>
-<li>
-<p>Click <strong>Launch</strong>. Upon clicking <strong>Launch</strong>, you may have to wait for the requested resource to be allocated.</p>
-</li>
-<li>When the server is ready, Click on the <strong>Connect to Jupyter</strong> button to open your jupyter server session.
-    <img alt="Jupyter Connect" src="../images/jupyter-ai-launch.png" /></li>
-<li>After clicking on <strong>Connect to Jupyter</strong>, you will enter the JupyterLab interface. To start <strong>Ollma</strong>, follow the steps:<ul>
-<li>Open a new Terminal: File &gt; New &gt; Terminal</li>
-<li>On the terminal type and enter the command <code>start-ollama.sh</code></li>
-<li>Once the script lists Ollama models, it means that Ollama is running on the node you have requested and available to you to use through the <code>jupyter-ai</code> extension</li>
-</ul>
-</li>
-<li>Click on the Jupyter AI chat interface on the left-side of the JupyterLab workspace. To change models or settings click on the settings icon of the Jupyter AI interface on the top right corner.
-    <img alt="Jupyter AI Interface" src="../images/jupyter-ai-chat.png" /></li>
-</ol>
+<p>Please see <a href="../ollama-jupyter-vscode/">Ollama with Jupyter and VS Code</a></p>
 
 
 
@@ -2632,7 +2543,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 24, 2025</span>
   </span>
 
     
