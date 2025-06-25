@@ -2674,7 +2674,8 @@ ls<span class="w"> </span>file*out
 <span class="c1">#SBATCH --job-name=job-name</span>
 <span class="c1">#SBATCH --account=account_name</span>
 <span class="c1">#SBATCH --partition=partition_name</span>
-<span class="c1">#SBATCH --nodes=2.</span>
+<span class="c1">#SBATCH --qos=qos_name</span>
+<span class="c1">#SBATCH --nodes=2</span>
 <span class="c1">#SBATCH --time=2:00:00</span>
 <span class="c1">## Command(s) to run (example):</span>
 <span class="c1">#</span>
@@ -2687,13 +2688,13 @@ module<span class="w"> </span>load<span class="w">  </span>bio/blast-plus<span c
 <span class="c1">## JOBS_PER_NODE=$(( $SLURM_CPUS_ON_NODE  / NTHREADS ))</span>
 <span class="c1">## when memory footprint is large, JOBS_PER_NODE needs to be set ; $SLURM_CPUS_ON_NODE</span>
 <span class="c1">#</span>
-<span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>s/<span class="se">\,</span>/<span class="se">\\</span>n/g<span class="p">;</span><span class="w"> </span>hostfile
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>s/<span class="se">\,</span>/<span class="se">\\</span>n/g<span class="w"> </span>&gt;<span class="w"> </span>hostfile
 <span class="c1">## when GNU parallel can&#39;t detect core# of remote nodes, say --progress/--eta,</span>
 <span class="c1">## core# should be prepended to hostnames. e.g. 32/n0149.savio3</span>
 <span class="c1">## echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g |awk -v cores=$SLURM_CPUS_ON_NODE &#39;{print cores&quot;/&quot;$1}&#39;hostfile&lt;</span>
 <span class="c1">#</span>
 parallel<span class="w"> </span>--jobs<span class="w"> </span><span class="nv">$JOBS_PER_NODE</span><span class="w"> </span>--slf<span class="w"> </span>hostfile<span class="w"> </span>--wd<span class="w"> </span><span class="nv">$WDIR</span><span class="w"> </span>--joblog<span class="w"> </span>task.log<span class="w"> </span>--resume<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
---colsep<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>-a<span class="w"> </span>task.lst<span class="w"> </span>sh<span class="w"> </span>run-blast.sh<span class="w"> </span><span class="o">{}</span><span class="w"> </span>output/<span class="o">{</span>/.<span class="o">}</span>.blst<span class="w"> </span><span class="nv">$NTHREADS</span><span class="w"> </span>
+--colsep<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>-a<span class="w"> </span>task.lst<span class="w"> </span>sh<span class="w"> </span>run-blast.sh<span class="w"> </span><span class="o">{}</span><span class="w"> </span>output/<span class="o">{</span>/.<span class="o">}</span>.blst<span class="w"> </span>
 </code></pre></div></p>
 <ul>
 <li><code>-a</code>: task list as input to GNU parallel</li>
@@ -2769,7 +2770,7 @@ today<span class="w"> </span><span class="nv">date</span><span class="w"> </span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2025</span>
   </span>
 
     
