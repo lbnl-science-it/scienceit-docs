@@ -45,7 +45,8 @@ e.g., blast.slurm, where gnu-parallel flags are setup and independent tasks are 
 #SBATCH --job-name=job-name
 #SBATCH --account=account_name
 #SBATCH --partition=partition_name
-#SBATCH --nodes=2.
+#SBATCH --qos=qos_name
+#SBATCH --nodes=2
 #SBATCH --time=2:00:00
 ## Command(s) to run (example):
 #
@@ -58,13 +59,13 @@ export JOBS_PER_NODE=$SLURM_CPUS_ON_NODE
 ## JOBS_PER_NODE=$(( $SLURM_CPUS_ON_NODE  / NTHREADS ))
 ## when memory footprint is large, JOBS_PER_NODE needs to be set ; $SLURM_CPUS_ON_NODE
 #
-echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g; hostfile
+echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g > hostfile
 ## when GNU parallel can't detect core# of remote nodes, say --progress/--eta,
 ## core# should be prepended to hostnames. e.g. 32/n0149.savio3
 ## echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g |awk -v cores=$SLURM_CPUS_ON_NODE '{print cores"/"$1}'hostfile<
 #
 parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress \
---colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst $NTHREADS 
+--colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst 
 ```
 
 * `-a`: task list as input to GNU parallel
