@@ -12,9 +12,11 @@ There are three primary ways to obtain access to Lawrencium:
 
 To request a PCA, Condo or Recharge project on Lawrencium, please send your requests at [myLRC portal](https://mylrc.lbl.gov/) . Make sure choosing the desired project type on the form.
 
-### Changing Your ProjectID
+### Changing Your ProjectID and Valid ProjectID
 
 If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
+
+To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied.
 
 ### Allocations
 
