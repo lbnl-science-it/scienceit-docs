@@ -78,7 +78,8 @@ nav:
          - Amazon Web Services: cloud/aws.md
          - Google Cloud Platform: cloud/gcp.md
   - Support & Training:
-      - HPC Help Desk: help.md
+      - HPC Help Desk: help/index.md
+      - Asking LLMs: help/llms.md
 
 plugins:
   - search
