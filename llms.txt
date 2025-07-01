@@ -5,7 +5,7 @@
 ## Usage and Help
 
 - [Home](https://scienceit-docs.lbl.gov/index.md)
-- [HPC Help Desk](https://scienceit-docs.lbl.gov/help/index.md)
+- [Science IT Support](https://scienceit-docs.lbl.gov/help/index.md)
 
 ## High Performance Computing
 

@@ -10,28 +10,26 @@
       
       
       
-        <link rel="canonical" href="https://scienceit-docs.lbl.gov/hpc/software/mpi/intelmpi/">
+        <link rel="canonical" href="https://scienceit-docs.lbl.gov/help/llms/">
       
       
-        <link rel="prev" href="../openmpi/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../libraries/fftw/">
       
-      
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Intel MPI - Science IT Technical Documentation</title>
+        <title>Asking LLMs - Science IT Technical Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -86,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intel-mpi" class="md-skip">
+        <a href="#asking-llms" class="md-skip">
           Skip to content
         </a>
       
@@ -102,9 +100,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Intel MPI
+              Asking LLMs
             
           </span>
         </div>
@@ -184,7 +182,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -199,13 +197,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../hpc/" class="md-tabs__link">
           
   
     
@@ -225,7 +221,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../data/globus/" class="md-tabs__link">
+        <a href="../../data/globus/" class="md-tabs__link">
           
   
     
@@ -245,7 +241,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../cloud/" class="md-tabs__link">
+        <a href="../../cloud/" class="md-tabs__link">
           
   
     
@@ -261,11 +257,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../help/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -306,9 +304,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     Science IT Technical Documentation
@@ -323,7 +321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -340,8 +338,6 @@
       
   
   
-    
-  
   
   
     
@@ -374,22 +370,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../hpc/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -400,13 +393,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             High Performance Computing
@@ -422,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../status/" class="md-nav__link">
+      <a href="../../hpc/status/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -443,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/" class="md-nav__link">
+      <a href="../../hpc/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -464,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faqs/" class="md-nav__link">
+      <a href="../../hpc/faqs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../accounts/project-accounts/" class="md-nav__link">
+      <a href="../../hpc/accounts/project-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../accounts/user-accounts/" class="md-nav__link">
+      <a href="../../hpc/accounts/user-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../accounts/loggingin/" class="md-nav__link">
+      <a href="../../hpc/accounts/loggingin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../accounts/mfa/" class="md-nav__link">
+      <a href="../../hpc/accounts/mfa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/lawrencium/" class="md-nav__link">
+      <a href="../../hpc/systems/lawrencium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -692,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/einsteinium/" class="md-nav__link">
+      <a href="../../hpc/systems/einsteinium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -765,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/alsacc/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/alsacc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -786,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/catamount/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/catamount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/catscan/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/catscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -828,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/dirac1/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/dirac1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -849,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/etna/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/etna/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -870,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../systems/supported/mhg/" class="md-nav__link">
+      <a href="../../hpc/systems/supported/mhg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -951,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-transfer-node/" class="md-nav__link">
+      <a href="../../hpc/data-transfer-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -972,7 +965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus-instructions/" class="md-nav__link">
+      <a href="../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,10 +991,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1027,11 +1018,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
         
           
           <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
@@ -1045,7 +1036,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_8">
             <span class="md-nav__icon md-icon"></span>
             Software
@@ -1059,7 +1050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../software-module-farm/" class="md-nav__link">
+      <a href="../../hpc/software/software-module-farm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1080,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module-management/" class="md-nav__link">
+      <a href="../../hpc/software/module-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1147,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compilers/gcc/" class="md-nav__link">
+      <a href="../../hpc/software/compilers/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1168,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compilers/intel/" class="md-nav__link">
+      <a href="../../hpc/software/compilers/intel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1189,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compilers/nvhpc/" class="md-nav__link">
+      <a href="../../hpc/software/compilers/nvhpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../languages/python/" class="md-nav__link">
+      <a href="../../hpc/software/languages/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1285,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../languages/julia/" class="md-nav__link">
+      <a href="../../hpc/software/languages/julia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../languages/R/" class="md-nav__link">
+      <a href="../../hpc/software/languages/R/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml/pytorch/" class="md-nav__link">
+      <a href="../../hpc/software/ml/pytorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml/tensorflow/" class="md-nav__link">
+      <a href="../../hpc/software/ml/tensorflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml/alphafold3/" class="md-nav__link">
+      <a href="../../hpc/software/ml/alphafold3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1494,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../applications/vasp/" class="md-nav__link">
+      <a href="../../hpc/software/applications/vasp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1520,10 +1511,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1537,11 +1526,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_7" >
         
           
           <label class="md-nav__link" for="__nav_2_8_7" id="__nav_2_8_7_label" tabindex="0">
@@ -1555,7 +1544,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_8_7">
             <span class="md-nav__icon md-icon"></span>
             MPI
@@ -1569,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openmpi/" class="md-nav__link">
+      <a href="../../hpc/software/mpi/openmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1587,30 +1576,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Intel MPI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../hpc/software/mpi/intelmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1619,53 +1588,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#loading-intel-mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loading Intel MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compiling-mpi-applications-with-intel-mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compiling MPI applications with Intel MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-mpi-applications-using-intel-mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running MPI applications using Intel MPI
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1736,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/fftw/" class="md-nav__link">
+      <a href="../../hpc/software/libraries/fftw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/hdf5/" class="md-nav__link">
+      <a href="../../hpc/software/libraries/hdf5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/netcdf/" class="md-nav__link">
+      <a href="../../hpc/software/libraries/netcdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1799,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/mkl/" class="md-nav__link">
+      <a href="../../hpc/software/libraries/mkl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1820,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../libraries/cuda/" class="md-nav__link">
+      <a href="../../hpc/software/libraries/cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1905,7 +1827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../running/slurm-overview/" class="md-nav__link">
+      <a href="../../hpc/running/slurm-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1926,7 +1848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../running/script-examples/" class="md-nav__link">
+      <a href="../../hpc/running/script-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1947,7 +1869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../running/monitor-jobs/" class="md-nav__link">
+      <a href="../../hpc/running/monitor-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1968,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../running/gnu-parallel/" class="md-nav__link">
+      <a href="../../hpc/running/gnu-parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2047,7 +1969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openondemand/overview/" class="md-nav__link">
+      <a href="../../hpc/openondemand/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2068,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openondemand/jupyter-server/" class="md-nav__link">
+      <a href="../../hpc/openondemand/jupyter-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2089,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openondemand/ollama-jupyter-vscode/" class="md-nav__link">
+      <a href="../../hpc/openondemand/ollama-jupyter-vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2110,7 +2032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openondemand/packages-kernels/" class="md-nav__link">
+      <a href="../../hpc/openondemand/packages-kernels/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2131,7 +2053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../tutorials/jupyter-gpu/" class="md-nav__link">
+      <a href="../../tutorials/jupyter-gpu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2160,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../acknowledgement/" class="md-nav__link">
+      <a href="../../hpc/acknowledgement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2238,7 +2160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus/" class="md-nav__link">
+      <a href="../../data/globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2259,7 +2181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus-instructions/" class="md-nav__link">
+      <a href="../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2280,7 +2202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus-google-drive/" class="md-nav__link">
+      <a href="../../data/globus-google-drive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2301,7 +2223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus-aws-s3-connector/" class="md-nav__link">
+      <a href="../../data/globus-aws-s3-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2322,7 +2244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
+      <a href="../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2373,7 +2295,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../cloud/" class="md-nav__link ">
+            <a href="../../cloud/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2450,7 +2372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../cloud/aws/" class="md-nav__link">
+      <a href="../../cloud/aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2471,7 +2393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../cloud/gcp/" class="md-nav__link">
+      <a href="../../cloud/gcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2504,6 +2426,8 @@
       
   
   
+    
+  
   
   
     
@@ -2518,19 +2442,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../help/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2541,13 +2468,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Support & Training
@@ -2560,10 +2487,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../help/llms/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Asking LLMs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2572,6 +2519,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-scienceit-docs-as-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using scienceit-docs as context
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2611,27 +2587,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#loading-intel-mpi" class="md-nav__link">
+  <a href="#using-scienceit-docs-as-context" class="md-nav__link">
     <span class="md-ellipsis">
-      Loading Intel MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compiling-mpi-applications-with-intel-mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compiling MPI applications with Intel MPI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-mpi-applications-using-intel-mpi" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running MPI applications using Intel MPI
+      Using scienceit-docs as context
     </span>
   </a>
   
@@ -2652,49 +2610,9 @@
                   
 
 
-<h1 id="intel-mpi">Intel MPI<a class="headerlink" href="#intel-mpi" title="Permanent link">&para;</a></h1>
-<h2 id="loading-intel-mpi">Loading Intel MPI<a class="headerlink" href="#loading-intel-mpi" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-compilers
-<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-mpi
-<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
-
-Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
-<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>intel-oneapi-compilers/2023.1.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>intel-oneapi-mpi/2021.10.0
-</code></pre></div>
-<h2 id="compiling-mpi-applications-with-intel-mpi">Compiling MPI applications with Intel MPI<a class="headerlink" href="#compiling-mpi-applications-with-intel-mpi" title="Permanent link">&para;</a></h2>
-<p>Open MPI compiler wrappers <code>mpiicx</code>, <code>mpiicpx</code>, <code>mpiifx</code> can be used to compile MPI applications. For hello world C/C++/Fortran examples:</p>
-<div class="admonition example">
-<p class="admonition-title">Examples</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Fortran</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>mpiicx<span class="w"> </span>-o<span class="w"> </span>helloc<span class="w"> </span>hello_world.c
-</code></pre></div>
-<p><code>mpiicx</code> is the MPI wrapper to the Intel(R) C/C++ compiler and should be used to compile and link C programs</p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>mpiicpx<span class="w"> </span>-o<span class="w"> </span>hellocxx<span class="w"> </span>hello_world.cpp
-</code></pre></div>
-<p><code>mpiicpx</code> is the MPI wrapper to the Intel(R) oneAPI DPC++/C++ Compiler and should be used to compile and link C++ programs</p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>mpiifx<span class="w"> </span>-o<span class="w"> </span>hellofortran<span class="w"> </span>hello_world.f90
-</code></pre></div>
-<p><code>mpiifx</code> is the MPI wrapper to the Intel(R) oneAPI Fortran Compiler <code>ifx</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<p>The <code>intel-oneapi-mpi</code> package also comes with MPI wrapper to the Intel Classic Compilers: <code>mpiicc</code>, <code>mpiicpc</code> and <code>mpiifort</code>.</p>
-<h2 id="running-mpi-applications-using-intel-mpi">Running MPI applications using Intel MPI<a class="headerlink" href="#running-mpi-applications-using-intel-mpi" title="Permanent link">&para;</a></h2>
-<p>Intel MPI applications can be launched using:</p>
-<ul>
-<li><code>mpirun</code> e.g.: <code>mpirun -np 2 ./helloc</code></li>
-<li><code>srun</code>: To launch an Intel MPI application using <code>srun</code>, please set the <code>I_MPI_PMI_LIBRARY</code> environment variable and pass <code>mpi=pmi2</code> argument as follows in your slurm script.
-      <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PMI_LIBRARY</span><span class="o">=</span>/usr/lib64/libpmi2.so
-srun<span class="w"> </span>--mpi<span class="o">=</span>pmi2<span class="w"> </span>mpi_application
-</code></pre></div></li>
-</ul>
+<h1 id="asking-llms">Asking LLMs<a class="headerlink" href="#asking-llms" title="Permanent link">&para;</a></h1>
+<h2 id="using-scienceit-docs-as-context"><strong>Using scienceit-docs as context</strong><a class="headerlink" href="#using-scienceit-docs-as-context" title="Permanent link">&para;</a></h2>
+<p>The whole content of this documentation site is available, in markdown format, as a a single file at <a href="https://scienceit-docs.lbl.gov/llms-full.txt">https://scienceit-docs.lbl.gov/llms-full.txt</a>. You can upload this file as context in <a href="https://gemini.google.com">Google Gemini</a>, <a href="https://chat.cborg.lbl.gov">CBorg</a>, or any other LLM model with large context window. Currently the <code>llms-full.txt</code> file has fewer than 50k tokens.</p>
 
 
 
@@ -2715,7 +2633,7 @@ srun<span class="w"> </span>--mpi<span class="o">=</span>pmi2<span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 1, 2025</span>
   </span>
 
     
@@ -2767,10 +2685,10 @@ srun<span class="w"> </span>--mpi<span class="o">=</span>pmi2<span class="w"> </
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
