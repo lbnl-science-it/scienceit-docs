@@ -5,7 +5,6 @@
 ## Usage and Help
 
 - [Home](https://scienceit-docs.lbl.gov/index.md)
-- [Science IT Support](https://scienceit-docs.lbl.gov/help/index.md)
 
 ## High Performance Computing
 
@@ -19,7 +18,6 @@
 - [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md)
 - [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 - [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
-- [Using Jupyter AI with Ollama](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-ai-ollama/index.md)
 - [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md)
 - [Ollama with Jupyter and VS Code](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/index.md)
 - [Open OnDemand Overview](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md)
