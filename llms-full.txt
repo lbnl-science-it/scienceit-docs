@@ -569,14 +569,38 @@ gemma3:1b                8648f39daa8f    815 MB    4 weeks ago
 
 You can use [`ollama` python](https://github.com/ollama/ollama-python) module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
 
-`ollama-python` example
+ollama-python example
 
 ```
 import ollama
 import os
+from ollama import Client
 client = Client(host=os.environ["OLLAMA_HOST"])
 response = client.chat(model='llama3.2:1b', 
                     messages=[{'role': 'user', 'content': 'Hello'}])
+print (response.message.content)
+
+```
+
+It is also possible to use [`openai` python](https://github.com/openai/openai-python/) module to [interact with the Ollama](https://ollama.com/blog/openai-compatibility) .
+
+openai ollama compatibility example
+
+```
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url = f"http://{os.environ["OLLAMA_HOST"]}/v1",
+    api_key='ollama',
+)
+
+completion = client.chat.completions.create(
+    model='llama3.2:1b',
+    messages=[{'role': 'user',
+               'content': 'Hello'}]
+)
+print (completion.choices[0].message.content)
 
 ```
 
