@@ -38,6 +38,48 @@
   ______________________________________________________________________
   - [Ask a LLM Model in the CBorg AI Portal](https://cborg.lbl.gov/) .
   - Contact us at [scienceit@lbl.gov](mailto:scienceit@lbl.gov) to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
+
+# **Support & Training Resources**
+
+## **HPC Helpdesk**
+
+Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.
+
+- HPC Email Support: [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) (Creates a ticket in AskUS)
+- AskUS Request Form: [HPC Help Request](https://lbl.servicenowservices.com/lbl/service_description.do?sysparm_svcdescid=b745a27cdb24360087de72840f9619cc)
+- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehours-zoom)
+
+## **Science IT Consulting**
+
+Science IT Consultants bring broad expertise in technology deployment, high performance computing and cloud infrastructure. Contact us to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
+
+- Schedule a [Science IT Consulting Engagement](https://go.lbl.gov/scienceit)
+- Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)
+- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehours-zoom)
+
+## **HPC Training and Workshops**
+
+Click [here](https://it.lbl.gov/service/scienceit/training-and-workshops/) for a list of previous HPC trainings and workshops.
+
+### **Upcoming Zoom/In_person Trainings**
+
+HPCS team provides training in the beginning of the year and in fall to introduce new users to the basics of HPC at Lawrencium. Upcoming trainings are announced here.
+
+#### **LRC 101 Spring Training**
+
+Date: Monday, April 7th, 2025\
+Time: 10:30 AM to 12 PM\
+Training [slides](https://docs.google.com/presentation/d/e/2PACX-1vRc-TPOmrwDEHrAGdBzuSRg6cPhPiop_nagP3VuQl2l5_iVgeEQNIYKiRYT3LEs_4KC4EC-EtenrGUT/pub?start=false&loop=false&delayms=3000) and [recording](https://drive.google.com/file/d/1SIgudK7A1XhFa7AFoXqLPYwesi6NZRqS/view?usp=sharing).
+
+### **Fast track—HPC training videos**
+
+In this section we will be publishing short videos to learn HPC at lightning speed.
+
+# Asking LLMs
+
+## **Using scienceit-docs as context**
+
+The whole content of this documentation site is available, in markdown format, as a a single file at <https://scienceit-docs.lbl.gov/llms-full.txt>. You can upload this file as context in [Google Gemini](https://gemini.google.com), [CBorg](https://chat.cborg.lbl.gov), or any other LLM model with large context window. Currently the `llms-full.txt` file has fewer than 50k tokens.
 # High Performance Computing
 
 # High Performance Computing
@@ -2958,7 +3000,7 @@ You can find instructions for downloading and installing the Globus Connect Pers
 Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](../globus-instructions/) for access setup.
 
 If you see a connector you would like us to support, please send email to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
-# Cloud
+# Cloud Services
 
 # Cloud Services
 
@@ -2984,7 +3026,9 @@ The process for getting a cloud account (AWS) or project (Google Cloud) are diff
 
 This document outlines the process for LBNL users to request and access an Amazon Web Services (AWS) account.
 
-**Important:** LBNL users cannot self-register AWS accounts using their LBL identity. All AWS account requests must be submitted through the Science IT cloud team.
+**Important**
+
+LBNL users cannot self-register AWS accounts using their LBL identity. All AWS account requests must be submitted through the Science IT cloud team.
 
 ## Prerequisites
 
@@ -3034,6 +3078,30 @@ For MFA, you can use a physical hardware token, an Authenticator app, or a Passk
 - **Security:** MFA is mandatory for the root user on all LBNL AWS accounts.
 - **Support:** For any questions or assistance, contact the Science IT cloud team at `scienceit@lbl.gov`.
 
+# Google Cloud Skills Boost
+
+LBNL has limited licences for [Google Cloud Skills Boost](https://cloudskillsboost.google) . This platform offers a comprehensive catalog of courses to enhance your knowledge and skills in various Google Cloud technologies.
+
+## Benefits of Google Cloud Skills Boost
+
+- **Hands-on Learning**: Gain practical experience with Google Cloud through interactive labs
+- **Explore a wide range of cloud topics**, such as:
+  - Google Cloud Computing Foundations
+  - Manage Kubernetes in Google Cloud
+  - Use Machine Learning APIs on Google Cloud
+  - Weather Data in BigQuery
+  - And many more!
+
+## Eligibility and Access
+
+This opportunity is available to **LBNL staff and researchers** interested in advancing their Google Cloud proficiency.
+
+No Google Cloud account is required to access the Google Cloud Skills Boost subscription.
+
+## How to request access?
+
+If you are a LBNL researcher or staff interested in making use of the *Google Cloud Skills Boost*, please contact us at [scienceit@lbl.gov](mailto:scienceit@lbl.gov).
+
 # Creating a Google Cloud Project
 
 This document outlines the steps for users to create a LBNL Google Cloud users to create a new Google Cloud project, ensuring proper billing, organization, and location settings.
@@ -3050,7 +3118,7 @@ This document outlines the steps for users to create a LBNL Google Cloud users t
 1. **Navigate to the Google Cloud Console:**
 
    - Ensure you are logged into Google with your LBNL account.
-   - Open your web browser and go to the Google Cloud Console: [console.cloud.google.com](https://console.cloud.google.com).
+   - Open your web browser and go to the Google Cloud Console: [console.cloud.google.com](https://console.cloud.google.com) .
 
 1. **Create a New Project:**
 

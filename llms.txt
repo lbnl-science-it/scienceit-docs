@@ -5,6 +5,8 @@
 ## Usage and Help
 
 - [Home](https://scienceit-docs.lbl.gov/index.md)
+- [HPC Help Desk](https://scienceit-docs.lbl.gov/help/index.md)
+- [Asking LLMs](https://scienceit-docs.lbl.gov/help/llms/index.md)
 
 ## High Performance Computing
 
@@ -62,9 +64,10 @@
 - [Globus for Lawrencium](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md)
 - [Globus](https://scienceit-docs.lbl.gov/data/globus/index.md)
 
-## Cloud
+## Cloud Services
 
 - [Cloud Services](https://scienceit-docs.lbl.gov/cloud/index.md)
 - [Amazon Web Services](https://scienceit-docs.lbl.gov/cloud/aws/index.md)
+- [Google Cloud Skills Boost](https://scienceit-docs.lbl.gov/cloud/gcp-skills-boost/index.md)
 - [Google Cloud Platform](https://scienceit-docs.lbl.gov/cloud/gcp/index.md)
 
