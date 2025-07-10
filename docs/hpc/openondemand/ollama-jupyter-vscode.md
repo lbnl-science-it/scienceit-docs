@@ -47,14 +47,34 @@ To change the model, you will need to type in the model name from the list of cu
 ### Using `ollama` python library on Jupyter notebooks
 You can use [`ollama` python](https://github.com/ollama/ollama-python){:target="_blank"} {{ ext }} module to interact with Ollama in a notebook using the default `Python 3 (ipykernel)` kernel. For example:
 
-!!! note "`ollama-python` example"
-    ``` python
-    import ollama
-    import os
-    client = Client(host=os.environ["OLLAMA_HOST"])
-    response = client.chat(model='llama3.2:1b', 
-                        messages=[{'role': 'user', 'content': 'Hello'}])
-    ```
+``` python title="ollama-python example"
+import ollama
+import os
+from ollama import Client
+client = Client(host=os.environ["OLLAMA_HOST"])
+response = client.chat(model='llama3.2:1b', 
+                    messages=[{'role': 'user', 'content': 'Hello'}])
+print (response.message.content)
+```
+
+It is also possible to use [`openai` python](https://github.com/openai/openai-python/){:target="_blank"} {{ ext }} module to [interact with the Ollama](https://ollama.com/blog/openai-compatibility){:target="_blank"} {{ ext }}.
+
+``` python title="openai ollama compatibility example"
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url = f"http://{os.environ["OLLAMA_HOST"]}/v1",
+    api_key='ollama',
+)
+
+completion = client.chat.completions.create(
+    model='llama3.2:1b',
+    messages=[{'role': 'user',
+               'content': 'Hello'}]
+)
+print (completion.choices[0].message.content)
+```
 
 ## Ollama on VS Code
 If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue){:target="_blank"} {{ ext }} extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
