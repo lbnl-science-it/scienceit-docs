@@ -2,7 +2,9 @@
 
 This document outlines the process for LBNL users to request and access an Amazon Web Services (AWS) account.
 
-**Important:** LBNL users cannot self-register AWS accounts using their LBL identity. All AWS account requests must be submitted through the Science IT cloud team.
+!!! note "**Important**"
+
+    LBNL users cannot self-register AWS accounts using their LBL identity. All AWS account requests must be submitted through the Science IT cloud team.
 
 ## Prerequisites
 * You must be a LBNL staff member to get a LBNL AWS account.  Interns and external collaborators are not eligible for an AWS account through LBNL, however a LBNL staff member can be the point of contact and can provide access to an AWS account through IAM logins to interns and external collaborators

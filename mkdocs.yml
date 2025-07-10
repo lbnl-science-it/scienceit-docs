@@ -77,6 +77,7 @@ nav:
      - Cloud Service Providers:
          - Amazon Web Services: cloud/aws.md
          - Google Cloud Platform: cloud/gcp.md
+     - Google Cloud Skills Boost: cloud/gcp-skills-boost.md
   - Support & Training:
       - HPC Help Desk: help/index.md
       - Asking LLMs: help/llms.md
@@ -95,7 +96,7 @@ plugins:
       sections: 
         Usage and Help:
           - index.md
-          - help.md
+          - help/*.md
         High Performance Computing:
           - hpc/*.md
           - hpc/accounts/*.md
@@ -111,7 +112,7 @@ plugins:
           - hpc/openondemand/*.md
         Data Transfer:
           - data/*.md
-        Cloud:
+        Cloud Services:
           - cloud/*.md
 
 

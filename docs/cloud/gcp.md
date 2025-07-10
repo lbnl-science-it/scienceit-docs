@@ -13,7 +13,7 @@ This document outlines the steps for users to create a LBNL Google Cloud users t
 
 1.  **Navigate to the Google Cloud Console:**
     * Ensure you are logged into Google with your LBNL account.
-    * Open your web browser and go to the Google Cloud Console: [console.cloud.google.com](https://console.cloud.google.com).
+    * Open your web browser and go to the Google Cloud Console: [console.cloud.google.com](https://console.cloud.google.com){:target="_blank"} {{ ext }}.
 
 2.  **Create a New Project:**
     * Click on the project selector dropdown at the upper left area on the top of the page (it usually displays "Select a project" or has the name of another existing project displayed).
