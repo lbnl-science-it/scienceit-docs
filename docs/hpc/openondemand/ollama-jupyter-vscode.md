@@ -57,7 +57,7 @@ response = client.chat(model='llama3.2:1b',
 print (response.message.content)
 ```
 
-It is also possible to use [`openai` python](https://github.com/openai/openai-python/){:target="_blank"} {{ ext }} module to [interact with the Ollama](https://ollama.com/blog/openai-compatibility){:target="_blank"} {{ ext }}.
+It is also possible to use [`openai` python](https://github.com/openai/openai-python/){:target="_blank"} {{ ext }} module to [interact with Ollama](https://ollama.com/blog/openai-compatibility){:target="_blank"} {{ ext }}.
 
 ``` python title="openai ollama compatibility example"
 import os
@@ -78,6 +78,9 @@ print (completion.choices[0].message.content)
 
 ## Ollama on VS Code
 If you click on **Connect to VS Code**, you will get a VS Code server instance with [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue){:target="_blank"} {{ ext }} extension. You can use the Continue Chat feature by clicking on the Continue button on the left-side of VS Code workspace.
+
+!!! warning "First-time VS Code Continue usage"
+    If you are using VS Code Continue for the first time, you may get an onboarding card that says "Get Started" and "Or, remain local"; please **do not** click on these options. To use ollama models, you should simply close the "Get Started" card. 
 
 ??? note "VS Code Continue Interface"
     ![VS Code Continue Interface](images/vscode-continue.png)
