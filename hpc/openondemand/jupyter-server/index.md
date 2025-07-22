@@ -8,6 +8,15 @@ As described next, you can start a Jupyter notebook via the Open OnDemand servic
 
 ## Jupyter notebooks on Open OnDemand
 
+Navigating to scratch directory from Jupyter Lab interface
+
+For easy access to your `scratch` directory from Jupyter on Open OnDemand, you can create a symlink to your `scratch` directory in your home directory as follows:
+
+```
+ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
+
+```
+
 ### Running a notebook
 
 1. Connect to <https://lrc-ondemand.lbl.gov> .
