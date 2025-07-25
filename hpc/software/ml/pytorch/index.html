@@ -2669,17 +2669,19 @@
 <p>If you use jupyter server on <a href="../../../openondemand/overview/">lrc-openondemand</a>, pytorch kernels <code>torch 2.0.1</code> ard <code>torch 2.3.1</code> are available.  </p>
 <h2 id="multi-gpu-jobs">Multi-GPU jobs<a class="headerlink" href="#multi-gpu-jobs" title="Permanent link">&para;</a></h2>
 <p>A sample for a multi-GPU PyTorch code can be found on the <a href="https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series" target="_blank">Distributed PyTorch tutorial</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> examples on github. The SLURM script provided in the pytorch examples folder can be adapted to run on our cluster. The SLURM script provided below runs the <code>multinode.py</code> pytorch script on four A40 GPU cards distributed over two nodes:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#SBATCH --job-name=ddp_on_A40</span>
+<div class="highlight"><span class="filename">multinode_torchrun_es1.sh</span><pre><span></span><code><span class="c1">#SBATCH --job-name=ddp_on_A40</span>
 <span class="c1">#SBATCH --partition=es1</span>
 <span class="c1">#SBATCH --nodes=2</span>
 <span class="c1">#SBATCH --ntasks-per-node=1</span>
-<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1">#SBATCH --cpus-per-task=32</span>
 <span class="c1">#SBATCH --account=&lt;ACCOUNT_NAME&gt;</span>
 <span class="c1">#SBATCH --time=01:00:00</span>
 <span class="c1">#SBATCH --qos=es_normal</span>
 <span class="c1">#SBATCH --gres=gpu:A40:2</span>
 
-module<span class="w"> </span>load<span class="w"> </span>ml/pytorch
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch/2.3.1
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
 
 <span class="nv">allocated_nodes</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span>
 <span class="nv">nodes</span><span class="o">=</span><span class="si">${</span><span class="nv">allocated_nodes</span><span class="p">//</span><span class="s1">$&#39;\n&#39;</span><span class="p">/ </span><span class="si">}</span>
@@ -2694,8 +2696,53 @@ srun<span class="w"> </span>torchrun<span class="w"> </span>--nnodes<span class=
 <span class="w">              </span>--rdzv_id<span class="w"> </span><span class="nv">$RANDOM</span><span class="w"> </span><span class="se">\</span>
 <span class="w">              </span>--rdzv_backend<span class="w"> </span>c10d<span class="w"> </span><span class="se">\</span>
 <span class="w">              </span>--rdzv_endpoint<span class="w"> </span><span class="nv">$head_node</span>:29500<span class="w"> </span><span class="se">\</span>
-<span class="w">              </span><span class="nv">$cwd</span>/multinode.py<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">10</span>
+<span class="w">              </span>multinode.py<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">10</span>
 </code></pre></div>
+<p>In the script above, if the port <code>29500</code> is not free, then the script may not work. It is possible to use the following python script to get a port that is free:</p>
+<div class="highlight"><span class="filename">get_open_port.py</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_free_tcp_port</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">free_port</span> <span class="o">=</span> <span class="n">get_free_tcp_port</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">free_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>and use it in the slurm script as follows (4 nodes on <code>es0</code> partition):</p>
+<div class="highlight"><span class="filename">multinode_torchrun_es0.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=testes0</span>
+<span class="c1">#SBATCH --account=&lt;ACCOUNT&gt;</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --partition=es0</span>
+<span class="c1">#SBATCH --nodes=4</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --gres=gpu:2</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/pytorch/2.3.1
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="nv">allocated_nodes</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span>
+<span class="nv">nodes</span><span class="o">=</span><span class="si">${</span><span class="nv">allocated_nodes</span><span class="p">//</span><span class="s1">$&#39;\n&#39;</span><span class="p">/ </span><span class="si">}</span>
+<span class="nv">nodes_array</span><span class="o">=(</span><span class="nv">$nodes</span><span class="o">)</span>
+<span class="nv">head_node</span><span class="o">=</span><span class="si">${</span><span class="nv">nodes_array</span><span class="p">[0]</span><span class="si">}</span>
+<span class="nv">port</span><span class="o">=</span><span class="k">$(</span>srun<span class="w"> </span>--nodes<span class="o">=</span><span class="m">1</span><span class="w"> </span>--ntasks<span class="o">=</span><span class="m">1</span><span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$head_node</span><span class="s2">&quot;</span><span class="w"> </span>python<span class="w"> </span>get_open_port.py<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span>Head<span class="w"> </span>Node:<span class="w"> </span><span class="nv">$head_node</span>
+<span class="nb">echo</span><span class="w"> </span>Node<span class="w"> </span>List:<span class="w"> </span><span class="nv">$nodes</span>
+<span class="nb">echo</span><span class="w"> </span>port:<span class="w"> </span><span class="nv">$port</span>
+
+srun<span class="w"> </span>torchrun<span class="w"> </span>--nnodes<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--nproc_per_node<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--rdzv_id<span class="w"> </span><span class="nv">$RANDOM</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--rdzv_backend<span class="w"> </span>c10d<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--rdzv_endpoint<span class="w"> </span><span class="nv">$head_node</span>:<span class="nv">$port</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>multinode.py<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<p>Please take look at the <code>multinode.py</code> in <a href="https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series" target="_blank">pytorch examples</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> and <a href="https://docs.pytorch.org/docs/stable/elastic/run.html" target="_blank">torchrun docs</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> for more information.</p>
 
 
 
@@ -2716,7 +2763,7 @@ srun<span class="w"> </span>torchrun<span class="w"> </span>--nnodes<span class=
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 25, 2025</span>
   </span>
 
     
