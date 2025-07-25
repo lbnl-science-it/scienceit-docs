@@ -1,4 +1,4 @@
-# Science-IT Docs Workflow
+# ScienceIT-Docs Workflow
 
 We are using MkDocs with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme to build our documentation site. Some inspiration is taken from similar technical documentation sites of [NERSC](https://docs.nersc.gov) and [Berkeley Research IT](https://docs-research-it.berkeley.edu/).
 
@@ -17,7 +17,7 @@ Since the MkDocs source files are text based, you can use your favorite editor. 
 
 ## Pushing changes
 
-Pushing changes to the github repository will automatically run `mkdocs build` and publish the generated html pages on github pages. These are hosted on the `gh-pages` brach while the markdown source of the documentation lies on the `main` branch.
+Pushing changes to the github repository will automatically run `mkdocs build` and publish the generated html pages on github pages. These are hosted on the `gh-pages` branch while the markdown source of the documentation lies on the `main` branch.
 
 This is achieved through Gihub Actions workflow file `.github/workflows/ci.yml`.
 
