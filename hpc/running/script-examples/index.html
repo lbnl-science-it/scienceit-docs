@@ -2808,17 +2808,14 @@ mpirun<span class="w"> </span>./a.out
 </div>
 </div>
 <h2 id="gpu-job">GPU Job<a class="headerlink" href="#gpu-job" title="Permanent link">&para;</a></h2>
-<p><code>es1</code> partition consists of GPU nodes with three generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this <a href="https://it.lbl.gov/resource/hpc/lawrencium/">page</a>. A compute node with different GPU types and numbers can be allocated using slurm in the following way.</p>
+<p><code>es1</code> partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40, H100). Please take a look at the details on this <a href="../../systems/einsteinium/">page</a>. A compute node with a particular GPU type and count can be allocated using slurm in the following way.</p>
 <ul>
 <li>
-<p>General format:  <code>--gres=gpu[type]:count</code></p>
+<p>General format:  <code>--gres=gpu:[type]:count</code></p>
 </li>
 <li>
-<p>The above format can schedule jobs on nodes with V100, GTX 2080TI, or A40 GPU cards. To specify a particular card:</p>
+<p>The above format can schedule jobs on nodes with V100, A40, or H100 GPU cards. To specify a particular card:</p>
 <ul>
-<li>
-<p>GRTX2080TI: <code>--gres=gpu:GRTX2080TI:1</code> (up to 3 or 4 GPUs)</p>
-</li>
 <li>
 <p>V100 : <code>--gres=gpu:V100:1</code>(up to 2 GPUs)</p>
 </li>
@@ -2831,9 +2828,13 @@ mpirun<span class="w"> </span>./a.out
 </ul>
 </li>
 </ul>
-<p>To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU. This ratio should be one:two.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not modify <code>CUDA_VISIBLE_DEVICES</code></p>
+<p>The <code>CUDA_VISIBLE_DEVICES</code> environment variable is automatically set by SLURM when you request GPU resources (e.g. with <code>--gres=gpu:...</code>). This ensures that your job only has access to the GPUs allocated by the scheduler and prevents conflicts with other users and jobs. In general you should not modify this environment variable. Incorrectly changing or overriding this variable may result in resource conflicts, unpredictable behaviour or job failures.</p>
+</div>
+<p>To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two or more) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU. </p>
 <p>Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (<code>--ntasks=</code>) and CPUs per task (<code>--cpus-per-task=</code>).</p>
-<p>For instance, in the above example, one GPU was requested via <code>--gres=gpu:1</code>, and the required total of two CPUs was thus requested via the combination of <code>--ntasks=1</code> and --cpus-per-task=2 . Similarly, if your job script requests four GPUs via <code>--gres=gpu:4</code>, and uses <code>--ntasks=8</code>, it should also include <code>--cpus-per-task=1</code> to request the required total of eight CPUs.</p>
+<p>For instance, in the above example, one GPU was requested via <code>--gres=gpu:1</code>, and the required total of two CPUs was thus requested via the combination of <code>--ntasks=1</code> and <code>--cpus-per-task=2</code> . Similarly, if your job script requests four GPUs via <code>--gres=gpu:4</code>, and uses <code>--ntasks=8</code>, it should also include <code>--cpus-per-task=1</code> to request the required total of eight CPUs.</p>
 <p>Note that in the <code>--gres=gpu:n</code> specification, <code>n</code> must be between 1 and the number of GPUs on a single node (which is provided <a href="../../systems/einsteinium/">here for the various GPU types</a>). This is because the feature is associated with how many GPUs per node to request.</p>
 <p>Examples:</p>
 <ul>
@@ -2881,7 +2882,7 @@ mpirun<span class="w"> </span>./a.out
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2025</span>
   </span>
 
     

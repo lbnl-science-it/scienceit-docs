@@ -31,7 +31,7 @@ Condo users who would need to run outside of their condo contributions are also 
 
 ### CPU Partitions Recharge Rates
 
-| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | lr4 | Exclusive | 0 | free | | lr5 | Exclusive | 0.50 | $0.0050 per Core CPU Hour | | lr6 | Exclusive | 0.75 | $0.0075 per Core CPU Hour | | lr7 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr8 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr_bigmem | Exclusive | 1.5 | $0.015 per Core CPU Hour | | cf1 | Exclusive | 0.4 | $0.004 per Core CPU Hour | | cm1 | Shared | 0.75 | $0.0075 per Core CPU Hour | | cm2 | Exclusive | 1.0 | $0.01 per Core CPU Hour | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour | | ood_inter | Shared | 1.0 | $0.01 per Core CPU Hour |
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | lr4 | Exclusive | 0 | free | | lr5 | Exclusive | 0.50 | $0.0050 per Core CPU Hour | | lr6 | Exclusive | 0.75 | $0.0075 per Core CPU Hour | | lr7 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr8 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr_bigmem | Exclusive | 1.5 | $0.015 per Core CPU Hour | | cf1 | Exclusive | 0.4 | $0.004 per Core CPU Hour | | cm1 | Shared | 0.75 | $0.0075 per Core CPU Hour | | cm2 | Exclusive | 1.0 | $0.01 per Core CPU Hour | | ood_inter | Shared | 1.0 | $0.01 per Core CPU Hour |
 
 ### GPU Partitions Recharge Rates
 
