@@ -145,13 +145,11 @@ Please refer to [Slurm Association](slurm-overview.md#slurm-association) on how 
 
 ## GPU Job
 
-`es1` partition consists of GPU nodes with three generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](https://it.lbl.gov/resource/hpc/lawrencium/). A compute node with different GPU types and numbers can be allocated using slurm in the following way.
+`es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40, H100). Please take a look at the details on this [page](../systems/einsteinium.md). A compute node with a particular GPU type and count can be allocated using slurm in the following way.
 
-* General format:  `--gres=gpu[type]:count`
+* General format:  `--gres=gpu:[type]:count`
 
-* The above format can schedule jobs on nodes with V100, GTX 2080TI, or A40 GPU cards. To specify a particular card:
-
-    * GRTX2080TI: `--gres=gpu:GRTX2080TI:1` (up to 3 or 4 GPUs)
+* The above format can schedule jobs on nodes with V100, A40, or H100 GPU cards. To specify a particular card:
 
     * V100 : `--gres=gpu:V100:1`(up to 2 GPUs)
 
@@ -159,11 +157,16 @@ Please refer to [Slurm Association](slurm-overview.md#slurm-association) on how 
     
     * H100: `--gres=gpu:H100:1` (up to 8 GPUs)
 
-To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU. This ratio should be one:two.
+
+!!! warning "Do not modify `CUDA_VISIBLE_DEVICES`"
+
+    The `CUDA_VISIBLE_DEVICES` environment variable is automatically set by SLURM when you request GPU resources (e.g. with `--gres=gpu:...`). This ensures that your job only has access to the GPUs allocated by the scheduler and prevents conflicts with other users and jobs. In general you should not modify this environment variable. Incorrectly changing or overriding this variable may result in resource conflicts, unpredictable behaviour or job failures.
+
+To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two or more) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU. 
 
 Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
 
-For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and --cpus-per-task=2 . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
+For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and `--cpus-per-task=2` . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
 
 Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](../systems/einsteinium.md)). This is because the feature is associated with how many GPUs per node to request.
 
