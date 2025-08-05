@@ -14,12 +14,12 @@
   ______________________________________________________________________
   - HPC Email Support: [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) (Creates a ticket in AskUS)
   - AskUS Request Form: [HPC Help Request](https://lbl.servicenowservices.com/lbl/service_description.do?sysparm_svcdescid=b745a27cdb24360087de72840f9619cc)
-  - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehours-zoom)
+  - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
 - ### **Science IT Consulting**
   ______________________________________________________________________
   - Schedule a [Science IT Consulting Engagement](https://go.lbl.gov/scienceit)
   - Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)
-  - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehours-zoom)
+  - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
 - ### **Other Resources**
   ______________________________________________________________________
   - [Science IT GitHub Repository](https://github.com/lbnl-science-it)
