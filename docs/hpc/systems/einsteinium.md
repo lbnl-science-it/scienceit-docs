@@ -7,7 +7,7 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 | Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband |
 | ----------- | ----- | ------------------ --------------------| ----- | ----- | ------ | ----------- |
-| NVIDIA H100 |  4 | 8x 80 GB | Intel Xeon Platinum 8480+    | 112 | 1 TB | NDR |
+| NVIDIA H100 |  8 | 8x 80 GB | Intel Xeon Platinum 8480+    | 112 | 1 TB | NDR |
 | NVIDIA A100 |  1 | 4x 80 GB | AMD EPYC 7713     | 64 | 512 GB | HDR |
 | NVIDIA A40 |  30 | 4x 48 GB |AMD EPYC 7742        | 64    | 512 GB | FDR        |
 | NVIDIA GRTX8000 |  1  | 4x 48 GB | AMD EPYC 7713     | 64 | 512 GB | HDR |
