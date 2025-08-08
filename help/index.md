@@ -5,21 +5,16 @@
 Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.
 
 - HPC Email Support: [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) (Creates a ticket in AskUS)
-- AskUS Request Form: [HPC Help Request](https://lbl.servicenowservices.com/lbl/service_description.do?sysparm_svcdescid=b745a27cdb24360087de72840f9619cc) \<<\<<\<<< HEAD
-- # Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
+- AskUS Request Form: [HPC Help Request](https://lbl.servicenowservices.com/lbl/service_description.do?sysparm_svcdescid=b745a27cdb24360087de72840f9619cc)
 - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
-  > > > > > > > 2174fd3ed8b35772e8c7eeac853971652fd56ebf
 
 ## **Science IT Consulting**
 
 Science IT Consultants bring broad expertise in technology deployment, high performance computing and cloud infrastructure. Contact us to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
 - Schedule a [Science IT Consulting Engagement](https://go.lbl.gov/scienceit)
-- Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)\
-  \<<\<<\<<< HEAD
-- # Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehrs)
+- Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)
 - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
-  > > > > > > > 2174fd3ed8b35772e8c7eeac853971652fd56ebf
 
 ## **HPC Training and Workshops**
 
