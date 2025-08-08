@@ -6,7 +6,6 @@ Before getting started, make sure you have [access to the Lawrencium cluster](..
 
 As described next, you can start a Jupyter notebook via the Open OnDemand service, which allows you to operate completely via your web browser on your local computer (e.g., your laptop).
 
-See the [video recording](https://youtu.be/vFdpvpGUzFs) for the hands on experience.
 <div class="video-container">
     <iframe src="https://www.youtube.com/embed/PF61XGpMsxE?si=woafDz4cX-wEiDtX" 
         title="YouTube video player" 
