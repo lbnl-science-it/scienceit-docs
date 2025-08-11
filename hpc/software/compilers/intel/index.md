@@ -4,7 +4,6 @@
 
 ```
 module load intel-oneapi-compilers
-
 ```
 
 ## LLVM-based oneAPI Compilers

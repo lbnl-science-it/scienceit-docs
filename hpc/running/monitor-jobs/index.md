@@ -4,7 +4,6 @@ To monitor a running job, you need to know the SLURM job ID of that job, which c
 
 ```
 squeue -u $USER
-
 ```
 
 ## Monitoring the job from a login node
@@ -15,14 +14,12 @@ The following provides a snapshot of node status that the job is running on:
 
 ```
 wwall -j $your_job_id
-
 ```
 
 while
 
 ```
 wwall -j $your_job_id -t
-
 ```
 
 provides a text-based user interface (TUI) to monitor the node status when the job progresses. To exit the TUI, enter “q” to quit out of the interface and be returned to the command line.
@@ -35,7 +32,6 @@ Alternatively, you can login to the node your job is running on as follows:
 
 ```
 srun –jobid=$your_job_id –pty /bin/bash
-
 ```
 
 This runs a shell in the context of your existing job. Once on the node, you can run top, htop, ps, or other tools.
@@ -49,8 +45,7 @@ First of all, you should look for the SLURM output and error files that may be c
 After a job has completed (or been terminated/cancelled), you can review the maximum memory used via the sacct command.
 
 ```
-sacct -j –format=JobID,JobName,MaxRSS,Elapsed 
-
+sacct -j –format=JobID,JobName,MaxRSS,Elapsed
 ```
 
 MaxRSS will show the maximum amount of memory that the job used in kilobytes.
@@ -60,7 +55,6 @@ You can check all the jobs that you ran within a time window as follows
 ```
 sacct -u –starttime=2019-09-27 –endtime=2019-10-04 \
 –format JobID,JobName,Partition,Account,AllocCPUS,State,ExitCode,Start,End,NodeList
-
 ```
 
 Please see `man sacct` for a list of the output columns you can request, as well as the SLURM documentation for the [`sacct`](https://slurm.schedmd.com/sacct.html) command.

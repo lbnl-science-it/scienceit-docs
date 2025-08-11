@@ -15,7 +15,6 @@ Currently Loaded Modules:
 
 -------------- /global/software/rocky-8.x86_64/modfiles/gcc/11.4.0 -----------
    openmpi/4.1.3    openmpi/4.1.6 (D)
-
 ```
 
 After this, you can load the default `openmpi/4.1.6` through `module load openmpi` or by specifying the version `module load openmpi/4.1.6`. If you want to load the non-default `openmpi/4.1.3` module, then you must specify the version: `module load openmpi/4.1.3`:
@@ -26,7 +25,6 @@ After this, you can load the default `openmpi/4.1.6` through `module load openmp
 
 Currently Loaded Modules:
   1) gcc/11.4.0   2) ucx/1.14.1   3) openmpi/4.1.6
-
 ```
 
 ## Compiling MPI applications with Open MPI
@@ -37,21 +35,18 @@ Examples
 
 ```
 mpicc -o helloc hello_world.c
-
 ```
 
 `mpicc` is the MPI wrapper to the gcc C compiler.
 
 ```
 mpicxx -o hellocxx hello_world.cpp
-
 ```
 
 `mpicxx` is the MPI wrapper to the gcc C++ compiler.
 
 ```
 mpifort -o hellofortran hello_world.f90
-
 ```
 
 `mpifort` is the MPI wrapper to the gfortran compiler.

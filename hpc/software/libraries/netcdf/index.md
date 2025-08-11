@@ -10,7 +10,6 @@ NetCDF on Lawrencium can be loaded after loading a MPI library. For example, to 
 
 ------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    netcdf-c/4.9.2    netcdf-fortran/4.6.1
-
 ```
 
 As you can see on the output of `module avail netcdf`, a C version of the library `netcdf-c` and a fortran version of the library `netcdf-fortran` are available.
@@ -27,19 +26,16 @@ To compile using the `netcdf-fortran` library, we need the appropriate `CFLAGS` 
 
 [user@n0000 ~]$ pkg-config --libs netcdf-fortran
 -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/netcdf-fortran-4.6.1-fjshq66ynuoqqbtns2n3pwerlpymqjkg/lib -lnetcdff
-
 ```
 
 To include these directly in the compilation process, we can do the following:
 
 ```
 gfortran -o simple_xy_rd $(pkg-config --cflags --libs netcdf-fortran) simple_xy_rd.f90
-
 ```
 
 Before running the binary `simple_xy_rd`, you have to add the `netcdf-fortran` library path to the `LD_LIBRARY_PATH` environment variable.
 
 ```
 export LD_LIBRARY_PATH=/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/netcdf-fortran-4.6.1-fjshq66ynuoqqbtns2n3pwerlpymqjkg/lib:$LD_LIBRARY_PATH
-
 ```

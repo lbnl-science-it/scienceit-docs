@@ -5,7 +5,6 @@ The NVIDIA CUDA Toolkit, consisting of Nvidia-GPU-accelerated libraries, C/C++ c
 ```
 module load gcc/11.4.0
 module load cuda/12.2.1
-
 ```
 
 loads CUDA Toolkit version 12.2.1. The environment variable `CUDA_HOME` is set by the `cuda` module.

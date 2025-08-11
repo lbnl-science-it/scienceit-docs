@@ -7,7 +7,6 @@ A variety of standard Python packages (such as numpy, scipy, matplotlib and pand
 ```
 module load anaconda3
 conda list
-
 ```
 
 pip vs python -m pip
@@ -17,8 +16,7 @@ To reduce potential environment mismatch (especially in the presence of multiple
 You can use `pip` to install or upgrade packages and then use them in a Jupyter notebook, but you will need to make sure to install the new versions or additional packages in your `home` or `scratch` directories because you do not have write permissions to the module directories. You can use
 
 ```
-python -m pip install --user $PACKAGENAME 
-
+python -m pip install --user $PACKAGENAME
 ```
 
 to install the python package to `$HOME/.local`.
@@ -30,7 +28,6 @@ module load anaconda3/2024.02
 module load gcc/11.4.0
 module load cuda/12.2.1
 python -m pip install --user --no-cache-dir cupy-cuda12x
-
 ```
 
 Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `anaconda3/2024.02` module.
@@ -45,7 +42,6 @@ To list the available jupyter kernels:
 
 ```
 jupyter kernelspec list
-
 ```
 
 Example: Add a kernel for a virtual environment
@@ -67,7 +63,6 @@ python -m ipykernel install --user --name cudapython  \
                             --display-name "CUDA Python" \
                             --env PATH $PATH \
                             --env LD_LIBRARY_PATH $LD_LIBRARY_PATH
-
 ```
 
 The above command will create a `kernel.json` file in `~/.local/share/jupyter/kernels/cudapython`. You can manually edit this file to edit the paths and environment variables. The new kernel will show up on the jupyter server app on Open OnDemand. Depending on your packages and whether you had to import additional module before installing the package, you may not have to pass the `--env PATH` and `--env LD_LIBRARY_PATH` values in the command above. In this examples, the `PATH` and `LD_LIBRARY_PATH` variables exported are important because of the `cuda-python` packages make use of `cuda/12.2.1` module that we imported.
@@ -97,7 +92,6 @@ As an example, below is the content of `~/.local/share/jupyter/kernels/cudapytho
   "LD_LIBRARY_PATH": "/location/to/path1:/location/to/path2"
  }
 }
-
 ```
 
 Managing kernels for Jupyter
@@ -113,7 +107,6 @@ module load anaconda3
 conda create --name=$ENV_NAME ipykernel
 conda activate $ENV_NAME
 python -m ipykernel install --user --name $ENV_NAME
-
 ```
 
 From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.0.0` from `conda-forge` channel.
@@ -125,7 +118,6 @@ conda activate numpy2test
 conda config --env -add channels conda-forge
 conda install numpy=2.0.0
 python -m ipykernel install --user --name numpy2 --display-name="Numpy v2 (Python 3.12)"
-
 ```
 
 Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand.
@@ -141,7 +133,6 @@ export APPTAINER_TMPDIR=$SCRATCH
 cd $SCRATCH
 
 apptainer pull docker://nvcr.io/nvidia/rapidsai/notebooks:25.04-cuda12.8-py3.12
-
 ```
 
 You can then manually create a `kernel.json` file in `~/.local/share/jupyter/kernels/rapids` with the following content.
@@ -165,5 +156,4 @@ You can then manually create a `kernel.json` file in `~/.local/share/jupyter/ker
      "debugger": true
     }
 }
-
 ```

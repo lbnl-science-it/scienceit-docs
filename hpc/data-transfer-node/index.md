@@ -8,38 +8,32 @@ Transfer data from a local machine to Lawrencium
 
 ```
 scp file-xxx $USER@lrc-xfer.lbl.gov:/global/home/users/$USER
-
 ```
 
 ```
 scp -r dir-xxx $USER@lrc-xfer.lbl.gov:/global/scratch/$USER
-
 ```
 
 Transfer from Lawrencium to a local machine
 
 ```
 scp $USER@lrc-xfer.lbl.gov:/global/scratch/$USER/file-xxx ~/Desktop
-
 ```
 
 Transfer from Lawrencium to Another Institute
 
 ```
 ssh $USER@lrc-xfer.lbl.gov   # DTN
-
 ```
 
 ```
 scp -r $USER@lrc-xfer.lbl.gov:/file-on-lawrencium $USER@other-institute:/destination/path/
-
 ```
 
 ## Rsync: data transfer and backup tool
 
 ```
-rsync -avpz file-at-local $USER@lrc-xfer.lbl.gov:/global/home/user/$USER 
-
+rsync -avpz file-at-local $USER@lrc-xfer.lbl.gov:/global/home/user/$USER
 ```
 
 ## Data Transfer Examples On Windows

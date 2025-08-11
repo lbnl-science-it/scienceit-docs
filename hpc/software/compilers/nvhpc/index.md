@@ -4,7 +4,6 @@ The NVIDIA HPC SDK version 23.11 is available on Lawrencium. You can load the `n
 
 ```
 module load nvhpc/23.11
-
 ```
 
 The `nvhpc` module consists of the following compilers:
@@ -41,14 +40,12 @@ For some GPU nodes with AMD CPU hosts such as `A40` nodes, we have found that th
 
 ```
 export PMIX_MCA_psec=native
-
 ```
 
 In addition, `--bind-to core` which is the default for `mpirun` might not work; in which case, you can try `--bind-to none` or `--bind-to socket`. For example:
 
 ```
 mpirun -np 2 --bind-to socket ./program
-
 ```
 
 ## Additional References

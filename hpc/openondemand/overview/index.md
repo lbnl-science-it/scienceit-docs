@@ -123,12 +123,10 @@ Logs and scripts for each interactive session with Open OnDemand are stored in:
 
 ```
 ~/ondemand/data/sys/dashboard/batch_connect/sys
-
 ```
 
 There are directories for each interactive app type within this directory. For example, to see the scripts and logs for a Jupyter session, you might look at the files under:
 
 ```
 ~/ondemand/data/sys/dashboard/batch_connect/sys/lrc_jupyter/output/da19101d-70b0-43c1-84ff-7d9f0e739419
-
 ```

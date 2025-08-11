@@ -18,7 +18,6 @@ There are several basic commands you will need to know to submit jobs, cancel jo
 
   ```
   squeue -u $USER
-
   ```
 
 - `sinfo` – view the current status of the queues, e.g., `sinfo`
@@ -33,7 +32,6 @@ You can use `srun` to request and run an interactive job. The following example 
 
 ```
 srun -p lr4 -A account_name -q lr_normal -N 1 -t 1:00:00 --pty bash
-
 ```
 
 The prompt will change to indicate that you are on the compute node allocated for the interactive job once the interactive job starts:
@@ -41,8 +39,7 @@ The prompt will change to indicate that you are on the compute node allocated fo
 ```
 srun: job 7566529 queued and waiting for resources
 srun: job 7566529 has been allocated resources
-[user@n0105 ~]$ 
-
+[user@n0105 ~]$
 ```
 
 If you are done working on the interactive job before the allocated time, you can release the resource by using `exit` on the interactive node.
@@ -53,7 +50,6 @@ A Slurm job submission script includes a list of SLURM directives (or commands) 
 
 ```
 sacctmgr show association -p user=$USER
-
 ```
 
 The command returns the output for a hypothetical example user `userA`. To be specific, `userA` has access to a PI Computing Allowance `pc_acctB`, departmental cluster nano and the condo account `lr_acctA` with respect to different partitions. Each line of this output indicates a specific combination of an account, a partition, and QoSes that you can use in a job script file, when submitting any individual batch job:
@@ -69,7 +65,6 @@ perceus-00|pc_acctB|userA|lr4|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr3|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|cf1|1|||||||||||||cf_debug,cf_normal|||
 perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_lowprio,es_normal|||
-
 ```
 
 The Account, Partition, and QOS indicate which partitions and QoSes you have access to under each of your account(s).

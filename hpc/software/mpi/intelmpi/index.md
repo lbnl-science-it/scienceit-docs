@@ -9,7 +9,6 @@
 
 Currently Loaded Modules:
   1) intel-oneapi-compilers/2023.1.0   2) intel-oneapi-mpi/2021.10.0
-
 ```
 
 ## Compiling MPI applications with Intel MPI
@@ -20,21 +19,18 @@ Examples
 
 ```
 mpiicx -o helloc hello_world.c
-
 ```
 
 `mpiicx` is the MPI wrapper to the Intel(R) C/C++ compiler and should be used to compile and link C programs
 
 ```
 mpiicpx -o hellocxx hello_world.cpp
-
 ```
 
 `mpiicpx` is the MPI wrapper to the Intel(R) oneAPI DPC++/C++ Compiler and should be used to compile and link C++ programs
 
 ```
 mpiifx -o hellofortran hello_world.f90
-
 ```
 
 `mpiifx` is the MPI wrapper to the Intel(R) oneAPI Fortran Compiler `ifx`.
@@ -52,5 +48,4 @@ Intel MPI applications can be launched using:
   ```
   export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi2.so
   srun --mpi=pmi2 mpi_application
-
   ```

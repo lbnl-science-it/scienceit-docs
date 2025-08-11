@@ -4,7 +4,6 @@ Several `gcc` compiler versions are available on Lawrencium. The default `gcc` c
 
 ```
 module load gcc/13.2.0
-
 ```
 
 The C, C++ and fortran compilers in the `gcc` compiler suite are:

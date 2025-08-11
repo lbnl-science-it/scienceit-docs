@@ -42,7 +42,6 @@ Here is an example slurm script that requests one NVIDIA A40 GPU card.
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ```
@@ -59,7 +58,6 @@ python train.py
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ## `es0` Partition
@@ -84,7 +82,6 @@ Example slurm script on `es0`
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ```
@@ -101,5 +98,4 @@ python train.py
 
 module load ml/pytorch
 python train.py
-
 ```

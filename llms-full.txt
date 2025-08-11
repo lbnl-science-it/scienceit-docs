@@ -163,38 +163,32 @@ Transfer data from a local machine to Lawrencium
 
 ```
 scp file-xxx $USER@lrc-xfer.lbl.gov:/global/home/users/$USER
-
 ```
 
 ```
 scp -r dir-xxx $USER@lrc-xfer.lbl.gov:/global/scratch/$USER
-
 ```
 
 Transfer from Lawrencium to a local machine
 
 ```
 scp $USER@lrc-xfer.lbl.gov:/global/scratch/$USER/file-xxx ~/Desktop
-
 ```
 
 Transfer from Lawrencium to Another Institute
 
 ```
 ssh $USER@lrc-xfer.lbl.gov   # DTN
-
 ```
 
 ```
 scp -r $USER@lrc-xfer.lbl.gov:/file-on-lawrencium $USER@other-institute:/destination/path/
-
 ```
 
 ## Rsync: data transfer and backup tool
 
 ```
-rsync -avpz file-at-local $USER@lrc-xfer.lbl.gov:/global/home/user/$USER 
-
+rsync -avpz file-at-local $USER@lrc-xfer.lbl.gov:/global/home/user/$USER
 ```
 
 ## Data Transfer Examples On Windows
@@ -222,7 +216,6 @@ It depends on the `qos` and the information can be obtained using the following 
 
 ```
 sacctmgr show qos name=lr_normal,lr_debug,lr_interactive,cm1_debug,cm1_normal,es_debug,es_normal,cf_debug,cf_normal,es_lowprio,cf_lowprio format=name,maxtres,maxwall,mintres
-
 ```
 
 The maximum runtime / walltime is shown on the `MaxWall` column. The output may look like the following:
@@ -240,8 +233,7 @@ The maximum runtime / walltime is shown on the `MaxWall` column. The output may 
 cm1_normal       node=64  3-00:00:00         cpu=1 
 es_lowprio                           cpu=2,gres/g+ 
 cf_lowprio                                         
-lr_intera+        cpu=32  3-00:00:00               
-
+lr_intera+        cpu=32  3-00:00:00
 ```
 
 # Getting Started
@@ -300,7 +292,6 @@ You’ll need to generate and enter a one-time password each time that you log i
 
 ```
 ssh username@lrc-login.lbl.gov
-
 ```
 
 You will be prompted to enter your password. Enter your PIN+OTP without any spaces. For example if your pin is `0123` and OTP is `456789`, then you will type it as `0123456789`. Note that the characters won’t appear on the screen.
@@ -483,7 +474,6 @@ For easy access to your `scratch` directory from Jupyter on Open OnDemand, you c
 
 ```
 ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
-
 ```
 
 ### Running a notebook
@@ -570,8 +560,7 @@ deepseek-r1:1.5b         a42b25d8c10a    1.1 GB    4 weeks ago
 gemma3:4b                a2af6cc3eb7f    3.3 GB    4 weeks ago    
 gemma3:12b               f4031aab637d    8.1 GB    4 weeks ago    
 gemma3:12b-it-qat        5d4fa005e7bb    8.9 GB    4 weeks ago    
-gemma3:1b                8648f39daa8f    815 MB    4 weeks ago    
-
+gemma3:1b                8648f39daa8f    815 MB    4 weeks ago
 ```
 
 ### Using `ollama` python library on Jupyter notebooks
@@ -588,7 +577,6 @@ client = Client(host=os.environ["OLLAMA_HOST"])
 response = client.chat(model='llama3.2:1b', 
                     messages=[{'role': 'user', 'content': 'Hello'}])
 print (response.message.content)
-
 ```
 
 It is also possible to use [`openai` python](https://github.com/openai/openai-python/) module to [interact with Ollama](https://ollama.com/blog/openai-compatibility) .
@@ -610,7 +598,6 @@ completion = client.chat.completions.create(
                'content': 'Hello'}]
 )
 print (completion.choices[0].message.content)
-
 ```
 
 ## Ollama on VS Code
@@ -748,14 +735,12 @@ Logs and scripts for each interactive session with Open OnDemand are stored in:
 
 ```
 ~/ondemand/data/sys/dashboard/batch_connect/sys
-
 ```
 
 There are directories for each interactive app type within this directory. For example, to see the scripts and logs for a Jupyter session, you might look at the files under:
 
 ```
 ~/ondemand/data/sys/dashboard/batch_connect/sys/lrc_jupyter/output/da19101d-70b0-43c1-84ff-7d9f0e739419
-
 ```
 
 # Adding Packages and Kernels
@@ -767,7 +752,6 @@ A variety of standard Python packages (such as numpy, scipy, matplotlib and pand
 ```
 module load anaconda3
 conda list
-
 ```
 
 pip vs python -m pip
@@ -777,8 +761,7 @@ To reduce potential environment mismatch (especially in the presence of multiple
 You can use `pip` to install or upgrade packages and then use them in a Jupyter notebook, but you will need to make sure to install the new versions or additional packages in your `home` or `scratch` directories because you do not have write permissions to the module directories. You can use
 
 ```
-python -m pip install --user $PACKAGENAME 
-
+python -m pip install --user $PACKAGENAME
 ```
 
 to install the python package to `$HOME/.local`.
@@ -790,7 +773,6 @@ module load anaconda3/2024.02
 module load gcc/11.4.0
 module load cuda/12.2.1
 python -m pip install --user --no-cache-dir cupy-cuda12x
-
 ```
 
 Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `anaconda3/2024.02` module.
@@ -805,7 +787,6 @@ To list the available jupyter kernels:
 
 ```
 jupyter kernelspec list
-
 ```
 
 Example: Add a kernel for a virtual environment
@@ -827,7 +808,6 @@ python -m ipykernel install --user --name cudapython  \
                             --display-name "CUDA Python" \
                             --env PATH $PATH \
                             --env LD_LIBRARY_PATH $LD_LIBRARY_PATH
-
 ```
 
 The above command will create a `kernel.json` file in `~/.local/share/jupyter/kernels/cudapython`. You can manually edit this file to edit the paths and environment variables. The new kernel will show up on the jupyter server app on Open OnDemand. Depending on your packages and whether you had to import additional module before installing the package, you may not have to pass the `--env PATH` and `--env LD_LIBRARY_PATH` values in the command above. In this examples, the `PATH` and `LD_LIBRARY_PATH` variables exported are important because of the `cuda-python` packages make use of `cuda/12.2.1` module that we imported.
@@ -857,7 +837,6 @@ As an example, below is the content of `~/.local/share/jupyter/kernels/cudapytho
   "LD_LIBRARY_PATH": "/location/to/path1:/location/to/path2"
  }
 }
-
 ```
 
 Managing kernels for Jupyter
@@ -873,7 +852,6 @@ module load anaconda3
 conda create --name=$ENV_NAME ipykernel
 conda activate $ENV_NAME
 python -m ipykernel install --user --name $ENV_NAME
-
 ```
 
 From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.0.0` from `conda-forge` channel.
@@ -885,7 +863,6 @@ conda activate numpy2test
 conda config --env -add channels conda-forge
 conda install numpy=2.0.0
 python -m ipykernel install --user --name numpy2 --display-name="Numpy v2 (Python 3.12)"
-
 ```
 
 Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand.
@@ -901,7 +878,6 @@ export APPTAINER_TMPDIR=$SCRATCH
 cd $SCRATCH
 
 apptainer pull docker://nvcr.io/nvidia/rapidsai/notebooks:25.04-cuda12.8-py3.12
-
 ```
 
 You can then manually create a `kernel.json` file in `~/.local/share/jupyter/kernels/rapids` with the following content.
@@ -925,7 +901,6 @@ You can then manually create a `kernel.json` file in `~/.local/share/jupyter/ker
      "debugger": true
     }
 }
-
 ```
 
 GNU Parallel is a shell tool for executing jobs in parallel on one or more computers. It’s a helpful tool for automating the parallelization of multiple (often serial) jobs, in particular allowing one to group jobs into a single SLURM submission to take advantage of the multiple cores on a given Lawrencium node.
@@ -942,7 +917,6 @@ GNU Parallel is available as a module on Lawrencium. To load GNU Parallel:
 
 ```
 module load parallel
-
 ```
 
 ## Basic Usage
@@ -953,7 +927,6 @@ To motivate usage of GNU parallel, consider how you might automate running multi
 for (( i=1; i <= 3; i++ )); do
 cp file${i}.in file${i}.out
 done
-
 ```
 
 That’s fine, but it won’t run the tasks in parallel. Let’s use GNU parallel to do it in parallel:
@@ -962,7 +935,6 @@ That’s fine, but it won’t run the tasks in parallel. Let’s use GNU paralle
 parallel -j 2 cp file{}.in file{}.out ::: 1 2 3
 ls file*out
 # file1.out file2.out file3.out
-
 ```
 
 Based on `-j`, that will use two cores to process the three tasks, staring the third task when a core becomes free from having finished either the first or second task. The `:::` syntax separates the input values `1 2 3` from the command being run. Each input value is used in place of `{}` and `cp` command is run.
@@ -1000,8 +972,7 @@ echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g > hostfile
 ## echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g |awk -v cores=$SLURM_CPUS_ON_NODE '{print cores"/"$1}'hostfile<
 #
 parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress \
---colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst 
-
+--colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst
 ```
 
 - `-a`: task list as input to GNU parallel
@@ -1030,7 +1001,6 @@ Note: `–log logfile` pairs with the `resume` option for production runs. A uni
 module load  bio/blast-plus parallel
 
 blastp -query $1 -db ../blast/db/img_v400_PROT.00 -out $2  -outfmt 7 -max_target_seqs 10 -num_threads $3
-
 ```
 
 where $1, $2 and $3 are the three parameters required for each serial task
@@ -1041,7 +1011,6 @@ where $1, $2 and $3 are the three parameters required for each serial task
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa
 ../blast/data/protein2.faa
-
 ```
 
 In this example, although each task takes three parameters (run-blast.sh), only one parameter is provided in the task list task.lst. The 2nd parameter, which specifies the output, is correlated to output/{/.}.blst in blast.slurm. And the third parameter num_threads is fixed. However, If core# varies from task to task, task.lst could be revised as:
@@ -1050,7 +1019,6 @@ In this example, although each task takes three parameters (run-blast.sh), only 
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa 2
 ../blast/data/protein2.faa 4
-
 ```
 
 For best practice, test your code on an interactive node before submitting jobs to clusters.
@@ -1062,14 +1030,12 @@ In addition: task list can a sequence of commands, such as:
 echo “host = ” ‘`hostname`’
 sh -c “echo today date = ; date”
 sh -c “echo today date = ; date”
-
 ```
 
 ```
 [user@n0002 ~] parallel -j 2 < commands.lst
 host =  n0148.savio3
 today date = Sat Apr 18 14:07:33 PDT 2020
-
 ```
 
 ### Useful external links
@@ -1083,7 +1049,6 @@ To monitor a running job, you need to know the SLURM job ID of that job, which c
 
 ```
 squeue -u $USER
-
 ```
 
 ## Monitoring the job from a login node
@@ -1094,14 +1059,12 @@ The following provides a snapshot of node status that the job is running on:
 
 ```
 wwall -j $your_job_id
-
 ```
 
 while
 
 ```
 wwall -j $your_job_id -t
-
 ```
 
 provides a text-based user interface (TUI) to monitor the node status when the job progresses. To exit the TUI, enter “q” to quit out of the interface and be returned to the command line.
@@ -1114,7 +1077,6 @@ Alternatively, you can login to the node your job is running on as follows:
 
 ```
 srun –jobid=$your_job_id –pty /bin/bash
-
 ```
 
 This runs a shell in the context of your existing job. Once on the node, you can run top, htop, ps, or other tools.
@@ -1128,8 +1090,7 @@ First of all, you should look for the SLURM output and error files that may be c
 After a job has completed (or been terminated/cancelled), you can review the maximum memory used via the sacct command.
 
 ```
-sacct -j –format=JobID,JobName,MaxRSS,Elapsed 
-
+sacct -j –format=JobID,JobName,MaxRSS,Elapsed
 ```
 
 MaxRSS will show the maximum amount of memory that the job used in kilobytes.
@@ -1139,7 +1100,6 @@ You can check all the jobs that you ran within a time window as follows
 ```
 sacct -u –starttime=2019-09-27 –endtime=2019-10-04 \
 –format JobID,JobName,Partition,Account,AllocCPUS,State,ExitCode,Start,End,NodeList
-
 ```
 
 Please see `man sacct` for a list of the output columns you can request, as well as the SLURM documentation for the [`sacct`](https://slurm.schedmd.com/sacct.html) command.
@@ -1159,7 +1119,6 @@ Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how
 #SBATCH --time=0:0:30
 ## Run command
 ./a.out
-
 ```
 
 ```
@@ -1177,7 +1136,6 @@ Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how
 #
 ## Command(s) to run (example):
 ./a.out
-
 ```
 
 ```
@@ -1203,7 +1161,6 @@ export JOBS_PER_NODE=$(( $SLURM_CPUS_ON_NODE / $SLURM_CPUS_PER_TASK ))
 echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g > hostfile
 #
 parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress -a task.lst sh run-blast.sh {} output/{/.}.blst $SLURM_CPUS_PER_TASK
-
 ```
 
 ## Example Set 2
@@ -1222,7 +1179,6 @@ parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --res
 ## Command(s) to run (example):
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ./a.out
-
 ```
 
 ```
@@ -1240,7 +1196,6 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ## Command(s) to run (example):
 module load gcc openmpi
 mpirun ./a.out
-
 ```
 
 1. Number of MPI tasks needed
@@ -1259,7 +1214,6 @@ mpirun ./a.out
 ## Command(s) to run (example):
 module load gcc openmpi
 mpirun ./a.out
-
 ```
 
 ```
@@ -1277,7 +1231,6 @@ mpirun ./a.out
 module load gcc openmpi
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 mpirun ./a.out
-
 ```
 
 1. Processors per task needed
@@ -1333,7 +1286,6 @@ Examples:
 #
 ## Command(s) to run (example):
 ./a.out
-
 ```
 
 SLURM is a resource manager and job scheduling system developed by SchedMD. The trackable resources (TRES) include Nodes, CPUs, Memory and Generic Resources (GRES).
@@ -1356,7 +1308,6 @@ There are several basic commands you will need to know to submit jobs, cancel jo
 
   ```
   squeue -u $USER
-
   ```
 
 - `sinfo` – view the current status of the queues, e.g., `sinfo`
@@ -1371,7 +1322,6 @@ You can use `srun` to request and run an interactive job. The following example 
 
 ```
 srun -p lr4 -A account_name -q lr_normal -N 1 -t 1:00:00 --pty bash
-
 ```
 
 The prompt will change to indicate that you are on the compute node allocated for the interactive job once the interactive job starts:
@@ -1379,8 +1329,7 @@ The prompt will change to indicate that you are on the compute node allocated fo
 ```
 srun: job 7566529 queued and waiting for resources
 srun: job 7566529 has been allocated resources
-[user@n0105 ~]$ 
-
+[user@n0105 ~]$
 ```
 
 If you are done working on the interactive job before the allocated time, you can release the resource by using `exit` on the interactive node.
@@ -1391,7 +1340,6 @@ A Slurm job submission script includes a list of SLURM directives (or commands) 
 
 ```
 sacctmgr show association -p user=$USER
-
 ```
 
 The command returns the output for a hypothetical example user `userA`. To be specific, `userA` has access to a PI Computing Allowance `pc_acctB`, departmental cluster nano and the condo account `lr_acctA` with respect to different partitions. Each line of this output indicates a specific combination of an account, a partition, and QoSes that you can use in a job script file, when submitting any individual batch job:
@@ -1407,7 +1355,6 @@ perceus-00|pc_acctB|userA|lr4|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr3|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|cf1|1|||||||||||||cf_debug,cf_normal|||
 perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_lowprio,es_normal|||
-
 ```
 
 The Account, Partition, and QOS indicate which partitions and QoSes you have access to under each of your account(s).
@@ -1423,7 +1370,6 @@ module load SOFTWARE    # Load the module “SOFTWARE”
 module unload SOFTWARE  # Unload the module “SOFTWARE”
 module available        # List all modules available for loading
 module list             # List all modules currently loaded
-
 ```
 
 ## Finding Modules
@@ -1457,7 +1403,6 @@ the "hdf5/1.14.3" module is available to load.
       managing data. It supports an unlimited variety of datatypes, 
       and is designed for flexible and efficient I/O and for high volume 
       and complex data.
-
 ```
 
 This means that you will need to load the appropriate compiler + mpi library combination before being able to load the corresponding hdf5 module. For example, you can do the following:
@@ -1466,7 +1411,6 @@ This means that you will need to load the appropriate compiler + mpi library com
 module load gcc/11.4.0
 module load openmpi/4.1.6
 module load hdf5
-
 ```
 
 ## Environment Modules Usage Examples
@@ -1502,7 +1446,6 @@ module avail
 
 ------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
   anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
-
 ```
 
 module list
@@ -1510,7 +1453,6 @@ module list
 ```
 [user@n0000 ~]$ module list
 No modules loaded
-
 ```
 
 module load
@@ -1522,7 +1464,6 @@ module load
 
 Currently Loaded Modules:
   1) gcc/11.4.0   2) ucx/1.14.1   3) openmpi/4.1.6
-
 ```
 
 On systems in which a hierarchical structure is used, some of modulefiles will only be available after the root modulefile is loaded. The Lawrencium cluster uses a hierarchical structure for several packages that depend on a particular compiler and/or MPI package. For example, after loading `gcc/11.4.0` and `openmpi/4.1.6` in the example above, `module avail` will show new packages that can now be loaded:
@@ -1546,7 +1487,6 @@ hierarchical structure
   cuda/12.2.1         (D)    netlib-lapack/3.11.0          ucx/1.14.1      (L)
   cudnn/8.7.0.84-11.8        openblas/0.3.24               udunits/2.2.28
   cudnn/8.9.0-12.2.1  (D)    openmpi/4.1.3                 vcftools/0.1.16
-
 ```
 
 For example, now `gromacs` can be loaded.
@@ -1560,7 +1500,6 @@ Note
 Currently Loaded Modules:
   1) gcc/11.4.0   3) openmpi/4.1.6   5) intel-oneapi-tbb/2021.10.0   7) netlib-lapack/3.11.0
   2) ucx/1.14.1   4) fftw/3.3.10     6) intel-oneapi-mkl/2023.2.0    8) gromacs/2023.3
-
 ```
 
 `module show` command displays information about the module.
@@ -1599,7 +1538,6 @@ prepend_path("PKG_CONFIG_PATH","/global/software/rocky-8.x86_64/gcc/linux-rocky8
 prepend_path("CMAKE_PREFIX_PATH","/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3
 .10-cf4npbktueip6tnwqf2qstog7on4pyfk/.")
 append_path("MANPATH","")
-
 ```
 
 The `module purge` command unloads all currently loaded modulefiles.
@@ -1610,7 +1548,6 @@ module purge
 [user@n0000 ~]$ module purge
 [user@n0000 ~]$ module list
 No modules loaded
-
 ```
 
 ## User Generated Modulefiles
@@ -1623,14 +1560,12 @@ Users can generate their own modulefiles to load user-specific applications. The
 
 ```
 export MODULEPATH=$MODULEPATH:/location/to/my/modulefiles
-
 ```
 
 2). For csh/tcsh users, please add the following to ~/.cshrc:
 
 ```
 setenv MODULEPATH ”$MODULEPATH”:/location/to/my/modulefiles
-
 ```
 
 Software Module Farm (SMF) Service
@@ -1665,7 +1600,6 @@ The `vasp/6.4.1-cpu-intel` module is compiled using the intel compiler and mpi m
 module load intel-oneapi-compilers/2023.1.0
 module load intel-oneapi-mpi/2021.10.0
 module load vasp/6.4.1-cpu-intel
-
 ```
 
 Sample VASP CPU slurm script
@@ -1691,7 +1625,6 @@ module load vasp/6.4.1-cpu-intel
 export OMP_NUM_THREADS=4
 
 srun --mpi=pmi2 vasp_std
-
 ```
 
 ## VASP GPU Binary (NVHPC SDK)
@@ -1701,7 +1634,6 @@ The `vasp/6.4.1-gpu` module is compiled using NVHPC SDK. To load the module:
 ```
 module load nvhpc/23.11
 module load vasp/6.4.1-gpu
-
 ```
 
 Sample VASP GPU slurm script
@@ -1728,7 +1660,6 @@ export PMIX_MCA_psec=native
 export OMP_NUM_THREADS=1
 
 mpirun -np 2 vasp_std
-
 ```
 
 ## Compiling VASP
@@ -1741,7 +1672,6 @@ Several `gcc` compiler versions are available on Lawrencium. The default `gcc` c
 
 ```
 module load gcc/13.2.0
-
 ```
 
 The C, C++ and fortran compilers in the `gcc` compiler suite are:
@@ -1763,7 +1693,6 @@ The C, C++ and fortran compilers in the `gcc` compiler suite are:
 
 ```
 module load intel-oneapi-compilers
-
 ```
 
 ## LLVM-based oneAPI Compilers
@@ -1795,7 +1724,6 @@ The NVIDIA HPC SDK version 23.11 is available on Lawrencium. You can load the `n
 
 ```
 module load nvhpc/23.11
-
 ```
 
 The `nvhpc` module consists of the following compilers:
@@ -1832,14 +1760,12 @@ For some GPU nodes with AMD CPU hosts such as `A40` nodes, we have found that th
 
 ```
 export PMIX_MCA_psec=native
-
 ```
 
 In addition, `--bind-to core` which is the default for `mpirun` might not work; in which case, you can try `--bind-to none` or `--bind-to socket`. For example:
 
 ```
 mpirun -np 2 --bind-to socket ./program
-
 ```
 
 ## Additional References
@@ -1853,21 +1779,18 @@ Version `4.4.0` of R is available to users; the R module can be loaded as:
 
 ```
 module load r
-
 ```
 
 Some commonly used r-packages are already installed with the R module available on the system. To view the list of packages already installed, use the following command in the R command prompt (either in your terminal or RStudio session on Open OnDemand):
 
 ```
 installed.packages()
-
 ```
 
 Another module `r-spatial` is available for a standard set of R packages for spatial data:
 
 ```
 module load r-spatial
-
 ```
 
 # Using Julia on Lawrencium
@@ -1879,7 +1802,6 @@ $ module av julia
 
 -------------- /global/software/rocky-8.x86_64/modfiles/langs ---------------
    julia/1.10.2-11.4
-
 ```
 
 ```
@@ -1894,8 +1816,7 @@ $ julia
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
-julia> 
-
+julia>
 ```
 
 ## Using Julia through Jupyter on Open OnDemand
@@ -1922,8 +1843,7 @@ $ module load python/3.10.12
 $ python
 Python 3.10.12 (main, Mar 22 2024, 00:44:12) [GCC 11.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
-
+>>>
 ```
 
 To load one of these modules use: `module load python/3.10.12` or `module load python/3.11.6`. Additional site-packages installed in these python modules are: `numpy`, `scipy`, `matplotlib`, `mpi4py`, `h5py`,`netCDF4`, `pandas`, `geopandas`, `ipython` and `pyproj`.
@@ -1933,8 +1853,7 @@ User installation of python packages
 You can use pip to install or upgrade packages.
 
 ```
-python -m pip install --user $PACKAGENAME 
-
+python -m pip install --user $PACKAGENAME
 ```
 
 to install a python package to `~/.local` directory. The package libraries are usually installed in a sub-directory for each python version; for example: `~/.local/lib/python3.10/site-packages/`.
@@ -1955,7 +1874,6 @@ $ python
 Python 3.11.7 (main, Dec 15 2023, 18:12:31) [GCC 11.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
-
 ```
 
 ```
@@ -1963,7 +1881,6 @@ $ module load anaconda3/2024.10
 $ python
 Python 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
-
 ```
 
 Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../../openondemand/jupyter-server/) on [Open OnDemand](../../../openondemand/overview/). [Click here](../../../openondemand/packages-kernels/) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
@@ -1974,7 +1891,6 @@ Additionally the [Intel Distribution of Python (Python 3.9)](https://www.intel.c
 
 ```
 module load intelpython/3.9.19
-
 ```
 
 When you load `intelpython`, `intel-oneapi-compilers` and `intel-oneapi-mpi` are also loaded because we have added `mpi4py` package linked to Intel MPI library to the Intel Distribution of Python.
@@ -1991,7 +1907,6 @@ To install dask-labextension once you have a python module loaded:
 
 ```
 python -m pip install dask-labextension
-
 ```
 
 # CUDA Toolkit
@@ -2001,7 +1916,6 @@ The NVIDIA CUDA Toolkit, consisting of Nvidia-GPU-accelerated libraries, C/C++ c
 ```
 module load gcc/11.4.0
 module load cuda/12.2.1
-
 ```
 
 loads CUDA Toolkit version 12.2.1. The environment variable `CUDA_HOME` is set by the `cuda` module.
@@ -2024,12 +1938,10 @@ FFTW on Lawrencium can be loaded after loading a MPI library. For example, to lo
 
 --------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------
    fftw/3.3.10
-
 ```
 
 ```
 [user@n0000 ~]$ module load fftw/3.3.10
-
 ```
 
 ## Compiling programs using FFTW library
@@ -2038,8 +1950,7 @@ To compile using the loaded `fftw3` library, we need the appropriate `CFLAGS` an
 
 ```
 [user@n0000 ~]$ pkg-config --cflags --libs fftw3
--I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/lib -lfftw3 
-
+-I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/lib -lfftw3
 ```
 
 Note that the result above does not include linker flags for MPI FFTW routines. To compile program using `MPI FFTW`, in addition to `-lfftw3` we also need `-lfftw3_mpi` and `-lm` ([see here](https://www.fftw.org/fftw3_doc/Linking-and-Initializing-MPI-FFTW.html) ).
@@ -2048,7 +1959,6 @@ Therefore, to compile using MPI FFTW library:
 
 ```
 mpicc -o output $(pkg-config --cflags --libs fftw3) -lfftw_mpi -lm example_mpi_fftw.c
-
 ```
 
 Compiling using `rpath`
@@ -2057,7 +1967,6 @@ To compile using `rpath`, you need to add the following:
 
 ```
 -Wl,-rpath,$(pkg-config --variable=libdir fftw3)
-
 ```
 
 Compiling with `rpath` adds the `libdir` to the runtime library search path in the executable file.
@@ -2074,12 +1983,10 @@ HDF5 on Lawrencium can be loaded after loading a MPI library. For example, to lo
 
 ------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    hdf5/1.14.3
-
 ```
 
 ```
 [user@n0000 ~]$ module load hdf5
-
 ```
 
 ## Compiling programs using HDF5 library
@@ -2090,15 +1997,13 @@ To compile using the loaded `HDF5` library, we need the appropriate `CFLAGS` and
 
 ```
 [user@n0000 ~]$ pkg-config --cflags --libs hdf5
--I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/lib -lhdf5 
-
+-I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/lib -lhdf5
 ```
 
 To include these directly in the compilation process, we can do the following:
 
 ```
 mpicc -o ph5_file_create $(pkg-config --cflags --libs hdf5) ph5_file_create.c
-
 ```
 
 # Intel MKL Library
@@ -2113,7 +2018,6 @@ Intel MKL library is available under both `gcc` and `intel-oneapi-compilers` on 
 Currently Loaded Modules:
   1) gcc/11.4.0   2) ucx/1.14.1   3) openmpi/4.1.6   
   4) intel-oneapi-tbb/2021.10.0   5) intel-oneapi-mkl/2023.2.0
-
 ```
 
 Similarly, we can load the MKL library with the intel oneapi compilers and mpi as:
@@ -2127,7 +2031,6 @@ Similarly, we can load the MKL library with the intel oneapi compilers and mpi a
 Currently Loaded Modules:
   1) intel-oneapi-compilers/2023.1.0   3) intel-oneapi-tbb/2021.10.0
   2) intel-oneapi-mpi/2021.10.0        4) intel-oneapi-mkl/2023.2.0
-
 ```
 
 MKL Link Line Advisor
@@ -2146,7 +2049,6 @@ NetCDF on Lawrencium can be loaded after loading a MPI library. For example, to 
 
 ------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    netcdf-c/4.9.2    netcdf-fortran/4.6.1
-
 ```
 
 As you can see on the output of `module avail netcdf`, a C version of the library `netcdf-c` and a fortran version of the library `netcdf-fortran` are available.
@@ -2163,21 +2065,18 @@ To compile using the `netcdf-fortran` library, we need the appropriate `CFLAGS` 
 
 [user@n0000 ~]$ pkg-config --libs netcdf-fortran
 -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/netcdf-fortran-4.6.1-fjshq66ynuoqqbtns2n3pwerlpymqjkg/lib -lnetcdff
-
 ```
 
 To include these directly in the compilation process, we can do the following:
 
 ```
 gfortran -o simple_xy_rd $(pkg-config --cflags --libs netcdf-fortran) simple_xy_rd.f90
-
 ```
 
 Before running the binary `simple_xy_rd`, you have to add the `netcdf-fortran` library path to the `LD_LIBRARY_PATH` environment variable.
 
 ```
 export LD_LIBRARY_PATH=/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/netcdf-fortran-4.6.1-fjshq66ynuoqqbtns2n3pwerlpymqjkg/lib:$LD_LIBRARY_PATH
-
 ```
 
 # AlphaFold 3 on Lawrencium
@@ -2198,7 +2097,6 @@ Lawrencium users interested in using AlphaFold 3 are required to abide to above 
 
 ```
 module load ml/alphafold3
-
 ```
 
 The `ml/alphafold3` module defines various environment variables such as `ALPHAFOLD_DIR` and `DB_DIR` that can be used to run a job as shown below. Users will have to setup environment variable for `MODEL_PARAMETERS_DIR` before running the script or it can be setup directly in the job submission script as shown below.
@@ -2210,6 +2108,10 @@ Note
 - Use `python /app/alphafold/run_alphafold.py` when using the `alphafold3.sif` image from the `ml/alphafold3` module. This is different from the official instructions on the `alphafold3` github page. See the sample slurm script below.
 
 Below is a sample script to run `alphafold3` after loading `ml/alphafold3` module. It assumes the presence of `fold_input.json` in `$HOME/af_input` and saves output to `$HOME/af_output`. Please pay close attention to different options, path and variables and make changes as necessary.
+
+Example 1: Running both Data Pipeline and Inference
+
+af3_example.sh
 
 ```
 #!/bin/bash
@@ -2241,8 +2143,85 @@ apptainer exec --nv --bind $HOME/af_input:/root/af_input \
                     --model_dir=/root/models \
                     --db_dir=/root/public_databases \
                     --output_dir=/root/af_output
+```
+
+Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) portions of the job using options `--run_data_pipeline` and `--run_inference` options. It is also possible to run the data pipeline on a CPU partition such as lr6 followed the inference on a GPU partition using slurm dependency.
+
+Example 2: Running Data Pipeline and Inference Separately
+
+First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below:
 
 ```
+#!/bin/bash
+#SBATCH --account=<account>
+#SBATCH --partition=lr6
+#SBATCH --nodes=1
+#SBATCH --qos=lr_normal
+#SBATCH --time=1:00:00
+#SBATCH --kill-on-invalid-dep=yes
+#SBATCH --job-name=data_lr6
+#SBATCH --output=%x_%a.out
+#SBATCH --error=%x_%a.err
+
+module load ml/alphafold3/3.0.1
+
+apptainer exec --bind $PWD/af_input:/root/af_input \
+               --bind $PWD/af_output:/root/af_output \
+               --bind $PWD/af_model:/root/models \
+               --bind $DB_DIR:/root/public_databases \
+               $ALPHAFOLD_DIR/alphafold3.sif \
+               python /app/alphafold/run_alphafold.py \
+               --json_path=/root/af_input/fold.json \
+               --model_dir=/root/models \
+               --db_dir=/root/public_databases \
+               --output_dir=/root/af_output \
+               --run_data_pipeline=true \
+               --run_inference=false
+```
+
+```
+#!/bin/bash
+#SBATCH --account=<account>
+#SBATCH --partition=es1
+#SBATCH --cpus-per-task=14
+#SBATCH --ntasks=1
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:H100:1
+#SBATCH --qos=es_normal
+#SBATCH --time=0:30:0
+#SBATCH --kill-on-invalid-dep=yes
+#SBATCH --job-name=inf_h100
+#SBATCH --output=%x_%a.out
+#SBATCH --error=%x_%a.err
+
+module load ml/alphafold3/3.0.1
+
+apptainer exec --nv --bind $PWD/af_input:/root/af_input \
+                    --bind $PWD/af_output:/root/af_output \
+                    --bind $PWD/af_model:/root/models \
+                    --bind $DB_DIR:/root/public_databases \
+                    $ALPHAFOLD_DIR/alphafold3.sif \
+                    python /app/alphafold/run_alphafold.py \
+                    --json_path=/oot/af_output/<job_name>/<job_name>_data.json \ 
+                    --model_dir=/root/models \
+                    --db_dir=/root/af_output/<job_name> \
+                    --run_data_pipeline=false \
+                    --run_inference=true
+```
+
+Now, submit the data pipeline job as follows to get the Job ID:
+
+```
+jobid=$(sbatch --parsable af3_data.sh)
+```
+
+And, submit the inference job using slurm dependency as follows such that the inference job is only run after the data job is completed:
+
+```
+sbatch --dependency=afterok:$jobid af3_inference.sh
+```
+
+If you are running a large number of jobs, slurm task arrays can be useful; for example use `#SBATCH --array=1-25%10` for 25 task arrays of which only 10 can run at a time. Then, you can use the environment variable `$SLURM_ARRAY_TASK_COUNT` in your slurm script to map your input json file name to the task array. In this case, you would need to submit the inference job using `--dependency=aftercorr:$jobid` such that an inference job task starts only when the corresponding data job task has completed successfully.
 
 # PyTorch
 
@@ -2250,7 +2229,6 @@ apptainer exec --nv --bind $HOME/af_input:/root/af_input \
 
 ```
 module load ml/pytorch
-
 ```
 
 PyTorch versions
@@ -2296,7 +2274,6 @@ srun torchrun --nnodes 2 \
               --rdzv_backend c10d \
               --rdzv_endpoint $head_node:29500 \
               multinode.py 500 10
-
 ```
 
 In the script above, if the port `29500` is not free, then the script may not work. It is possible to use the following python script to get a port that is free:
@@ -2313,7 +2290,6 @@ def get_free_tcp_port():
 
 free_port = get_free_tcp_port()
 print(f"{free_port}")
-
 ```
 
 and use it in the slurm script as follows (4 nodes on `es0` partition):
@@ -2352,7 +2328,6 @@ srun torchrun --nnodes 4 \
               --rdzv_backend c10d \
               --rdzv_endpoint $head_node:$port \
               multinode.py 500 10
-
 ```
 
 Please take look at the `multinode.py` in [pytorch examples](https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series) and [torchrun docs](https://docs.pytorch.org/docs/stable/elastic/run.html) for more information.
@@ -2363,7 +2338,6 @@ Please take look at the `multinode.py` in [pytorch examples](https://github.com/
 
 ```
 module load ml/tensorflow
-
 ```
 
 Tensorflow versions
@@ -2393,7 +2367,6 @@ The follow SLURM script shows how to run a tensorflow script on 1 H100 GPU card.
 
 module load ml/tensorflow
 srun python cifar10.py
-
 ```
 
 # Intel MPI
@@ -2407,7 +2380,6 @@ srun python cifar10.py
 
 Currently Loaded Modules:
   1) intel-oneapi-compilers/2023.1.0   2) intel-oneapi-mpi/2021.10.0
-
 ```
 
 ## Compiling MPI applications with Intel MPI
@@ -2418,21 +2390,18 @@ Examples
 
 ```
 mpiicx -o helloc hello_world.c
-
 ```
 
 `mpiicx` is the MPI wrapper to the Intel(R) C/C++ compiler and should be used to compile and link C programs
 
 ```
 mpiicpx -o hellocxx hello_world.cpp
-
 ```
 
 `mpiicpx` is the MPI wrapper to the Intel(R) oneAPI DPC++/C++ Compiler and should be used to compile and link C++ programs
 
 ```
 mpiifx -o hellofortran hello_world.f90
-
 ```
 
 `mpiifx` is the MPI wrapper to the Intel(R) oneAPI Fortran Compiler `ifx`.
@@ -2450,7 +2419,6 @@ Intel MPI applications can be launched using:
   ```
   export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi2.so
   srun --mpi=pmi2 mpi_application
-
   ```
 
 # Open MPI
@@ -2470,7 +2438,6 @@ Currently Loaded Modules:
 
 -------------- /global/software/rocky-8.x86_64/modfiles/gcc/11.4.0 -----------
    openmpi/4.1.3    openmpi/4.1.6 (D)
-
 ```
 
 After this, you can load the default `openmpi/4.1.6` through `module load openmpi` or by specifying the version `module load openmpi/4.1.6`. If you want to load the non-default `openmpi/4.1.3` module, then you must specify the version: `module load openmpi/4.1.3`:
@@ -2481,7 +2448,6 @@ After this, you can load the default `openmpi/4.1.6` through `module load openmp
 
 Currently Loaded Modules:
   1) gcc/11.4.0   2) ucx/1.14.1   3) openmpi/4.1.6
-
 ```
 
 ## Compiling MPI applications with Open MPI
@@ -2492,21 +2458,18 @@ Examples
 
 ```
 mpicc -o helloc hello_world.c
-
 ```
 
 `mpicc` is the MPI wrapper to the gcc C compiler.
 
 ```
 mpicxx -o hellocxx hello_world.cpp
-
 ```
 
 `mpicxx` is the MPI wrapper to the gcc C++ compiler.
 
 ```
 mpifort -o hellofortran hello_world.f90
-
 ```
 
 `mpifort` is the MPI wrapper to the gfortran compiler.
@@ -2557,7 +2520,6 @@ Here is an example slurm script that requests one NVIDIA A40 GPU card.
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ```
@@ -2574,7 +2536,6 @@ python train.py
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ## `es0` Partition
@@ -2599,7 +2560,6 @@ Example slurm script on `es0`
 
 module load ml/pytorch
 python train.py
-
 ```
 
 ```
@@ -2616,7 +2576,6 @@ python train.py
 
 module load ml/pytorch
 python train.py
-
 ```
 
 # CPU Cluster
@@ -2775,7 +2734,6 @@ Supports Cooperative Kernel Launch:            Yes
 Supports MultiDevice Co-op Kernel Launch:      Yes 
 Device PCI Domain ID / Bus ID / location ID:   0 / 94 / 0 
 Compute Mode: < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
-
 ```
 
 ## Queue Configuration
@@ -2796,21 +2754,18 @@ To do this run:
 
 ```
 ssh-keygen -t ed25519
-
 ```
 
 Then run
 
 ```
 cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
-
 ```
 
 Then finally
 
 ```
 chmod 600 ~/.ssh/authorized_keys
-
 ```
 
 The suggested default name and location should be fine. You will be prompted for a password, but to leave it blank just hit enter. Passwords can interfere with intra-cluster node communication when launching jobs, particularly with a scheduler should we choose to deploy one.

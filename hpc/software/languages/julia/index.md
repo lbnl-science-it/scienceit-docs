@@ -7,7 +7,6 @@ $ module av julia
 
 -------------- /global/software/rocky-8.x86_64/modfiles/langs ---------------
    julia/1.10.2-11.4
-
 ```
 
 ```
@@ -22,8 +21,7 @@ $ julia
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
-julia> 
-
+julia>
 ```
 
 ## Using Julia through Jupyter on Open OnDemand

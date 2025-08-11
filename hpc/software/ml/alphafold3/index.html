@@ -2712,7 +2712,9 @@
 </ul>
 </div>
 <p>Below is a sample script to run <code>alphafold3</code> after loading <code>ml/alphafold3</code> module. It assumes the presence of <code>fold_input.json</code> in <code>$HOME/af_input</code> and saves output to <code>$HOME/af_output</code>. Please pay close attention to different options, path and variables and make changes as necessary.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="admonition example">
+<p class="admonition-title">Example 1: Running both Data Pipeline and Inference</p>
+<div class="highlight"><span class="filename">af3_example.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --account=&lt;account&gt;</span>
 <span class="c1">#SBATCH --partition=es1</span>
 <span class="c1">#SBATCH --gres=gpu:H100:1</span>
@@ -2742,6 +2744,81 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
 <span class="w">                    </span>--db_dir<span class="o">=</span>/root/public_databases<span class="w"> </span><span class="se">\</span>
 <span class="w">                    </span>--output_dir<span class="o">=</span>/root/af_output
 </code></pre></div>
+</div>
+<p>Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) portions of the job using options <code>--run_data_pipeline</code> and <code>--run_inference</code> options. It is also possible to run the data pipeline on a CPU partition such as lr6 followed the inference on a GPU partition using slurm dependency.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 2: Running Data Pipeline and Inference Separately</p>
+<p>First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">af3_data.sh</label><label for="__tabbed_1_2">af3_inference.sh</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --account=&lt;account&gt;</span>
+<span class="c1">#SBATCH --partition=lr6</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --qos=lr_normal</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+<span class="c1">#SBATCH --kill-on-invalid-dep=yes</span>
+<span class="c1">#SBATCH --job-name=data_lr6</span>
+<span class="c1">#SBATCH --output=%x_%a.out</span>
+<span class="c1">#SBATCH --error=%x_%a.err</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.1
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_model:/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--bind<span class="w"> </span><span class="nv">$DB_DIR</span>:/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span><span class="nv">$ALPHAFOLD_DIR</span>/alphafold3.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>python<span class="w"> </span>/app/alphafold/run_alphafold.py<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--json_path<span class="o">=</span>/root/af_input/fold.json<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--model_dir<span class="o">=</span>/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--db_dir<span class="o">=</span>/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--output_dir<span class="o">=</span>/root/af_output<span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--run_data_pipeline<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">               </span>--run_inference<span class="o">=</span><span class="nb">false</span><span class="w"> </span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --account=&lt;account&gt;</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --cpus-per-task=14</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --gres=gpu:H100:1</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --time=0:30:0</span>
+<span class="c1">#SBATCH --kill-on-invalid-dep=yes</span>
+<span class="c1">#SBATCH --job-name=inf_h100</span>
+<span class="c1">#SBATCH --output=%x_%a.out</span>
+<span class="c1">#SBATCH --error=%x_%a.err</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.1
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_model:/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$DB_DIR</span>:/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span><span class="nv">$ALPHAFOLD_DIR</span>/alphafold3.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>python<span class="w"> </span>/app/alphafold/run_alphafold.py<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--json_path<span class="o">=</span>/oot/af_output/&lt;job_name&gt;/&lt;job_name&gt;_data.json<span class="w"> </span><span class="se">\ </span>
+<span class="w">                    </span>--model_dir<span class="o">=</span>/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--db_dir<span class="o">=</span>/root/af_output/&lt;job_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--run_data_pipeline<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--run_inference<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now, submit the data pipeline job as follows to get the Job ID:
+<div class="highlight"><pre><span></span><code><span class="nv">jobid</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>af3_data.sh<span class="k">)</span>
+</code></pre></div></p>
+<p>And, submit the inference job using slurm dependency as follows such that the inference job is only run after the data job is completed:</p>
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$jobid</span><span class="w"> </span>af3_inference.sh
+</code></pre></div>
+</div>
+<p>If you are running a large number of jobs, slurm task arrays can be useful; for example use <code>#SBATCH  --array=1-25%10</code> for 25 task arrays of which only 10 can run at a time. Then, you can use the environment variable <code>$SLURM_ARRAY_TASK_COUNT</code> in your slurm script to map your input json file name to the task array. In this case, you would need to submit the inference job using <code>--dependency=aftercorr:$jobid</code> such that an inference job task starts only when the corresponding data job task has completed successfully.</p>
 
 
 
@@ -2762,7 +2839,7 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 11, 2025</span>
   </span>
 
     

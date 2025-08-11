@@ -12,7 +12,6 @@ GNU Parallel is available as a module on Lawrencium. To load GNU Parallel:
 
 ```
 module load parallel
-
 ```
 
 ## Basic Usage
@@ -23,7 +22,6 @@ To motivate usage of GNU parallel, consider how you might automate running multi
 for (( i=1; i <= 3; i++ )); do
 cp file${i}.in file${i}.out
 done
-
 ```
 
 That’s fine, but it won’t run the tasks in parallel. Let’s use GNU parallel to do it in parallel:
@@ -32,7 +30,6 @@ That’s fine, but it won’t run the tasks in parallel. Let’s use GNU paralle
 parallel -j 2 cp file{}.in file{}.out ::: 1 2 3
 ls file*out
 # file1.out file2.out file3.out
-
 ```
 
 Based on `-j`, that will use two cores to process the three tasks, staring the third task when a core becomes free from having finished either the first or second task. The `:::` syntax separates the input values `1 2 3` from the command being run. Each input value is used in place of `{}` and `cp` command is run.
@@ -70,8 +67,7 @@ echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g > hostfile
 ## echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g |awk -v cores=$SLURM_CPUS_ON_NODE '{print cores"/"$1}'hostfile<
 #
 parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress \
---colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst 
-
+--colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst
 ```
 
 - `-a`: task list as input to GNU parallel
@@ -100,7 +96,6 @@ Note: `–log logfile` pairs with the `resume` option for production runs. A uni
 module load  bio/blast-plus parallel
 
 blastp -query $1 -db ../blast/db/img_v400_PROT.00 -out $2  -outfmt 7 -max_target_seqs 10 -num_threads $3
-
 ```
 
 where $1, $2 and $3 are the three parameters required for each serial task
@@ -111,7 +106,6 @@ where $1, $2 and $3 are the three parameters required for each serial task
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa
 ../blast/data/protein2.faa
-
 ```
 
 In this example, although each task takes three parameters (run-blast.sh), only one parameter is provided in the task list task.lst. The 2nd parameter, which specifies the output, is correlated to output/{/.}.blst in blast.slurm. And the third parameter num_threads is fixed. However, If core# varies from task to task, task.lst could be revised as:
@@ -120,7 +114,6 @@ In this example, although each task takes three parameters (run-blast.sh), only 
 [user@n0002 ~] cat task.lst
 ../blast/data/protein1.faa 2
 ../blast/data/protein2.faa 4
-
 ```
 
 For best practice, test your code on an interactive node before submitting jobs to clusters.
@@ -132,14 +125,12 @@ In addition: task list can a sequence of commands, such as:
 echo “host = ” ‘`hostname`’
 sh -c “echo today date = ; date”
 sh -c “echo today date = ; date”
-
 ```
 
 ```
 [user@n0002 ~] parallel -j 2 < commands.lst
 host =  n0148.savio3
 today date = Sat Apr 18 14:07:33 PDT 2020
-
 ```
 
 ### Useful external links

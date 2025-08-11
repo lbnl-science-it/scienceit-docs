@@ -42,8 +42,7 @@ deepseek-r1:1.5b         a42b25d8c10a    1.1 GB    4 weeks ago
 gemma3:4b                a2af6cc3eb7f    3.3 GB    4 weeks ago    
 gemma3:12b               f4031aab637d    8.1 GB    4 weeks ago    
 gemma3:12b-it-qat        5d4fa005e7bb    8.9 GB    4 weeks ago    
-gemma3:1b                8648f39daa8f    815 MB    4 weeks ago    
-
+gemma3:1b                8648f39daa8f    815 MB    4 weeks ago
 ```
 
 ### Using `ollama` python library on Jupyter notebooks
@@ -60,7 +59,6 @@ client = Client(host=os.environ["OLLAMA_HOST"])
 response = client.chat(model='llama3.2:1b', 
                     messages=[{'role': 'user', 'content': 'Hello'}])
 print (response.message.content)
-
 ```
 
 It is also possible to use [`openai` python](https://github.com/openai/openai-python/) module to [interact with Ollama](https://ollama.com/blog/openai-compatibility) .
@@ -82,7 +80,6 @@ completion = client.chat.completions.create(
                'content': 'Hello'}]
 )
 print (completion.choices[0].message.content)
-
 ```
 
 ## Ollama on VS Code

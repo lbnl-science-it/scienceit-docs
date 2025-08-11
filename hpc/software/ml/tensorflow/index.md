@@ -4,7 +4,6 @@
 
 ```
 module load ml/tensorflow
-
 ```
 
 Tensorflow versions
@@ -34,5 +33,4 @@ The follow SLURM script shows how to run a tensorflow script on 1 H100 GPU card.
 
 module load ml/tensorflow
 srun python cifar10.py
-
 ```

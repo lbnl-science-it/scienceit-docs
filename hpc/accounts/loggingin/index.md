@@ -6,7 +6,6 @@ You’ll need to generate and enter a one-time password each time that you log i
 
 ```
 ssh username@lrc-login.lbl.gov
-
 ```
 
 You will be prompted to enter your password. Enter your PIN+OTP without any spaces. For example if your pin is `0123` and OTP is `456789`, then you will type it as `0123456789`. Note that the characters won’t appear on the screen.

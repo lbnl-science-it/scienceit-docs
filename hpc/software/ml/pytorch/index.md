@@ -4,7 +4,6 @@
 
 ```
 module load ml/pytorch
-
 ```
 
 PyTorch versions
@@ -50,7 +49,6 @@ srun torchrun --nnodes 2 \
               --rdzv_backend c10d \
               --rdzv_endpoint $head_node:29500 \
               multinode.py 500 10
-
 ```
 
 In the script above, if the port `29500` is not free, then the script may not work. It is possible to use the following python script to get a port that is free:
@@ -67,7 +65,6 @@ def get_free_tcp_port():
 
 free_port = get_free_tcp_port()
 print(f"{free_port}")
-
 ```
 
 and use it in the slurm script as follows (4 nodes on `es0` partition):
@@ -106,7 +103,6 @@ srun torchrun --nnodes 4 \
               --rdzv_backend c10d \
               --rdzv_endpoint $head_node:$port \
               multinode.py 500 10
-
 ```
 
 Please take look at the `multinode.py` in [pytorch examples](https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series) and [torchrun docs](https://docs.pytorch.org/docs/stable/elastic/run.html) for more information.

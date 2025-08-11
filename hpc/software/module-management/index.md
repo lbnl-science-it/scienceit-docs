@@ -9,7 +9,6 @@ module load SOFTWARE    # Load the module “SOFTWARE”
 module unload SOFTWARE  # Unload the module “SOFTWARE”
 module available        # List all modules available for loading
 module list             # List all modules currently loaded
-
 ```
 
 ## Finding Modules
@@ -43,7 +42,6 @@ the "hdf5/1.14.3" module is available to load.
       managing data. It supports an unlimited variety of datatypes, 
       and is designed for flexible and efficient I/O and for high volume 
       and complex data.
-
 ```
 
 This means that you will need to load the appropriate compiler + mpi library combination before being able to load the corresponding hdf5 module. For example, you can do the following:
@@ -52,7 +50,6 @@ This means that you will need to load the appropriate compiler + mpi library com
 module load gcc/11.4.0
 module load openmpi/4.1.6
 module load hdf5
-
 ```
 
 ## Environment Modules Usage Examples
@@ -88,7 +85,6 @@ module avail
 
 ------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
   anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
-
 ```
 
 module list
@@ -96,7 +92,6 @@ module list
 ```
 [user@n0000 ~]$ module list
 No modules loaded
-
 ```
 
 module load
@@ -108,7 +103,6 @@ module load
 
 Currently Loaded Modules:
   1) gcc/11.4.0   2) ucx/1.14.1   3) openmpi/4.1.6
-
 ```
 
 On systems in which a hierarchical structure is used, some of modulefiles will only be available after the root modulefile is loaded. The Lawrencium cluster uses a hierarchical structure for several packages that depend on a particular compiler and/or MPI package. For example, after loading `gcc/11.4.0` and `openmpi/4.1.6` in the example above, `module avail` will show new packages that can now be loaded:
@@ -132,7 +126,6 @@ hierarchical structure
   cuda/12.2.1         (D)    netlib-lapack/3.11.0          ucx/1.14.1      (L)
   cudnn/8.7.0.84-11.8        openblas/0.3.24               udunits/2.2.28
   cudnn/8.9.0-12.2.1  (D)    openmpi/4.1.3                 vcftools/0.1.16
-
 ```
 
 For example, now `gromacs` can be loaded.
@@ -146,7 +139,6 @@ Note
 Currently Loaded Modules:
   1) gcc/11.4.0   3) openmpi/4.1.6   5) intel-oneapi-tbb/2021.10.0   7) netlib-lapack/3.11.0
   2) ucx/1.14.1   4) fftw/3.3.10     6) intel-oneapi-mkl/2023.2.0    8) gromacs/2023.3
-
 ```
 
 `module show` command displays information about the module.
@@ -185,7 +177,6 @@ prepend_path("PKG_CONFIG_PATH","/global/software/rocky-8.x86_64/gcc/linux-rocky8
 prepend_path("CMAKE_PREFIX_PATH","/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3
 .10-cf4npbktueip6tnwqf2qstog7on4pyfk/.")
 append_path("MANPATH","")
-
 ```
 
 The `module purge` command unloads all currently loaded modulefiles.
@@ -196,7 +187,6 @@ module purge
 [user@n0000 ~]$ module purge
 [user@n0000 ~]$ module list
 No modules loaded
-
 ```
 
 ## User Generated Modulefiles
@@ -209,12 +199,10 @@ Users can generate their own modulefiles to load user-specific applications. The
 
 ```
 export MODULEPATH=$MODULEPATH:/location/to/my/modulefiles
-
 ```
 
 2). For csh/tcsh users, please add the following to ~/.cshrc:
 
 ```
 setenv MODULEPATH ”$MODULEPATH”:/location/to/my/modulefiles
-
 ```

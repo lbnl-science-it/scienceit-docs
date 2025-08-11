@@ -12,7 +12,6 @@ The `vasp/6.4.1-cpu-intel` module is compiled using the intel compiler and mpi m
 module load intel-oneapi-compilers/2023.1.0
 module load intel-oneapi-mpi/2021.10.0
 module load vasp/6.4.1-cpu-intel
-
 ```
 
 Sample VASP CPU slurm script
@@ -38,7 +37,6 @@ module load vasp/6.4.1-cpu-intel
 export OMP_NUM_THREADS=4
 
 srun --mpi=pmi2 vasp_std
-
 ```
 
 ## VASP GPU Binary (NVHPC SDK)
@@ -48,7 +46,6 @@ The `vasp/6.4.1-gpu` module is compiled using NVHPC SDK. To load the module:
 ```
 module load nvhpc/23.11
 module load vasp/6.4.1-gpu
-
 ```
 
 Sample VASP GPU slurm script
@@ -75,7 +72,6 @@ export PMIX_MCA_psec=native
 export OMP_NUM_THREADS=1
 
 mpirun -np 2 vasp_std
-
 ```
 
 ## Compiling VASP

@@ -52,7 +52,6 @@ Supports Cooperative Kernel Launch:            Yes
 Supports MultiDevice Co-op Kernel Launch:      Yes 
 Device PCI Domain ID / Bus ID / location ID:   0 / 94 / 0 
 Compute Mode: < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
-
 ```
 
 ## Queue Configuration
@@ -73,21 +72,18 @@ To do this run:
 
 ```
 ssh-keygen -t ed25519
-
 ```
 
 Then run
 
 ```
 cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
-
 ```
 
 Then finally
 
 ```
 chmod 600 ~/.ssh/authorized_keys
-
 ```
 
 The suggested default name and location should be fine. You will be prompted for a password, but to leave it blank just hit enter. Passwords can interfere with intra-cluster node communication when launching jobs, particularly with a scheduler should we choose to deploy one.

@@ -18,7 +18,6 @@ It depends on the `qos` and the information can be obtained using the following 
 
 ```
 sacctmgr show qos name=lr_normal,lr_debug,lr_interactive,cm1_debug,cm1_normal,es_debug,es_normal,cf_debug,cf_normal,es_lowprio,cf_lowprio format=name,maxtres,maxwall,mintres
-
 ```
 
 The maximum runtime / walltime is shown on the `MaxWall` column. The output may look like the following:
@@ -36,6 +35,5 @@ The maximum runtime / walltime is shown on the `MaxWall` column. The output may 
 cm1_normal       node=64  3-00:00:00         cpu=1 
 es_lowprio                           cpu=2,gres/g+ 
 cf_lowprio                                         
-lr_intera+        cpu=32  3-00:00:00               
-
+lr_intera+        cpu=32  3-00:00:00
 ```

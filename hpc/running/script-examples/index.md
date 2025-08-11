@@ -13,7 +13,6 @@ Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how
 #SBATCH --time=0:0:30
 ## Run command
 ./a.out
-
 ```
 
 ```
@@ -31,7 +30,6 @@ Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how
 #
 ## Command(s) to run (example):
 ./a.out
-
 ```
 
 ```
@@ -57,7 +55,6 @@ export JOBS_PER_NODE=$(( $SLURM_CPUS_ON_NODE / $SLURM_CPUS_PER_TASK ))
 echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g > hostfile
 #
 parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress -a task.lst sh run-blast.sh {} output/{/.}.blst $SLURM_CPUS_PER_TASK
-
 ```
 
 ## Example Set 2
@@ -76,7 +73,6 @@ parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --res
 ## Command(s) to run (example):
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ./a.out
-
 ```
 
 ```
@@ -94,7 +90,6 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ## Command(s) to run (example):
 module load gcc openmpi
 mpirun ./a.out
-
 ```
 
 1. Number of MPI tasks needed
@@ -113,7 +108,6 @@ mpirun ./a.out
 ## Command(s) to run (example):
 module load gcc openmpi
 mpirun ./a.out
-
 ```
 
 ```
@@ -131,7 +125,6 @@ mpirun ./a.out
 module load gcc openmpi
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 mpirun ./a.out
-
 ```
 
 1. Processors per task needed
@@ -187,5 +180,4 @@ Examples:
 #
 ## Command(s) to run (example):
 ./a.out
-
 ```

@@ -10,12 +10,10 @@ FFTW on Lawrencium can be loaded after loading a MPI library. For example, to lo
 
 --------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------
    fftw/3.3.10
-
 ```
 
 ```
 [user@n0000 ~]$ module load fftw/3.3.10
-
 ```
 
 ## Compiling programs using FFTW library
@@ -24,8 +22,7 @@ To compile using the loaded `fftw3` library, we need the appropriate `CFLAGS` an
 
 ```
 [user@n0000 ~]$ pkg-config --cflags --libs fftw3
--I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/lib -lfftw3 
-
+-I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/fftw-3.3.10-cf4npbktueip6tnwqf2qstog7on4pyfk/lib -lfftw3
 ```
 
 Note that the result above does not include linker flags for MPI FFTW routines. To compile program using `MPI FFTW`, in addition to `-lfftw3` we also need `-lfftw3_mpi` and `-lm` ([see here](https://www.fftw.org/fftw3_doc/Linking-and-Initializing-MPI-FFTW.html) ).
@@ -34,7 +31,6 @@ Therefore, to compile using MPI FFTW library:
 
 ```
 mpicc -o output $(pkg-config --cflags --libs fftw3) -lfftw_mpi -lm example_mpi_fftw.c
-
 ```
 
 Compiling using `rpath`
@@ -43,7 +39,6 @@ To compile using `rpath`, you need to add the following:
 
 ```
 -Wl,-rpath,$(pkg-config --variable=libdir fftw3)
-
 ```
 
 Compiling with `rpath` adds the `libdir` to the runtime library search path in the executable file.

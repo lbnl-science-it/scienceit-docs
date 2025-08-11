@@ -10,12 +10,10 @@ HDF5 on Lawrencium can be loaded after loading a MPI library. For example, to lo
 
 ------------- /global/software/rocky-8.x86_64/modfiles/openmpi/4.1.6-4xq5u5r/gcc/11.4.0 --------------
    hdf5/1.14.3
-
 ```
 
 ```
 [user@n0000 ~]$ module load hdf5
-
 ```
 
 ## Compiling programs using HDF5 library
@@ -26,13 +24,11 @@ To compile using the loaded `HDF5` library, we need the appropriate `CFLAGS` and
 
 ```
 [user@n0000 ~]$ pkg-config --cflags --libs hdf5
--I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/lib -lhdf5 
-
+-I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/include -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-6763puu3e5vxq4vmbaosgiv4yhzjb46s/lib -lhdf5
 ```
 
 To include these directly in the compilation process, we can do the following:
 
 ```
 mpicc -o ph5_file_create $(pkg-config --cflags --libs hdf5) ph5_file_create.c
-
 ```

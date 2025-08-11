@@ -14,7 +14,6 @@ For easy access to your `scratch` directory from Jupyter on Open OnDemand, you c
 
 ```
 ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
-
 ```
 
 ### Running a notebook
