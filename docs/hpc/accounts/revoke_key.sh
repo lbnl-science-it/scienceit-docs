@@ -12,5 +12,5 @@ echo -n "Cert: "
 read cert
 
 echo "Revoking cert..."
-curl -i http://localhost:31337/v1/revoke -d "{\"username\":\"$user\",\"password\":\"$password\",\"mfa\":\"$mfa\",\"cert_id\":\"$cert\"}"
+curl -ik https://localhost:31337/v1/revoke -d "{\"username\":\"$user\",\"password\":\"$password\",\"mfa\":\"$mfa\",\"cert_id\":\"$cert\"}"
 echo -ne "\n"
