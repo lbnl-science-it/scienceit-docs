@@ -26,6 +26,7 @@ q() {
 key_id=$(cat out.json | q "key_id")
 cat out.json | q "public_key" > $key_id.pub
 cat out.json | q "private_key" > $key_id
+chmod 600 $key_id
 cat out.json | q "signed_public_key" > $key_id-cert.pub
 
 echo "wrote key $key_id"
