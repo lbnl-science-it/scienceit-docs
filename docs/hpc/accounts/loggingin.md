@@ -22,9 +22,7 @@ To access the cluster without a password, you can use an SSH certificate. This i
 To get started you may download the [request_cert.sh](https://github.com/lbnl-science-it/scienceit-docs/blob/spsoni/docs/hpc/accounts/request_cert.sh) and [revoke_key.sh](https://github.com/lbnl-science-it/scienceit-docs/blob/spsoni/docs/hpc/accounts/revoke_key.sh) scripts on your computer. Check help for the script and execute using following commands
 ```sh 
 bash request_cert.sh --help
-bash request_cert.sh
-```
-The lrc_cert will be created in the ~/.ssh directory on your computer. To ssh using a certificate use following command
+bash request_cert.sh -o ~/.ssh/lrc_cert
 ```sh
 ssh -i ~/.ssh/lrc_cert -l $USER lrc-login.lbl.gov
 ```
