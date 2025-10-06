@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh-certificate" class="md-skip">
+        <a href="#logging-in-to-lawrencium" class="md-skip">
           Skip to content
         </a>
       
@@ -583,6 +583,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -611,6 +613,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -622,6 +626,15 @@
   <a href="#ssh-certificate" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Certificate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-remote-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Remote - SSH
     </span>
   </a>
   
@@ -2600,6 +2613,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2611,6 +2626,15 @@
   <a href="#ssh-certificate" class="md-nav__link">
     <span class="md-ellipsis">
       SSH Certificate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-remote-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Remote - SSH
     </span>
   </a>
   
@@ -2631,13 +2655,12 @@
                   
 
 
-  <h1>Logging in</h1>
-
+<h1 id="logging-in-to-lawrencium">Logging in to Lawrencium<a class="headerlink" href="#logging-in-to-lawrencium" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Multi-Factor Authentication (MFA)</p>
 <p>Please make sure you have configured <a href="../mfa/">Multi-Factor Authentication (MFA)</a> before logging in for the first time.</p>
 </div>
-<p>You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see Multi-Factor Authentication. Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as </p>
+<p>You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see <a href="../mfa/">Multi-Factor Authentication</a>. Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as </p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>username@lrc-login.lbl.gov
 </code></pre></div>
 <p>You will be prompted to enter your password. Enter your PIN+OTP without any spaces. For example if your pin is <code>0123</code> and OTP is <code>456789</code>, then you will type it as <code>0123456789</code>. Note that the characters won’t appear on the screen.</p>
@@ -2647,20 +2670,26 @@
 <p>More details on writing job scripts and submitting them can be found <a href="../../running/script-examples/">here</a>.</p>
 </div>
 <h2 id="ssh-certificate">SSH Certificate<a class="headerlink" href="#ssh-certificate" title="Permanent link">&para;</a></h2>
-<p>To access the cluster without a password, you can use an SSH certificate. This is achieved by acting as SSH Certificate Authority, issuing signed SSH keys with a specified validity period. To obtain a certificate, request access for a desired duration. You will then receive an SSH key triplet consisting of a public key, a signed public key, and a private key. The certificate is automatically set to expire after the designated time period, or after 12 hours if no duration is specified. You or an administrator can revoke the certificate at any time.</p>
-<p>To get started you may download the script request_cert.sh and revoke_key.sh using git clone <a href="https://github.com/lbnl-science-it/lrc-scripts">lrc-scripts</a> repo on your computer. This repo includes all the lrc related scripts. The script request_cert.sh will create a certificate in your $HOME/.ssh directory with name lrc_cert. Users would have recreate a certificate after 12 hours if used in following way. Check the script help for options. When prompted enter your PIN an OTP while generating a certificate and then use ssh command to login.
-<div class="highlight"><pre><span></span><code>./request_cert.sh<span class="w"> </span>--help
+<p>To access the cluster without a password, you can use SSH certificates. An SSH Certificate Authority issues signed SSH keys with a specified validity period. Script and instructions to request SSH certificates are given below. You will then receive an SSH key triplet consisting of a public key, a signed public key, and a private key. The certificate is automatically set to expire after the designated time period, or after 12 hours if no duration is specified. You or an administrator can revoke the certificate at any time.</p>
+<p>To get started, clone the <a href="https://github.com/lbnl-science-it/lrc-scripts">github repository lrc-scripts</a> which includes the scripts <code>request-cert.sh</code> and <code>revoke_key.sh</code>.</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/lbnl-science-it/lrc-scripts.git
+</code></pre></div>
+<p>The script <code>request_cert.sh</code> will create a certificate in your <code>$HOME/.ssh</code> directory with name <code>lrc_cert</code>. Since the certificates can only be used for up to 12 hours, you will have to recreate a certificate after 12 hours if used in following way. When prompted enter your Lawrencium username, PIN and OTP while generating a certificate and then use the ssh command as shown below to login.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>lrc-scripts<span class="w"> </span>
 ./request_cert.sh<span class="w"> </span>-p<span class="w"> </span>lrc
 ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/lrc_cert<span class="w"> </span>-l<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>lrc-login.lbl.gov
 </code></pre></div>
-$USER is your lawrencium user name. </p>
-<p>This method is useful for users interested in using <a href="https://code.visualstudio.com/docs/remote/ssh">Remote-SSH</a>  VSCode on their on their Desktop and with to connect to Lawrencium.
-You could set up the remote host in the ~/.ssh/config file by adding following lines.
+where <code>$USER</code> is your lawrencium user name. </p>
+<p>To list help options for the script:
+<div class="highlight"><pre><span></span><code>./request_cert.sh --help
+</code></pre></div></p>
+<h2 id="vs-code-remote-ssh">VS Code Remote - SSH<a class="headerlink" href="#vs-code-remote-ssh" title="Permanent link">&para;</a></h2>
+<p>The SSH Certificate method is useful for users interested in using the <a href="https://code.visualstudio.com/docs/remote/ssh">Remote-SSH</a> VSCode extension to connect to Lawrencium. You could set up the remote host in the <code>~/.ssh/config</code> file on your personal machine by adding following lines.</p>
 <div class="highlight"><pre><span></span><code>Host<span class="w"> </span>lrc-login
 <span class="w">   </span>User<span class="w"> </span>username
 <span class="w">   </span>HostName<span class="w"> </span>lrc-login.lbl.gov
 <span class="w">   </span>IdentityFile<span class="w"> </span><span class="nv">$HOME</span>/lrc_cert
-</code></pre></div></p>
+</code></pre></div>
 
 
 
