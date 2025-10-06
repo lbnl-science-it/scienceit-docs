@@ -48,9 +48,9 @@ The SSH Certificate method is useful for users interested in using the [Remote-S
 Host lrc-login
    User username
    HostName lrc-login.lbl.gov
-   IdentityFile ~/ssh/ssh_certs/lrc_cert
+   IdentityFile ~/.ssh/ssh_certs/lrc_cert
 ```
 
-When you connect to Lawrencium through VSCode Remote - SSH, please be careful to not run computations when you are on the login node. 
+When you connect to Lawrencium through VSCode Remote - SSH, **please be careful to not run computations when you are on the login node**. 
 
 [remoteSshLink]: https://code.visualstudio.com/docs/remote/ssh
