@@ -2674,12 +2674,12 @@
 <p>To get started, clone the <a href="https://github.com/lbnl-science-it/lrc-scripts">github repository lrc-scripts</a> which includes the scripts <code>request-cert.sh</code> and <code>revoke_key.sh</code>.</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/lbnl-science-it/lrc-scripts.git
 </code></pre></div>
-<p>The script <code>request_cert.sh</code> will create a certificate in your <code>$HOME/.ssh</code> directory with name <code>lrc_cert</code>. Since the certificates can only be used for up to 12 hours, you will have to recreate a certificate after 12 hours if used in following way. When prompted enter your Lawrencium username, PIN and OTP while generating a certificate and then use the ssh command as shown below to login.</p>
+<p>The script <code>request_cert.sh</code> (when used with <code>-p lrc</code>) will create a certificate in your <code>$HOME/.ssh/ssh_certs</code> directory with name <code>lrc_cert</code>. Since the certificates can only be used for up to 12 hours, you will have to recreate a certificate after 12 hours if used in following way. When prompted enter your Lawrencium username, PIN and OTP while generating a certificate and then use the ssh command as shown below to login.</p>
 <p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>lrc-scripts<span class="w"> </span>
 ./request_cert.sh<span class="w"> </span>-p<span class="w"> </span>lrc
-ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/lrc_cert<span class="w"> </span>-l<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>lrc-login.lbl.gov
+ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/ssh_certs/lrc_cert<span class="w"> </span>-l<span class="w"> </span>username<span class="w"> </span>lrc-login.lbl.gov
 </code></pre></div>
-where <code>$USER</code> is your lawrencium user name. </p>
+where <code>username</code> is your Lawrencium user name. </p>
 <p>To list help options for the script:
 <div class="highlight"><pre><span></span><code>./request_cert.sh --help
 </code></pre></div></p>
@@ -2688,8 +2688,9 @@ where <code>$USER</code> is your lawrencium user name. </p>
 <div class="highlight"><pre><span></span><code>Host<span class="w"> </span>lrc-login
 <span class="w">   </span>User<span class="w"> </span>username
 <span class="w">   </span>HostName<span class="w"> </span>lrc-login.lbl.gov
-<span class="w">   </span>IdentityFile<span class="w"> </span><span class="nv">$HOME</span>/lrc_cert
+<span class="w">   </span>IdentityFile<span class="w"> </span>~/ssh/ssh_certs/lrc_cert
 </code></pre></div>
+<p>When you connect to Lawrencium through VSCode Remote - SSH, please be careful to not run computations when you are on the login node. </p>
 
 
 
