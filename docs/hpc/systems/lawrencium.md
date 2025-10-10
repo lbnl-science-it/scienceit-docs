@@ -14,9 +14,9 @@ Lawrencium consists of multiple generations of compute nodes with the `lr8` part
 | --------- | ----- | -------------------- | ----- | ------ | ---------- | 
 | lr8       | 20    | AMD EPYC 9534        | 128   | 768GB  | HDR        |
 | lr7       | 132   | Intel Xeon Gold 6330 | 56    | 256GB or 512GB  | HDR |
-| lr6       | 88    | Intel Xeon Gold 6130 | 32    | 96GB or 128GB | FDR |
+| lr6       | 88    | Intel Xeon Gold 6130 | 32    | 96GB or 192GB | FDR |
 |           | 156   | Intel Xeon Gold 5218 | 32    | 96GB   | FDR |
-|           |       | Intel Xeon Gold 6230 | 40    | 128GB  | FDR |
+|           | 144   | Intel Xeon Gold 6230 | 40    | 192GB  | FDR |
 | lr5       | 192   | Intel Xeon E5-2680v4 | 28    | 64GB   | FDR | 
 |           |       | Intel Xeon E5-2640v4 | 20    | 128GB  | QDR |
 | lr4       | 148   | Intel Xeon E5-2670v3 | 24    | 64GB   | FDR | 
