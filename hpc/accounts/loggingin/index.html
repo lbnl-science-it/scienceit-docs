@@ -638,6 +638,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="VS Code Remote - SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-remote-ssh-on-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Remote - SSH on a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2638,6 +2653,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="VS Code Remote - SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-remote-ssh-on-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Remote - SSH on a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2691,6 +2721,29 @@ where <code>username</code> is your Lawrencium user name. </p>
 <span class="w">   </span>IdentityFile<span class="w"> </span>~/.ssh/ssh_certs/lrc_cert
 </code></pre></div>
 <p>When you connect to Lawrencium through VSCode Remote - SSH, <strong>please be careful to not run computations when you are on the login node</strong>. </p>
+<h3 id="vs-code-remote-ssh-on-a-compute-node">VS Code Remote - SSH on a Compute Node<a class="headerlink" href="#vs-code-remote-ssh-on-a-compute-node" title="Permanent link">&para;</a></h3>
+<p>If you have a SLURM allocation on a compute node, you can run VS Code Remote - SSH directly on that compute node. As an example, suppose you request and have been allocated a SLURM allocation on lr6 node using the following command:</p>
+<div class="highlight"><pre><span></span><code>salloc -p lr6 -A account_name -q lr_normal -N 1 -t 1:00:00
+</code></pre></div>
+<p>When the job is allocated you will be shown information about which node has been allocated to you (e.g. <code>n0029.lr6</code> in the format <code>n????.???</code> for <code>lr</code> and <code>es</code> nodes). Alternatively, you can use the environment variable <code>SLURM_NODELIST</code> to get the hostname of the node allocated to you. Another possibility is to use the command <code>squeue -u $USER</code> to list your jobs and the corresponding nodelists.</p>
+<p>You should add the following to your <code>~/.ssh/config</code> or update the relevant blocks in your <code>~/.ssh/config</code> file:</p>
+<div class="highlight"><pre><span></span><code>Host lrc-login
+    LogLevel QUIET
+    HostName lrc-login.lbl.gov
+    IdentityFile ~/.ssh/ssh_certs/lrc_cert
+    IdentitiesOnly yes
+    ForwardAgent yes
+    User username
+
+Host n????.???
+    LogLevel QUIET
+    IdentityFile ~/.ssh/ssh_certs/lrc_cert
+    StrictHostKeyChecking no
+    ProxyJump lrc-login
+    HostName %h
+    User username
+</code></pre></div>
+<p>Once you have the allocation, try connecting to the host: <code>&gt; Remote-SSH: Connect to Host...</code> from the Command Palette using the hostname of the node allocated to you on the cluster. If you are prompted for a password use your cluster password (PIN+OTP).</p>
 
 
 
@@ -2711,7 +2764,7 @@ where <code>username</code> is your Lawrencium user name. </p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 14, 2025</span>
   </span>
 
     
