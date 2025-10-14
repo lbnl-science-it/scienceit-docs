@@ -53,4 +53,36 @@ Host lrc-login
 
 When you connect to Lawrencium through VSCode Remote - SSH, **please be careful to not run computations when you are on the login node**. 
 
+### VS Code Remote - SSH on a Compute Node
+
+If you have a SLURM allocation on a compute node, you can run VS Code Remote - SSH directly on that compute node. As an example, suppose you request and have been allocated a SLURM allocation on lr6 node using the following command:
+
+```
+salloc -p lr6 -A account_name -q lr_normal -N 1 -t 1:00:00
+```
+
+When the job is allocated you will be shown information about which node has been allocated to you (e.g. `n0029.lr6` in the format `n????.???` for `lr` and `es` nodes). Alternatively, you can use the environment variable `SLURM_NODELIST` to get the hostname of the node allocated to you. Another possibility is to use the command `squeue -u $USER` to list your jobs and the corresponding nodelists.
+
+You should add the following to your `~/.ssh/config` or update the relevant blocks in your `~/.ssh/config` file:
+
+```
+Host lrc-login
+    LogLevel QUIET
+    HostName lrc-login.lbl.gov
+    IdentityFile ~/.ssh/ssh_certs/lrc_cert
+    IdentitiesOnly yes
+    ForwardAgent yes
+    User username
+
+Host n????.???
+    LogLevel QUIET
+    IdentityFile ~/.ssh/ssh_certs/lrc_cert
+    StrictHostKeyChecking no
+    ProxyJump lrc-login
+    HostName %h
+    User username
+```
+
+Once you have the allocation, try connecting to the host: `> Remote-SSH: Connect to Host...` from the Command Palette using the hostname of the node allocated to you on the cluster. If you are prompted for a password use your cluster password (PIN+OTP).
+
 [remoteSshLink]: https://code.visualstudio.com/docs/remote/ssh
