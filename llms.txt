@@ -42,6 +42,7 @@
 - [HDF5](https://scienceit-docs.lbl.gov/hpc/software/libraries/hdf5/index.md)
 - [MKL](https://scienceit-docs.lbl.gov/hpc/software/libraries/mkl/index.md)
 - [NetCDF](https://scienceit-docs.lbl.gov/hpc/software/libraries/netcdf/index.md)
+- [Ollama](https://scienceit-docs.lbl.gov/hpc/software/llms/ollama/index.md)
 - [Alphafold3](https://scienceit-docs.lbl.gov/hpc/software/ml/alphafold3/index.md)
 - [PyTorch](https://scienceit-docs.lbl.gov/hpc/software/ml/pytorch/index.md)
 - [TensorFlow](https://scienceit-docs.lbl.gov/hpc/software/ml/tensorflow/index.md)

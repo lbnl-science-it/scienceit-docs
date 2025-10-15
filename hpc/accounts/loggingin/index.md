@@ -80,7 +80,6 @@ Host lrc-login
 
 Host n????.???
     LogLevel QUIET
-    IdentityFile ~/.ssh/ssh_certs/lrc_cert
     StrictHostKeyChecking no
     ProxyJump lrc-login
     HostName %h
