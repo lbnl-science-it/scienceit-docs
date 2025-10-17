@@ -2750,18 +2750,36 @@
 
 <h1 id="intel-mpi">Intel MPI<a class="headerlink" href="#intel-mpi" title="Permanent link">&para;</a></h1>
 <h2 id="loading-intel-mpi">Loading Intel MPI<a class="headerlink" href="#loading-intel-mpi" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-compilers
-<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-mpi
-<span class="o">[</span>user@n0000<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>list
-
-Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
-<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>intel-oneapi-compilers/2023.1.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>intel-oneapi-mpi/2021.10.0
+<p>Intel MPI module is available to load once you load the corresponding <code>intel-oneapi-compilers</code> module.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">oneAPI 2025</label><label for="__tabbed_1_2">oneAPI 2023</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-compilers/2025.2.1
+module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-mpi
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>module list
+
+Currently Loaded Modules:
+1) intel-oneapi-compilers/2025.2.1   2) intel-oneapi-mpi/2021.16.1
+</code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-compilers/2023.1.0
+module<span class="w"> </span>load<span class="w"> </span>intel-oneapi-mpi
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>module list
+
+Currently Loaded Modules:
+1) intel-oneapi-compilers/2023.1.0   2) intel-oneapi-mpi/2021.10.0
+</code></pre></div></p>
+</div>
+</div>
+</div>
 <h2 id="compiling-mpi-applications-with-intel-mpi">Compiling MPI applications with Intel MPI<a class="headerlink" href="#compiling-mpi-applications-with-intel-mpi" title="Permanent link">&para;</a></h2>
 <p>Open MPI compiler wrappers <code>mpiicx</code>, <code>mpiicpx</code>, <code>mpiifx</code> can be used to compile MPI applications. For hello world C/C++/Fortran examples:</p>
 <div class="admonition example">
 <p class="admonition-title">Examples</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Fortran</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">C</label><label for="__tabbed_2_2">C++</label><label for="__tabbed_2_3">Fortran</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>mpiicx<span class="w"> </span>-o<span class="w"> </span>helloc<span class="w"> </span>hello_world.c
@@ -2811,7 +2829,7 @@ srun<span class="w"> </span>--mpi<span class="o">=</span>pmi2<span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 17, 2025</span>
   </span>
 
     

@@ -2,13 +2,30 @@
 
 ## Loading Intel MPI
 
+Intel MPI module is available to load once you load the corresponding `intel-oneapi-compilers` module.
+
 ```
-[user@n0000 ~]$ module load intel-oneapi-compilers
-[user@n0000 ~]$ module load intel-oneapi-mpi
-[user@n0000 ~]$ module list
+module load intel-oneapi-compilers/2025.2.1
+module load intel-oneapi-mpi
+```
+
+```
+module list
 
 Currently Loaded Modules:
-  1) intel-oneapi-compilers/2023.1.0   2) intel-oneapi-mpi/2021.10.0
+1) intel-oneapi-compilers/2025.2.1   2) intel-oneapi-mpi/2021.16.1
+```
+
+```
+module load intel-oneapi-compilers/2023.1.0
+module load intel-oneapi-mpi
+```
+
+```
+module list
+
+Currently Loaded Modules:
+1) intel-oneapi-compilers/2023.1.0   2) intel-oneapi-mpi/2021.10.0
 ```
 
 ## Compiling MPI applications with Intel MPI
