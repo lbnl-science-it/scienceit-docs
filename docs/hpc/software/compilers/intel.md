@@ -1,18 +1,31 @@
-# Intel OneAPI Compilers on Lawrencium
+# Intel oneAPI Compilers on Lawrencium
 
-`intel-oneapi-compilers` version `2023.1.0` is available on Lawrencium which consists of both the new LLVM-based oneAPI compilers `icx, icpx, ifx` and the  intel classic compilers `icc, icpc, ifort`. The default intel-oneapi-compilers` module can be loaded as:
+## Intel oneAPI Compilers 2025
+`intel-oneapi-compilers` version `2025.2.1` is available on Lawrencium, which consists of the new LLVM-based oneAPI compilers `icx, icpx, ifx`. To load these compilers:
 
-``` bash
-module load intel-oneapi-compilers
+``` sh
+module load intel-oneapi-compilers/2025.2.1
 ```
 
-## LLVM-based oneAPI Compilers
+Some relevant reference pages on the intel documentation website for the `2025.2.1` version of oneAPI compilers installed on Lawrencium are listed below:
+
+  * [Intel oneAPI DPC++/C++ Compiler Developer Gude and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2025-2/overview.html){:target="_blank"} {{ ext }}
+  * [Intel Fortran Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-2/overview.html){:target="_blank"} {{ ext }}
+
+## Intel oneAPI Compilers 2023
+`intel-oneapi-compilers` version `2023.1.0` is available on Lawrencium which consists of both the new LLVM-based oneAPI compilers `icx, icpx, ifx` and the  intel classic compilers `icc, icpc, ifort`. To load these compilers:
+
+``` bash
+module load intel-oneapi-compilers/2023.1.0
+```
+
+### LLVM-based oneAPI Compilers
 The version of LLVM-based oneAPI compilers `icx, icpx, ifx` follow the version of the oneapi package. Some relevant reference pages on the intel documentation website for the `2023.1.0` version of oneAPI compilers installed on Lawrencium are listed below:
 
   * [Intel oneAPI DPC++/C++ Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2023-1/overview.html){:target="_blank"} {{ ext }}
   * [Intel Fortran Compiler Classic and Intel Fortran Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2023-1/overview.html){:target="_blank"} {{ ext }}
 
-## Intel Classic Compilers
+### Intel Classic Compilers
 
 !!! note "Version scheme of Intel Classic Compilers"
 
