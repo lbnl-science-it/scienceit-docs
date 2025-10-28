@@ -2,17 +2,50 @@
 
 [Ollama](https://github.com/ollama/ollama) is provided as a module on Lawrencium and can be used to run various open-weight Large-Language Models (LLMs) on Lawrencium hardware.
 
-Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, for better performance you should run Ollama on GPU partitions (`es0` or `es1`). In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](../../../openondemand/ollama-jupyter-vscode/) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
+Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](../../../openondemand/ollama-jupyter-vscode/) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
 
-## Ollama 0.6.8
+Example: Getting an interactive slurm allocation
 
-- Get an interactive slurm allocation
+Please substitute with your actual `account_name` and other relevant parameters.
+
+```
+srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:1 --cpus-per-task=2 --pty bash
+```
+
+- Load the `ollama/0.12.6` module
 
   ```
-  srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:1 --cpus-per-task=2 --pty bash
+  module load ai/ollama/0.12.6
   ```
 
-- Load the `ollama` module
+- Launch the ollama server in the background
+
+  ```
+  ollama serve > /dev/null 2>&1 &
+  ```
+
+- List the available models
+
+  ```
+  ollama list
+  NAME                   ID              SIZE      MODIFIED   
+  gpt-oss:20b            17052f91a42e    13 GB     4 days ago    
+  llama3.2-vision:11b    6f2f9757ae97    7.8 GB    4 days ago
+  ```
+
+- Run an available model and obtain a terminal chat interface
+
+  ```
+  ollama run gpt-oss:20b
+  ```
+
+- Run a particular model with a prompt and save the response to a file
+
+  ```
+  ollama run gpt-oss:20b What model are you? > response.txt
+  ```
+
+- Load the `ollama/0.6.8` module
 
   ```
   module load ai/ollama/0.6.8
@@ -23,8 +56,6 @@ Ollama should only be run on compute nodes. While some smaller models may be run
   ```
   ollama serve > /dev/null 2>&1 &
   ```
-
-  In a slurm batch submission, you could add a sleep command after this command to give time for the ollama server to start e.g. (`sleep 10`).
 
 - List the available models
 
@@ -55,8 +86,12 @@ Ollama should only be run on compute nodes. While some smaller models may be run
   ollama run gemma3:4b
   ```
 
-- Run a particular model with a prompt and the response saved to a file
+- Run a particular model with a prompt and save the response to a file
 
   ```
   ollama run gemma3:4b What model are you? > response.txt
   ```
+
+Batch submission tips
+
+In a slurm batch submission, you could add a sleep command after the `ollama serve` command to give time for the ollama server to start e.g. (`sleep 10`).

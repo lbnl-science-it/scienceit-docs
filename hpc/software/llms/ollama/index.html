@@ -1835,17 +1835,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Ollama
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1855,34 +1844,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-068" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ollama 0.6.8
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -2682,23 +2643,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-068" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ollama 0.6.8
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2714,24 +2658,58 @@
 
 <h1 id="ollama-on-lawrencium">Ollama on Lawrencium<a class="headerlink" href="#ollama-on-lawrencium" title="Permanent link">&para;</a></h1>
 <p><a href="https://github.com/ollama/ollama" target="_blank">Ollama</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is provided as a module on Lawrencium and can be used to run various open-weight Large-Language Models (LLMs) on Lawrencium hardware. </p>
-<p>Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, for better performance you should run Ollama on GPU partitions (<code>es0</code> or <code>es1</code>). In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an <a href="../../../openondemand/ollama-jupyter-vscode/">Open OnDemand app</a> that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.</p>
-<h2 id="ollama-068">Ollama 0.6.8<a class="headerlink" href="#ollama-068" title="Permanent link">&para;</a></h2>
+<p>Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (<code>es0</code> or <code>es1</code>) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an <a href="../../../openondemand/ollama-jupyter-vscode/">Open OnDemand app</a> that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.</p>
+<div class="admonition example">
+<p class="admonition-title">Example: Getting an interactive slurm allocation</p>
+<p>Please substitute with your actual <code>account_name</code> and other relevant parameters.</p>
+<div class="highlight"><pre><span></span><code>srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:1 --cpus-per-task=2 --pty bash
+</code></pre></div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ollama 0.12.6</label><label for="__tabbed_1_2">Ollama 0.6.8</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <ul>
 <li>
-<p>Get an interactive slurm allocation
-<div class="highlight"><pre><span></span><code>srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:1 --cpus-per-task=2 --pty bash
+<p>Load the <code>ollama/0.12.6</code> module
+<div class="highlight"><pre><span></span><code>module load ai/ollama/0.12.6
 </code></pre></div></p>
 </li>
 <li>
-<p>Load the <code>ollama</code> module
+<p>Launch the ollama server in the background
+<div class="highlight"><pre><span></span><code>ollama serve &gt; /dev/null 2&gt;&amp;1 &amp;
+</code></pre></div></p>
+</li>
+<li>
+<p>List the available models
+<div class="highlight"><pre><span></span><code>ollama list
+NAME                   ID              SIZE      MODIFIED   
+gpt-oss:20b            17052f91a42e    13 GB     4 days ago    
+llama3.2-vision:11b    6f2f9757ae97    7.8 GB    4 days ago    
+</code></pre></div></p>
+</li>
+<li>
+<p>Run an available model and obtain a terminal chat interface
+<div class="highlight"><pre><span></span><code>ollama run gpt-oss:20b
+</code></pre></div></p>
+</li>
+<li>
+<p>Run a particular model with a prompt and save the response to a file
+<div class="highlight"><pre><span></span><code>ollama run gpt-oss:20b What model are you? &gt; response.txt
+</code></pre></div></p>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>
+<p>Load the <code>ollama/0.6.8</code> module
 <div class="highlight"><pre><span></span><code>module load ai/ollama/0.6.8
 </code></pre></div></p>
 </li>
 <li>
 <p>Lauch the ollama server in the background
 <div class="highlight"><pre><span></span><code>ollama serve &gt; /dev/null 2&gt;&amp;1 &amp;
-</code></pre></div>
-In a slurm batch submission, you could add a sleep command after this command to give time for the ollama server to start e.g. (<code>sleep 10</code>).</p>
+</code></pre></div></p>
 </li>
 <li>
 <p>List the available models
@@ -2761,11 +2739,18 @@ gemma3:1b                8648f39daa8f    815 MB    5 months ago
 </code></pre></div></p>
 </li>
 <li>
-<p>Run a particular model with a prompt and the response saved to a file
+<p>Run a particular model with a prompt and save the response to a file
 <div class="highlight"><pre><span></span><code>ollama run gemma3:4b What model are you? &gt; response.txt
 </code></pre></div></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Batch submission tips</p>
+<p>In a slurm batch submission, you could add a sleep command after the <code>ollama serve</code> command to give time for the ollama server to start e.g. (<code>sleep 10</code>).</p>
+</div>
 
 
 
@@ -2786,7 +2771,7 @@ gemma3:1b                8648f39daa8f    815 MB    5 months ago
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 28, 2025</span>
   </span>
 
     
