@@ -4,12 +4,16 @@
 
 Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](../../openondemand/ollama-jupyter-vscode.md) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
 
+!!! note "General suggestions"
+
+    For general use and experimentation, we recommend using the `gpt-oss-high:20b` model under `ai/ollama/0.12.6` module. The model performs well using 2 GPUs on the `es0` partition.
+
 !!! example "Example: Getting an interactive slurm allocation"
 
     Please substitute with your actual `account_name` and other relevant parameters.
 
     ```
-    srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:1 --cpus-per-task=2 --pty bash
+    srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per-task=2 --pty bash
     ```
 
 === "Ollama 0.12.6"
@@ -26,10 +30,14 @@ Ollama should only be run on compute nodes. While some smaller models may be run
 
     * List the available models
     ```
-    ollama list
-    NAME                   ID              SIZE      MODIFIED   
-    gpt-oss:20b            17052f91a42e    13 GB     4 days ago    
-    llama3.2-vision:11b    6f2f9757ae97    7.8 GB    4 days ago    
+    NAME                     ID              SIZE      MODIFIED      
+    gpt-oss-high:20b         5b4abdd0eea4    13 GB     3 days ago    
+    gpt-oss-safeguard:20b    f2e795d0099c    13 GB     5 days ago       
+    gemma3n:e2b              719372f8c7de    5.6 GB    5 days ago       
+    gemma3n:e4b              15cb39fd9394    7.5 GB    5 days ago       
+    granite4:tiny-h          566b725534ea    4.2 GB    5 days ago       
+    gpt-oss:20b              17052f91a42e    13 GB     9 days ago       
+    llama3.2-vision:11b      6f2f9757ae97    7.8 GB    9 days ago       
     ```
 
     * Run an available model and obtain a terminal chat interface
