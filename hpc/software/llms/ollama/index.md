@@ -31,6 +31,7 @@ srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per
 - List the available models
 
   ```
+  ollama list
   NAME                     ID              SIZE      MODIFIED      
   gpt-oss-high:20b         5b4abdd0eea4    13 GB     3 days ago    
   gpt-oss-safeguard:20b    f2e795d0099c    13 GB     5 days ago       

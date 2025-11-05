@@ -1945,30 +1945,9 @@ python -m pip install --user $PACKAGENAME
 
 to install a python package to `~/.local` directory. The package libraries are usually installed in a sub-directory for each python version; for example: `~/.local/lib/python3.10/site-packages/`.
 
-Choosing python modules
+Linear algebra backend for numpy
 
-Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library whereas the Anaconda distributions (`anaconda3/2024.02` and `anaconda3/2024.10`) use the Intel MKL library. Some linear algebra operations can be faster using `numpy` through the `anaconda3` module.
-
-## Anaconda environment
-
-We also provide `anaconda3/2024.02` and `anaconda3/2024.10` python environments that have many popular scientific and numerical python libraries pre-installed.
-
-Examples of loading anaconda3
-
-```
-$ module load anaconda3/2024.02
-$ python
-Python 3.11.7 (main, Dec 15 2023, 18:12:31) [GCC 11.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-```
-$ module load anaconda3/2024.10
-$ python
-Python 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
-```
+Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library.
 
 Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../../openondemand/jupyter-server/) on [Open OnDemand](../../../openondemand/overview/). [Click here](../../../openondemand/packages-kernels/) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
@@ -1984,7 +1963,7 @@ When you load `intelpython`, `intel-oneapi-compilers` and `intel-oneapi-mpi` are
 
 ## Using Dask
 
-[Dask](https://www.dask.org/) is available both in the `anaconda3` and `intelpython` modules. Dask can be useful when you are working with large datasets that don't fit in the memory of a single machine. Dask implements lazy evaluation, task scheduling and data chunking that makes it useful when performing analysis on large datasets.
+[Dask](https://www.dask.org/) is available in the `intelpython` module. Dask can be useful when you are working with large datasets that don't fit in the memory of a single machine. Dask implements lazy evaluation, task scheduling and data chunking that makes it useful when performing analysis on large datasets.
 
 Dask JupyterLab Extension
 
@@ -2199,6 +2178,7 @@ srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per
 - List the available models
 
   ```
+  ollama list
   NAME                     ID              SIZE      MODIFIED      
   gpt-oss-high:20b         5b4abdd0eea4    13 GB     3 days ago    
   gpt-oss-safeguard:20b    f2e795d0099c    13 GB     5 days ago       

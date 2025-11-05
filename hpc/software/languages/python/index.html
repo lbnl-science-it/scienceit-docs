@@ -1323,15 +1323,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anaconda-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Anaconda environment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#intel-distribution-of-python" class="md-nav__link">
     <span class="md-ellipsis">
       Intel Distribution of Python
@@ -2725,15 +2716,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anaconda-environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Anaconda environment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#intel-distribution-of-python" class="md-nav__link">
     <span class="md-ellipsis">
       Intel Distribution of Python
@@ -2794,32 +2776,8 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 to install a python package to <code>~/.local</code> directory. The package libraries are usually installed in a sub-directory for each python version; for example: <code>~/.local/lib/python3.10/site-packages/</code>.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Choosing python modules</p>
-<p>Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library whereas the Anaconda distributions (<code>anaconda3/2024.02</code> and <code>anaconda3/2024.10</code>) use the Intel MKL library. Some linear algebra operations can be faster using <code>numpy</code> through the <code>anaconda3</code> module.</p>
-</div>
-<h2 id="anaconda-environment">Anaconda environment<a class="headerlink" href="#anaconda-environment" title="Permanent link">&para;</a></h2>
-<p>We also provide <code>anaconda3/2024.02</code> and <code>anaconda3/2024.10</code> python environments that have many popular scientific and numerical python libraries pre-installed. </p>
-<div class="admonition info">
-<p class="admonition-title">Examples of loading anaconda3</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">anaconda3/2024.02</label><label for="__tabbed_1_2">anaconda3/2024.10</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>$ module load anaconda3/2024.02
-$ python
-Python 3.11.7 (main, Dec 15 2023, 18:12:31) [GCC 11.2.0] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt;
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>$ module load anaconda3/2024.10
-$ python
-Python 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-</code></pre></div>
-</div>
-</div>
-</div>
+<p class="admonition-title">Linear algebra backend for numpy</p>
+<p>Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library.</p>
 </div>
 <p>Several Jupyter kernels are available to access <code>tensorflow</code> and <code>pytorch</code> conda environments from the <a href="../../../openondemand/jupyter-server/">Jupyter server</a> on <a href="../../../openondemand/overview/">Open OnDemand</a>. <a href="../../../openondemand/packages-kernels/">Click here</a> for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.</p>
 <h2 id="intel-distribution-of-python">Intel Distribution of Python<a class="headerlink" href="#intel-distribution-of-python" title="Permanent link">&para;</a></h2>
@@ -2828,7 +2786,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </code></pre></div>
 <p>When you load <code>intelpython</code>, <code>intel-oneapi-compilers</code> and <code>intel-oneapi-mpi</code> are also loaded because we have added <code>mpi4py</code> package linked to Intel MPI library to the Intel Distribution of Python.</p>
 <h2 id="using-dask">Using Dask<a class="headerlink" href="#using-dask" title="Permanent link">&para;</a></h2>
-<p><a href="https://www.dask.org/" target="_blank">Dask</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is available both in the <code>anaconda3</code> and <code>intelpython</code> modules. Dask can be useful when you are working with large datasets that don't fit in the memory of a single machine. Dask implements lazy evaluation, task scheduling and data chunking that makes it useful when performing analysis on large datasets.</p>
+<p><a href="https://www.dask.org/" target="_blank">Dask</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is available in the <code>intelpython</code> module. Dask can be useful when you are working with large datasets that don't fit in the memory of a single machine. Dask implements lazy evaluation, task scheduling and data chunking that makes it useful when performing analysis on large datasets.</p>
 <div class="admonition note">
 <p class="admonition-title">Dask JupyterLab Extension</p>
 <p>Dask JupyterLab Extension can be used to manage Dask clusters and monitor it through various dashboard plots in JupyterLab panes.</p>
@@ -2856,7 +2814,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 5, 2025</span>
   </span>
 
     
