@@ -1801,6 +1801,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#nsight-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nsight Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nsight-compute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nsight Compute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-references" class="md-nav__link">
     <span class="md-ellipsis">
       Additional References
@@ -2689,6 +2707,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#nsight-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nsight Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nsight-compute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nsight Compute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-references" class="md-nav__link">
     <span class="md-ellipsis">
       Additional References
@@ -2718,6 +2754,14 @@
 module<span class="w"> </span>load<span class="w"> </span>cuda/12.2.1
 </code></pre></div>
 <p>loads CUDA Toolkit version 12.2.1. The environment variable <code>CUDA_HOME</code> is set by the <code>cuda</code> module.</p>
+<h2 id="nsight-systems">Nsight Systems<a class="headerlink" href="#nsight-systems" title="Permanent link">&para;</a></h2>
+<p>The performance analysis tool NVIDIA <a href="https://developer.nvidia.com/nsight-systems" target="_blank">Nsight Systems</a> is part of the CUDA Toolkit. For example once <code>gcc/11.4.0</code> and <code>cuda/12.2.1</code> are loaded as shown above, you can use the <code>nsys</code> executable.</p>
+<div class="highlight"><pre><span></span><code>nys --version
+NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
+</code></pre></div>
+<p>The graphical user interface for the Nsight Systems can be utilized by running <code>nsys-ui</code> on the Desktop application through <a href="../../../openondemand/overview/">Open OnDemand</a>.</p>
+<h2 id="nsight-compute">Nsight Compute<a class="headerlink" href="#nsight-compute" title="Permanent link">&para;</a></h2>
+<p>Similarly, NVIDIA <a href="https://developer.nvidia.com/nsight-compute" target="_blank">Nsight Compute Profiler</a> is part of the CUDA Toolkit. You can use the command line profiler through <code>ncu</code> and the graphical interface (on OOD Desktop) through <code>ncu-ui</code>.</p>
 <h2 id="additional-references">Additional References<a class="headerlink" href="#additional-references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://developer.nvidia.com/cuda-toolkit" target="_blank">CUDA Toolkit Information</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg></li>
@@ -2744,7 +2788,7 @@ module<span class="w"> </span>load<span class="w"> </span>cuda/12.2.1
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 19, 2025</span>
   </span>
 
     
