@@ -9,6 +9,21 @@ module load cuda/12.2.1
 
 loads CUDA Toolkit version 12.2.1. The environment variable `CUDA_HOME` is set by the `cuda` module.
 
+## Nsight Systems
+
+The performance analysis tool NVIDIA [Nsight Systems](https://developer.nvidia.com/nsight-systems){:target="_blank"} is part of the CUDA Toolkit. For example once `gcc/11.4.0` and `cuda/12.2.1` are loaded as shown above, you can use the `nsys` executable.
+
+```
+nys --version
+NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
+```
+
+The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](../../openondemand/overview.md).
+
+## Nsight Compute 
+
+Similarly, NVIDIA [Nsight Compute Profiler](https://developer.nvidia.com/nsight-compute){:target="_blank"} is part of the CUDA Toolkit. You can use the command line profiler through `ncu` and the graphical interface (on OOD Desktop) through `ncu-ui`.
+
 ## Additional References
 
 * [CUDA Toolkit Information](https://developer.nvidia.com/cuda-toolkit){:target="_blank"} {{ ext }}
