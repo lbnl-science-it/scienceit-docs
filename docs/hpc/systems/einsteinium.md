@@ -11,6 +11,8 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 | NVIDIA H100 | 4 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |
 
 ### How to specify desired GPU card(s)
+The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
+
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
 
 Examples:
@@ -27,7 +29,7 @@ Examples:
         #SBATCH --job-name=test
         #SBATCH --account=account_name
         #SBATCH --partition=es2
-        #SBATCH --qos=es_normal
+        #SBATCH --qos=es2_normal
         #SBATCH --nodes=1
         #SBATCH --ntasks=3
         #SBATCH --cpus-per-task=14
@@ -43,7 +45,7 @@ Examples:
         #SBATCH --job-name=test
         #SBATCH --account=account_name
         #SBATCH --partition=es2
-        #SBATCH --qos=es_normal
+        #SBATCH --qos=es2_normal
         #SBATCH --nodes=1
         #SBATCH --ntasks=1
         #SBATCH --cpus-per-task=14
@@ -66,6 +68,8 @@ Examples:
 | NVIDIA V100 |  15 | 2x 32 GB | Intel Xeon E5-2623   | 8     | 64GB or 192GB   | FDR        | 
 
 ### How to specify desired GPU card(s)
+The normal `qos` for the `es1` partition is called `es_normal`.
+
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
 
 Examples:
