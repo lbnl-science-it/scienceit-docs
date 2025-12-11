@@ -39,15 +39,15 @@
   - [Ask a LLM Model in the CBorg AI Portal](https://cborg.lbl.gov/) .
   - Contact us at [scienceit@lbl.gov](mailto:scienceit@lbl.gov) to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
-# **Support & Training Resources**
+# **Support Resources**
 
 ## **HPC Helpdesk**
 
 Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.
 
-- HPC Email Support: [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov) (Creates a ticket in AskUS)
-- AskUS Request Form: [HPC Help Request](https://lbl.servicenowservices.com/lbl/service_description.do?sysparm_svcdescid=b745a27cdb24360087de72840f9619cc)
-- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
+- HPC Email Support: [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov) (Creates a ticket in Freshservice)
+- Freshservice Ticket Request: [HPC Help Request](https://lbl.freshservice.com/a/tickets/new) (Choose ScienceIT Workspace)
+- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-ofhr)
 
 ## **Science IT Consulting**
 
@@ -55,7 +55,13 @@ Science IT Consultants bring broad expertise in technology deployment, high perf
 
 - Schedule a [Science IT Consulting Engagement](https://go.lbl.gov/scienceit)
 - Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)
-- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-officehr)
+- Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-ofhr)
+
+# Asking LLMs
+
+## **Using scienceit-docs as context**
+
+The whole content of this documentation site is available, in markdown format, as a a single file at <https://scienceit-docs.lbl.gov/llms-full.txt>. You can upload this file as context in [Google Gemini](https://gemini.google.com), [CBorg](https://chat.cborg.lbl.gov), or any other LLM model with large context window. Currently the `llms-full.txt` file has fewer than 50k tokens.
 
 ## **HPC Training and Workshops**
 
@@ -74,12 +80,6 @@ Training [slides](https://docs.google.com/presentation/d/e/2PACX-1vRc-TPOmrwDEHr
 ### **Fast track—HPC training videos**
 
 In this section we will be publishing short videos to learn HPC at lightning speed.
-
-# Asking LLMs
-
-## **Using scienceit-docs as context**
-
-The whole content of this documentation site is available, in markdown format, as a a single file at <https://scienceit-docs.lbl.gov/llms-full.txt>. You can upload this file as context in [Google Gemini](https://gemini.google.com), [CBorg](https://chat.cborg.lbl.gov), or any other LLM model with large context window. Currently the `llms-full.txt` file has fewer than 50k tokens.
 # High Performance Computing
 
 # High Performance Computing

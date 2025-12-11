@@ -7,6 +7,7 @@
 - [Home](https://scienceit-docs.lbl.gov/index.md)
 - [HPC Help Desk](https://scienceit-docs.lbl.gov/help/index.md)
 - [Asking LLMs](https://scienceit-docs.lbl.gov/help/llms/index.md)
+- [Training](https://scienceit-docs.lbl.gov/help/training/index.md)
 
 ## High Performance Computing
 
