@@ -19,5 +19,5 @@ Contact us to discuss your needs in scientific computing, research data manageme
 
 - Schedule a <a href="https://go.lbl.gov/scienceit">Science IT Consulting Engagement</a>
 - Email Science IT: <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>    
-- Office Hours: <a href="https://go.lbl.gov/scienceit-officehr">HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)</a>
+- Office Hours: <a href="https://go.lbl.gov/scienceit-ofhr">HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)</a>
 
