@@ -82,6 +82,7 @@ nav:
      - Google Cloud Skills Boost: cloud/gcp-skills-boost.md
   - Support & Training:
       - HPC Help Desk: help/index.md
+      - Training: help/training.md
       - Asking LLMs: help/llms.md
 
 plugins:
