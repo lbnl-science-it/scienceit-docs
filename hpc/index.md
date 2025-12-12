@@ -35,7 +35,7 @@ Condo users who would need to run outside of their condo contributions are also 
 
 ### GPU Partitions Recharge Rates
 
-| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | es0 | Shared | 0 | free | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour |
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | es0 | Shared | 0 | free | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour | | es2 | Shared | 2.0 | $0.02 per Core CPU Hour |
 
 Usage Calculation
 
