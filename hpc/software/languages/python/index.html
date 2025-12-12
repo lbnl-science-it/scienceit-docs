@@ -1323,6 +1323,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#miniforge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miniforge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miniforge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transitioning-from-defaults-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transitioning from defaults channel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#intel-distribution-of-python" class="md-nav__link">
     <span class="md-ellipsis">
       Intel Distribution of Python
@@ -2739,6 +2763,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#miniforge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miniforge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miniforge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transitioning-from-defaults-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transitioning from defaults channel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#intel-distribution-of-python" class="md-nav__link">
     <span class="md-ellipsis">
       Intel Distribution of Python
@@ -2803,6 +2851,25 @@ to install a python package to <code>~/.local</code> directory. The package libr
 <p>Please note that the linear algebra backend for <code>numpy</code> in these two python modules (<code>python/3.11.6</code> and <code>python/3.10.12</code>) is the openBLAS library.</p>
 </div>
 <p>Several Jupyter kernels are available to access <code>tensorflow</code> and <code>pytorch</code> conda environments from the <a href="../../../openondemand/jupyter-server/">Jupyter server</a> on <a href="../../../openondemand/overview/">Open OnDemand</a>. <a href="../../../openondemand/packages-kernels/">Click here</a> for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.</p>
+<h2 id="miniforge">Miniforge<a class="headerlink" href="#miniforge" title="Permanent link">&para;</a></h2>
+<p>We have <a href="https://github.com/conda-forge/miniforge" target="_blank">miniforge3</a> installed as a module that can be loaded as:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3/25.9.1
+</code></pre></div>
+<p>The <code>miniforge3</code> module provides <code>conda</code> and <code>mamba</code> package managers that you can use to create conda environments. The community-based <code>conda-forge</code> channel is the default and only channel in Miniforge. </p>
+<div class="admonition note">
+<p class="admonition-title">Note on Anaconda Python Distribution</p>
+<p>Due to licensing restrictions, we cannot provide a module with the Anaconda Python Distribution. </p>
+<p>Some useful information on transitioning from Anaconda's <code>defaults</code> channel to the <code>conda-forge</code> channel can be found <a href="https://conda-forge.org/docs/user/transitioning_from_defaults/" target="_blank">here</a>. If you need additional help please reach out to us.</p>
+</div>
+<h3 id="transitioning-from-defaults-channel">Transitioning from defaults channel<a class="headerlink" href="#transitioning-from-defaults-channel" title="Permanent link">&para;</a></h3>
+<p>In many cases, your conda environment may continue to work when you use <code>conda</code> through the <code>miniforge3</code> module. You can use the 
+<div class="highlight"><pre><span></span><code>conda list --show-channel-urls
+</code></pre></div>
+command in your environment to check that you are not using packages from the <code>defaults</code> channel.</p>
+<p>Another useful thing to do might be to create an <code>environment.yml</code> file for your environment by running the following command on your activated environment.
+<div class="highlight"><pre><span></span><code>conda env export --from-history &gt; environment.yml
+</code></pre></div></p>
+<p>Then, you can edit the <code>environment.yml</code> file as necessary to remove the defaults channel, add the <code>conda-forge</code> channel, change the install prefix, and use the modified file to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file" target="_blank">recreate your environment</a>.</p>
 <h2 id="intel-distribution-of-python">Intel Distribution of Python<a class="headerlink" href="#intel-distribution-of-python" title="Permanent link">&para;</a></h2>
 <p>Additionally the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-for-python.html#gs.c1qvsx" target="_blank">Intel Distribution of Python (Python 3.9)</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is available, and can be loaded as:</p>
 <div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intelpython/3.9.19
@@ -2837,7 +2904,7 @@ to install a python package to <code>~/.local</code> directory. The package libr
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 12, 2025</span>
   </span>
 
     
