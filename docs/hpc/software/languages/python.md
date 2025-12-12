@@ -39,6 +39,37 @@ To load one of these modules use: `module load python/3.10.12` or `module load p
 
 Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../openondemand/jupyter-server.md) on [Open OnDemand](../../openondemand/overview.md). [Click here](../../openondemand/packages-kernels.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
+## Miniforge
+
+We have [miniforge3](https://github.com/conda-forge/miniforge){:target="_blank"} installed as a module that can be loaded as:
+
+``` bash
+module load miniforge3/25.9.1
+```
+
+The `miniforge3` module provides `conda` and `mamba` package managers that you can use to create conda environments. The community-based `conda-forge` channel is the default and only channel in Miniforge. 
+
+!!! note "Note on Anaconda Python Distribution"
+
+    Due to licensing restrictions, we cannot provide a module with the Anaconda Python Distribution. 
+
+    Some useful information on transitioning from Anaconda's `defaults` channel to the `conda-forge` channel can be found [here](https://conda-forge.org/docs/user/transitioning_from_defaults/){:target="_blank"}. If you need additional help please reach out to us.
+
+### Transitioning from defaults channel
+
+In many cases, your conda environment may continue to work when you use `conda` through the `miniforge3` module. You can use the 
+```
+conda list --show-channel-urls
+``` 
+command in your environment to check that you are not using packages from the `defaults` channel.
+
+Another useful thing to do might be to create an `environment.yml` file for your environment by running the following command on your activated environment.
+```
+conda env export --from-history > environment.yml
+```
+
+Then, you can edit the `environment.yml` file as necessary to remove the defaults channel, add the `conda-forge` channel, change the install prefix, and use the modified file to [recreate your environment](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file){:target="_blank"}.
+
 ## Intel Distribution of Python
 
 Additionally the [Intel Distribution of Python (Python 3.9)](https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-for-python.html#gs.c1qvsx){:target="_blank"} {{ ext }} is available, and can be loaded as:
