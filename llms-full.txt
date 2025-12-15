@@ -1311,7 +1311,7 @@ mpirun ./a.out
 
 ## GPU Job
 
-`es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40, H100). Please take a look at the details on this [page](../../systems/einsteinium/). A compute node with a particular GPU type and count can be allocated using slurm in the following way.
+`es2` partition consists of NVIDIA H100 and H200 GPU cards. `es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](../../systems/einsteinium/). For `es2` and `es1` partitions, a compute node with a particular GPU type and count can be allocated using slurm in the following way.
 
 - General format: `--gres=gpu:[type]:count`
 
@@ -1327,6 +1327,12 @@ The `CUDA_VISIBLE_DEVICES` environment variable is automatically set by SLURM wh
 
 To help the job scheduler effectively manage the use of GPUs, your job submission script must request multiple CPUs (usually two or more) for each GPU you use. The scheduler will reject jobs submitted that do not request sufficient CPUs for every GPU.
 
+### CPU Core to GPU Ratio
+
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | A40 | 4 | 64 | 1:16 | | A100 | 4 | 64 | 1:16 | | GRTX8000 | 4 | 64 | 1:16 | | V100. | 2 | 8. | 1:4 |
+
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | H100 | 8 | 112 | 1:14 | | H200 | 8 | 112 | 1:14 |
+
 Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
 
 For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and `--cpus-per-task=2` . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
@@ -1335,9 +1341,11 @@ Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the num
 
 Examples:
 
-- Request one V100 card: `--cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1`
-- Request two A40 cards: `--cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2`
-- Request three H100 cards: `--cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3`
+- Request one V100 card: `--partition=es1 --cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1`
+- Request two A40 cards: `--partition=es1 --cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2`
+- Request three H100 cards: `--partition=es2 --cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3`
+
+## Example Set 3
 
 ```
 #!/bin/bash
@@ -1348,10 +1356,31 @@ Examples:
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #
-# Processors per task (please always specify the total number of processors twice the number of GPUs):
+# Processors per task (on `es1` please always specify the total number of processors at least twice the number of GPUs):
 #SBATCH --cpus-per-task=2
 #
 #Number of GPUs, this can be in the format of "gpu:[1-4]", or "gpu:V100:[1-4] with the type included
+#SBATCH --gres=gpu:1
+#
+# Wall clock limit:
+#SBATCH --time=1:00:00
+#
+## Command(s) to run (example):
+./a.out
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es2
+#SBATCH --qos=es2_normal
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=14
+
+# Number of GPUs, this can be in the format of "gpu:[1-8]", 
+# or "gpu:H100:[1-8] or "gpu:H200:[1-8]"
 #SBATCH --gres=gpu:1
 #
 # Wall clock limit:
