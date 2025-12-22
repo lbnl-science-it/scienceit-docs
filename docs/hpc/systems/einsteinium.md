@@ -3,7 +3,7 @@
 Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
 ## `es2` Partition
-`es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to growing usage of GPUs in scientific computing.
+`es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to the growing use of GPUs in scientific computing.
 
 | Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband |
 | ----------- | ----- | ------------------------ | ------------- | --------- | ------- | ---------- |
@@ -18,7 +18,9 @@ Due to hardware configuation, special attention is needed to ensure the ratio of
 Examples:
 
 * Request three H100 cards: `--partition=es2 --gres=gpu:H100:3 --cpus-per-task=14 --ntasks=3`  
-* Request one H200 cards: `--partition=es2 --gres=gpu:H200:1 --cpus-per-task=14 --ntasks=1`  
+* Request one H200 cards: `--partition=es2 --gres=gpu:H200:1 --cpus-per-task=14 --ntasks=1 --mem-per-cpu=18400M` 
+
+As seen in the examples, use `--mem-per-cpu=18400M` for H200 nodes since they have more memory than the default on the `es2` partition.
 
 !!! example "Example slurm script on `es2`"
 
@@ -50,6 +52,7 @@ Examples:
         #SBATCH --ntasks=1
         #SBATCH --cpus-per-task=14
         #SBATCH --gres=gpu:H200:1
+        #SBATCH --mem-per-cpu=18400M
         #SBATCH --time=1:00:00
 
         module load ml/pytorch
