@@ -136,11 +136,12 @@ mpirun ./a.out
 
 - General format: `--gres=gpu:[type]:count`
 
-- The above format can schedule jobs on nodes with V100, A40, or H100 GPU cards. To specify a particular card:
+- The above format can schedule jobs on nodes with V100, A40, H100, or H200 GPU cards. For example, to specify a particular card:
 
   - V100 : `--gres=gpu:V100:1`(up to 2 GPUs)
   - A40: `--gres=gpu:A40:1` (up to 4 GPUs)
   - H100: `--gres=gpu:H100:1` (up to 8 GPUs)
+  - H200: `--gres=gpu:H200:1` (up to 8 GPUs)
 
 Do not modify `CUDA_VISIBLE_DEVICES`
 
@@ -162,9 +163,14 @@ Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the num
 
 Examples:
 
-- Request one V100 card: `--partition=es1 --cpus-per-task=4 --gres=gpu:V100:1 --ntasks 1`
-- Request two A40 cards: `--partition=es1 --cpus-per-task=16 --gres=gpu:A40:2 --ntasks 2`
-- Request three H100 cards: `--partition=es2 --cpus-per-task=14 --gres=gpu:H100:3 --ntasks 3`
+- Request one V100 card: `--partition=es1 --cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1`
+- Request two A40 cards: `--partition=es1 --cpus-per-task=16 --gres=gpu:A40:2 --ntasks=2`
+- Request three H100 cards: `--partition=es2 --cpus-per-task=14 --gres=gpu:H100:3 --ntasks=3`
+- Request one H200 card: `--partition=es2 --cpus-per-task=14 --gres=gpu:H200:1 --ntasks=1 --mem-per-cpu=18400M`
+
+`--mem-per-cpu=18400M` for H200
+
+When requesting one or more GPUs on a H200 node on the `es2` partition, we recommend using `--mem-per-cpu=18400M` on your slurm script. A default of `--mem-per-cpu=9200M` is applied for all requests on the `es2` partition which accounts for evenly distributing the H100 node memory. However, because the H200 nodes have double the CPU RAM (2TB) compared to the H100 nodes (1TB), the `--mem-per-cpu=18400M` line for H200 allows you to use the larger amount of CPU RAM available.
 
 ## Example Set 3
 
