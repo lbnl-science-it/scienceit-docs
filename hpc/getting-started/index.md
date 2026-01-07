@@ -12,7 +12,7 @@ There are three primary ways/projects to obtain access to Lawrencium:
 
 Project Group Directories
 
-Project group directories are not created by default. If you would like to create group directories where your group members can share data and software, please send a request to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
+Project group directories are not created by default. If you would like to create group directories wehre your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
 
 ## User Accounts
 

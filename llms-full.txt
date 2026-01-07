@@ -251,7 +251,7 @@ There are three primary ways/projects to obtain access to Lawrencium:
 
 Project Group Directories
 
-Project group directories are not created by default. If you would like to create group directories where your group members can share data and software, please send a request to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
+Project group directories are not created by default. If you would like to create group directories wehre your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
 
 ## User Accounts
 
@@ -497,7 +497,7 @@ To request a PCA, Condo or Recharge project on Lawrencium, please send your requ
 
 ### Changing Your ProjectID and Valid ProjectID
 
-If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
+If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
 
 To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied.
 
@@ -507,9 +507,11 @@ To maintain your Lawrencium user account, you must have a valid PID. If your PID
 
 **Cost**: There is a nominal charge of $25/mo/user for the use of Lawrencium to cover the costs of home directory storage and backups. PCA Project accounts are not charged for usage. Recharge accounts are charged $0.01/SU for compute. Account fees and cpu usage will appear as LRCACT and LRCCPU in the LBL Cost Browser.
 
-**Storage**: Home directory space will have a quota set at 20GB per user. Users may also use the `/clusterfs/lawrencium` shared filesystem which does not have a quota; this file system is intended for short term use and should be considered volatile. Backups are not performed on this file system. Data is subject to periodic purge policy wherein any files which are not accessed with in the last 14 days will be deleted. Users should make sure to have a back up of these files to some external permanent storage as soon as they are generated on the cluster.
+**Storage**: Home directory space have a quota set at 30GB per user and is available at: `/global/home/users/<username>`. Users may also use the scratch shared filesystem: `/global/scratch/users/<username>` if they need more storage for a limited time; this scratch space is intended for short term use and should be considered volatile. Backups are not performed on this file system. Users should make sure to have a back up of these files to some external permanent storage as soon as they are generated on the cluster. More information on Storage.
 
-**Lustre**: Lustre parallel file system is also now available for Lawrencium cluster users. The file system is built with 4 OSS and 15 OST servers with a capacity of 1.8PB. The default striping is set to 4 OSTs with strip size of 1 MB. All the Lawrencium cluster users will receive a directory created under `/clusterfs/lawrencium` with the above default stripe values set. This is a scratch file system, so its mainly intended for storing large input or output files for running jobs and for all the parallel I/O needs on the Lawrencium cluster. This file system is intended for short term use and should be considered volatile. Backups are not performed on this file system. Data in scratch is subject to periodic purge policy wherein any files which are not accessed with in the last 14 days will be deleted. Users should make sure to have a back up of these files to some external permanent storage as soon as they are generated on the cluster.
+Project Group Directories
+
+Project group directories are not created by default. If you would like to create group directories wehre your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
 
 ### Acknowledgements
 
