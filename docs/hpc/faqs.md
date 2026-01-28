@@ -37,4 +37,19 @@
     cf_lowprio                                         
     lr_intera+        cpu=32  3-00:00:00               
     ```
+??? question "When using the `lr_lowprio` queue, how long does a job have to finish its clean-up tasks upon getting preempted before it is killed by the scheduler?"
+
+    For `lr_lowprio`, the `GraceTime` is 1 minute. You can see this by using the following command:
+
+    ```
+    sacctmgr show qos format=Name,GraceTime,PreemptMode | grep lr_lowprio
+    ```
+    which outputs:
+    ```
+    lr_lowprio   00:01:00     requeue
+    ```
+
+??? question "How do I utilize local disk on the compute node during a job for caching datasets and intermediate files during a job?"
+
+    Once you have SLURM allocation, you have read/write access to a folder `/local/job${SLURM_JOB_ID}` where `SLURM_JOB_ID` is your slurm job ID. `SLURM_JOB_ID` is also an environment variable set by SLURM after job allocation. This folder `/local/job${SLURM_JOB_ID}` is on local disk on the compute node. Please remember that this storage is temporary and only available when your job is running; therefore, any data that you need later must be copied to another location before your job terminates. 
 
