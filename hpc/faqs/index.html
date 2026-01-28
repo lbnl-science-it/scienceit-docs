@@ -2709,6 +2709,19 @@ cf_lowprio<span class="w">                                         </span>
 lr_intera+<span class="w">        </span><span class="nv">cpu</span><span class="o">=</span><span class="m">32</span><span class="w">  </span><span class="m">3</span>-00:00:00<span class="w">               </span>
 </code></pre></div>
 </details>
+<details class="question">
+<summary>When using the <code>lr_lowprio</code> queue, how long does a job have to finish its clean-up tasks upon getting preempted before it is killed by the scheduler?</summary>
+<p>For <code>lr_lowprio</code>, the <code>GraceTime</code> is 1 minute. You can see this by using the following command:</p>
+<p><div class="highlight"><pre><span></span><code>sacctmgr show qos format=Name,GraceTime,PreemptMode | grep lr_lowprio
+</code></pre></div>
+which outputs:
+<div class="highlight"><pre><span></span><code>lr_lowprio   00:01:00     requeue
+</code></pre></div></p>
+</details>
+<details class="question">
+<summary>How do I utilize local disk on the compute node during a job for caching datasets and intermediate files during a job?</summary>
+<p>Once you have SLURM allocation, you have read/write access to a folder <code>/local/job${SLURM_JOB_ID}</code> where <code>SLURM_JOB_ID</code> is your slurm job ID. <code>SLURM_JOB_ID</code> is also an environment variable set by SLURM after job allocation. This folder <code>/local/job${SLURM_JOB_ID}</code> is on local disk on the compute node. Please remember that this storage is temporary and only available when your job is running; therefore, any data that you need later must be copied to another location before your job terminates. </p>
+</details>
 
 
 
@@ -2729,7 +2742,7 @@ lr_intera+<span class="w">        </span><span class="nv">cpu</span><span class=
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 19, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 28, 2026</span>
   </span>
 
     
