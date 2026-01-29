@@ -39,9 +39,9 @@
   - [Ask a LLM Model in the CBorg AI Portal](https://cborg.lbl.gov/) .
   - Contact us at [scienceit@lbl.gov](mailto:scienceit@lbl.gov) to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
-# **Support Resources**
+# Support Resources
 
-## **HPC Helpdesk**
+## HPC Helpdesk
 
 Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.
 
@@ -49,8 +49,9 @@ Contact us for help with debugging jobs on our HPC clusters, software installati
 - Freshservice Ticket Request: [HPC Help Request](https://lbl.freshservice.com/a/tickets/new) (Choose ScienceIT Workspace)
 - Freshservice Service Request: [HPC - Lawrencium](https://lbl.freshservice.com/a/catalog/request-items?category=33000054898)
 - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-ofhr)
+- CBorg: [Lawrencium HPC & ScienceIT Assistant](llms/)
 
-## **Science IT Consulting**
+## Science IT Consulting
 
 Science IT Consultants bring broad expertise in technology deployment, high performance computing and cloud infrastructure. Contact us to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
@@ -60,7 +61,11 @@ Science IT Consultants bring broad expertise in technology deployment, high perf
 
 # Asking LLMs
 
-## **Using scienceit-docs as context**
+## CBorg - Lawrencium HPC & ScienceIT Assistant
+
+You can ask questions to the **Lawrencium HPC & ScienceIT Assistant** on [CBorg](https://chat.cborg.lbl.gov/).
+
+## Using scienceit-docs as context
 
 The whole content of this documentation site is available, in markdown format, as a a single file at <https://scienceit-docs.lbl.gov/llms-full.txt>. You can upload this file as context in [Google Gemini](https://gemini.google.com), [CBorg](https://chat.cborg.lbl.gov), or any other LLM model with large context window. Currently the `llms-full.txt` file has fewer than 50k tokens.
 
@@ -1714,7 +1719,7 @@ Users are encouraged to install domain scientific software packages or local sof
 
 # VASP on Lawrencium
 
-The Vienna Ab initio Simulation Package ([VASP](https://www.vasp.at/)) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the [VASP: Access Request form](https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog) to be added to the linux groups authorized to use VASP. Please, provide the proof of purchase with this request. Please feel free to reach out to us at hpcshelp@lbl.gov if you would like us to update the version of the package.
+The Vienna Ab initio Simulation Package ([VASP](https://www.vasp.at/)) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the [VASP: Access Request form](https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog) to be added to the linux groups authorized to use VASP. Please, provide the proof of purchase with this request. Please feel free to reach out to us at scienceithelp@lbl.gov if you would like us to update the version of the package.
 
 VASP binaries provided on Lawrencium are compiled targeting CPU or GPU partitions. Following guidelines can help users to run vasp calculation.
 
