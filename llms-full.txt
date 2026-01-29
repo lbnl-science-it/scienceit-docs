@@ -545,9 +545,9 @@ Accounts are added on a first come, first served basis upon approval of the PI f
 
 Closing User Accounts
 
-The PI for the project or the main contact is responsible for notifying HPCS to close user accounts and the disposition of the user’s software, files and data. In some cases, users share software and data from their home directory and others may depend on them. For this reasons, only account terminations have to be requested by PI, the main account or the user of the account. Users accounts are not automatically deactivated upon termination of an employee because many people change their employment status, but remain engaged with the project. Send your requests at [myLRC portal](https://mylrc.lbl.gov/) .
+The PI for the project or the main contact is responsible for notifying HPCS to close user accounts and the disposition of the user’s software, files and data. In some cases, users share software and data from their home directory and others may depend on them. For this reason, account terminations have to be requested by PI, the main account or the user of the account. User accounts are not automatically deactivated upon termination of an employee because many people change their employment status, but remain engaged with the project. Send your requests at [myLRC portal](https://mylrc.lbl.gov/) .
 
-Questions regarding requesting new or removing accounts can be directed to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
+Questions regarding requesting new or removing accounts can be directed to [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
 
 # Jupyter Server
 
