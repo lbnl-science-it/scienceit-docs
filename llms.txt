@@ -49,6 +49,8 @@
 - [TensorFlow](https://scienceit-docs.lbl.gov/hpc/software/ml/tensorflow/index.md)
 - [Intel MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/intelmpi/index.md)
 - [Open MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/openmpi/index.md)
+- [GNU Gprof](https://scienceit-docs.lbl.gov/hpc/software/performance/gnu-gprof/index.md)
+- [Intel VTune](https://scienceit-docs.lbl.gov/hpc/software/performance/intel-vtune/index.md)
 - [GPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)
 - [CPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/lawrencium/index.md)
 - [ALSACC](https://scienceit-docs.lbl.gov/hpc/systems/supported/alsacc/index.md)

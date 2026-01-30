@@ -2774,6 +2774,88 @@ mpifort -o hellofortran hello_world.f90
 
 The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slrum job script.
 
+# Gprof
+
+On Lawrencium, `gprof` is available as part of the standard GNU binutils and does not require loading a module. Below is a concise guide on how to use it to profile your C,C++, or Fortran applications; please consult with [`gprof` documentation](https://sourceware.org/binutils/docs-2.30/gprof/index.html) for further details.
+
+1. Compile with Profiling Enabled
+
+   To use `gprof`, compile and link your code with `-pg` flag. This tells the compiler to insert code to collect profiling information.
+
+   ```
+   gcc -pg -o program program.c
+   ```
+
+   ```
+   g++ -pg -o program program.cpp
+   ```
+
+   ```
+   gfortran -pg -o program program.f90
+   ```
+
+1. Run the Program
+
+   Execute the program normally. You should run this within a slurm job or an interactive session (not on a login node).
+
+   When the program finishes execution, it will generate a file named `gmon.out` in the current working directory. For MPI applications, set the environment variable:
+
+   ```
+   export GMON_OUT_PREFIX=gmon.out
+   ```
+
+   such that each MPI rank will produce a unique file `gmon.out.pid` where `pid` is the process ID of the MPI process.
+
+1. Generate the Profile Report
+
+   After the run completes and `gmon.out` is created, use `gprof` to analyze the data.
+
+   ```
+   gprof program gmon.out > analysis.txt
+   ```
+
+   The output file called `analysis.txt` in the example above contains a flat profile and a call graph.
+
+# Intel VTune Profiler
+
+Intel VTune Profiler is a performance analysis tool for finding hotspots in your code. Version `2025.6.0` is available on Lawrencium.
+
+### Loading the Module
+
+```
+module load intel-oneapi-compilers/2025.2.1
+module load intel-oneapi-vtune/2025.6.0
+```
+
+### Compatibility with Partitions
+
+The `2025.6.0` version of VTune requires Intel CPU architectures newer than `icelake`. On Lawrencium, it can therefore be used on `lr7` and `es2` partitions.
+
+### Using VTune with Other Compilers (e.g. GCC)
+
+If you are using a different compiler (like `gcc`) and encounter module conflicts when loading `intel-oneapi-vtune`, you can manually add VTune to your environment as follows:
+
+```
+export VTUNE_PROFILER_DIR=/global/software/rocky-8.x86_64/spack-v1-intel/linux-x86_64/intel-oneapi-vtune-2025.6.0-ysdc5gc/vtune/2025.6
+export PATH=$VTUNE_PROFILER_DIR/bin64:$PATH
+```
+
+### Command Line Profiling
+
+To perform a basic "hotspots" analysis on a compiled binar (`program`), you can run the following within a slurm job or interactive session:
+
+```
+vtune -collect hotspots -r ./vtune_results ./program
+```
+
+### GUI Usage via Open OnDemand
+
+For visual analysis, you can run `vtune-gui` on a terminal of a Open OnDemand Desktop session.
+
+## Reference
+
+- [VTune 2025 User Guide](https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2025-4/overview.html)
+
 # Einsteinium GPU Cluster
 
 Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
