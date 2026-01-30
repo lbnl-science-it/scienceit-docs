@@ -52,6 +52,9 @@ nav:
               - NetCDF: hpc/software/libraries/netcdf.md
               - MKL: hpc/software/libraries/mkl.md
               - CUDA: hpc/software/libraries/cuda.md
+          - Profiling Tools:
+              - GNU Gprof: hpc/software/performance/gnu-gprof.md
+              - Intel VTune: hpc/software/performance/intel-vtune.md
           - LLMs: 
               - Ollama: hpc/software/llms/ollama.md
       - Running Jobs:
