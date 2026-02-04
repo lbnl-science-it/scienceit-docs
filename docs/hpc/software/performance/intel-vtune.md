@@ -8,7 +8,7 @@ module load intel-oneapi-vtune/2025.6.0
 ```
 
 ### Compatibility with Partitions
-The `2025.6.0` version of VTune requires Intel CPU architectures newer than  `icelake`. On Lawrencium, it can therefore be used on `lr7` and `es2` partitions.
+The `2025.6.0` version of VTune requires Intel CPU architectures newer than  `icelake`. On Lawrencium, it can therefore be used on `lr7`, `lr8`, `es2` and some nodes in the `es1` partitions.
 
 ### Using VTune with Other Compilers (e.g. GCC)
 If you are using a different compiler (like `gcc`) and encounter module conflicts when loading `intel-oneapi-vtune`, you can manually add VTune to your environment as follows:
