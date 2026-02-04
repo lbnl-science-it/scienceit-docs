@@ -8,7 +8,7 @@ Contact us for help with debugging jobs on our HPC clusters, software installati
 - Freshservice Ticket Request: [HPC Help Request](https://lbl.freshservice.com/a/tickets/new) (Choose ScienceIT Workspace)
 - Freshservice Service Request: [HPC - Lawrencium](https://lbl.freshservice.com/a/catalog/request-items?category=33000054898)
 - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-ofhr)
-- CBorg: [Lawrencium HPC & ScienceIT Assistant](llms/)
+- CBorg: [Lawrencium HPC & ScienceIT Assistant](https://go.lbl.gov/scienceit-assistant)
 
 ## Science IT Consulting
 

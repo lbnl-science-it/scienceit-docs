@@ -2,7 +2,7 @@
 
 ## CBorg - Lawrencium HPC & ScienceIT Assistant
 
-You can ask questions to the **Lawrencium HPC & ScienceIT Assistant** on [CBorg](https://chat.cborg.lbl.gov/).
+You can ask questions to the **Lawrencium HPC & ScienceIT Assistant** on [CBorg](https://go.lbl.gov/scienceit-assistant).
 
 ## Using scienceit-docs as context
 
