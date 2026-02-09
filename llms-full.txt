@@ -58,6 +58,7 @@ Science IT Consultants bring broad expertise in technology deployment, high perf
 - Freshservice Service Request: [Science IT Consultation](https://lbl.freshservice.com/a/catalog/request-items?category=33000054422)
 - Email Science IT: [scienceit@lbl.gov](mailto:scienceit@lbl.gov)
 - Office Hours: [HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)](https://go.lbl.gov/scienceit-ofhr)
+- ScienceIT CBorg-AI Office Hours: [Every Wednesday 11:00am-Noon (Zoom)](https://go.lbl.gov/ai-office-hours)
 
 # Asking LLMs
 
