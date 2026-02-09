@@ -22,4 +22,5 @@ Contact us to discuss your needs in scientific computing, research data manageme
 - Freshservice Service Request: <a href="https://lbl.freshservice.com/a/catalog/request-items?category=33000054422">Science IT Consultation</a>
 - Email Science IT: <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>    
 - Office Hours: <a href="https://go.lbl.gov/scienceit-ofhr">HPC & Science IT Office Hours: Every Wednesday 10:30-Noon (Zoom)</a>
+- ScienceIT CBorg-AI Office Hours: <a href="https://go.lbl.gov/ai-office-hours">Every Wednesday 11:00am-Noon (Zoom)</a>
 
