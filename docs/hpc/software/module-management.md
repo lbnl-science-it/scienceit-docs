@@ -87,7 +87,7 @@ Below we demonstrate how to use these commands. Depending on which system you ha
       emacs/29.1            leveldb/1.23            parallel/20220522    swig/4.1.1
 
     ------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
-      anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
+      miniforge3/25.9.1    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
 
     ```
 

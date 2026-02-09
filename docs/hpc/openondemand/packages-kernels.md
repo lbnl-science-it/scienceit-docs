@@ -2,9 +2,9 @@
 
 ## Installing Python Packages
 
-A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `anaconda3` module. To see what packages are available, open a Terminal in the [Jupyter server](jupyter-server.md) or open a Terminal on Lawrencium in the usual fashion. Then load the `anaconda3` module and list the installed packages:
+A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](jupyter-server.md) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
 ``` bash
-module load anaconda3
+module load miniforge3/25.9.1
 conda list
 ``` 
 
@@ -22,13 +22,13 @@ So, if you need to install additional packages, you can load the desired Python 
 
 
 ``` bash 
-module load anaconda3/2024.02
+module load miniforge3/25.9.1
 module load gcc/11.4.0
 module load cuda/12.2.1
 python -m pip install --user --no-cache-dir cupy-cuda12x
 ```
 
-Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `anaconda3/2024.02` module.
+Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `miniforge3/25.9.1` module.
 
 You can also install packages in a virtual environment or a conda environment and create a kernel associated with that environment. See examples in the next sections.
 
@@ -48,7 +48,7 @@ jupyter kernelspec list
     As an example, let us create a virtual environment in our `$SCRATCH` directory called `cudapython` that installs the [CUDA Python](https://nvidia.github.io/cuda-python/latest/){:target="_blank"} {{ ext }} packages.
 
     ``` bash
-    module load anaconda3/2024.02
+    module load miniforge3/25.9.1
     module load gcc/11.4.0 cuda/12.2.1
 
     cd $SCRATCH
@@ -102,21 +102,20 @@ As an example, below is the content of `~/.local/share/jupyter/kernels/cudapytho
 Another approach to adding a new (Python) kernel  to your Jupyter environment is to create a conda environment and add it as a kernel to Jupyter. When in Jupyter, you will then be able to select the name from the kernel list, and it will be using the packages you installed. Follow these steps to do this (replacing $ENV_NAME with the name you want to give your conda environment): 
 
 ``` bash
-module load anaconda3
+module load miniforge3
 conda create --name=$ENV_NAME ipykernel
 conda activate $ENV_NAME
 python -m ipykernel install --user --name $ENV_NAME
 ```
 
-From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.0.0` from `conda-forge` channel. 
+From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.4.2` from `conda-forge` channel. Since we are using `miniforge3`, `conda-forge` is the default channel.
 
 ``` bash
-module load anaconda3/2024.02
+module load miniforge3/25.9.1
 conda create --name=numpy2test python=3.12 ipykernel
-conda activate numpy2test
-conda config --env -add channels conda-forge
-conda install numpy=2.0.0
-python -m ipykernel install --user --name numpy2 --display-name="Numpy v2 (Python 3.12)"
+source activate numpy2test
+conda install numpy=2.4.2
+python -m ipykernel install --user --name numpy2 --display-name="Numpy 2.4.2 (Python 3.12)"
 ```  
 
 Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand. 
