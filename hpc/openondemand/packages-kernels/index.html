@@ -2915,8 +2915,8 @@
 
 <h1 id="adding-packages-and-kernels">Adding Packages and Kernels<a class="headerlink" href="#adding-packages-and-kernels" title="Permanent link">&para;</a></h1>
 <h2 id="installing-python-packages">Installing Python Packages<a class="headerlink" href="#installing-python-packages" title="Permanent link">&para;</a></h2>
-<p>A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on <code>anaconda3</code> module. To see what packages are available, open a Terminal in the <a href="../jupyter-server/">Jupyter server</a> or open a Terminal on Lawrencium in the usual fashion. Then load the <code>anaconda3</code> module and list the installed packages:
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3
+<p>A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on <code>miniforge3</code> module. To see what packages are available, open a Terminal in the <a href="../jupyter-server/">Jupyter server</a> or open a Terminal on Lawrencium in the usual fashion. Then load the <code>miniforge3</code> module and list the installed packages:
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3/25.9.1
 conda<span class="w"> </span>list
 </code></pre></div></p>
 <div class="admonition note">
@@ -2928,12 +2928,12 @@ conda<span class="w"> </span>list
 </code></pre></div>
 to install the python package to <code>$HOME/.local</code>.</p>
 <p>So, if you need to install additional packages, you can load the desired Python module and then use <code>pip</code> to install in your <code>home</code> directory. For example, you can install the <code>cupy</code> package with:</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3/25.9.1
 module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0
 module<span class="w"> </span>load<span class="w"> </span>cuda/12.2.1
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--no-cache-dir<span class="w"> </span>cupy-cuda12x
 </code></pre></div>
-<p>Package installed in this manner in your <code>$HOME/.local/lib/python3.xx</code> will be available to the <strong>Python 3 (ipykernel)</strong> jupyter kernel provided through the <code>anaconda3/2024.02</code> module.</p>
+<p>Package installed in this manner in your <code>$HOME/.local/lib/python3.xx</code> will be available to the <strong>Python 3 (ipykernel)</strong> jupyter kernel provided through the <code>miniforge3/25.9.1</code> module.</p>
 <p>You can also install packages in a virtual environment or a conda environment and create a kernel associated with that environment. See examples in the next sections.</p>
 <h2 id="adding-new-kernels">Adding New Kernels<a class="headerlink" href="#adding-new-kernels" title="Permanent link">&para;</a></h2>
 <p>Jupyter supports notebooks in dozens of languages, including Python, R, and Julia. Not all of these languages or packages are supported by default in our Open OnDemand jupyter server. The ability to create custom kernels is useful if you need to create your own kernel for a language that is not supported by default or if you want to customize the environment, for example create a jupyter kernel for a virtual environment or a conda environment. </p>
@@ -2943,7 +2943,7 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 <div class="admonition example">
 <p class="admonition-title">Example: Add a kernel for a virtual environment</p>
 <p>As an example, let us create a virtual environment in our <code>$SCRATCH</code> directory called <code>cudapython</code> that installs the <a href="https://nvidia.github.io/cuda-python/latest/" target="_blank">CUDA Python</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> packages.</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3/25.9.1
 module<span class="w"> </span>load<span class="w"> </span>gcc/11.4.0<span class="w"> </span>cuda/12.2.1
 
 <span class="nb">cd</span><span class="w"> </span><span class="nv">$SCRATCH</span>
@@ -2988,18 +2988,17 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 </div>
 <h3 id="using-a-conda-environment">Using a conda environment<a class="headerlink" href="#using-a-conda-environment" title="Permanent link">&para;</a></h3>
 <p>Another approach to adding a new (Python) kernel  to your Jupyter environment is to create a conda environment and add it as a kernel to Jupyter. When in Jupyter, you will then be able to select the name from the kernel list, and it will be using the packages you installed. Follow these steps to do this (replacing $ENV_NAME with the name you want to give your conda environment): </p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3
 conda<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span><span class="nv">$ENV_NAME</span><span class="w"> </span>ipykernel
 conda<span class="w"> </span>activate<span class="w"> </span><span class="nv">$ENV_NAME</span>
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span><span class="nv">$ENV_NAME</span>
 </code></pre></div>
-<p>From example, below we give an example of a custom python kernel in a conda environment that uses <code>python=3.12</code> and install <code>numpy=2.0.0</code> from <code>conda-forge</code> channel. </p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2024.02
+<p>From example, below we give an example of a custom python kernel in a conda environment that uses <code>python=3.12</code> and install <code>numpy=2.4.2</code> from <code>conda-forge</code> channel. Since we are using <code>miniforge3</code>, <code>conda-forge</code> is the default channel.</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>miniforge3/25.9.1
 conda<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span>numpy2test<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>ipykernel
-conda<span class="w"> </span>activate<span class="w"> </span>numpy2test
-conda<span class="w"> </span>config<span class="w"> </span>--env<span class="w"> </span>-add<span class="w"> </span>channels<span class="w"> </span>conda-forge
-conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">2</span>.0.0
-python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>numpy2<span class="w"> </span>--display-name<span class="o">=</span><span class="s2">&quot;Numpy v2 (Python 3.12)&quot;</span>
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>numpy2test
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">2</span>.4.2
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>numpy2<span class="w"> </span>--display-name<span class="o">=</span><span class="s2">&quot;Numpy 2.4.2 (Python 3.12)&quot;</span>
 </code></pre></div>
 <p>Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand. </p>
 <h3 id="using-apptainer-images">Using apptainer images<a class="headerlink" href="#using-apptainer-images" title="Permanent link">&para;</a></h3>
@@ -3051,7 +3050,7 @@ apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvcr.io/nv
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 9, 2026</span>
   </span>
 
     

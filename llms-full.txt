@@ -589,7 +589,6 @@ ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
    - Number of nodes: **1**
    - Select GPU Type from dropdown: **es1: NVidia A40 (40 GB) 1-4x**
    - Select number of GPU cards to use: **1**
-   - Number of CPU cores per Node: **16**
 
    Please also choose or enter the **SLURM Project/Account Name**, the **Wall Clock Time**, and **Name of the job** according to your needs.
 
@@ -602,7 +601,7 @@ ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
 1. After clicking on **Connect to Jupyter**, you will enter the classic Jupyter or Jupyterlab environment.
 
    - Under File > New > Notebook, you will find several Jupyter kernels with different Python versions and packages that you can choose according to your requirements. These include:
-     - Python 3 (ipykernel) - python through `anaconda3/2024.02-1-11.4` module
+     - Python 3 (ipykernel) - python through `miniforge3` module
      - torch 2.3.1 py3.11.7 - PyTorch 2.3.1 through `ml/pytorch/2.3.1-py3.11.7` module
      - tf 2.15.0 py3.10.0 - TensorFlow 2.15.0 through `ml/tensorflow/2.15.0-py3.10.0` module
 
@@ -843,10 +842,10 @@ There are directories for each interactive app type within this directory. For e
 
 ## Installing Python Packages
 
-A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `anaconda3` module. To see what packages are available, open a Terminal in the [Jupyter server](../jupyter-server/) or open a Terminal on Lawrencium in the usual fashion. Then load the `anaconda3` module and list the installed packages:
+A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](../jupyter-server/) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
 
 ```
-module load anaconda3
+module load miniforge3/25.9.1
 conda list
 ```
 
@@ -865,13 +864,13 @@ to install the python package to `$HOME/.local`.
 So, if you need to install additional packages, you can load the desired Python module and then use `pip` to install in your `home` directory. For example, you can install the `cupy` package with:
 
 ```
-module load anaconda3/2024.02
+module load miniforge3/25.9.1
 module load gcc/11.4.0
 module load cuda/12.2.1
 python -m pip install --user --no-cache-dir cupy-cuda12x
 ```
 
-Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `anaconda3/2024.02` module.
+Package installed in this manner in your `$HOME/.local/lib/python3.xx` will be available to the **Python 3 (ipykernel)** jupyter kernel provided through the `miniforge3/25.9.1` module.
 
 You can also install packages in a virtual environment or a conda environment and create a kernel associated with that environment. See examples in the next sections.
 
@@ -890,7 +889,7 @@ Example: Add a kernel for a virtual environment
 As an example, let us create a virtual environment in our `$SCRATCH` directory called `cudapython` that installs the [CUDA Python](https://nvidia.github.io/cuda-python/latest/) packages.
 
 ```
-module load anaconda3/2024.02
+module load miniforge3/25.9.1
 module load gcc/11.4.0 cuda/12.2.1
 
 cd $SCRATCH
@@ -944,21 +943,20 @@ Please review the Jupyter documentation on [Managing kernels for Jupyter](https:
 Another approach to adding a new (Python) kernel to your Jupyter environment is to create a conda environment and add it as a kernel to Jupyter. When in Jupyter, you will then be able to select the name from the kernel list, and it will be using the packages you installed. Follow these steps to do this (replacing $ENV_NAME with the name you want to give your conda environment):
 
 ```
-module load anaconda3
+module load miniforge3
 conda create --name=$ENV_NAME ipykernel
 conda activate $ENV_NAME
 python -m ipykernel install --user --name $ENV_NAME
 ```
 
-From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.0.0` from `conda-forge` channel.
+From example, below we give an example of a custom python kernel in a conda environment that uses `python=3.12` and install `numpy=2.4.2` from `conda-forge` channel. Since we are using `miniforge3`, `conda-forge` is the default channel.
 
 ```
-module load anaconda3/2024.02
+module load miniforge3/25.9.1
 conda create --name=numpy2test python=3.12 ipykernel
-conda activate numpy2test
-conda config --env -add channels conda-forge
-conda install numpy=2.0.0
-python -m ipykernel install --user --name numpy2 --display-name="Numpy v2 (Python 3.12)"
+source activate numpy2test
+conda install numpy=2.4.2
+python -m ipykernel install --user --name numpy2 --display-name="Numpy 2.4.2 (Python 3.12)"
 ```
 
 Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand.
@@ -1576,7 +1574,7 @@ module avail
   emacs/29.1            leveldb/1.23            parallel/20220522    swig/4.1.1
 
 ------------------------- /global/software/rocky-8.x86_64/modfiles/langs -------------------------
-  anaconda3/2024.02-1-11.4    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
+  miniforge3/25.9.1    openjdk/11.0.20.1_1-gcc-11.4.0        r/4.3.0-gcc-11.4.0
 ```
 
 module list
