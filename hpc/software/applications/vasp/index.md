@@ -41,7 +41,7 @@ srun --mpi=pmi2 vasp_std
 
 ## VASP GPU Binary (NVHPC SDK)
 
-The `vasp/6.4.1-gpu` module is compiled using NVHPC SDK. To load the module:
+The `vasp/6.4.1-gpu` module is compiled using [NVHPC SDK](../../compilers/nvhpc/). To load the module:
 
 ```
 module load nvhpc/23.11
@@ -50,7 +50,7 @@ module load vasp/6.4.1-gpu
 
 Sample VASP GPU slurm script
 
-The following sample script runs VASP on a `H100 es1` node using 2 `H100` GPUs.
+The following sample script runs VASP on a `es2` node using 2 `H100` GPUs.
 
 ```
 #!/bin/bash
@@ -60,9 +60,9 @@ The following sample script runs VASP on a `H100 es1` node using 2 `H100` GPUs.
 #SBATCH --output=vasp_job.out
 #SBATCH --error=vasp_job.err
 #SBATCH --time=1:00:00
-#SBATCH --partition=es1
+#SBATCH --partition=es2
 #SBATCH --account=<account>
-#SBATCH --qos=es_normal
+#SBATCH --qos=es2_normal
 #SBATCH --gres=gpu:H100:2
 
 module load nvhpc/23.11
@@ -71,7 +71,7 @@ module load vasp/6.4.1-gpu
 export PMIX_MCA_psec=native
 export OMP_NUM_THREADS=1
 
-mpirun -np 2 vasp_std
+mpirun -np 2 --bind-to socket vasp_std
 ```
 
 ## Compiling VASP
