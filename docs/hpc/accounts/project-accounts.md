@@ -10,7 +10,7 @@ There are three primary ways to obtain access to Lawrencium:
 
 2. **Condo projects**: purchasing and contributing Condo nodes to the cluster. This option is open to any Berkeley Lab staff, and provides ongoing, priority access to you and your research affiliates who are members of the Condo. For details, please see [Condo Cluster Service](https://it.lbl.gov/service/scienceit/high-performance-computing/lrc/computing-on-lawrencium/condo-cluster-service/){:target="_blank"} {{ ext }}.
 
-3. **Recharge use**: Berkeley lab researchers who want to use Lawrencium cluster at a minimal recharge rate, roughly at $0.01/SU. For details, please see Recharge Allocation Computing Allowance.
+3. **Recharge use**: Berkeley lab researchers who want to use Lawrencium cluster at a minimal recharge rate, roughly at $0.01/SU. For details, please see [Recharge Allocation Computing Allowance](https://it.lbl.gov/service/scienceit/high-performance-computing/lrc/computing-on-lawrencium/recharge-allocation-computing-allowance/){:target="_blank"} {{ ext }}.
 
 To request a PCA, Condo or Recharge project on Lawrencium, please send your requests at [myLRC portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }}. Make sure choosing the desired project type on the form.
 
