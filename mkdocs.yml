@@ -83,6 +83,8 @@ nav:
          - Amazon Web Services: cloud/aws.md
          - Google Cloud Platform: cloud/gcp.md
      - Google Cloud Skills Boost: cloud/gcp-skills-boost.md
+  - National Research Platform:
+      - National Research Platform: nrp/index.md
   - Support & Training:
       - HPC Help Desk: help/index.md
       - Training: help/training.md
