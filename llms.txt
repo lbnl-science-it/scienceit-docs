@@ -46,6 +46,7 @@
 - [Ollama](https://scienceit-docs.lbl.gov/hpc/software/llms/ollama/index.md)
 - [Alphafold3](https://scienceit-docs.lbl.gov/hpc/software/ml/alphafold3/index.md)
 - [PyTorch](https://scienceit-docs.lbl.gov/hpc/software/ml/pytorch/index.md)
+- [Ray](https://scienceit-docs.lbl.gov/hpc/software/ml/ray/index.md)
 - [TensorFlow](https://scienceit-docs.lbl.gov/hpc/software/ml/tensorflow/index.md)
 - [Intel MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/intelmpi/index.md)
 - [Open MPI](https://scienceit-docs.lbl.gov/hpc/software/mpi/openmpi/index.md)
