@@ -1,9 +1,5 @@
 # Getting Started
 
-!!! info "About this page"
-
-    An overview of HPC User Documentation
-
 ## Project Accounts
 
 There are three primary ways/projects to obtain access to Lawrencium:
@@ -13,6 +9,10 @@ There are three primary ways/projects to obtain access to Lawrencium:
 * Recharge: charged at a minimal recharge rate roughly at $0.01/SU
 
 !!! question "[How to get a Project Account on Lawrencium?](accounts/project-accounts.md)"
+
+!!! note "Project Group Directories"
+
+    Project group directories are not created by default. If you would like to create group directories wehre your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
 
 ## User Accounts
 
@@ -28,9 +28,9 @@ You'll need to generate and enter a one-time password each time you log in.
 
 ## Data Movement and Storage
 
-To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](../globus_instructions) tool is typically your best choice: it can perform fast, reliable, unattended transfers. 
+To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](../data/globus-instructions.md) tool is typically your best choice: it can perform fast, reliable, unattended transfers. 
 
-The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](../datatransfer_node).
+The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](data-transfer-node.md).
 
 ## Software Module Farm and Environment Modules
 
@@ -38,7 +38,7 @@ A lot of software packages and tools are already built as Software Module Farm a
 
 ## Running Jobs
 
-When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](running/slurm_overview.md) and [Example Scripts](running/script_examples.md).
+When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](running/slurm-overview.md) and [Example Scripts](running/script-examples.md).
 
 ## Open OnDemand
 

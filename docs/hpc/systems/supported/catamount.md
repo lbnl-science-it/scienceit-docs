@@ -34,7 +34,7 @@ CATAMOUNT cluster users are entitled to access the following storage systems so 
 
 ## Scheduler Configuration
 
-CATAMOUNT cluster uses [SLURM](../../running/slurm_overview.md) as the scheduler to manage jobs on the cluster. To use the CATAMOUNT resource, the partition `catamount` must be used (`--partition=catamount`) along with account `catamount` (`--account=catamount`). One of the QoSs from the following table should be used as well (e.g., `--qos=cm_short`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+CATAMOUNT cluster uses [SLURM](../../running/slurm-overview.md) as the scheduler to manage jobs on the cluster. To use the CATAMOUNT resource, the partition `catamount` must be used (`--partition=catamount`) along with account `catamount` (`--account=catamount`). One of the QoSs from the following table should be used as well (e.g., `--qos=cm_short`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
 The job allocation on CATAMOUNT is exclusive i.e. a node is **not** shared between two jobs. The different QoS arguments and their limits are shown below:
 
