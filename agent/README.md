@@ -1,29 +1,17 @@
 # lrc-agent
 
-An AI assistant for Lawrence Berkeley National Laboratory's Science IT services, built on the [scienceit-docs](https://scienceit-docs.lbl.gov) knowledge base. It runs as a [Docker Agent](https://docker.github.io/docker-agent/) and answers questions about the Lawrencium HPC cluster, Slurm, software environments, data transfer, and account management.
+An CLI assistant for Lawrencium, built on the [scienceit-docs](https://scienceit-docs.lbl.gov) knowledge base. It runs as a [Docker Agent](https://docker.github.io/docker-agent/).
 
 ## Prerequisites
 
 - [Docker Agent](https://docker.github.io/docker-agent/getting-started/installation/) installed and running
-- A CBORG API key (`CBORG_API_BK_KEY`)
+- A CBORG API "BK" Key (`CBORG_API_BK_KEY`) - access to on-prem models via Berkelium (no cost)
 - `make` and `envsubst` (standard on macOS/Linux)
 
 ## Install Docker Agent
 
 Follow the official installation guide:
 https://docker.github.io/docker-agent/getting-started/installation/
-
-Quick install (Linux/macOS):
-
-```bash
-curl -fsSL https://docker.github.io/docker-agent/install.sh | sh
-```
-
-Verify the installation:
-
-```bash
-docker-agent --version
-```
 
 ## Setup
 
@@ -44,7 +32,7 @@ docker-agent --version
 3. **Generate `agent.yaml`** from the template:
 
    ```bash
-   make -C agent
+   make all
    ```
 
    This runs `envsubst` to substitute the repository root path into the config.
@@ -57,7 +45,15 @@ docker-agent --version
 4. **Start the agent**:
 
    ```bash
-   docker-agent run --env-file agent/.env agent/agent.yaml
+   lrc-agent
+   ```
+
+   `lrc-agent` can be added to the `$PATH` and called from any location.
+
+   Additional options can also be passed to the agent, e.g. to set a session ID (enables resume of conversation)
+
+   ```bash
+   lrc-agent --session my-session-id
    ```
 
 ## Updating
@@ -65,7 +61,7 @@ docker-agent --version
 To check for upstream doc changes and refresh the RAG databases:
 
 ```bash
-make -C agent update
+make update
 ```
 
 This fetches the latest commits, prompts before pulling, and backs up the existing vector/BM25 databases so they are rebuilt on the next agent run.
@@ -98,6 +94,3 @@ On first run the agent builds two retrieval databases in the `agent/` directory:
 
 These files are gitignored. The `update` target backs them up before pulling new docs.
 
-## Support
-
-For issues with the Lawrencium cluster or Science IT services, contact **scienceithelp@lbl.gov**.
