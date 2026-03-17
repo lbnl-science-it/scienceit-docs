@@ -1,0 +1,6 @@
+agent/*.db
+agent/*.db-old
+agent/*.db-shm
+agent/*.db-wal
+agent/agent.yaml
+agent/.env

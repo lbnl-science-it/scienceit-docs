@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Resolve the project root regardless of symlinks or calling directory
+_source="$0"
+while [ -L "$_source" ]; do
+  _dir="$(cd "$(dirname "$_source")" && pwd)"
+  _source="$(readlink "$_source")"
+  [[ "$_source" != /* ]] && _source="$_dir/$_source"
+done
+SCRIPT_DIR="$(cd "$(dirname "$_source")" && pwd)"
+export SCIENCEIT_DOCS_BASEDIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+unset _source _dir
+
+AGENT_DIR="$SCIENCEIT_DOCS_BASEDIR/agent"
+
+# Load API key from .env file alongside this script
+ENV_FILE="$AGENT_DIR/.env"
+if [ -f "$ENV_FILE" ]; then
+  set -a
+  source "$ENV_FILE"
+  set +a
+else
+  echo "Error: $ENV_FILE not found. Copy agent/.env.example to agent/.env and set your API key." >&2
+  exit 1
+fi
+
+# openai compatible keys are required currently as docker-agent does not support embeddings from user-defined providers
+export OPENAI_API_KEY="$CBORG_API_BK_KEY"
+export OPENAI_BASE_URL=https://api.cborg.bk.lbl.gov/v1
+
+docker-agent run "$AGENT_DIR/agent.yaml" -a lrc-agent --hide-tool-results "$@"
