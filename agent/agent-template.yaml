@@ -126,7 +126,7 @@ rag:
     strategies:
       - type: chunked-embeddings
         embedding_model: openai/nomic-embed-text
-        database: "${SCIENCEIT_DOCS_BASEDIR}/agent/scienceit-docs-chunked-embeddings.db"
+        database: "${HOME}/.lrc-agent/scienceit-docs-chunked-embeddings.db"
         vector_dimensions: 768
         similarity_metric: cosine_similarity
         threshold: 0.5
@@ -136,7 +136,7 @@ rag:
           size: 1000
           overlap: 100
       - type: bm25
-        database: "${SCIENCEIT_DOCS_BASEDIR}/agent/scienceit-docs-bm25.db"
+        database: "${HOME}/.lrc-agent/scienceit-docs-bm25.db"
         k1: 1.5 # term frequency saturation
         b: 0.75 # length normalization
         threshold: 0.3

@@ -7,11 +7,11 @@ AGENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 BASEDIR   := $(abspath $(AGENT_DIR)/..)
 
 TEMPLATE := $(AGENT_DIR)/agent-template.yaml
-TARGET   := $(AGENT_DIR)/agent.yaml
+TARGET   := ${HOME}/.lrc-agent/agent.yaml
 
 DB_FILES := \
-	$(AGENT_DIR)/scienceit-docs-chunked-embeddings.db \
-	$(AGENT_DIR)/scienceit-docs-bm25.db
+	${HOME}/.lrc-agent/scienceit-docs-chunked-embeddings.db \
+	${HOME}/.lrc-agent/scienceit-docs-bm25.db
 
 .PHONY: all agent.yaml update clean help
 
@@ -25,7 +25,8 @@ $(TARGET): $(TEMPLATE)
 	@if [ -z "$$SCIENCEIT_DOCS_BASEDIR" ]; then \
 		export SCIENCEIT_DOCS_BASEDIR="$(BASEDIR)"; \
 	fi; \
-	envsubst '$$SCIENCEIT_DOCS_BASEDIR' < "$<" > "$@"
+	mkdir -p ${HOME}/.lrc-agent
+	envsubst '$$SCIENCEIT_DOCS_BASEDIR $$HOME' < "$<" > "$@"
 	@echo "Generated $@ (SCIENCEIT_DOCS_BASEDIR=$${SCIENCEIT_DOCS_BASEDIR:-$(BASEDIR)})"
 
 # --- Git update check and RAG database refresh ---
@@ -44,6 +45,7 @@ update:
 	fi; \
 	echo "Updates are available for the scienceit-docs repository."; \
 	writable=true; \
+	mkdir -p ${HOME}/.lrc-agent \
 	for db in $(DB_FILES); do \
 		if [ -e "$$db" ] && [ ! -w "$$db" ]; then \
 			writable=false; \

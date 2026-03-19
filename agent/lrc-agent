@@ -28,4 +28,6 @@ fi
 export OPENAI_API_KEY="$CBORG_API_BK_KEY"
 export OPENAI_BASE_URL=https://api.cborg.bk.lbl.gov/v1
 
-docker-agent run "$AGENT_DIR/agent.yaml" -a lrc-agent --hide-tool-results "$@"
+make -s -C $AGENT_DIR
+
+$AGENT_DIR/docker-agent run "${HOME}/.lrc-agent/agent.yaml" -a lrc-agent --hide-tool-results "$@"
