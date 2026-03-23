@@ -102,6 +102,8 @@ plugins:
       enabled: true
   - llmstxt:
       full_output: llms-full.txt
+      base_url: https://scienceit-docs.lbl.gov
+      absolute_link: true
       sections: 
         Usage and Help:
           - index.md
