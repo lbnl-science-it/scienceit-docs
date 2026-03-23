@@ -37,7 +37,7 @@ Linear algebra backend for numpy
 
 Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library.
 
-Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../../openondemand/jupyter-server/) on [Open OnDemand](../../../openondemand/overview/). [Click here](../../../openondemand/packages-kernels/) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
+Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) on [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md). [Click here](https://scienceit-docs.lbl.gov/hpc/openondemand/packages-kernels/index.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
 ## Miniforge
 

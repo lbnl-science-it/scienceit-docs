@@ -6,7 +6,10 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 `es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to the growing use of GPUs in scientific computing.
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA H200 | 3 | 8x 141 GB | Intel Xeon Platinum 8570 | 112 | 2 TB | NDR | | NVIDIA H100 | 4 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor             | CPU Cores | CPU RAM | Infiniband |
+| ----------- | ----- | ------------------------ | ------------------------- | --------- | ------- | ---------- |
+| NVIDIA H200 | 3     | 8x 141 GB                | Intel Xeon Platinum 8570  | 112       | 2 TB    | NDR        |
+| NVIDIA H100 | 4     | 8x 80 GB                 | Intel Xeon Platinum 8480+ | 112       | 1 TB    | NDR        |
 
 ### How to specify desired GPU card(s)
 
@@ -62,7 +65,12 @@ python train.py
 
 `es1` is a partition consisting of multiple GPU node types to address the different research needs. These include:
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB or 192GB | FDR |
+| Accelerator     | Nodes | GPUs per Node/GPU Memory | CPU Processor      | CPU Cores | CPU RAM       | Infiniband |
+| --------------- | ----- | ------------------------ | ------------------ | --------- | ------------- | ---------- |
+| NVIDIA A100     | 1     | 4x 80 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
+| NVIDIA A40      | 30    | 4x 48 GB                 | AMD EPYC 7742      | 64        | 512 GB        | FDR        |
+| NVIDIA GRTX8000 | 1     | 4x 48 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
+| NVIDIA V100     | 15    | 2x 32 GB                 | Intel Xeon E5-2623 | 8         | 64GB or 192GB | FDR        |
 
 ### How to specify desired GPU card(s)
 
@@ -115,9 +123,11 @@ python train.py
 
 ## `es0` Partition
 
-`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](../../#gpu-partitions-recharge-rates).
+`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates).
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR |
+| Accelerator   | Nodes | GPUs per Node/GPU Memory | CPU Processor          | CPU Cores | CPU RAM | Infiniband |
+| ------------- | ----- | ------------------------ | ---------------------- | --------- | ------- | ---------- |
+| NVIDIA 2080TI | 12    | 4x 11 GB                 | Intel Xeon Silver 4212 | 8         | 96GB    | FDR        |
 
 Example slurm script on `es0`
 

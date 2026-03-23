@@ -12,7 +12,7 @@ Use `module spider pytorch` to get information on the versions of pytorch availa
 
 `module load ml/pytorch` will additionally load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](../../../openondemand/overview/), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.
 
 ## Multi-GPU jobs
 

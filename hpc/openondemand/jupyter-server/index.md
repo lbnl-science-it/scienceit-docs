@@ -2,7 +2,7 @@
 
 The Jupyter Notebook is a web application that enables you to create and share documents that can contain a mix of live code, equations, visualizations, and explanatory text. This is an introduction to using Jupyter notebooks on Lawrencium.
 
-Before getting started, make sure you have [access to the Lawrencium cluster](../../accounts/project-accounts/).
+Before getting started, make sure you have [access to the Lawrencium cluster](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md).
 
 As described next, you can start a Jupyter notebook via the Open OnDemand service, which allows you to operate completely via your web browser on your local computer (e.g., your laptop).
 
@@ -19,7 +19,7 @@ ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
 ### Running a notebook
 
 1. Connect to <https://lrc-ondemand.lbl.gov> .
-1. After [logging in](../overview/), you will get to the Open OnDemand welcome screen. Click the **Interactive Apps** pulldown.
+1. After [logging in](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), you will get to the Open OnDemand welcome screen. Click the **Interactive Apps** pulldown.
 1. Choose the **Jupyter Server** option from the list of apps. Choose the **Jupyter Server - interactive for exploration/debugging** only if you are writing/debugging code and not doing any computationally intensive tasks.
 1. Fill out the form presented to you and click on **Launch**. An example of filling this form is shown in the next section.
 1. Once the server is ready, you will be able to click on the **Connect to Jupyter** button to get a jupyter notebook.

@@ -8,14 +8,14 @@
 
 - ### **Top Pages**
   ______________________________________________________________________
-  - [Getting Started with Lawrencium](hpc/getting-started/)
+  - [Getting Started with Lawrencium](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
   - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/)
   - [MyLRC User Account Portal](https://mylrc.lbl.gov/)
   - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html)
 - ### **Systems Status**
   ______________________________________________________________________
   - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/)
-  - [HPC Clusters Live Status - Warewulf Overview](hpc/status/)
+  - [HPC Clusters Live Status - Warewulf Overview](https://scienceit-docs.lbl.gov/hpc/status/index.md)
 - ### **HPC Helpdesk**
   ______________________________________________________________________
   - HPC Email Support: [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov) (Creates a ticket in Freshservice)
@@ -101,8 +101,8 @@ Lawrencium is located at the Berkeley Data Center in Building 50B-1275. The data
 
 Lawrencium is composed of multiple generations of hardware hence it is separated into several partitions to facilitate management and to meet the requirements to host Condo projects. The following table lists the hardware configuration for each individual partition.
 
-- [Lawrencium CPU Cluster](systems/lawrencium/)
-- [Einsteinium GPU Cluster](systems/einsteinium/)
+- [Lawrencium CPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/lawrencium/index.md)
+- [Einsteinium GPU Cluster](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)
 
 In addition, there are several **Supported Research Clusters**; more information on each of these can be found by selecting the desired supported cluster under `Computing Systems > Supported Research Clusters`.
 
@@ -110,7 +110,17 @@ In addition, there are several **Supported Research Clusters**; more information
 
 Lawrencium cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| Name | Location | Quota | Backup | Allocation | Description | | --- | --- | --- | --- | --- | --- | | HOME | `/global/home/users/$user` | 30GB | Yes | Per User | Home directory for permanant data storage | | GROUP-SW | `/global/home/groups-sw/$group` | 200GB | Yes | Per Group | Group directory for software and data sharing with backup | | GROUP | `/global/home/groups/$group` | 400GB | No | Per Group | Group directory for data sharing without backup | | SCRATCH | `/global/scratch/users/$user` | None | No | Per User | Scratch directory with Lustre high performance parallel file system | | CLUSTERFS | `/clusterfs/axl/$USER` | None | No | Per User | Private storage for AXL condo | | CLUSTERFS | `/clusterfs/cumulus/$USER` | None | No | Per User | Private storage for CUMULUS condo | | CLUSTERFS | `/clusterfs/esd/$USER` | None | No | Per User | Private storage for ESD condo | | CLUSTERFS | `/clusterfs/geoseq/$USER` | None | No | Per User | Private storage for CO2SEQ condo | | CLUSTERFS | `/clusterfs/nokomis/$USER` | None | No | Per User | Private storage for NOKOMIS condo |
+| Name      | Location                        | Quota | Backup | Allocation | Description                                                         |
+| --------- | ------------------------------- | ----- | ------ | ---------- | ------------------------------------------------------------------- |
+| HOME      | `/global/home/users/$user`      | 30GB  | Yes    | Per User   | Home directory for permanant data storage                           |
+| GROUP-SW  | `/global/home/groups-sw/$group` | 200GB | Yes    | Per Group  | Group directory for software and data sharing with backup           |
+| GROUP     | `/global/home/groups/$group`    | 400GB | No     | Per Group  | Group directory for data sharing without backup                     |
+| SCRATCH   | `/global/scratch/users/$user`   | None  | No     | Per User   | Scratch directory with Lustre high performance parallel file system |
+| CLUSTERFS | `/clusterfs/axl/$USER`          | None  | No     | Per User   | Private storage for AXL condo                                       |
+| CLUSTERFS | `/clusterfs/cumulus/$USER`      | None  | No     | Per User   | Private storage for CUMULUS condo                                   |
+| CLUSTERFS | `/clusterfs/esd/$USER`          | None  | No     | Per User   | Private storage for ESD condo                                       |
+| CLUSTERFS | `/clusterfs/geoseq/$USER`       | None  | No     | Per User   | Private storage for CO2SEQ condo                                    |
+| CLUSTERFS | `/clusterfs/nokomis/$USER`      | None  | No     | Per User   | Private storage for NOKOMIS condo                                   |
 
 ## Recharge Model
 
@@ -120,11 +130,26 @@ Condo users who would need to run outside of their condo contributions are also 
 
 ### CPU Partitions Recharge Rates
 
-| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | lr4 | Exclusive | 0 | free | | lr5 | Exclusive | 0.50 | $0.0050 per Core CPU Hour | | lr6 | Exclusive | 0.75 | $0.0075 per Core CPU Hour | | lr7 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr8 | Shared | 1.0 | $0.01 per Core CPU Hour | | lr_bigmem | Exclusive | 1.5 | $0.015 per Core CPU Hour | | cf1 | Exclusive | 0.4 | $0.004 per Core CPU Hour | | cm1 | Shared | 0.75 | $0.0075 per Core CPU Hour | | cm2 | Exclusive | 1.0 | $0.01 per Core CPU Hour | | ood_inter | Shared | 1.0 | $0.01 per Core CPU Hour |
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate   |
+| --------- | ------------------- | ------------------------- | ------------------------- |
+| lr4       | Exclusive           | 0                         | free                      |
+| lr5       | Exclusive           | 0.50                      | $0.0050 per Core CPU Hour |
+| lr6       | Exclusive           | 0.75                      | $0.0075 per Core CPU Hour |
+| lr7       | Shared              | 1.0                       | $0.01 per Core CPU Hour   |
+| lr8       | Shared              | 1.0                       | $0.01 per Core CPU Hour   |
+| lr_bigmem | Exclusive           | 1.5                       | $0.015 per Core CPU Hour  |
+| cf1       | Exclusive           | 0.4                       | $0.004 per Core CPU Hour  |
+| cm1       | Shared              | 0.75                      | $0.0075 per Core CPU Hour |
+| cm2       | Exclusive           | 1.0                       | $0.01 per Core CPU Hour   |
+| ood_inter | Shared              | 1.0                       | $0.01 per Core CPU Hour   |
 
 ### GPU Partitions Recharge Rates
 
-| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | | --- | --- | --- | --- | | es0 | Shared | 0 | free | | es1 | Shared | 1.0 | $0.01 per Core CPU Hour | | es2 | Shared | 2.0 | $0.02 per Core CPU Hour |
+| Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate |
+| --------- | ------------------- | ------------------------- | ----------------------- |
+| es0       | Shared              | 0                         | free                    |
+| es1       | Shared              | 1.0                       | $0.01 per Core CPU Hour |
+| es2       | Shared              | 2.0                       | $0.02 per Core CPU Hour |
 
 Usage Calculation
 
@@ -136,7 +161,7 @@ instead of: $0.0050/(core\*hour) * 1 core * 24 hours = $0.12.
 
 ## Scheduler Configuration
 
-Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview/) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
 - For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 - If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
@@ -209,11 +234,11 @@ Principal Investigators (PIs) can sponsor researchers, students and external col
 
 How do I submit my first job?
 
-Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](../running/slurm-overview/#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](../running/script-examples/). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.
+Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.
 
 How do I transfer data to and from the cluster?
 
-For more details, please see the examples on the [Using the lrc-xfer DTN page](../data-transfer-node/).
+For more details, please see the examples on the [Using the lrc-xfer DTN page](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md).
 
 What is the maximum runtime / walltime you can assign a job?
 
@@ -269,7 +294,7 @@ There are three primary ways/projects to obtain access to Lawrencium:
 - Condo: purchase and contribute Condo nodes to the Lawrencium cluster
 - Recharge: charged at a minimal recharge rate roughly at $0.01/SU
 
-[How to get a Project Account on Lawrencium?](../accounts/project-accounts/)
+[How to get a Project Account on Lawrencium?](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 
 Project Group Directories
 
@@ -279,27 +304,27 @@ Project group directories are not created by default. If you would like to creat
 
 You must have a user account to gain access to the Lawrencium cluster.
 
-[How to request a User Account and Submit User Agreement?](../accounts/user-accounts/)
+[How to request a User Account and Submit User Agreement?](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
 
 ## Logging in
 
 You'll need to generate and enter a one-time password each time you log in.
 
-[Click here for more information on logging in to Lawrencium](../accounts/loggingin/)
+[Click here for more information on logging in to Lawrencium](https://scienceit-docs.lbl.gov/hpc/accounts/loggingin/index.md)
 
 ## Data Movement and Storage
 
-To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](../../data/globus-instructions/) tool is typically your best choice: it can perform fast, reliable, unattended transfers.
+To transfer data from other computers into - or out of - your various storage directories, you can use protocols and tools like SCP, STFP, FTPS, and Rsync. If you’re transferring lots of data, the web-based [Globus Connect](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md) tool is typically your best choice: it can perform fast, reliable, unattended transfers.
 
-The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](../data-transfer-node/).
+The LRC supercluster’s dedicated Data Transfer Node is `lrc-xfer.lbl.gov`. For more information on getting your data onto and off of Lawrencium, please see [Data Transfer](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md).
 
 ## Software Module Farm and Environment Modules
 
-A lot of software packages and tools are already built as Software Module Farm and provided for your use. These software packages and tools can be loaded and unloaded via Environment Module commands. For details see [Software Module Farm](../software/software-module-farm/) and [Module Management](../software/module-management/).
+A lot of software packages and tools are already built as Software Module Farm and provided for your use. These software packages and tools can be loaded and unloaded via Environment Module commands. For details see [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md) and [Module Management](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md).
 
 ## Running Jobs
 
-When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](../running/slurm-overview/) and [Example Scripts](../running/script-examples/).
+When you log into a cluster, you’ll land on one of several login nodes. Here you can edit scripts, compile programs etc. However, you should not be running any applications or tasks on the login nodes, which are shared with other cluster users. Instead, use the SLURM job scheduler to submit jobs that will be run on one or more of the cluster’s many compute nodes. For details see [Slurm Overview](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) and [Example Scripts](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md).
 
 ## Open OnDemand
 
@@ -311,9 +336,9 @@ We provide interactive Apps, such as Jupyter notebooks, RStudio, MatLab, through
 
 Multi-Factor Authentication (MFA)
 
-Please make sure you have configured [Multi-Factor Authentication (MFA)](../mfa/) before logging in for the first time.
+Please make sure you have configured [Multi-Factor Authentication (MFA)](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md) before logging in for the first time.
 
-You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see [Multi-Factor Authentication](../mfa/). Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as
+You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md). Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as
 
 ```
 ssh username@lrc-login.lbl.gov
@@ -325,7 +350,7 @@ Running jobs
 
 The login nodes should not be used for running jobs. They should only be used to write scripts and submit jobs to the compute nodes.
 
-More details on writing job scripts and submitting them can be found [here](../../running/script-examples/).
+More details on writing job scripts and submitting them can be found [here](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md).
 
 ## SSH Certificate
 
@@ -559,7 +584,7 @@ Questions regarding requesting new or removing accounts can be directed to [scie
 
 The Jupyter Notebook is a web application that enables you to create and share documents that can contain a mix of live code, equations, visualizations, and explanatory text. This is an introduction to using Jupyter notebooks on Lawrencium.
 
-Before getting started, make sure you have [access to the Lawrencium cluster](../../accounts/project-accounts/).
+Before getting started, make sure you have [access to the Lawrencium cluster](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md).
 
 As described next, you can start a Jupyter notebook via the Open OnDemand service, which allows you to operate completely via your web browser on your local computer (e.g., your laptop).
 
@@ -576,7 +601,7 @@ ln -s /global/scratch/users/$USER /global/home/users/$USER/scratch
 ### Running a notebook
 
 1. Connect to <https://lrc-ondemand.lbl.gov> .
-1. After [logging in](../overview/), you will get to the Open OnDemand welcome screen. Click the **Interactive Apps** pulldown.
+1. After [logging in](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), you will get to the Open OnDemand welcome screen. Click the **Interactive Apps** pulldown.
 1. Choose the **Jupyter Server** option from the list of apps. Choose the **Jupyter Server - interactive for exploration/debugging** only if you are writing/debugging code and not doing any computationally intensive tasks.
 1. Fill out the form presented to you and click on **Launch**. An example of filling this form is shown in the next section.
 1. Once the server is ready, you will be able to click on the **Connect to Jupyter** button to get a jupyter notebook.
@@ -738,7 +763,7 @@ Job time is counted for interactive sessions as the total time the job runs. The
 
 There are several ways to monitor usage:
 
-- Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](../../running/monitor-jobs/).
+- Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](https://scienceit-docs.lbl.gov/hpc/running/monitor-jobs/index.md).
 - View currently running (and recent) sessions launched by Open OnDemand under `My Interactive Sessions`.
 - View all currently running jobs under `Jobs > Active Jobs`.
 
@@ -781,7 +806,7 @@ The Desktop App allows you to launch an interactive desktop on the Lawrencium cl
 - Provide the job specifications you want for the Desktop app.
 - Once Desktop is ready, click *Launch Desktop* and the Desktop will open in a new tab.
 
-See the [Jupyter documentation page](../jupyter-server/) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
+See the [Jupyter documentation page](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
 
 **Steps:**
 
@@ -843,7 +868,7 @@ There are directories for each interactive app type within this directory. For e
 
 ## Installing Python Packages
 
-A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](../jupyter-server/) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
+A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
 
 ```
 module load miniforge3/25.9.1
@@ -1201,7 +1226,7 @@ Please see `man sacct` for a list of the output columns you can request, as well
 
 Here we show some example job scripts that allow for various kinds of parallelization such as: jobs that use fewer cores than available on a node, GPU jobs, low-priority condo jobs, and long-running PCA jobs.
 
-Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
+Please refer to [Slurm Association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
 
 ## Example Set 1
 
@@ -1333,7 +1358,7 @@ mpirun ./a.out
 
 ## GPU Job
 
-`es2` partition consists of NVIDIA H100 and H200 GPU cards. `es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](../../systems/einsteinium/). For `es2` and `es1` partitions, a compute node with a particular GPU type and count can be allocated using slurm in the following way.
+`es2` partition consists of NVIDIA H100 and H200 GPU cards. `es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md). For `es2` and `es1` partitions, a compute node with a particular GPU type and count can be allocated using slurm in the following way.
 
 - General format: `--gres=gpu:[type]:count`
 
@@ -1352,15 +1377,23 @@ To help the job scheduler effectively manage the use of GPUs, your job submissio
 
 ### CPU Core to GPU Ratio
 
-| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | A40 | 4 | 64 | 1:16 | | A100 | 4 | 64 | 1:16 | | GRTX8000 | 4 | 64 | 1:16 | | V100. | 2 | 8. | 1:4 |
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio |
+| -------- | ------------- | ------------------ | ------------- |
+| A40      | 4             | 64                 | 1:16          |
+| A100     | 4             | 64                 | 1:16          |
+| GRTX8000 | 4             | 64                 | 1:16          |
+| V100.    | 2             | 8.                 | 1:4           |
 
-| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | H100 | 8 | 112 | 1:14 | | H200 | 8 | 112 | 1:14 |
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio |
+| -------- | ------------- | ------------------ | ------------- |
+| H100     | 8             | 112                | 1:14          |
+| H200     | 8             | 112                | 1:14          |
 
 Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
 
 For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and `--cpus-per-task=2` . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
 
-Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](../../systems/einsteinium/)). This is because the feature is associated with how many GPUs per node to request.
+Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)). This is because the feature is associated with how many GPUs per node to request.
 
 Examples:
 
@@ -1710,7 +1743,7 @@ The Software Module Farm provides a comprehensive and well-tested suite of softw
 1. **Applications**: Domain specific applications such as biology and machine learning packages.
 1. **Submodules**: Submodules include libraries and packages which depend on a particular compiler or language module. Due to this dependency, submodules will only be visible once the associated language or core compiler module has been loaded. For example, `hdf5` submodule is only visible once you load `gcc` and `openmpi` modules.
 
-See the [Module Management](../module-management/) page for details on how to use the `module` command for module management on Lawrencium.
+See the [Module Management](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) page for details on how to use the `module` command for module management on Lawrencium.
 
 ## Software installation by Users
 
@@ -1759,7 +1792,7 @@ srun --mpi=pmi2 vasp_std
 
 ## VASP GPU Binary (NVHPC SDK)
 
-The `vasp/6.4.1-gpu` module is compiled using [NVHPC SDK](../../compilers/nvhpc/). To load the module:
+The `vasp/6.4.1-gpu` module is compiled using [NVHPC SDK](https://scienceit-docs.lbl.gov/hpc/software/compilers/nvhpc/index.md). To load the module:
 
 ```
 module load nvhpc/23.11
@@ -2007,7 +2040,7 @@ Linear algebra backend for numpy
 
 Please note that the linear algebra backend for `numpy` in these two python modules (`python/3.11.6` and `python/3.10.12`) is the openBLAS library.
 
-Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](../../../openondemand/jupyter-server/) on [Open OnDemand](../../../openondemand/overview/). [Click here](../../../openondemand/packages-kernels/) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
+Several Jupyter kernels are available to access `tensorflow` and `pytorch` conda environments from the [Jupyter server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) on [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md). [Click here](https://scienceit-docs.lbl.gov/hpc/openondemand/packages-kernels/index.md) for more information on installing python packages and jupyter kernels for use on the Jupyter server on Open OnDemand.
 
 ## Miniforge
 
@@ -2087,7 +2120,7 @@ nys --version
 NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
 ```
 
-The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](../../../openondemand/overview/).
+The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md).
 
 ## Nsight Compute
 
@@ -2256,7 +2289,7 @@ export LD_LIBRARY_PATH=/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/g
 
 [Ollama](https://github.com/ollama/ollama) is provided as a module on Lawrencium and can be used to run various open-weight Large-Language Models (LLMs) on Lawrencium hardware.
 
-Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](../../../openondemand/ollama-jupyter-vscode/) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
+Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/index.md) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
 
 General suggestions
 
@@ -2517,7 +2550,7 @@ Use `module spider pytorch` to get information on the versions of pytorch availa
 
 `module load ml/pytorch` will additionally load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](../../../openondemand/overview/), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.
 
 ## Multi-GPU jobs
 
@@ -2738,7 +2771,7 @@ Use `module spider tensorflow` to get information on the versions of pytorch ava
 
 `module load ml/tensorflow` will load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](../../../openondemand/overview/), tensorflow kernels `tf 2.15.0` ard `tf 2.14.0` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), tensorflow kernels `tf 2.15.0` ard `tf 2.14.0` are available.
 
 ## Example SLURM script
 
@@ -2975,7 +3008,10 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 `es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to the growing use of GPUs in scientific computing.
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA H200 | 3 | 8x 141 GB | Intel Xeon Platinum 8570 | 112 | 2 TB | NDR | | NVIDIA H100 | 4 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor             | CPU Cores | CPU RAM | Infiniband |
+| ----------- | ----- | ------------------------ | ------------------------- | --------- | ------- | ---------- |
+| NVIDIA H200 | 3     | 8x 141 GB                | Intel Xeon Platinum 8570  | 112       | 2 TB    | NDR        |
+| NVIDIA H100 | 4     | 8x 80 GB                 | Intel Xeon Platinum 8480+ | 112       | 1 TB    | NDR        |
 
 ### How to specify desired GPU card(s)
 
@@ -3031,7 +3067,12 @@ python train.py
 
 `es1` is a partition consisting of multiple GPU node types to address the different research needs. These include:
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA A100 | 1 | 4x 80 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA A40 | 30 | 4x 48 GB | AMD EPYC 7742 | 64 | 512 GB | FDR | | NVIDIA GRTX8000 | 1 | 4x 48 GB | AMD EPYC 7713 | 64 | 512 GB | HDR | | NVIDIA V100 | 15 | 2x 32 GB | Intel Xeon E5-2623 | 8 | 64GB or 192GB | FDR |
+| Accelerator     | Nodes | GPUs per Node/GPU Memory | CPU Processor      | CPU Cores | CPU RAM       | Infiniband |
+| --------------- | ----- | ------------------------ | ------------------ | --------- | ------------- | ---------- |
+| NVIDIA A100     | 1     | 4x 80 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
+| NVIDIA A40      | 30    | 4x 48 GB                 | AMD EPYC 7742      | 64        | 512 GB        | FDR        |
+| NVIDIA GRTX8000 | 1     | 4x 48 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
+| NVIDIA V100     | 15    | 2x 32 GB                 | Intel Xeon E5-2623 | 8         | 64GB or 192GB | FDR        |
 
 ### How to specify desired GPU card(s)
 
@@ -3084,9 +3125,11 @@ python train.py
 
 ## `es0` Partition
 
-`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](../../#gpu-partitions-recharge-rates).
+`es0` is a partition with NVIDIA 2080 TI GPUs that do not incur [Service Unit (SU) charges](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates).
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | NVIDIA 2080TI | 12 | 4x 11 GB | Intel Xeon Silver 4212 | 8 | 96GB | FDR |
+| Accelerator   | Nodes | GPUs per Node/GPU Memory | CPU Processor          | CPU Cores | CPU RAM | Infiniband |
+| ------------- | ----- | ------------------------ | ---------------------- | --------- | ------- | ---------- |
+| NVIDIA 2080TI | 12    | 4x 11 GB                 | Intel Xeon Silver 4212 | 8         | 96GB    | FDR        |
 
 Example slurm script on `es0`
 
@@ -3134,7 +3177,20 @@ The original Lawrencium system was built as a 200-node cluster and debuted as #5
 
 Lawrencium consists of multiple generations of compute nodes with the `lr8` partition being the most recent addition and the `lr4` partition the oldest still in production. In addition, there is a `lr_bigmem` partition with 1.5TB memory per node, and `cm1, cm2, cf1` partitions (details in the table below).
 
-| Partition | Nodes | CPU | Cores | Memory | Infiniband | | --- | --- | --- | --- | --- | --- | | lr8 | 20 | AMD EPYC 9534 | 128 | 768GB | HDR | | lr7 | 132 | Intel Xeon Gold 6330 | 56 | 256GB or 512GB | HDR | | lr6 | 88 | Intel Xeon Gold 6130 | 32 | 96GB or 192GB | FDR | | | 156 | Intel Xeon Gold 5218 | 32 | 96GB | FDR | | | 144 | Intel Xeon Gold 6230 | 40 | 192GB | FDR | | lr5 | 192 | Intel Xeon E5-2680v4 | 28 | 64GB | FDR | | | | Intel Xeon E5-2640v4 | 20 | 128GB | QDR | | lr4 | 148 | Intel Xeon E5-2670v3 | 24 | 64GB | FDR | | lr_bigmem | 2 | Intel Xeon Gold 5218 | 32 | 1.5TB | EDR | | cm1 | 14 | AMD EPYC 7401 | 48 | 256GB | FDR | | cm2 | 3 | AMD EPYC 7454 | 64 | 256GB | EDR | | cf1 | 72 | Intel Xeon Phi 7210 | 256 | 192GB | FDR |
+| Partition | Nodes | CPU                  | Cores | Memory         | Infiniband |
+| --------- | ----- | -------------------- | ----- | -------------- | ---------- |
+| lr8       | 20    | AMD EPYC 9534        | 128   | 768GB          | HDR        |
+| lr7       | 132   | Intel Xeon Gold 6330 | 56    | 256GB or 512GB | HDR        |
+| lr6       | 88    | Intel Xeon Gold 6130 | 32    | 96GB or 192GB  | FDR        |
+|           | 156   | Intel Xeon Gold 5218 | 32    | 96GB           | FDR        |
+|           | 144   | Intel Xeon Gold 6230 | 40    | 192GB          | FDR        |
+| lr5       | 192   | Intel Xeon E5-2680v4 | 28    | 64GB           | FDR        |
+|           |       | Intel Xeon E5-2640v4 | 20    | 128GB          | QDR        |
+| lr4       | 148   | Intel Xeon E5-2670v3 | 24    | 64GB           | FDR        |
+| lr_bigmem | 2     | Intel Xeon Gold 5218 | 32    | 1.5TB          | EDR        |
+| cm1       | 14    | AMD EPYC 7401        | 48    | 256GB          | FDR        |
+| cm2       | 3     | AMD EPYC 7454        | 64    | 256GB          | EDR        |
+| cf1       | 72    | Intel Xeon Phi 7210  | 256   | 192GB          | FDR        |
 
 LRC Jobscript Generator
 
@@ -3156,13 +3212,24 @@ ALSACC uses One Time Password (OTP) for login authentication for all the service
 
 ALSACC cluster has a mixture of different CPU architectures and memory configurations so please be aware of them and choose them wisely along with the scheduler configurations.
 
-| Partition | Nodes | Node List | CPU | Cores | Memory | Infiniband | | --- | --- | --- | --- | --- | --- | --- | | alsacc | 64 | n00[00-27].alsacc0 | Intel Xeon X5650 | 12 | 24GB | QDR | | | | n00[28-43].alsacc0 | Intel Xeon E5-2670 | 16 | 64GB | FDR | | | | n00[44-55].alsacc0 | Intel Xeon E5-2670v2 | 20 | 64GB | FDR | | | | n00[56-63].alsacc0 | Intel Xeon E5-2670v3 | 24 | 64GB | FDR |
+| Partition | Nodes | Node List          | CPU                  | Cores | Memory | Infiniband |
+| --------- | ----- | ------------------ | -------------------- | ----- | ------ | ---------- |
+| alsacc    | 64    | n00[00-27].alsacc0 | Intel Xeon X5650     | 12    | 24GB   | QDR        |
+|           |       | n00[28-43].alsacc0 | Intel Xeon E5-2670   | 16    | 64GB   | FDR        |
+|           |       | n00[44-55].alsacc0 | Intel Xeon E5-2670v2 | 20    | 64GB   | FDR        |
+|           |       | n00[56-63].alsacc0 | Intel Xeon E5-2670v3 | 24    | 64GB   | FDR        |
 
 ## Storage and Backup
 
 ALSACC cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| Name | Location | Quota | Backup | Allocation | Description | | --- | --- | --- | --- | --- | --- | | HOME | `/global/home/users/$USER` | 12GB | Yes | Per User | HOME directory for permanent data storage | | GROUP-SW | `/global/home/groups-sw/$GROUP` | 200GB | Yes | Per Group | GROUP directory for software and data sharing with backup | | GROUP | `/global/home/groups/$GROUP` | 400GB | No | Per Group | GROUP directory for data sharing without backup | | SCRATCH | `/global/scratch/$USER` | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system | | CLUSTERFS | `/clusterfs/alsacc/$USER` | none | No | Per User | Private storage |
+| Name      | Location                        | Quota | Backup | Allocation | Description                                                         |
+| --------- | ------------------------------- | ----- | ------ | ---------- | ------------------------------------------------------------------- |
+| HOME      | `/global/home/users/$USER`      | 12GB  | Yes    | Per User   | HOME directory for permanent data storage                           |
+| GROUP-SW  | `/global/home/groups-sw/$GROUP` | 200GB | Yes    | Per Group  | GROUP directory for software and data sharing with backup           |
+| GROUP     | `/global/home/groups/$GROUP`    | 400GB | No     | Per Group  | GROUP directory for data sharing without backup                     |
+| SCRATCH   | `/global/scratch/$USER`         | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system |
+| CLUSTERFS | `/clusterfs/alsacc/$USER`       | none  | No     | Per User   | Private storage                                                     |
 
 Note
 
@@ -3170,15 +3237,20 @@ HOME, GROUP, and GROUP-SW directories are located on a highly reliable enterpris
 
 ## Scheduler Configuration
 
-ALSACC cluster uses [SLURM](../../../running/slurm-overview/) as the scheduler to manage jobs on the cluster. To use the ALSACC resource, the partition `alsacc` must be used (`--partition=alsacc`) along with account `alsacc` (`--account=alsacc`). Currently there is no special limitation introduced to the `alsacc` partition thus no QoS configuration is required to use the ALSACC resources (a default QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days is enforced.
+ALSACC cluster uses [SLURM](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use the ALSACC resource, the partition `alsacc` must be used (`--partition=alsacc`) along with account `alsacc` (`--account=alsacc`). Currently there is no special limitation introduced to the `alsacc` partition thus no QoS configuration is required to use the ALSACC resources (a default QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days is enforced.
 
 The job allocation on ALSACC is shared i.e. a node can be shared between multiple jobs. The different QoS arguments and their limits are shown below:
 
-| Node List | Node Features | | --- | --- | | n00[00-27].alsacc0 | alsacc, alsacc_c12 | | n00[28-43].alsacc0 | alsacc, alsacc_c16 | | n00[44-55].alsacc0 | alsacc, alsacc_c20 | | n00[56-63].alsacc0 | alsacc, alsacc_c24 |
+| Node List          | Node Features      |
+| ------------------ | ------------------ |
+| n00[00-27].alsacc0 | alsacc, alsacc_c12 |
+| n00[28-43].alsacc0 | alsacc, alsacc_c16 |
+| n00[44-55].alsacc0 | alsacc, alsacc_c20 |
+| n00[56-63].alsacc0 | alsacc, alsacc_c24 |
 
 ## Software Configuration
 
-ALSACC uses [Software Module Farm](../../../software/software-module-farm/) to [manage](../../../software/module-management/) the cluster-wide software installation.
+ALSACC uses [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md) to [manage](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) the cluster-wide software installation.
 
 ## Cluster Status
 
@@ -3200,13 +3272,21 @@ CATAMOUNT uses One Time Password (OTP) for login authentication for all the serv
 
 Each compute node has dual-socket octa-core Intel Xeon E5-2670 (Sandy Bridge) @ 2.60 GHz processors (16 cores in total), 64 GB of physical memory. Compute nodes are connected with each other through multiple high performance Mellanox 56 Gbps FDR Infiniband edge switches then back to a backbone Mellanox SX6518 director switch.
 
-| Partition | Nodes | Node List | CPU | Cores | Memory | | --- | --- | --- | --- | --- | --- | | catamount | 116 | n0[000-115].catamount0 | Intel Xeon E5-2670 | 16 | 64GB |
+| Partition | Nodes | Node List              | CPU                | Cores | Memory |
+| --------- | ----- | ---------------------- | ------------------ | ----- | ------ |
+| catamount | 116   | n0[000-115].catamount0 | Intel Xeon E5-2670 | 16    | 64GB   |
 
 ## Storage and Backup
 
 CATAMOUNT cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| Name | Location | Quota | Backup | Allocation | Description | | --- | --- | --- | --- | --- | --- | | HOME | `/global/home/users/$USER` | 12GB | Yes | Per User | HOME directory for permanent data storage | | GROUP-SW | `/global/home/groups-sw/$GROUP` | 200GB | Yes | Per Group | GROUP directory for software and data sharing with backup | | GROUP | `/global/home/groups/$GROUP` | 400GB | No | Per Group | GROUP directory for data sharing without backup | | SCRATCH | `/global/scratch/$USER` | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system | | CLUSTERFS | `/clusterfs/catamount/$USER` | none | No | Per User | Private storage |
+| Name      | Location                        | Quota | Backup | Allocation | Description                                                         |
+| --------- | ------------------------------- | ----- | ------ | ---------- | ------------------------------------------------------------------- |
+| HOME      | `/global/home/users/$USER`      | 12GB  | Yes    | Per User   | HOME directory for permanent data storage                           |
+| GROUP-SW  | `/global/home/groups-sw/$GROUP` | 200GB | Yes    | Per Group  | GROUP directory for software and data sharing with backup           |
+| GROUP     | `/global/home/groups/$GROUP`    | 400GB | No     | Per Group  | GROUP directory for data sharing without backup                     |
+| SCRATCH   | `/global/scratch/$USER`         | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system |
+| CLUSTERFS | `/clusterfs/catamount/$USER`    | none  | No     | Per User   | Private storage                                                     |
 
 Note
 
@@ -3214,15 +3294,20 @@ HOME, GROUP, and GROUP-SW directories are located on a highly reliable enterpris
 
 ## Scheduler Configuration
 
-CATAMOUNT cluster uses [SLURM](../../../running/slurm-overview/) as the scheduler to manage jobs on the cluster. To use the CATAMOUNT resource, the partition `catamount` must be used (`--partition=catamount`) along with account `catamount` (`--account=catamount`). One of the QoSs from the following table should be used as well (e.g., `--qos=cm_short`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+CATAMOUNT cluster uses [SLURM](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use the CATAMOUNT resource, the partition `catamount` must be used (`--partition=catamount`) along with account `catamount` (`--account=catamount`). One of the QoSs from the following table should be used as well (e.g., `--qos=cm_short`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
 The job allocation on CATAMOUNT is exclusive i.e. a node is **not** shared between two jobs. The different QoS arguments and their limits are shown below:
 
-| QOS | QOS Limit | | --- | --- | | cm_short | 4 nodes max per job; 24:00:00 wallclock limit | | cm_medium | 16 nodes max per job; 72:00:00 wallclock limit | | cm_long | 32 nodes max per user | | cm_debug | 2 nodes max per job; 8 nodes in total; 00:30:00 wallclock limit |
+| QOS       | QOS Limit                                                       |
+| --------- | --------------------------------------------------------------- |
+| cm_short  | 4 nodes max per job; 24:00:00 wallclock limit                   |
+| cm_medium | 16 nodes max per job; 72:00:00 wallclock limit                  |
+| cm_long   | 32 nodes max per user                                           |
+| cm_debug  | 2 nodes max per job; 8 nodes in total; 00:30:00 wallclock limit |
 
 ## Software Configuration
 
-CATAMOUNT uses [Software Module Farm](../../../software/software-module-farm/) to [manage](../../../software/module-management/) the cluster-wide software installation.
+CATAMOUNT uses [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md) to [manage](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) the cluster-wide software installation.
 
 # Catscan
 
@@ -3236,7 +3321,11 @@ Compute nodes: n0000, n0001, n0002, n0003
 
 ## Cluster Configuration
 
-| Node | Access | Storage | Filesystems | Description of Use | CPU | CORES | MEMORY | GPU | | --- | --- | --- | --- | --- | --- | --- | --- | --- | | catscan.lbl.gov | ssh with either LDAP credentials or password provided by administrator | /home: local drive, 211G /pool0 ZFS filesystem, 269T | /clusterfs/bebb/users /clusterfs/bebb/group-sw | Login node | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | N/A | | n000[0-1] | ssh from catscan.lbl.gov with cluster key | As above via nfs | As above via nfs | Compute node | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | 4x NVIDIA GeForce GTX 1080 Ti | | n000[2-3] | ssh from catscan.lbl.gov with cluster key | As above via nfs | As above via nfs | Compute node | | 24 | 188 GB | 2x NVIDIA RTX A4500 |
+| Node            | Access                                                                 | Storage                                              | Filesystems                                    | Description of Use | CPU                        | CORES           | MEMORY | GPU                           |
+| --------------- | ---------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------- | ------------------ | -------------------------- | --------------- | ------ | ----------------------------- |
+| catscan.lbl.gov | ssh with either LDAP credentials or password provided by administrator | /home: local drive, 211G /pool0 ZFS filesystem, 269T | /clusterfs/bebb/users /clusterfs/bebb/group-sw | Login node         | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | N/A                           |
+| n000[0-1]       | ssh from catscan.lbl.gov with cluster key                              | As above via nfs                                     | As above via nfs                               | Compute node       | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | 4x NVIDIA GeForce GTX 1080 Ti |
+| n000[2-3]       | ssh from catscan.lbl.gov with cluster key                              | As above via nfs                                     | As above via nfs                               | Compute node       |                            | 24              | 188 GB | 2x NVIDIA RTX A4500           |
 
 **Operating System**: CentOS Linux release 7.9.2009 (Core)
 
@@ -3320,7 +3409,7 @@ Each user will be granted space under `/clusterfs/bebb/users` for data. There is
 
 ## Software Module Farm
 
-See [Documentation on using "modules"](../../../software/module-management/).
+See [Documentation on using "modules"](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md).
 
 ### Apptainer (formerly known as Singularity)
 
@@ -3338,23 +3427,32 @@ The DIRAC1 cluster is part of the LBNL Supercluster and shares the same Superclu
 
 ## Login and Data Transfer
 
-DIRAC1 uses [One Time Password (OTP)](../../../accounts/mfa/) for login authentication for all the services provided below.
+DIRAC1 uses [One Time Password (OTP)](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md) for login authentication for all the services provided below.
 
-- [Login server](../../../accounts/loggingin/): `lrc-login.lbl.gov`
-- [DATA transfer server](../../../data-transfer-node/): `lrc-xfer.lbl.gov`
-- [Globus Online endpoint](../../../../data/globus/): `lbnl#lrc`
+- [Login server](https://scienceit-docs.lbl.gov/hpc/accounts/loggingin/index.md): `lrc-login.lbl.gov`
+- [DATA transfer server](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md): `lrc-xfer.lbl.gov`
+- [Globus Online endpoint](https://scienceit-docs.lbl.gov/data/globus/index.md): `lbnl#lrc`
 
 ## Hardware Configuration
 
 DIRAC1 has a mixture of different type of hardware. Compute nodes are connected with each other through a high-performance Mellanox 56Gbps FDR switch.
 
-| PARTITION | NODES | NODE LIST | CPU | CORES | MEMORY | | --- | --- | --- | --- | --- | --- | | dirac1 | 56 | n0[000-055].dirac1 | INTEL XEON E5-2670 v3 | 24 | 256GB | | dirac1 | 72 | n0[056-127].dirac1 | INTEL XEON E5-2650 v4 | 24 | 256GB |
+| PARTITION | NODES | NODE LIST          | CPU                   | CORES | MEMORY |
+| --------- | ----- | ------------------ | --------------------- | ----- | ------ |
+| dirac1    | 56    | n0[000-055].dirac1 | INTEL XEON E5-2670 v3 | 24    | 256GB  |
+| dirac1    | 72    | n0[056-127].dirac1 | INTEL XEON E5-2650 v4 | 24    | 256GB  |
 
 ## Storage and Backup:
 
 DIRAC1 cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| NAME | LOCATION | QUOTA | BACKUP | ALLOCATION | DESCRIPTION | | --- | --- | --- | --- | --- | --- | | HOME | /global/home/users/$USER | 12GB | Yes | Per User | HOME directory for permanent data storage | | GROUP-SW | /global/home/groups-sw/$GROUP | 200GB | Yes | Per Group | GROUP directory for software and data sharing with backup | | GROUP | /global/home/groups/$GROUP | 400GB | No | Per Group | GROUP directory for data sharing without backup | | SCRATCH | /global/scratch/users/$USER | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system | | CLUSTERFS | /clusterfs/dirac1/$USER | none | No | Per User | Private storage |
+| NAME      | LOCATION                      | QUOTA | BACKUP | ALLOCATION | DESCRIPTION                                                         |
+| --------- | ----------------------------- | ----- | ------ | ---------- | ------------------------------------------------------------------- |
+| HOME      | /global/home/users/$USER      | 12GB  | Yes    | Per User   | HOME directory for permanent data storage                           |
+| GROUP-SW  | /global/home/groups-sw/$GROUP | 200GB | Yes    | Per Group  | GROUP directory for software and data sharing with backup           |
+| GROUP     | /global/home/groups/$GROUP    | 400GB | No     | Per Group  | GROUP directory for data sharing without backup                     |
+| SCRATCH   | /global/scratch/users/$USER   | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system |
+| CLUSTERFS | /clusterfs/dirac1/$USER       | none  | No     | Per User   | Private storage                                                     |
 
 Note
 
@@ -3362,9 +3460,11 @@ HOME, GROUP, GROUP-SW and CLUSTERFS directories are located on a highly reliable
 
 ## Scheduler Configuration:
 
-DIRAC1 cluster uses [SLURM](../../../running/slurm-overview/) as the scheduler to manage jobs on the cluster. To use the DIRAC1 resource the partition `dirac1` must be used (`--partition=dirac1`) along with account `dirac1` (`--account=dirac1`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. For users from `ac_ciftgp` (Guggenheim Users), the default QOS is `dirac1_normal`. This is the high priority QOS which will preempt low priority jobs if those jobs need resources. For users from `ac_cifgres`, the default QOS is `dirac1_lowprio`. This is the low priority QOS. When system is busy and there are higher priority jobs pending, scheduler will preempt jobs that are running with this low priority QOS. `dirac1_highprio` is a special QoS which will preempt both `dirac1_lowprio` and `dirac1_normal`.
+DIRAC1 cluster uses [SLURM](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use the DIRAC1 resource the partition `dirac1` must be used (`--partition=dirac1`) along with account `dirac1` (`--account=dirac1`). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. For users from `ac_ciftgp` (Guggenheim Users), the default QOS is `dirac1_normal`. This is the high priority QOS which will preempt low priority jobs if those jobs need resources. For users from `ac_cifgres`, the default QOS is `dirac1_lowprio`. This is the low priority QOS. When system is busy and there are higher priority jobs pending, scheduler will preempt jobs that are running with this low priority QOS. `dirac1_highprio` is a special QoS which will preempt both `dirac1_lowprio` and `dirac1_normal`.
 
-| PARTITION | ACCOUNT | NODES | NODE LIST | NODE FEATURES | SHARED | QOS | QOS LIMIT | | --- | --- | --- | --- | --- | --- | --- | --- | | dirac1 | dirac1 | 128 | n0[000-127].dirac1 | dirac1 | Exclusive | dirac1_lowprio dirac1_normal dirac1_highprio | no limit no limit no limit |
+| PARTITION | ACCOUNT | NODES | NODE LIST          | NODE FEATURES | SHARED    | QOS                                          | QOS LIMIT                  |
+| --------- | ------- | ----- | ------------------ | ------------- | --------- | -------------------------------------------- | -------------------------- |
+| dirac1    | dirac1  | 128   | n0[000-127].dirac1 | dirac1        | Exclusive | dirac1_lowprio dirac1_normal dirac1_highprio | no limit no limit no limit |
 
 ## Software Configuration
 
@@ -3394,13 +3494,23 @@ ETNA uses One Time Password (OTP) for login authentication for all the services 
 
 Each compute node has dual-socket 12-core INTEL Xeon E5-2670 v3 @ 2.30 GHz processors (24 cores in total), 64 GB of physical memory. Compute nodes are connected with each other through a high performance Mellanox 56 Gbps FDR Infiniband fabric.
 
-| PARTITION | NODES | CPU | CORES | MEMORY | GPU | | --- | --- | --- | --- | --- | --- | | etna | 170 | INTEL XEON E5-2670 v3 | 24 | 64GB | – | | etna | 3 | INTEL XEON E5-2670 v3 | 24 | 64GB | Xeon Phi | | etna | 16 | INTEL XEON E5-2623 v3 | 8 | 64GB | K80, V100 |
+| PARTITION | NODES | CPU                   | CORES | MEMORY | GPU       |
+| --------- | ----- | --------------------- | ----- | ------ | --------- |
+| etna      | 170   | INTEL XEON E5-2670 v3 | 24    | 64GB   | –         |
+| etna      | 3     | INTEL XEON E5-2670 v3 | 24    | 64GB   | Xeon Phi  |
+| etna      | 16    | INTEL XEON E5-2623 v3 | 8     | 64GB   | K80, V100 |
 
 ## Storage and Backup
 
 ETNA cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| NAME | LOCATION | QUOTA | BACKUP | ALLOCATION | DESCRIPTION | | --- | --- | --- | --- | --- | --- | | HOME | `/global/home/users/$USER` | 12GB | Yes | Per User | HOME directory for permanent data storage | | SCRATCH | `/global/scratch/users/$USER` | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system over Infiniband | | MOTEL | `/clusterfs/vulcan/motel/$USER` | none | No | Per User | Long-term storage of bulk data | | MOTEL2 | `/clusterfs/vulcan/motel2/$USER` | none | No | Per User | Long-term storage of bulk data | | PSCRATCH | `/clusterfs/etna/pscratch/$USER` | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system over Infiniband |
+| NAME     | LOCATION                         | QUOTA | BACKUP | ALLOCATION | DESCRIPTION                                                                         |
+| -------- | -------------------------------- | ----- | ------ | ---------- | ----------------------------------------------------------------------------------- |
+| HOME     | `/global/home/users/$USER`       | 12GB  | Yes    | Per User   | HOME directory for permanent data storage                                           |
+| SCRATCH  | `/global/scratch/users/$USER`    | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system over Infiniband |
+| MOTEL    | `/clusterfs/vulcan/motel/$USER`  | none  | No     | Per User   | Long-term storage of bulk data                                                      |
+| MOTEL2   | `/clusterfs/vulcan/motel2/$USER` | none  | No     | Per User   | Long-term storage of bulk data                                                      |
+| PSCRATCH | `/clusterfs/etna/pscratch/$USER` | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system over Infiniband |
 
 Note
 
@@ -3408,13 +3518,19 @@ Note
 
 ## Scheduler Configuration
 
-ETNA cluster uses SLURM as the scheduler to manage jobs on the cluster. To use the ETNA resource the partition `etna` must be used (`–partition=etna`). Users of projects `nano` and `etna` are allowed to submit jobs to the ETNA cluster using either `--account=etna` or `--account=nano`; details on checking your slurm associations are [here](../../../running/slurm-overview/#slurm-association). For the GPU nodes, use `–partition=etna_gpu`. Currently there is no special limitation introduced to the `etna` partition thus no QoS configuration is required to use the ETNA resources (a default `normal` QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+ETNA cluster uses SLURM as the scheduler to manage jobs on the cluster. To use the ETNA resource the partition `etna` must be used (`–partition=etna`). Users of projects `nano` and `etna` are allowed to submit jobs to the ETNA cluster using either `--account=etna` or `--account=nano`; details on checking your slurm associations are [here](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association). For the GPU nodes, use `–partition=etna_gpu`. Currently there is no special limitation introduced to the `etna` partition thus no QoS configuration is required to use the ETNA resources (a default `normal` QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
-| PARTITION | NODES | NODE LIST | NODE FEATURES | SHARED | | --- | --- | --- | --- | --- | | etna | 175 | n0[000-174].etna0 | etna, etna_phi([172-174]) | Exclusive | | etna_gpu | 16 | n0[175-183,238,299-304].etna0 | etna_gpu, etna_k80, etna_v100, etna_v100_32g | Shared | | etna-shared | 5 | n0[188-192].etna0 | etna_share | Shared | | etna_c40 | 16 | n0[239-254].etna0 | etna_c40 | Exclusive | | etna_bigmem | 47 | n0[186-187,193-237].etna0 | etna_bigmem | Exclusive |
+| PARTITION   | NODES | NODE LIST                     | NODE FEATURES                                | SHARED    |
+| ----------- | ----- | ----------------------------- | -------------------------------------------- | --------- |
+| etna        | 175   | n0[000-174].etna0             | etna, etna_phi([172-174])                    | Exclusive |
+| etna_gpu    | 16    | n0[175-183,238,299-304].etna0 | etna_gpu, etna_k80, etna_v100, etna_v100_32g | Shared    |
+| etna-shared | 5     | n0[188-192].etna0             | etna_share                                   | Shared    |
+| etna_c40    | 16    | n0[239-254].etna0             | etna_c40                                     | Exclusive |
+| etna_bigmem | 47    | n0[186-187,193-237].etna0     | etna_bigmem                                  | Exclusive |
 
 ## Software Configuration
 
-ETNA uses [Software Module Farm](../../../software/software-module-farm/) to [manage](../../../software/module-management/) the cluster-wide software installation.
+ETNA uses [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md) to [manage](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) the cluster-wide software installation.
 
 ## Cluster Status
 
@@ -3436,13 +3552,24 @@ MHG uses One Time Password (OTP) for login authentication for all the services p
 
 MHG cluster has a mixture of different CPU architectures and memory configurations so please be aware of them and choose them wisely along with the scheduler configurations.
 
-| PARTITION | NODES | NODE LIST | CPU | CORES | MEMORY | | --- | --- | --- | --- | --- | --- | | mhg | 72 | n0[030-036,041-055].mhg0 | AMD Opteron 6376 | 64 | 256 GB | | | | n0[037-040,082,084].mhg0 | AMD Opteron 6376 | 64 | 512 GB | | | | n0[056-081,083,085-101].mhg0 | AMD Opteron 6274 | 64 | 256 GB |
+| PARTITION | NODES | NODE LIST                    | CPU              | CORES | MEMORY |
+| --------- | ----- | ---------------------------- | ---------------- | ----- | ------ |
+| mhg       | 72    | n0[030-036,041-055].mhg0     | AMD Opteron 6376 | 64    | 256 GB |
+|           |       | n0[037-040,082,084].mhg0     | AMD Opteron 6376 | 64    | 512 GB |
+|           |       | n0[056-081,083,085-101].mhg0 | AMD Opteron 6274 | 64    | 256 GB |
 
 ## Storage and Backup
 
 MHG cluster users are entitled to access the following storage systems so please get familiar with them.
 
-| NAME | LOCATION | QUOTA | BACKUP | ALLOCATION | DESCRIPTION | | --- | --- | --- | --- | --- | --- | | HOME | `/global/home/users/$USER` | 12GB | Yes | Per User | HOME directory for permanent data storage | | GROUP-SW | `/global/home/groups-sw/$GROUP` | 200GB | Yes | Per Group | GROUP directory for software and data sharing with backup | | GROUP | `/global/home/groups/$GROUP` | 400GB | No | Per Group | GROUP directory for data sharing without backup | | SCRATCH | `/global/scratch/users/$USER` | none | No | Per User | SCRATCH directory with Lustre high performance parallel file system | | CLUSTERFS | `/clusterfs/mhg/$USER` | none | No | Per User | Private storage | | LOCAL | `/local/scratch/users/$USER` | none | No | Per User | Local scratch on each node |
+| NAME      | LOCATION                        | QUOTA | BACKUP | ALLOCATION | DESCRIPTION                                                         |
+| --------- | ------------------------------- | ----- | ------ | ---------- | ------------------------------------------------------------------- |
+| HOME      | `/global/home/users/$USER`      | 12GB  | Yes    | Per User   | HOME directory for permanent data storage                           |
+| GROUP-SW  | `/global/home/groups-sw/$GROUP` | 200GB | Yes    | Per Group  | GROUP directory for software and data sharing with backup           |
+| GROUP     | `/global/home/groups/$GROUP`    | 400GB | No     | Per Group  | GROUP directory for data sharing without backup                     |
+| SCRATCH   | `/global/scratch/users/$USER`   | none  | No     | Per User   | SCRATCH directory with Lustre high performance parallel file system |
+| CLUSTERFS | `/clusterfs/mhg/$USER`          | none  | No     | Per User   | Private storage                                                     |
+| LOCAL     | `/local/scratch/users/$USER`    | none  | No     | Per User   | Local scratch on each node                                          |
 
 Note
 
@@ -3452,11 +3579,13 @@ HOME, GROUP, and GROUP-SW directories are located on a highly reliable enterpris
 
 MHG cluster uses [SLURM](https://it.lbl.gov/resource/hpc/for-users/hpc-documentation/running-jobs/) as the scheduler to manage jobs on the cluster. To use the MHG resource the partition `mhg` must be used (`--partition=mhg`) along with account `mhg` (`--account=mhg`). Currently there is no special limitation introduced to the `mhg` partition thus no QoS configuration is required to use the MHG resources (a default `normal` QoS will be applied automatically). A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. If node feature (`--constraint` option) is not used, the default dispatch order will be: `mhg_c4, mhg_c8, mhg_c32, mhg_c48, mhg_m256, mhg_m512`.
 
-| PARTITION | ACCOUNT | NODES | NODE LIST | NODE FEATURES | SHARED | QOS | QOS LIMIT | | --- | --- | --- | --- | --- | --- | --- | --- | | mhg | mhg | 72 | n0[030-036].mhg0 n0[037-039].mhg0 n0040.mhg0 n0[041-055].mhg0 n0[056-101].mhg0 | mhg, mhg_c64, mhg_m256 mhg, mhg_c64, mhg_m512 mhg, mhg_c64, mhg_m512, mhg_ssd mhg, mhg_c64, mhg_m256 mhg, mhg_c64, mhg_m256 | Yes | normal | no limit |
+| PARTITION | ACCOUNT | NODES | NODE LIST                                                                      | NODE FEATURES                                                                                                               | SHARED | QOS    | QOS LIMIT |
+| --------- | ------- | ----- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------ | ------ | --------- |
+| mhg       | mhg     | 72    | n0[030-036].mhg0 n0[037-039].mhg0 n0040.mhg0 n0[041-055].mhg0 n0[056-101].mhg0 | mhg, mhg_c64, mhg_m256 mhg, mhg_c64, mhg_m512 mhg, mhg_c64, mhg_m512, mhg_ssd mhg, mhg_c64, mhg_m256 mhg, mhg_c64, mhg_m256 | Yes    | normal | no limit  |
 
 ## Software Configuration
 
-ETNA uses [Software Module Farm](../../../software/software-module-farm/) to [manage](../../../software/module-management/) the cluster-wide software installation.
+ETNA uses [Software Module Farm](https://scienceit-docs.lbl.gov/hpc/software/software-module-farm/index.md) to [manage](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) the cluster-wide software installation.
 
 ## Cluster Status
 
@@ -3588,7 +3717,12 @@ LBL's main Globus UI is available at <https://globus.lbl.gov> .
 
 Current managed endpoints with general availability are:
 
-| Name | Globus Endpoint Name | Documentation | | --- | --- | --- | | Google Drive | [LBNL Gdrive Access](https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/overview) | [Globus for Google Drive](../globus-google-drive/) | | Lawrencium | [lbnl#lrc](https://globus.lbl.gov/file-manager/collections/45afb626-a4bd-11e8-96f0-0a6d4e044368/overview) | [Globus for Lawrencium](../globus-instructions/) | | Amazon Web Services S3 | [LBNL AWS S3 Collection](https://globus.lbl.gov/file-manager/collections/9c6d5242-306a-4997-a69f-e79345086d68/overview) | [Using the Globus AWS S3 Connector](../globus-aws-s3-connector/) | | Google Cloud Storage | [LBNL Google Cloud Storage Collection](https://globus.lbl.gov/file-manager/collections/54047297-0b17-4dd9-ba50-ba1dc2063468/overview) | [Using the Globus Google Cloud Storage Connector](../globus-google-cloud-storage-connector/) |
+| Name                   | Globus Endpoint Name                                                                                                                  | Documentation                                                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Google Drive           | [LBNL Gdrive Access](https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/overview)                   | [Globus for Google Drive](https://scienceit-docs.lbl.gov/data/globus-google-drive/index.md)                                           |
+| Lawrencium             | [lbnl#lrc](https://globus.lbl.gov/file-manager/collections/45afb626-a4bd-11e8-96f0-0a6d4e044368/overview)                             | [Globus for Lawrencium](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md)                                             |
+| Amazon Web Services S3 | [LBNL AWS S3 Collection](https://globus.lbl.gov/file-manager/collections/9c6d5242-306a-4997-a69f-e79345086d68/overview)               | [Using the Globus AWS S3 Connector](https://scienceit-docs.lbl.gov/data/globus-aws-s3-connector/index.md)                             |
+| Google Cloud Storage   | [LBNL Google Cloud Storage Collection](https://globus.lbl.gov/file-manager/collections/54047297-0b17-4dd9-ba50-ba1dc2063468/overview) | [Using the Globus Google Cloud Storage Connector](https://scienceit-docs.lbl.gov/data/globus-google-cloud-storage-connector/index.md) |
 
 If you are interested in using Google Cloud or Amazon, please reach out to [scienceit@lbl.gov](mailto:scienceit@lbl.gov) for more information on setting up a GCP or AWS account.
 
@@ -3598,7 +3732,7 @@ Even when there is not an LBL managed endpoint available it can still be useful 
 
 You can find instructions for downloading and installing the Globus Connect Personal on the [Globus web site](https://docs.globus.org/globus-connect-personal/) .
 
-Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](../globus-instructions/) for access setup.
+Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md) for access setup.
 
 If you see a connector you would like us to support, please send email to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).
 # Cloud Services

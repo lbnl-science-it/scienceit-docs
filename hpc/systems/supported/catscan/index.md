@@ -10,7 +10,11 @@ Compute nodes: n0000, n0001, n0002, n0003
 
 ## Cluster Configuration
 
-| Node | Access | Storage | Filesystems | Description of Use | CPU | CORES | MEMORY | GPU | | --- | --- | --- | --- | --- | --- | --- | --- | --- | | catscan.lbl.gov | ssh with either LDAP credentials or password provided by administrator | /home: local drive, 211G /pool0 ZFS filesystem, 269T | /clusterfs/bebb/users /clusterfs/bebb/group-sw | Login node | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | N/A | | n000[0-1] | ssh from catscan.lbl.gov with cluster key | As above via nfs | As above via nfs | Compute node | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | 4x NVIDIA GeForce GTX 1080 Ti | | n000[2-3] | ssh from catscan.lbl.gov with cluster key | As above via nfs | As above via nfs | Compute node | | 24 | 188 GB | 2x NVIDIA RTX A4500 |
+| Node            | Access                                                                 | Storage                                              | Filesystems                                    | Description of Use | CPU                        | CORES           | MEMORY | GPU                           |
+| --------------- | ---------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------- | ------------------ | -------------------------- | --------------- | ------ | ----------------------------- |
+| catscan.lbl.gov | ssh with either LDAP credentials or password provided by administrator | /home: local drive, 211G /pool0 ZFS filesystem, 269T | /clusterfs/bebb/users /clusterfs/bebb/group-sw | Login node         | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | N/A                           |
+| n000[0-1]       | ssh from catscan.lbl.gov with cluster key                              | As above via nfs                                     | As above via nfs                               | Compute node       | Intel(R) Xeon(R) Gold 6126 | 48 (HT Enabled) | 196 GB | 4x NVIDIA GeForce GTX 1080 Ti |
+| n000[2-3]       | ssh from catscan.lbl.gov with cluster key                              | As above via nfs                                     | As above via nfs                               | Compute node       |                            | 24              | 188 GB | 2x NVIDIA RTX A4500           |
 
 **Operating System**: CentOS Linux release 7.9.2009 (Core)
 
@@ -94,7 +98,7 @@ Each user will be granted space under `/clusterfs/bebb/users` for data. There is
 
 ## Software Module Farm
 
-See [Documentation on using "modules"](../../../software/module-management/).
+See [Documentation on using "modules"](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md).
 
 ### Apptainer (formerly known as Singularity)
 

@@ -2,9 +2,9 @@
 
 Multi-Factor Authentication (MFA)
 
-Please make sure you have configured [Multi-Factor Authentication (MFA)](../mfa/) before logging in for the first time.
+Please make sure you have configured [Multi-Factor Authentication (MFA)](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md) before logging in for the first time.
 
-You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see [Multi-Factor Authentication](../mfa/). Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as
+You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md). Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as
 
 ```
 ssh username@lrc-login.lbl.gov
@@ -16,7 +16,7 @@ Running jobs
 
 The login nodes should not be used for running jobs. They should only be used to write scripts and submit jobs to the compute nodes.
 
-More details on writing job scripts and submitting them can be found [here](../../running/script-examples/).
+More details on writing job scripts and submitting them can be found [here](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md).
 
 ## SSH Certificate
 

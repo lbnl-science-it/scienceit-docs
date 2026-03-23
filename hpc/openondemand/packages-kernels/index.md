@@ -2,7 +2,7 @@
 
 ## Installing Python Packages
 
-A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](../jupyter-server/) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
+A variety of standard Python packages (such as numpy, scipy, matplotlib and pandas) are available automatically on `miniforge3` module. To see what packages are available, open a Terminal in the [Jupyter server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) or open a Terminal on Lawrencium in the usual fashion. Then load the `miniforge3` module and list the installed packages:
 
 ```
 module load miniforge3/25.9.1

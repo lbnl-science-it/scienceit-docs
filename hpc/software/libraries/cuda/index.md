@@ -18,7 +18,7 @@ nys --version
 NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
 ```
 
-The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](../../../openondemand/overview/).
+The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md).
 
 ## Nsight Compute
 

@@ -10,7 +10,7 @@ The Software Module Farm provides a comprehensive and well-tested suite of softw
 1. **Applications**: Domain specific applications such as biology and machine learning packages.
 1. **Submodules**: Submodules include libraries and packages which depend on a particular compiler or language module. Due to this dependency, submodules will only be visible once the associated language or core compiler module has been loaded. For example, `hdf5` submodule is only visible once you load `gcc` and `openmpi` modules.
 
-See the [Module Management](../module-management/) page for details on how to use the `module` command for module management on Lawrencium.
+See the [Module Management](https://scienceit-docs.lbl.gov/hpc/software/module-management/index.md) page for details on how to use the `module` command for module management on Lawrencium.
 
 ## Software installation by Users
 

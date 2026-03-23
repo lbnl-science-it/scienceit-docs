@@ -30,7 +30,7 @@ Job time is counted for interactive sessions as the total time the job runs. The
 
 There are several ways to monitor usage:
 
-- Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](../../running/monitor-jobs/).
+- Since Open OnDemand submits jobs through Slurm, you can [monitor usage as you would monitor your regular Slurm Jobs](https://scienceit-docs.lbl.gov/hpc/running/monitor-jobs/index.md).
 - View currently running (and recent) sessions launched by Open OnDemand under `My Interactive Sessions`.
 - View all currently running jobs under `Jobs > Active Jobs`.
 
@@ -73,7 +73,7 @@ The Desktop App allows you to launch an interactive desktop on the Lawrencium cl
 - Provide the job specifications you want for the Desktop app.
 - Once Desktop is ready, click *Launch Desktop* and the Desktop will open in a new tab.
 
-See the [Jupyter documentation page](../jupyter-server/) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
+See the [Jupyter documentation page](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md) for instructions on using Jupyter notebooks via Open OnDemand. This service replaces the JupyterHub service that we formerly provided.
 
 **Steps:**
 

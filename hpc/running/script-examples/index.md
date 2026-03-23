@@ -1,6 +1,6 @@
 Here we show some example job scripts that allow for various kinds of parallelization such as: jobs that use fewer cores than available on a node, GPU jobs, low-priority condo jobs, and long-running PCA jobs.
 
-Please refer to [Slurm Association](../slurm-overview/#slurm-association) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
+Please refer to [Slurm Association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) on how to use the command `sacctmgr` to obtain details of accounts, partitions, and quality of service (qos) that are needed in a slurm script.
 
 ## Example Set 1
 
@@ -132,7 +132,7 @@ mpirun ./a.out
 
 ## GPU Job
 
-`es2` partition consists of NVIDIA H100 and H200 GPU cards. `es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](../../systems/einsteinium/). For `es2` and `es1` partitions, a compute node with a particular GPU type and count can be allocated using slurm in the following way.
+`es2` partition consists of NVIDIA H100 and H200 GPU cards. `es1` partition consists of GPU nodes with several generations of NVIDIA GPU cards (V100, GTX 2080TI, A40). Please take a look at the details on this [page](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md). For `es2` and `es1` partitions, a compute node with a particular GPU type and count can be allocated using slurm in the following way.
 
 - General format: `--gres=gpu:[type]:count`
 
@@ -151,15 +151,23 @@ To help the job scheduler effectively manage the use of GPUs, your job submissio
 
 ### CPU Core to GPU Ratio
 
-| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | A40 | 4 | 64 | 1:16 | | A100 | 4 | 64 | 1:16 | | GRTX8000 | 4 | 64 | 1:16 | | V100. | 2 | 8. | 1:4 |
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio |
+| -------- | ------------- | ------------------ | ------------- |
+| A40      | 4             | 64                 | 1:16          |
+| A100     | 4             | 64                 | 1:16          |
+| GRTX8000 | 4             | 64                 | 1:16          |
+| V100.    | 2             | 8.                 | 1:4           |
 
-| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio | | --- | --- | --- | --- | | H100 | 8 | 112 | 1:14 | | H200 | 8 | 112 | 1:14 |
+| GPU Type | GPUs per Node | CPU cores per Node | GPU:CPU ratio |
+| -------- | ------------- | ------------------ | ------------- |
+| H100     | 8             | 112                | 1:14          |
+| H200     | 8             | 112                | 1:14          |
 
 Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
 
 For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and `--cpus-per-task=2` . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
 
-Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](../../systems/einsteinium/)). This is because the feature is associated with how many GPUs per node to request.
+Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)). This is because the feature is associated with how many GPUs per node to request.
 
 Examples:
 

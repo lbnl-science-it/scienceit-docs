@@ -2,14 +2,14 @@
 
 - ### **Top Pages**
   ______________________________________________________________________
-  - [Getting Started with Lawrencium](hpc/getting-started/)
+  - [Getting Started with Lawrencium](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
   - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/)
   - [MyLRC User Account Portal](https://mylrc.lbl.gov/)
   - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html)
 - ### **Systems Status**
   ______________________________________________________________________
   - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/)
-  - [HPC Clusters Live Status - Warewulf Overview](hpc/status/)
+  - [HPC Clusters Live Status - Warewulf Overview](https://scienceit-docs.lbl.gov/hpc/status/index.md)
 - ### **HPC Helpdesk**
   ______________________________________________________________________
   - HPC Email Support: [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov) (Creates a ticket in Freshservice)

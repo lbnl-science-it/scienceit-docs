@@ -41,7 +41,7 @@ srun --mpi=pmi2 vasp_std
 
 ## VASP GPU Binary (NVHPC SDK)
 
-The `vasp/6.4.1-gpu` module is compiled using [NVHPC SDK](../../compilers/nvhpc/). To load the module:
+The `vasp/6.4.1-gpu` module is compiled using [NVHPC SDK](https://scienceit-docs.lbl.gov/hpc/software/compilers/nvhpc/index.md). To load the module:
 
 ```
 module load nvhpc/23.11

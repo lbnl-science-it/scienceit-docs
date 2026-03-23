@@ -6,11 +6,11 @@ Principal Investigators (PIs) can sponsor researchers, students and external col
 
 How do I submit my first job?
 
-Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](../running/slurm-overview/#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](../running/script-examples/). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.
+Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.
 
 How do I transfer data to and from the cluster?
 
-For more details, please see the examples on the [Using the lrc-xfer DTN page](../data-transfer-node/).
+For more details, please see the examples on the [Using the lrc-xfer DTN page](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md).
 
 What is the maximum runtime / walltime you can assign a job?
 

@@ -8,7 +8,12 @@ LBL's main Globus UI is available at <https://globus.lbl.gov> .
 
 Current managed endpoints with general availability are:
 
-| Name | Globus Endpoint Name | Documentation | | --- | --- | --- | | Google Drive | [LBNL Gdrive Access](https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/overview) | [Globus for Google Drive](../globus-google-drive/) | | Lawrencium | [lbnl#lrc](https://globus.lbl.gov/file-manager/collections/45afb626-a4bd-11e8-96f0-0a6d4e044368/overview) | [Globus for Lawrencium](../globus-instructions/) | | Amazon Web Services S3 | [LBNL AWS S3 Collection](https://globus.lbl.gov/file-manager/collections/9c6d5242-306a-4997-a69f-e79345086d68/overview) | [Using the Globus AWS S3 Connector](../globus-aws-s3-connector/) | | Google Cloud Storage | [LBNL Google Cloud Storage Collection](https://globus.lbl.gov/file-manager/collections/54047297-0b17-4dd9-ba50-ba1dc2063468/overview) | [Using the Globus Google Cloud Storage Connector](../globus-google-cloud-storage-connector/) |
+| Name                   | Globus Endpoint Name                                                                                                                  | Documentation                                                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Google Drive           | [LBNL Gdrive Access](https://globus.lbl.gov/file-manager/collections/37286b85-fa2d-41bd-8110-f3ed7df32d62/overview)                   | [Globus for Google Drive](https://scienceit-docs.lbl.gov/data/globus-google-drive/index.md)                                           |
+| Lawrencium             | [lbnl#lrc](https://globus.lbl.gov/file-manager/collections/45afb626-a4bd-11e8-96f0-0a6d4e044368/overview)                             | [Globus for Lawrencium](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md)                                             |
+| Amazon Web Services S3 | [LBNL AWS S3 Collection](https://globus.lbl.gov/file-manager/collections/9c6d5242-306a-4997-a69f-e79345086d68/overview)               | [Using the Globus AWS S3 Connector](https://scienceit-docs.lbl.gov/data/globus-aws-s3-connector/index.md)                             |
+| Google Cloud Storage   | [LBNL Google Cloud Storage Collection](https://globus.lbl.gov/file-manager/collections/54047297-0b17-4dd9-ba50-ba1dc2063468/overview) | [Using the Globus Google Cloud Storage Connector](https://scienceit-docs.lbl.gov/data/globus-google-cloud-storage-connector/index.md) |
 
 If you are interested in using Google Cloud or Amazon, please reach out to [scienceit@lbl.gov](mailto:scienceit@lbl.gov) for more information on setting up a GCP or AWS account.
 
@@ -18,6 +23,6 @@ Even when there is not an LBL managed endpoint available it can still be useful 
 
 You can find instructions for downloading and installing the Globus Connect Personal on the [Globus web site](https://docs.globus.org/globus-connect-personal/) .
 
-Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](../globus-instructions/) for access setup.
+Globus for data transfers is highly recommended. Globus is available as a free service for any user to sign up. Please follow the [instructions](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md) for access setup.
 
 If you see a connector you would like us to support, please send email to [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov).

@@ -2,7 +2,7 @@
 
 [Ollama](https://github.com/ollama/ollama) is provided as a module on Lawrencium and can be used to run various open-weight Large-Language Models (LLMs) on Lawrencium hardware.
 
-Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](../../../openondemand/ollama-jupyter-vscode/) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
+Ollama should only be run on compute nodes. While some smaller models may be run on CPU partitions, running Ollama on GPU partitions (`es0` or `es1`) will have better performance. In this page, we will discuss how to run Ollama in an interactive slurm allocation. We also provide an [Open OnDemand app](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/index.md) that allows you to run Ollama on Open OnDemand and access Ollama through Jupyter notebooks. You could also run Ollama through a slurm batch submission script.
 
 General suggestions
 
