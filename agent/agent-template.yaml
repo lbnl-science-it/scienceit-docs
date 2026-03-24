@@ -11,8 +11,8 @@ metadata:
   readme: |
     # Science IT Assistant for the Lawrencium Research Computing Cluster (lrc-agent)
 
-    An AI assistant for Lawrence Berkeley National Laboratory's Science IT services, built on the scienceit-docs knowledge base.
-  version: "1.0.0"
+    An AI assistant for Lawrence Berkeley National Laboratory's Lawrencium cluster, built on the scienceit-docs knowledge base.
+  version: "1.0.1"
 
 agents:
   lrc-agent:
@@ -21,7 +21,7 @@ agents:
       retries: 2
     description: A helpful assistant for Lawrencium users
     instruction: |
-      You are the Science IT Assistant (lrc-agent) for Lawrence Berkeley National Laboratory.
+      You are the ScienceIT Lawrencium Agent (lrc-agent) for Lawrence Berkeley National Laboratory.
 
       ## Role and scope
 
@@ -65,6 +65,7 @@ agents:
       - Use for Slurm command demonstrations (sinfo, squeue, sacct, sbatch, scontrol) and environment inspection.
       - Never run destructive commands (rm, rmdir, mv, chmod, chown) unless the user explicitly requests it and confirms the target.
       - Do not execute commands that modify system configuration, install system packages, or access paths outside the user's working directory.
+      - check_slurm_tool command is available on LRC that lists account, partition and qos associated with the current user
 
       Filesystem tools:
       - Read, create, and edit files in the current working directory when requested.
@@ -85,14 +86,13 @@ agents:
     add_environment_info: true
 
     welcome_message: |
-      Welcome to the **Science IT Assistant** for Lawrence Berkeley National Laboratory.
+      Welcome to the **ScienceIT Lawrencium Agent** for Lawrence Berkeley National Laboratory.
 
       I can help you with:
       - **Lawrencium cluster** -- Slurm jobs, partitions, resource requests, and workflows
       - **Einsteinium GPU partitions** -- GPU job scripts and ML framework setup
       - **Software & modules** -- compilers, Python, R, Julia, CUDA, PyTorch, TensorFlow
       - **Data transfer** -- Globus, lrc-xfer DTN, and storage systems
-      - **Cloud services** -- AWS and GCP through LBNL master payer agreements
       - **Accounts & access** -- MFA, SSH keys, project and user accounts
 
       I can also **run Slurm commands** (sinfo, squeue, sacct, etc.), **read and write files**, and **help you write job scripts** directly in your working directory.
@@ -121,8 +121,6 @@ rag:
       - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*.md"
       - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*/*.md"
       - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*/*/*.md"
-      #- "${SCIENCEIT_DOCS_BASEDIR}/docs/cloud/*.md"  # Omitted from RAG as these are not relevant to LRC users
-      #- "${SCIENCEIT_DOCS_BASEDIR}/docs/nrp/*.md"    # Omitted from RAG as these are not relevant to LRC users
     strategies:
       - type: chunked-embeddings
         embedding_model: openai/nomic-embed-text
@@ -163,12 +161,14 @@ models:
     provider: cborg
     model: lbl/cborg-coder
     thinking_budget: high
-    track_usage: false
+    track_usage: true
     parallel_tool_calls: true
     max_tokens: 128000
+    temperature: 0.0
 
 permissions:
   allow:
     - "read_*"
-    - "shell:cmd=sinfo"
-    - "shell:cmd=squeue"
+    - "shell:cmd=sinfo*"
+    - "shell:cmd=squeue*"
+    - "shell:check_slurm_assoc"
