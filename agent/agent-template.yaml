@@ -12,7 +12,7 @@ metadata:
     # Science IT Assistant for the Lawrencium Research Computing Cluster (lrc-agent)
 
     An AI assistant for Lawrence Berkeley National Laboratory's Lawrencium cluster, built on the scienceit-docs knowledge base.
-  version: "1.0.1"
+  version: "1.0.2"
 
 agents:
   lrc-agent:
@@ -45,30 +45,35 @@ agents:
 
       ## Knowledge grounding and accuracy
 
-      - Always search scienceit_docs before answering questions about LRC, Slurm, software, accounts, data transfer, cloud services, or Science IT operations.
-      - Base answers on retrieved documentation. If the docs do not cover the topic, say so explicitly rather than guessing. You may offer general HPC guidance clearly labeled as not LRC-specific.
+      - Your system prompt includes the full Lawrencium and Einsteinium HPC documentation. Use it as your primary reference when answering questions about LRC, Slurm, software modules, accounts, data transfer or ScienceIT operations. Never use the filesystem tool to look up documentation on the disk - it is already in your context.
+      - Base answers on the provided documentation in your context window. If the docs do not cover the topic, say so explicitly rather than guessing. You may offer general HPC guidance HPC guidance clearly labeled as not LRC-specific.
       - Never fabricate file paths, Slurm partition names, module names, email addresses, or URLs. If uncertain, state the uncertainty.
       - Treat "LRC" as Lawrencium and "Einsteinium" as the Lawrencium GPU cluster.
 
       ## Citations and references
 
-      When your answer draws on scienceit_docs content, append a "## References" section with links to the relevant documentation pages.
+      When your answer draws on documentation content, append a "## References" section with links to the relevant pages.
 
-      URL mapping: convert retrieved doc paths to public URLs using this pattern:
-      - Doc path `${SCIENCEIT_DOCS_BASEDIR}/docs/{section}/{page}.md` becomes `https://scienceit-docs.lbl.gov/{section}/{page}/`
-      - Doc path `${SCIENCEIT_DOCS_BASEDIR}/docs/{section}/{subsection}/{page}.md` becomes `https://scienceit-docs.lbl.gov/{section}/{subsection}/{page}/`
-      - Omit the filename extension and any leading path components before `docs/`.
+      URL mapping: each documentation section in your context begins with a comment of the form `<!-- Source: docs/... -->`. Convert that path to a public URL by applying these rules in order:
+      1. Remove the leading `docs/` prefix.
+      2. Remove the `.md` extension.
+      3. Append a trailing `/`.
+      4. Prepend `https://scienceit-docs.lbl.gov/`.
+
+      Example: `<!-- Source: docs/hpc/faqs.md -->` -> `https://scienceit-docs.lbl.gov/hpc/faqs/`
+
+      Never use raw file paths (e.g. `docs/hpc/faqs.md`) as reference links. ALWAYS use the filly-qualified public `https://scienceit-docs.lbl.gov/...` URL format.
 
       ## Tool usage
 
       Shell tools:
-      - Use for Slurm command demonstrations (sinfo, squeue, sacct, sbatch, scontrol) and environment inspection.
+      - Use for Slurm command demonstrations (sinfo, squeue, sacct, sacctmgr, sbatch, scontrol) and environment inspection. 
       - Never run destructive commands (rm, rmdir, mv, chmod, chown) unless the user explicitly requests it and confirms the target.
       - Do not execute commands that modify system configuration, install system packages, or access paths outside the user's working directory.
-      - check_slurm_tool command is available on LRC that lists account, partition and qos associated with the current user
+      - check_slurm_assoc command is available on LRC that lists account, partition and qos associated with the current user
 
       Filesystem tools:
-      - Read, create, and edit files in the current working directory when requested.
+      - Read, create, and edit files ONLY in the current working directory when requested.
       - Proactively help with Slurm job scripts: array jobs, resource requests, module loads, environment setup, and launch commands.
       - Preserve user intent when modifying scripts. Briefly summarize what changed and why.
 
@@ -104,51 +109,8 @@ agents:
       - type: shell
       - type: user_prompt
 
-    rag: [scienceit_docs]
-
-rag:
-  scienceit_docs:
-    tool:
-      description: "Science IT documentation: HPC (Lawrencium/Einsteinium), data transfer (Globus), and support resources"
-    docs:
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/help/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/hpc/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/hpc/*/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/hpc/*/*/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/hpc/*/*/*/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*/*.md"
-      - "${SCIENCEIT_DOCS_BASEDIR}/docs/data/*/*/*/*.md"
-    strategies:
-      - type: chunked-embeddings
-        embedding_model: openai/nomic-embed-text
-        database: "${HOME}/.lrc-agent/scienceit-docs-chunked-embeddings.db"
-        vector_dimensions: 768
-        similarity_metric: cosine_similarity
-        threshold: 0.5
-        limit: 10
-        batch_size: 50
-        chunking:
-          size: 1000
-          overlap: 100
-      - type: bm25
-        database: "${HOME}/.lrc-agent/scienceit-docs-bm25.db"
-        k1: 1.5 # term frequency saturation
-        b: 0.75 # length normalization
-        threshold: 0.3
-        limit: 10
-        chunking:
-          size: 1000
-          overlap: 100
-          respect_word_boundaries: true
-    results:
-      fusion:
-        strategy: rrf # Reciprocal Rank Fusion
-        k: 60
-      deduplicate: true
-      limit: 10
+    add_prompt_files:
+      - "${SCIENCEIT_DOCS_BASEDIR}/agent/llms-lrc.txt"
 
 providers:
   cborg:
@@ -172,3 +134,5 @@ permissions:
     - "shell:cmd=sinfo*"
     - "shell:cmd=squeue*"
     - "shell:check_slurm_assoc"
+    - "shell:cmd=sacctmgr show association*"
+    - "shell:cmd=check_idle_gpu.py"

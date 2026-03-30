@@ -30,4 +30,4 @@ export OPENAI_BASE_URL=https://api.cborg.bk.lbl.gov/v1
 
 make -s -C $AGENT_DIR
 
-$AGENT_DIR/docker-agent run "${HOME}/.lrc-agent/agent.yaml" -a lrc-agent --hide-tool-results "$@"
+$AGENT_DIR/lrcagent run "${AGENT_DIR}/agent.yaml" -a lrc-agent --hide-tool-results "$@"

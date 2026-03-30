@@ -7,29 +7,32 @@ AGENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 BASEDIR   := $(abspath $(AGENT_DIR)/..)
 
 TEMPLATE := $(AGENT_DIR)/agent-template.yaml
-TARGET   := ${HOME}/.lrc-agent/agent.yaml
-
-DB_FILES := \
-	${HOME}/.lrc-agent/scienceit-docs-chunked-embeddings.db \
-	${HOME}/.lrc-agent/scienceit-docs-bm25.db
+TARGET   := $(AGENT_DIR)/agent.yaml
 
 .PHONY: all agent.yaml update clean help
 
-all: agent.yaml
+all: agent.yaml $(LRC_DOCS_SOURCES)
 
 # --- Build agent.yaml from template ---
 
 agent.yaml: $(TARGET)
 
+$(LRC_DOCS_FILE): $(LRC_DOCS_SOURCES)
+	@{ for f in $^; do \
+		echo "<!-- Source: $${f#$(BASEDIR)/} -->"; \
+		cat "$$f"; \
+		echo; \
+	done; } > $@
+	@echo "Generated $@ ($(words $^) doc files)"
+
 $(TARGET): $(TEMPLATE)
 	@if [ -z "$$SCIENCEIT_DOCS_BASEDIR" ]; then \
 		export SCIENCEIT_DOCS_BASEDIR="$(BASEDIR)"; \
 	fi; \
-	mkdir -p ${HOME}/.lrc-agent
-	envsubst '$$SCIENCEIT_DOCS_BASEDIR $$HOME' < "$<" > "$@"
+	envsubst '$$SCIENCEIT_DOCS_BASEDIR' < "$<" > "$@"
 	@echo "Generated $@ (SCIENCEIT_DOCS_BASEDIR=$${SCIENCEIT_DOCS_BASEDIR:-$(BASEDIR)})"
 
-# --- Git update check and RAG database refresh ---
+# --- Git update check and docs refresh ---
 
 update:
 	@cd "$(BASEDIR)" && git fetch --quiet 2>/dev/null; \
@@ -44,43 +47,17 @@ update:
 		exit 0; \
 	fi; \
 	echo "Updates are available for the scienceit-docs repository."; \
-	writable=true; \
-	mkdir -p ${HOME}/.lrc-agent \
-	for db in $(DB_FILES); do \
-		if [ -e "$$db" ] && [ ! -w "$$db" ]; then \
-			writable=false; \
-			break; \
-		fi; \
-		if [ ! -e "$$db" ]; then \
-			parent=$$(dirname "$$db"); \
-			if [ ! -w "$$parent" ]; then \
-				writable=false; \
-				break; \
-			fi; \
-		fi; \
-	done; \
-	if [ "$$writable" = "false" ]; then \
-		echo "Ask a system administrator to update the lrc-agent database."; \
-		exit 0; \
-	fi; \
-	read -rp "Pull updates and reset the RAG databases? [y/N] " answer; \
+	read -rp "Pull updates and rebuild? [y/N] " answer; \
 	case "$$answer" in \
 		[Yy]) \
-			for db in $(DB_FILES); do \
-				rm -f "$${db}-old"; \
-				if [ -e "$$db" ]; then \
-					mv -f "$$db" "$${db}-old"; \
-					echo "  Backed up $$(basename $$db) -> $$(basename $$db)-old"; \
-				fi; \
-			done; \
 			cd "$(BASEDIR)" && git pull --ff-only; \
 			if [ $$? -ne 0 ]; then \
-				echo "Warning: git pull failed. Database files have been backed up."; \
+				echo "Warning: git pull failed."; \
 				echo "You may need to resolve conflicts manually."; \
 				exit 1; \
 			fi; \
-			echo "  Repo updated. RAG databases will be rebuilt on next agent run."; \
-			$(MAKE) -f $(AGENT_DIR)/Makefile agent.yaml ;; \
+			echo " Repo updated. Rebuilding config and docs...";\
+			$(MAKE) -f $(AGENT_DIR)/Makefile ;; \
 		*) \
 			echo "Skipped." ;; \
 	esac
@@ -88,7 +65,7 @@ update:
 # --- Cleanup ---
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(LRC_DOCS_FILE)
 
 help:
 	@echo "Targets:"
