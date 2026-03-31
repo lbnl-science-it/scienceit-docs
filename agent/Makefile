@@ -8,10 +8,13 @@ BASEDIR   := $(abspath $(AGENT_DIR)/..)
 
 TEMPLATE := $(AGENT_DIR)/agent-template.yaml
 TARGET   := $(AGENT_DIR)/agent.yaml
+LRC_DOCS_FILE := $(AGENT_DIR)/llms-lrc.txt
+
+LRC_DOCS_SOURCES := $(shell find $(BASEDIR)/docs/hpc $(BASEDIR)/docs/data $(BASEDIR)/docs/help -name "*.md" -print | sort)
 
 .PHONY: all agent.yaml update clean help
 
-all: agent.yaml $(LRC_DOCS_SOURCES)
+all: agent.yaml $(LRC_DOCS_FILE)
 
 # --- Build agent.yaml from template ---
 
