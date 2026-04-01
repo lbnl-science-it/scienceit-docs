@@ -7,10 +7,10 @@ A Ray module is available on Lawrencium.
 ## Loading Ray on Lawrencium
 
 ```
-module load ml/ray/2.54.0
+module load ml/ray/2.54
 ```
 
-This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components. In addition, the python environment for Ray includes `PyTorch 2.10.0` and `torchvision 0.25.0`.
+This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components. In addition, the python environment for Ray includes `PyTorch 2.10` and `torchvision 0.25`.
 
 ## Example: Running a Ray Job with SLURM
 
@@ -31,7 +31,7 @@ submit-ray-lr6.sh
 #SBATCH --output=ray-pi-%j.out
 #SBATCH --error=ray-pi-%j.err
 
-module load ml/ray/2.54.0
+module load ml/ray/2.54
 
 # Ray head node initialization
 head_node=$(hostname)
