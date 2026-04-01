@@ -106,6 +106,7 @@ agents:
 
     toolsets:
       - type: filesystem
+        tools: ["read_file", "write_file", "edit_file"]
       - type: shell
       - type: user_prompt
 
