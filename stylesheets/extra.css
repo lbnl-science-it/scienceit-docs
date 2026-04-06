@@ -56,12 +56,12 @@ li.md-nav__item {
   color: var(--md-primary-fg-color--dark);
 }
 
-.md-announce a {
-  color: white;
+.md-banner a {
+  color: #ffcc00;
   font-weight: bold;
 }
 
-.md-announce a:hover {
+.md-banner a:hover {
   text-decoration: underline;
   color: white;
 }
@@ -114,6 +114,14 @@ iframe {
 
 .md-banner {
   background-color: var(--md-primary-fg-color--dark);
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.md-banner__inner a:visited {
+    color: white;
 }
 
 .md-typeset .admonition,
