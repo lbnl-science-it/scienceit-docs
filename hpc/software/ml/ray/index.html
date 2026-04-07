@@ -2972,6 +2972,12 @@
 <div class="highlight"><pre><span></span><code>module load ml/ray/2.54
 </code></pre></div>
 <p>This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components. In addition, the python environment for Ray includes <code>PyTorch 2.10</code> and <code>torchvision 0.25</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Ray Cluster Open OnDemand App</p>
+<p>We have a Ray Cluster OOD application that you can use to lauch a Ray cluster (one or more nodes) through <a href="https://lrc-ondemand.lbl.gov">Open OnDemand</a> . It is currently available under <code>Interactive Apps &gt; Experimental Apps &gt; Ray Cluster</code>. This OOD application requests nodes exclusively which means that the nodes allocated to this application are not shared with other jobs/users. </p>
+<p>Once the application is launched, you can open a Jupyter Lab session to run your Ray python scripts either through the notebook interface or through the terminal on the jupyter lab session.</p>
+<p>You can also open the Ray Dashboard to monitor resource usage of the Ray cluster.</p>
+</div>
 <h2 id="example-running-a-ray-job-with-slurm">Example: Running a Ray Job with SLURM<a class="headerlink" href="#example-running-a-ray-job-with-slurm" title="Permanent link">&para;</a></h2>
 <p>The following example launches a Ray cluster across two nodes in the <code>lr6</code> (exclusive) partition. Since Ray is designed to manage all resources on a node, use an exclusive partition when possible. Otherwise, request the full node in your SLURM script with <code>--exclusive</code> and <code>--mem=0</code>. </p>
 <div class="highlight"><span class="filename">submit-ray-lr6.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
