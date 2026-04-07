@@ -12,6 +12,15 @@ module load ml/ray/2.54
 
 This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components. In addition, the python environment for Ray includes `PyTorch 2.10` and `torchvision 0.25`.
 
+!!! note "Ray Cluster Open OnDemand App"
+
+    We have a Ray Cluster OOD application that you can use to lauch a Ray cluster (one or more nodes) through [Open OnDemand](https://lrc-ondemand.lbl.gov) . It is currently available under `Interactive Apps > Experimental Apps > Ray Cluster`. This OOD application requests nodes exclusively which means that the nodes allocated to this application are not shared with other jobs/users. 
+
+    Once the application is launched, you can open a Jupyter Lab session to run your Ray python scripts either through the notebook interface or through the terminal on the jupyter lab session.
+
+    You can also open the Ray Dashboard to monitor resource usage of the Ray cluster.
+
+
 ## Example: Running a Ray Job with SLURM
 
 The following example launches a Ray cluster across two nodes in the `lr6` (exclusive) partition. Since Ray is designed to manage all resources on a node, use an exclusive partition when possible. Otherwise, request the full node in your SLURM script with `--exclusive` and `--mem=0`. 
