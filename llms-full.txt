@@ -2691,10 +2691,16 @@ srun -n 1 --nodes=1 -w ${head_node} \
               --port=${port} \
               --node-ip-address=${head_node_ip} \
               --block &
-sleep 20
+
+sleep 5
+
+echo "Give Ray time to initialize"
+
+sleep 15    # you may have to increase this value to ensure ray is initialized on the head node
 
 export RAY_ADDRESS=${head_node_ip}:${port}
-# Ray worker node initialization
+
+# Ray worker node(s) initialization
 n_workers=$((SLURM_JOB_NUM_NODES - 1))
 
 if [ "$n_workers" -gt 0 ]; then
