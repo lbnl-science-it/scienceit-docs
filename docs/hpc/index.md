@@ -69,6 +69,8 @@ Condo users who would need to run outside of their condo contributions are also 
     
     instead of: $0.0050/(core*hour) * 1 core * 24 hours = $0.12.
 
+    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+
 ## Scheduler Configuration 
 
 Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.

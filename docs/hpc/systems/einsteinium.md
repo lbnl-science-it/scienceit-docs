@@ -5,7 +5,7 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 ## `es2` Partition
 `es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to the growing use of GPUs in scientific computing.
 
-| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores | CPU RAM | Infiniband |
+| Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores per Node | CPU RAM per Node | Infiniband |
 | ----------- | ----- | ------------------------ | ------------- | --------- | ------- | ---------- |
 | NVIDIA H200 | 3 | 8x 141 GB | Intel Xeon Platinum 8570 | 112 | 2 TB | NDR |
 | NVIDIA H100 | 4 | 8x 80 GB | Intel Xeon Platinum 8480+ | 112 | 1 TB | NDR |

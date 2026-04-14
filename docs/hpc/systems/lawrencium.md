@@ -10,7 +10,11 @@
 
 Lawrencium consists of multiple generations of compute nodes with the `lr8` partition being the most recent addition and the `lr4` partition the oldest still in production. In addition, there is a `lr_bigmem` partition with 1.5TB memory per node, and `cm1, cm2, cf1` partitions (details in the table below).
 
-| Partition | Nodes | CPU                  | Cores | Memory | Infiniband | 
+!!! note "LRC Jobscript Generator"
+
+    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+
+| Partition | Nodes | CPU                  | Cores per Node | Memory per Node | Infiniband | 
 | --------- | ----- | -------------------- | ----- | ------ | ---------- | 
 | lr8       | 20    | AMD EPYC 9534        | 128   | 768GB  | HDR        |
 | lr7       | 132   | Intel Xeon Gold 6330 | 56    | 256GB or 512GB  | HDR |
@@ -25,6 +29,3 @@ Lawrencium consists of multiple generations of compute nodes with the `lr8` part
 | cm2       | 3     | AMD EPYC 7454        | 64    | 256GB  | EDR |
 | cf1       | 72    | Intel Xeon Phi 7210  | 256   | 192GB  | FDR |
 
-!!! note "LRC Jobscript Generator"
-
-    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting these different systems.
