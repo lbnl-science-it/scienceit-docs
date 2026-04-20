@@ -15,7 +15,7 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the charging factor of 2.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 28 Service Units (SUs).
 
 Examples:
 
@@ -65,18 +65,18 @@ python train.py
 
 `es1` is a partition consisting of multiple GPU node types to address the different research needs. These include:
 
-| Accelerator     | Nodes | GPUs per Node/GPU Memory | CPU Processor      | CPU Cores | CPU RAM       | Infiniband |
-| --------------- | ----- | ------------------------ | ------------------ | --------- | ------------- | ---------- |
-| NVIDIA A100     | 1     | 4x 80 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
-| NVIDIA A40      | 30    | 4x 48 GB                 | AMD EPYC 7742      | 64        | 512 GB        | FDR        |
-| NVIDIA GRTX8000 | 1     | 4x 48 GB                 | AMD EPYC 7713      | 64        | 512 GB        | HDR        |
-| NVIDIA V100     | 15    | 2x 32 GB                 | Intel Xeon E5-2623 | 8         | 64GB or 192GB | FDR        |
+| Accelerator     | Nodes | GPUs per Node/GPU Memory | CPU Processor      | CPU Cores per Node | CPU RAM per Node | Infiniband |
+| --------------- | ----- | ------------------------ | ------------------ | ------------------ | ---------------- | ---------- |
+| NVIDIA A100     | 1     | 4x 80 GB                 | AMD EPYC 7713      | 64                 | 512 GB           | HDR        |
+| NVIDIA A40      | 30    | 4x 48 GB                 | AMD EPYC 7742      | 64                 | 512 GB           | FDR        |
+| NVIDIA GRTX8000 | 1     | 4x 48 GB                 | AMD EPYC 7713      | 64                 | 512 GB           | HDR        |
+| NVIDIA V100     | 15    | 2x 32 GB                 | Intel Xeon E5-2623 | 8                  | 64GB or 192GB    | FDR        |
 
 ### How to specify desired GPU card(s)
 
 The normal `qos` for the `es1` partition is called `es_normal`.
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#.
 
 Examples:
 

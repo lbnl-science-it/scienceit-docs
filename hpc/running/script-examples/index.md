@@ -163,16 +163,20 @@ To help the job scheduler effectively manage the use of GPUs, your job submissio
 | H100     | 8             | 112                | 1:14          |
 | H200     | 8             | 112                | 1:14          |
 
-Here’s how to request two CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
-
-For instance, in the above example, one GPU was requested via `--gres=gpu:1`, and the required total of two CPUs was thus requested via the combination of `--ntasks=1` and `--cpus-per-task=2` . Similarly, if your job script requests four GPUs via `--gres=gpu:4`, and uses `--ntasks=8`, it should also include `--cpus-per-task=1` to request the required total of eight CPUs.
-
-Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node (which is provided [here for the various GPU types](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md)). This is because the feature is associated with how many GPUs per node to request.
+Here’s how to request CPUs for each GPU: the total of CPUs requested results from multiplying two settings: the number of tasks (`--ntasks=`) and CPUs per task (`--cpus-per-task=`).
 
 Examples:
 
-- Request one V100 card: `--partition=es1 --cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1`
+- Request one A40 card: `--partition=es1 --cpus-per-task=16 --gres=gpu:A40:1 --ntasks=1`
 - Request two A40 cards: `--partition=es1 --cpus-per-task=16 --gres=gpu:A40:2 --ntasks=2`
+
+In the second example above, two GPUs were requested via `--gres=gpu:2`, and the required total of 32 CPUs was thus requested via the combination of `--ntasks=2` and `--cpus-per-task=16`.
+
+Note that in the `--gres=gpu:n` specification, `n` must be between 1 and the number of GPUs on a single node. This is because the feature is associated with how many GPUs per node to request.
+
+Other Examples:
+
+- Request one V100 card: `--partition=es1 --cpus-per-task=4 --gres=gpu:V100:1 --ntasks=1`
 - Request three H100 cards: `--partition=es2 --cpus-per-task=14 --gres=gpu:H100:3 --ntasks=3`
 - Request one H200 card: `--partition=es2 --cpus-per-task=14 --gres=gpu:H200:1 --ntasks=1 --mem-per-cpu=18400M`
 
@@ -191,11 +195,12 @@ When requesting one or more GPUs on a H200 node on the `es2` partition, we recom
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #
-# Processors per task (on `es1` please always specify the total number of processors at least twice the number of GPUs):
-#SBATCH --cpus-per-task=2
+# Processors per task (for A40, need 16 CPUs per GPU):
+#SBATCH --cpus-per-task=16
 #
-#Number of GPUs, this can be in the format of "gpu:[1-4]", or "gpu:V100:[1-4] with the type included
-#SBATCH --gres=gpu:1
+# Type and Number of GPUs, in the format
+# "gpu:[1-4]" or "gpu:A40:[1-4]"
+#SBATCH --gres=gpu:A40:1
 #
 # Wall clock limit:
 #SBATCH --time=1:00:00
