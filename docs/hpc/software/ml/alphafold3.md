@@ -29,12 +29,12 @@ Below is a sample script to run `alphafold3` after loading `ml/alphafold3` modul
     ``` bash title="af3_example.sh"
     #!/bin/bash
     #SBATCH --account=<account>
-    #SBATCH --partition=es1
+    #SBATCH --partition=es2
     #SBATCH --gres=gpu:H100:1
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=14
     #SBATCH --nodes=1
-    #SBATCH --qos=es_normal
+    #SBATCH --qos=es2_normal
     #SBATCH --time=1:30:00
 
     module load ml/alphafold3
@@ -97,12 +97,12 @@ Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) po
         ``` bash
         #!/bin/bash
         #SBATCH --account=<account>
-        #SBATCH --partition=es1
+        #SBATCH --partition=es2
         #SBATCH --cpus-per-task=14
         #SBATCH --ntasks=1
         #SBATCH --nodes=1
         #SBATCH --gres=gpu:H100:1
-        #SBATCH --qos=es_normal
+        #SBATCH --qos=es2_normal
         #SBATCH --time=0:30:0
         #SBATCH --kill-on-invalid-dep=yes
         #SBATCH --job-name=inf_h100
