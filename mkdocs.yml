@@ -58,6 +58,7 @@ nav:
               - Intel VTune: hpc/software/performance/intel-vtune.md
           - LLMs: 
               - Ollama: hpc/software/llms/ollama.md
+              - vLLM: hpc/software/llms/vllm.md
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm-overview.md
           - Example Scripts: hpc/running/script-examples.md
