@@ -2520,12 +2520,12 @@ af3_example.sh
 ```
 #!/bin/bash
 #SBATCH --account=<account>
-#SBATCH --partition=es1
+#SBATCH --partition=es2
 #SBATCH --gres=gpu:H100:1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=14
 #SBATCH --nodes=1
-#SBATCH --qos=es_normal
+#SBATCH --qos=es2_normal
 #SBATCH --time=1:30:00
 
 module load ml/alphafold3
@@ -2586,12 +2586,12 @@ apptainer exec --bind $PWD/af_input:/root/af_input \
 ```
 #!/bin/bash
 #SBATCH --account=<account>
-#SBATCH --partition=es1
+#SBATCH --partition=es2
 #SBATCH --cpus-per-task=14
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:H100:1
-#SBATCH --qos=es_normal
+#SBATCH --qos=es2_normal
 #SBATCH --time=0:30:0
 #SBATCH --kill-on-invalid-dep=yes
 #SBATCH --job-name=inf_h100
