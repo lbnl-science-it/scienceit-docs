@@ -27,6 +27,15 @@ Lawrencium cluster users are entitled to access the following storage systems so
 | GROUP-SW | `/global/home/groups-sw/$group` | 200GB | Yes | Per Group | Group directory for software and data sharing with backup |
 | GROUP | `/global/home/groups/$group` | 400GB | No | Per Group | Group directory for data sharing without backup |
 | SCRATCH | `/global/scratch/users/$user` | None | No | Per User | Scratch directory with Lustre high performance parallel file system |
+
+!!! note "Project Group Directories"
+
+    Project group directories are not created by default. If you would like to create group directories where your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
+
+Private storage for condo users follow the structure `/clusterfs/$CONDO_NAME/$USER`. For example:
+
+| Name      | Location | Quota | Backup | Allocation | Description |
+| --------- | -------- | ----- | ------ | ---------- | ----------- |
 | CLUSTERFS | `/clusterfs/axl/$USER` | None | No | Per User | Private storage for AXL condo | 
 | CLUSTERFS | `/clusterfs/cumulus/$USER` | None | No | Per User | Private storage for CUMULUS condo | 
 | CLUSTERFS | `/clusterfs/esd/$USER` | None | No | Per User | Private storage for ESD condo | 
@@ -65,9 +74,9 @@ Condo users who would need to run outside of their condo contributions are also 
 
     The usage calculation is based on the resource that is allocated to the job instead of the actual usage of the job. For example, if a job asked for one `lr5` node with one CPU requirement (typical serial job case), and the job ran for 24 hours, since **lr5** nodes are allocated **exclusively** to the job (please refer to the following Scheduler Configuration section for more detail), the charge that this job incurred would be: 
     
-    **$0.0050/(core * hour) * 1 node * 24 cores/node * 24 hours = $2.88**
+    **$0.0050/(core x hour) x 1 node x 24 cores/node x 24 hours = $2.88**
     
-    instead of: $0.0050/(core*hour) * 1 core * 24 hours = $0.12.
+    instead of: $0.0050/(core x hour) x 1 core x 24 hours = $0.12.
 
     You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
 
