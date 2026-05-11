@@ -16,6 +16,41 @@ Please substitute with your actual `account_name` and other relevant parameters.
 srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per-task=2 --pty bash
 ```
 
+- Load the `ollama/0.20.7` module
+
+  ```
+  module load ai/ollama/0.20.7
+  ```
+
+- Launch the ollama server in the background
+
+  ```
+  ollama serve > /dev/null 2>&1 &
+  ```
+
+- List the available models
+
+  ```
+  ollama list
+  NAME           ID              SIZE      MODIFIED   
+  gemma4:e2b     7fbdbf8f5e45    7.2 GB    5 days ago    
+  qwen3.6:35b    07d35212591f    23 GB     5 days ago    
+  gemma4:e4b     c6eb396dbd59    9.6 GB    5 days ago    
+  gemma4:31b     6316f0629137    19 GB     5 days ago
+  ```
+
+- Run an available model and obtain a terminal chat interface
+
+  ```
+  ollama run gemma4:e4b
+  ```
+
+- Run a particular model with a prompt and save the response to a file
+
+  ```
+  ollama run gemma4:e4b Why is the sky blue? > response.txt
+  ```
+
 - Load the `ollama/0.12.6` module
 
   ```
