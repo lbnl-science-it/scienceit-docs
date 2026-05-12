@@ -69,6 +69,7 @@
 - [Globus for Google Drive](https://scienceit-docs.lbl.gov/data/globus-google-drive/index.md)
 - [Globus for Lawrencium](https://scienceit-docs.lbl.gov/data/globus-instructions/index.md)
 - [Globus](https://scienceit-docs.lbl.gov/data/globus/index.md)
+- [Scratch filesystem](https://scienceit-docs.lbl.gov/data/scratch-filesystem/index.md)
 
 ## Cloud Services
 
