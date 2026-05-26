@@ -12,7 +12,7 @@ module load ml/pytorch
 
 `module load ml/pytorch` will additionally load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](../../openondemand/overview.md), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.  
+If you use jupyter server on [lrc-openondemand](../../openondemand/overview.md), pytorch kernels `torch 2.0.1` and `torch 2.3.1` are available.  
 
 ## Multi-GPU jobs
 

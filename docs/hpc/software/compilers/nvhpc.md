@@ -8,7 +8,7 @@ module load nvhpc/23.11
 
 The `nvhpc` module consists of the following compilers:
 
-* C: `nvc`,
+* C: `nvc`
 * C++: `nvc++` 
 * Fortran: `nvfortran`
 

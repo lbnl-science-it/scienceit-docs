@@ -58,4 +58,4 @@ Open MPI compiler wrappers `mpicc`, `mpicxx`, `mpifort` can be used to compile M
 
         `mpifort` is the MPI wrapper to the gfortran compiler.
 
-The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slrum job script.
+The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slurm job script.

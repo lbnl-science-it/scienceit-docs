@@ -18,7 +18,7 @@ export PATH=$VTUNE_PROFILER_DIR/bin64:$PATH
 ```
 
 ### Command Line Profiling
-To perform a basic "hotspots" analysis on a compiled binar (`program`), you can run the following within a slurm job or interactive session:
+To perform a basic "hotspots" analysis on a compiled binary (`program`), you can run the following within a slurm job or interactive session:
 ```
 vtune -collect hotspots -r ./vtune_results ./program
 ```

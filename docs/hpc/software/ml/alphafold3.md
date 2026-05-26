@@ -1,5 +1,5 @@
 # AlphaFold 3 on Lawrencium
-[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git){:target="_blank"} {{ ext }} is a new AI model developed by [Google DeepMind](https://deepmind.google/){:target="_blank"} {{ ext }} and [Isomorphic Labs](https://www.isomorphiclabs.com/){:target="_blank"} {{ ext }} for generating 3D predictions of biological systems. The software package and the public database is now available ont the Lawrencium cluster.
+[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git){:target="_blank"} {{ ext }} is a new AI model developed by [Google DeepMind](https://deepmind.google/){:target="_blank"} {{ ext }} and [Isomorphic Labs](https://www.isomorphiclabs.com/){:target="_blank"} {{ ext }} for generating 3D predictions of biological systems. The software package and the public database are now available ont the Lawrencium cluster.
 
 ## Genetic Databases 
 The genetic database required for AlphaFold 3 is saved under the shared directory `/clusterfs/collections/Alphafold3/public-db` on the cluster.
@@ -117,7 +117,7 @@ Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) po
                             --bind $DB_DIR:/root/public_databases \
                             $ALPHAFOLD_DIR/alphafold3.sif \
                             python /app/alphafold/run_alphafold.py \
-                            --json_path=/oot/af_output/<job_name>/<job_name>_data.json \ 
+                            --json_path=/root/af_output/<job_name>/<job_name>_data.json \ 
                             --model_dir=/root/models \
                             --db_dir=/root/af_output/<job_name> \
                             --run_data_pipeline=false \
