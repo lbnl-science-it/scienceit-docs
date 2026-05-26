@@ -92,7 +92,7 @@ Ollama should only be run on compute nodes. While some smaller models may be run
     module load ai/ollama/0.6.8
     ```
 
-    * Lauch the ollama server in the background
+    * Launch the ollama server in the background
     ```
     ollama serve > /dev/null 2>&1 &
     ```
