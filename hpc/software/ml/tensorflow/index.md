@@ -8,11 +8,11 @@ module load ml/tensorflow
 
 Tensorflow versions
 
-Use `module spider tensorflow` to get information on the versions of pytorch available as modules.
+Use `module spider tensorflow` to get information on the versions of tensorflow available as modules.
 
 `module load ml/tensorflow` will load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), tensorflow kernels `tf 2.15.0` ard `tf 2.14.0` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), tensorflow kernels `tf 2.15.0` and `tf 2.14.0` are available.
 
 ## Example SLURM script
 

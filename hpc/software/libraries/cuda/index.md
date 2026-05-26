@@ -11,11 +11,11 @@ loads CUDA Toolkit version 12.2.1. The environment variable `CUDA_HOME` is set b
 
 ## Nsight Systems
 
-The performance analysis tool NVIDIA [Nsight Systems](https://developer.nvidia.com/nsight-systems) is part of the CUDA Toolkit. For example once `gcc/11.4.0` and `cuda/12.2.1` are loaded as shown above, you can use the `nsys` executable.
+The performance analysis tool NVIDIA [Nsight Systems](https://developer.nvidia.com/nsight-systems) is part of the CUDA Toolkit. For example once `gcc/11.4.0` and `cuda/12.8.0` are loaded as shown above, you can use the `nsys` executable.
 
 ```
-nys --version
-NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
+nsys --version
+NVIDIA Nsight Systems version 2024.6.2.225-246235244400v0
 ```
 
 The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md).

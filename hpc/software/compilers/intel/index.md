@@ -10,7 +10,7 @@ module load intel-oneapi-compilers/2025.2.1
 
 Some relevant reference pages on the intel documentation website for the `2025.2.1` version of oneAPI compilers installed on Lawrencium are listed below:
 
-- [Intel oneAPI DPC++/C++ Compiler Developer Gude and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2025-2/overview.html)
+- [Intel oneAPI DPC++/C++ Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2025-2/overview.html)
 - [Intel Fortran Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-2/overview.html)
 
 ## Intel oneAPI Compilers 2023

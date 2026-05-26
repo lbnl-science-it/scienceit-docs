@@ -1,12 +1,12 @@
 Draft - Work in Progress
 
-This is a work in progress draft page. The final details and scratch purge policy implementaiton might be different from what you see in this draft.
+This is a work in progress draft page. The final details and scratch purge policy implementation might be different from what you see in this draft.
 
 # Lawrencium Scratch Filesystem
 
 ## Overview
 
-The Lawrencium `SCRATCH` filesystem is a high-performance Lustre file system designed for cluster jobs with significant I/O needs. It provides large-scale storage intended for temporary data processing and active job execution; it should not be used to long-term data storage. The Lawrencium `SCRATCH` filesystem currently has more than 7 PB of disk space.
+The Lawrencium `SCRATCH` filesystem is a high-performance Lustre file system designed for cluster jobs with significant I/O needs. It provides large-scale storage intended for temporary data processing and active job execution; it should not be used for long-term data storage. The Lawrencium `SCRATCH` filesystem currently has more than 7 PB of disk space.
 
 ## Path and Access
 
@@ -16,7 +16,7 @@ Your personal scratch directory is located at:
 /global/scratch/users/$USER
 ```
 
-and can be referenced usin the environment variable `$SCRATCH`.
+and can be referenced using the environment variable `$SCRATCH`.
 
 ## Scratch Purge Policy
 
@@ -36,4 +36,4 @@ For long-term data storage, ScienceIT offers [SPSS service](https://it.lbl.gov/s
 
 **Regular Cleanup**: Removing old or temporary files when you are done processing them helps the cluster by freeing up space and improving performance.
 
-**Avoid using large number of files**: Whenever possible, you should use fewer number of files rather than millions of small individual files. This is because there are filesystem limits on the number of files in addition to the space. You can make use archive formats (tar, zip) as well as libraries such as HDF5 to limit the number of files.
+**Avoid using a large number of files**: Whenever possible, you should use fewer number of files rather than millions of small individual files. This is because there are filesystem limits on the number of files in addition to the space. You can make use archive formats (tar, zip) as well as libraries such as HDF5 to limit the number of files.

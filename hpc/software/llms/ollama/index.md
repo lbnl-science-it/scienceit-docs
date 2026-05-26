@@ -95,7 +95,7 @@ srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per
   module load ai/ollama/0.6.8
   ```
 
-- Lauch the ollama server in the background
+- Launch the ollama server in the background
 
   ```
   ollama serve > /dev/null 2>&1 &

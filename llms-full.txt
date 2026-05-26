@@ -1775,7 +1775,7 @@ Users are encouraged to install domain scientific software packages or local sof
 
 # VASP on Lawrencium
 
-The Vienna Ab initio Simulation Package ([VASP](https://www.vasp.at/)) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the [VASP: Access Request form](https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog) to be added to the linux groups authorized to use VASP. Please, provide the proof of purchase with this request. Please feel free to reach out to us at scienceithelp@lbl.gov if you would like us to update the version of the package.
+The Vienna Ab initio Simulation Package ([VASP](https://www.vasp.at/)) is a suite for quantum-mechanical molecular dynamics (MD) simulations and electronic structure calculations. VASP is a licensed package and the license is sold on a research group basis. HPCS group has compiled a VASP 6.4.1 version of the package on Lawrencium. License holder users or group of users can get access to package on request. New licensees need to complete the [VASP: Access Request form](https://docs.google.com/forms/d/e/1FAIpQLSe9dO-dcdcsVqqhiYv4TDhxtjmezjzxs9GvOfF9_C3Lje-E5A/viewform?usp=dialog) to be added to the linux groups authorized to use VASP. Please provide the proof of purchase with this request. Please feel free to reach out to us at scienceithelp@lbl.gov if you would like us to update the version of the package.
 
 VASP binaries provided on Lawrencium are compiled targeting CPU or GPU partitions. Following guidelines can help users to run vasp calculation.
 
@@ -1886,7 +1886,7 @@ module load intel-oneapi-compilers/2025.2.1
 
 Some relevant reference pages on the intel documentation website for the `2025.2.1` version of oneAPI compilers installed on Lawrencium are listed below:
 
-- [Intel oneAPI DPC++/C++ Compiler Developer Gude and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2025-2/overview.html)
+- [Intel oneAPI DPC++/C++ Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/dpcpp-cpp-compiler/developer-guide-reference/2025-2/overview.html)
 - [Intel Fortran Compiler Developer Guide and Reference](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-2/overview.html)
 
 ## Intel oneAPI Compilers 2023
@@ -1930,7 +1930,7 @@ module load nvhpc/23.11
 
 The `nvhpc` module consists of the following compilers:
 
-- C: `nvc`,
+- C: `nvc`
 - C++: `nvc++`
 - Fortran: `nvfortran`
 
@@ -2137,11 +2137,11 @@ loads CUDA Toolkit version 12.2.1. The environment variable `CUDA_HOME` is set b
 
 ## Nsight Systems
 
-The performance analysis tool NVIDIA [Nsight Systems](https://developer.nvidia.com/nsight-systems) is part of the CUDA Toolkit. For example once `gcc/11.4.0` and `cuda/12.2.1` are loaded as shown above, you can use the `nsys` executable.
+The performance analysis tool NVIDIA [Nsight Systems](https://developer.nvidia.com/nsight-systems) is part of the CUDA Toolkit. For example once `gcc/11.4.0` and `cuda/12.8.0` are loaded as shown above, you can use the `nsys` executable.
 
 ```
-nys --version
-NVIDIA Nsight Systems version 2023.2.3.1001-32894139v0
+nsys --version
+NVIDIA Nsight Systems version 2024.6.2.225-246235244400v0
 ```
 
 The graphical user interface for the Nsight Systems can be utilized by running `nsys-ui` on the Desktop application through [Open OnDemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md).
@@ -2406,7 +2406,7 @@ srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per
   module load ai/ollama/0.6.8
   ```
 
-- Lauch the ollama server in the background
+- Launch the ollama server in the background
 
   ```
   ollama serve > /dev/null 2>&1 &
@@ -2529,7 +2529,7 @@ Please follow the official [vLLM documentation](https://docs.vllm.ai/en/v0.19.0/
 
 # AlphaFold 3 on Lawrencium
 
-[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git) is a new AI model developed by [Google DeepMind](https://deepmind.google/) and [Isomorphic Labs](https://www.isomorphiclabs.com/) for generating 3D predictions of biological systems. The software package and the public database is now available ont the Lawrencium cluster.
+[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git) is a new AI model developed by [Google DeepMind](https://deepmind.google/) and [Isomorphic Labs](https://www.isomorphiclabs.com/) for generating 3D predictions of biological systems. The software package and the public database are now available ont the Lawrencium cluster.
 
 ## Genetic Databases
 
@@ -2650,7 +2650,7 @@ apptainer exec --nv --bind $PWD/af_input:/root/af_input \
                     --bind $DB_DIR:/root/public_databases \
                     $ALPHAFOLD_DIR/alphafold3.sif \
                     python /app/alphafold/run_alphafold.py \
-                    --json_path=/oot/af_output/<job_name>/<job_name>_data.json \ 
+                    --json_path=/root/af_output/<job_name>/<job_name>_data.json \ 
                     --model_dir=/root/models \
                     --db_dir=/root/af_output/<job_name> \
                     --run_data_pipeline=false \
@@ -2685,7 +2685,7 @@ Use `module spider pytorch` to get information on the versions of pytorch availa
 
 `module load ml/pytorch` will additionally load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), pytorch kernels `torch 2.0.1` ard `torch 2.3.1` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), pytorch kernels `torch 2.0.1` and `torch 2.3.1` are available.
 
 ## Multi-GPU jobs
 
@@ -2916,11 +2916,11 @@ module load ml/tensorflow
 
 Tensorflow versions
 
-Use `module spider tensorflow` to get information on the versions of pytorch available as modules.
+Use `module spider tensorflow` to get information on the versions of tensorflow available as modules.
 
 `module load ml/tensorflow` will load other dependent modules such as `cuda`.
 
-If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), tensorflow kernels `tf 2.15.0` ard `tf 2.14.0` are available.
+If you use jupyter server on [lrc-openondemand](https://scienceit-docs.lbl.gov/hpc/openondemand/overview/index.md), tensorflow kernels `tf 2.15.0` and `tf 2.14.0` are available.
 
 ## Example SLURM script
 
@@ -3065,7 +3065,7 @@ mpifort -o hellofortran hello_world.f90
 
 `mpifort` is the MPI wrapper to the gfortran compiler.
 
-The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slrum job script.
+The `gcc/openmpi` compiled binaries can be launched directly through `srun` inside of a slurm job script.
 
 # Gprof
 
@@ -3135,7 +3135,7 @@ export PATH=$VTUNE_PROFILER_DIR/bin64:$PATH
 
 ### Command Line Profiling
 
-To perform a basic "hotspots" analysis on a compiled binar (`program`), you can run the following within a slurm job or interactive session:
+To perform a basic "hotspots" analysis on a compiled binary (`program`), you can run the following within a slurm job or interactive session:
 
 ```
 vtune -collect hotspots -r ./vtune_results ./program
@@ -3887,13 +3887,13 @@ If you see a connector you would like us to support, please send email to [hpcsh
 
 Draft - Work in Progress
 
-This is a work in progress draft page. The final details and scratch purge policy implementaiton might be different from what you see in this draft.
+This is a work in progress draft page. The final details and scratch purge policy implementation might be different from what you see in this draft.
 
 # Lawrencium Scratch Filesystem
 
 ## Overview
 
-The Lawrencium `SCRATCH` filesystem is a high-performance Lustre file system designed for cluster jobs with significant I/O needs. It provides large-scale storage intended for temporary data processing and active job execution; it should not be used to long-term data storage. The Lawrencium `SCRATCH` filesystem currently has more than 7 PB of disk space.
+The Lawrencium `SCRATCH` filesystem is a high-performance Lustre file system designed for cluster jobs with significant I/O needs. It provides large-scale storage intended for temporary data processing and active job execution; it should not be used for long-term data storage. The Lawrencium `SCRATCH` filesystem currently has more than 7 PB of disk space.
 
 ## Path and Access
 
@@ -3903,7 +3903,7 @@ Your personal scratch directory is located at:
 /global/scratch/users/$USER
 ```
 
-and can be referenced usin the environment variable `$SCRATCH`.
+and can be referenced using the environment variable `$SCRATCH`.
 
 ## Scratch Purge Policy
 
@@ -3923,7 +3923,7 @@ For long-term data storage, ScienceIT offers [SPSS service](https://it.lbl.gov/s
 
 **Regular Cleanup**: Removing old or temporary files when you are done processing them helps the cluster by freeing up space and improving performance.
 
-**Avoid using large number of files**: Whenever possible, you should use fewer number of files rather than millions of small individual files. This is because there are filesystem limits on the number of files in addition to the space. You can make use archive formats (tar, zip) as well as libraries such as HDF5 to limit the number of files.
+**Avoid using a large number of files**: Whenever possible, you should use fewer number of files rather than millions of small individual files. This is because there are filesystem limits on the number of files in addition to the space. You can make use archive formats (tar, zip) as well as libraries such as HDF5 to limit the number of files.
 # Cloud Services
 
 # Cloud Services
