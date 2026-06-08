@@ -9,6 +9,8 @@ The available Apps/services include:
 * RStudio
 * Matlab
 * VS Code
+* Ray Cluster
+* Desktop
 * File browsing
 * Slurm job listing
 * Terminal/shell access (under the "Clusters" tab)
@@ -78,6 +80,7 @@ Additionally, Open OnDemand provides the following interactive apps.
 * MATLAB
 * RStudio Server
 * VS Code Server
+* Ray Cluster
 
 Click on a tab below to learn more about these interactive apps.
 
@@ -134,6 +137,17 @@ Click on a tab below to learn more about these interactive apps.
         * Select *VS Code Server* from the *Interactive Apps* menu.
         * Provide the job specification you want for the VS Code server.
         * Once VS Code Server is ready, click *Connect to VS Code* to access VS Code.
+
+    === "Ray Cluster"
+    
+        The Ray Cluster application allows you to launch a [Ray](https://docs.ray.io/) cluster with one or multiple nodes and access it through a Jupyter Lab session. The python environment for the Ray cluster includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components, as well as PyTorch for machine learning. Through this Open Ondemand application, you can also open a Ray Dashboard page to monitor resource usage of your Ray cluster. This application requests nodes exclusively even on shared partitions such as lr7, lr8, and es partitions.
+
+        **Steps:**
+
+        * Select *Ray Cluster* from the *Interactive Apps* menu.
+        * Provide the job specification you want for the Ray cluster.
+        * Wait for the job to start. The Ray cluster application takes a longer time (1-2 minuts) to start compared to other applications.
+        * Once the Ray cluster is ready, click *Connect to Jupyter* to access Jupyter Lab interface or click on *Ray Dashboard* to access the dashboard.
 
 
 !!! warning "Job run time"
