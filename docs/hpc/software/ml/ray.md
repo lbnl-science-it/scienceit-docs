@@ -14,7 +14,7 @@ This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib 
 
 !!! note "Ray Cluster Open OnDemand App"
 
-    We have a Ray Cluster OOD application that you can use to lauch a Ray cluster (one or more nodes) through [Open OnDemand](https://lrc-ondemand.lbl.gov) . It is currently available under `Interactive Apps > Experimental Apps > Ray Cluster`. This OOD application requests nodes exclusively which means that the nodes allocated to this application are not shared with other jobs/users. 
+    We have a Ray Cluster OOD application that you can use to lauch a Ray cluster (one or more nodes) through [Open OnDemand](https://lrc-ondemand.lbl.gov) . It is available under `Interactive Apps > Servers > Ray Cluster`. This OOD application requests nodes exclusively which means that the nodes allocated to this application are not shared with other jobs/users. 
 
     Once the application is launched, you can open a Jupyter Lab session to run your Ray python scripts either through the notebook interface or through the terminal on the jupyter lab session.
 
