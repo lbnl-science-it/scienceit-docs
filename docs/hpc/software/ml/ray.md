@@ -7,7 +7,7 @@ A Ray module is available on Lawrencium.
 ## Loading Ray on Lawrencium
 
 ```
-module load ml/ray/2.54
+module load ml/ray/2.54.1
 ```
 
 This ray module includes Ray Core, Ray Train, Ray Tune, Ray Serve and Ray RLlib components. In addition, the python environment for Ray includes `PyTorch 2.10` and `torchvision 0.25`.
@@ -38,7 +38,7 @@ The following example launches a Ray cluster across two nodes in the `lr6` (excl
 #SBATCH --output=ray-pi-%j.out
 #SBATCH --error=ray-pi-%j.err
 
-module load ml/ray/2.54
+module load ml/ray/2.54.1
 
 # Ray head node initialization
 head_node=$(hostname)
@@ -55,8 +55,8 @@ srun -n 1 --nodes=1 -w ${head_node} \
 sleep 5
 
 echo "Give Ray time to initialize"
-
-sleep 15    # you may have to increase this value to ensure ray is initialized on the head node
+# increase the sleep time if needed to ensure ray is properly initialized
+sleep 15 
 
 export RAY_ADDRESS=${head_node_ip}:${port}
 
@@ -120,3 +120,51 @@ pi = sum(output)*4/len(output)
 print(float(pi))
 print (abs(pi-math.pi)/pi)
 ```
+
+## Adding Worker Nodes to a Running Ray Cluster
+
+If you need more compute resources than you anticipated when you started a Ray cluster, you can add worker nodes to a Ray cluster. We will walk through how to do this to a Ray cluster that was started through Open OnDemand.
+
+#### Step 1: Get the Ray cluster details
+
+From the OOD Ray cluster app, open a terminal in JupyterLab and run the following commands to retrieve the following values:
+```
+echo $RAY_ADDRESS
+more $RAY_AUTH_TOKEN_PATH
+```
+You will need these values in the Slurm script to add a new worker node.
+
+#### Step 2: Submit a worker node job
+
+``` bash title="add-ray-worker.sh"
+
+#!/bin/bash
+
+#SBATCH --job-name=ray-worker
+#SBATCH --partition=lr6
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --account=<account>
+#SBATCH --time=00:30:00
+#SBATCH --qos=lr_normal
+#SBATCH --output=ray-worker-%j.out
+#SBATCH --error=ray-worker-%j.err
+
+module load ml/ray/2.54.1
+
+export RAY_ADDRESS=<head-node-ip>:<port>      # from echo $RAY_ADDRESS
+export RAY_AUTH_MODE=token
+export RAY_AUTH_TOKEN="<your-token>"          # from more $RAY_AUTH_TOKEN_PATH
+
+srun -n 1 --nodes=1 \
+         --ntasks-per-node=1 \
+         ray start --address=${RAY_ADDRESS} --block
+```
+
+Replace `<head-node-ip>:<port>` and `<your-token>` with the values from Step 1, then submit: `sbatch add-ray-worker.sh`.
+
+!!! note "Notes"
+
+    * The new worker node job's wall time should not exceed the remaining wall time of the Ray cluster session. The worker will disconnect when either job ends.
+
+You should see the additional resources (node, CPUs, GPUs, memory) on the Ray Dashboard, and Ray can utilize the additional worker resources for any pending tasks.
