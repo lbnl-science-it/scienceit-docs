@@ -19,6 +19,7 @@ If you use jupyter server on [lrc-openondemand](../../openondemand/overview.md),
 A sample for a multi-GPU PyTorch code can be found on the [Distributed PyTorch tutorial](https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series){:target="_blank"} {{ ext }} examples on github. The SLURM script provided in the pytorch examples folder can be adapted to run on our cluster. The SLURM script provided below runs the `multinode.py` pytorch script on four A40 GPU cards distributed over two nodes:
 
 ``` bash title="multinode_torchrun_es1.sh"
+#!/bin/bash
 #SBATCH --job-name=ddp_on_A40
 #SBATCH --partition=es1
 #SBATCH --nodes=2
