@@ -2983,7 +2983,8 @@
 <p>If you use jupyter server on <a href="../../../openondemand/overview/">lrc-openondemand</a>, pytorch kernels <code>torch 2.0.1</code> and <code>torch 2.3.1</code> are available.  </p>
 <h2 id="multi-gpu-jobs">Multi-GPU jobs<a class="headerlink" href="#multi-gpu-jobs" title="Permanent link">&para;</a></h2>
 <p>A sample for a multi-GPU PyTorch code can be found on the <a href="https://github.com/pytorch/examples/tree/main/distributed/ddp-tutorial-series" target="_blank">Distributed PyTorch tutorial</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> examples on github. The SLURM script provided in the pytorch examples folder can be adapted to run on our cluster. The SLURM script provided below runs the <code>multinode.py</code> pytorch script on four A40 GPU cards distributed over two nodes:</p>
-<div class="highlight"><span class="filename">multinode_torchrun_es1.sh</span><pre><span></span><code><span class="c1">#SBATCH --job-name=ddp_on_A40</span>
+<div class="highlight"><span class="filename">multinode_torchrun_es1.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=ddp_on_A40</span>
 <span class="c1">#SBATCH --partition=es1</span>
 <span class="c1">#SBATCH --nodes=2</span>
 <span class="c1">#SBATCH --ntasks-per-node=1</span>
@@ -3077,7 +3078,7 @@ srun<span class="w"> </span>torchrun<span class="w"> </span>--nnodes<span class=
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 12, 2026</span>
   </span>
 
     

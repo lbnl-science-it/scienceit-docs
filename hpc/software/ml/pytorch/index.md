@@ -21,6 +21,7 @@ A sample for a multi-GPU PyTorch code can be found on the [Distributed PyTorch t
 multinode_torchrun_es1.sh
 
 ```
+#!/bin/bash
 #SBATCH --job-name=ddp_on_A40
 #SBATCH --partition=es1
 #SBATCH --nodes=2
