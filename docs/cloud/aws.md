@@ -50,5 +50,5 @@ For MFA, you can use a physical hardware token, an Authenticator app, or a Passk
 ## Important Notes
 
 * **Account Management:** The Science IT cloud team manages all LBNL AWS accounts.
-* **Security:** MFA is mandatory for the root user on all LBNL AWS accounts.
+* **Security:** MFA is mandatory for all LBNL AWS users, both the AWS account root user and all IAM users.
 * **Support:** For any questions or assistance, contact the Science IT cloud team at `scienceit@lbl.gov`.
