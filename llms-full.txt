@@ -2919,6 +2919,8 @@ print(f'Running {FULL_SAMPLE_COUNT} tests took {dur} seconds')
 pi = sum(output)*4/len(output)
 print(float(pi))
 print (abs(pi-math.pi)/pi)
+
+ray.shutdown()
 ```
 
 ## Adding Worker Nodes to a Running Ray Cluster
