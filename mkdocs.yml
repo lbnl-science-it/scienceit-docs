@@ -69,7 +69,6 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Ollama with Jupyter and VS Code: hpc/openondemand/ollama-jupyter-vscode.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
-          - Using GPU on Jupyter: tutorials/jupyter-gpu.ipynb
       - Acknowledgement: hpc/acknowledgement.md
 
   - Globus Transfer System:
@@ -94,7 +93,6 @@ nav:
 
 plugins:
   - search
-  - mkdocs-jupyter
   - macros
   - git-revision-date-localized:
       type: date
