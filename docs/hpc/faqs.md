@@ -51,5 +51,7 @@
 
 ??? question "How do I utilize local disk on the compute node during a job for caching datasets and intermediate files during a job?"
 
-    Once you have SLURM allocation, you have read/write access to a folder `/local/job${SLURM_JOB_ID}` where `SLURM_JOB_ID` is your slurm job ID. `SLURM_JOB_ID` is also an environment variable set by SLURM after job allocation. This folder `/local/job${SLURM_JOB_ID}` is on local disk on the compute node. Please remember that this storage is temporary and only available when your job is running; therefore, any data that you need later must be copied to another location before your job terminates. 
+    Once you have SLURM allocation on a compute node, the `/tmp` directory on that compute node is mapped to the local storage. In some cases, it can be beneficial to use `/tmp` in a SLURM allocation as the local disk may give you faster I/O than when using scratch. Please remember that `/tmp` in a SLURM allocation is only available when your job is running; therefore, any data that you need later must be copied to another location (e.g. your HOME or SCRATCH directory) before your job terminates.
+
+    Another useful option for fast local storage is `/dev/shm`, which provides a small temporary (but fast) filesystem space that resides in RAM (memory). 
 
