@@ -11,6 +11,7 @@ A **skill** packaged as a Claude Code plugin. It ships only a small set of instr
 ## Prerequisites
 
 - **Claude Code** installed and working. See the [Claude Code setup guide](https://docs.claude.com/en/docs/claude-code/setup) if you have not installed it yet.
+- **A way to run Claude Code.** You need one of: your own [claude.ai](https://claude.ai) subscription, Claude Code set up through [CBorg](https://cborg.lbl.gov/tools_claudecode/) , or Claude Code configured to run local models.
 - Internet access from wherever you run Claude Code, so it can fetch the documentation pages.
 
 ## Install the plugin
