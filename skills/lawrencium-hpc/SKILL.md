@@ -5,8 +5,8 @@ description: >-
   Laboratory (LBNL) — the Lawrencium (LRC) CPU cluster and Einsteinium GPU cluster.
   Covers accounts & MFA, logging in, Slurm job scheduling and example scripts, the
   Software Module Farm (compilers, Python/R/Julia, MPI, CUDA and other libraries,
-  PyTorch/TensorFlow/Ray, VASP, Ollama/vLLM), Open OnDemand and Jupyter, the lrc-xfer
-  data transfer node, and the supported research (condo) clusters. Use whenever a
+  PyTorch/TensorFlow/Ray, VASP, Ollama/vLLM), Open OnDemand and Jupyter, data transfer
+  with the lrc-xfer node and Globus, and the supported research (condo) clusters. Use whenever a
   question concerns Lawrencium, Einsteinium, LBNL/Berkeley Lab research computing, or
   running jobs on these systems. Fetch the Markdown source from the scienceit-docs
   GitHub repository instead of scraping HTML from scienceit-docs.lbl.gov.
@@ -18,8 +18,9 @@ license: BSD-3-Clause
 This skill lets you answer Lawrencium/Einsteinium HPC questions from the
 **Markdown source** of the Science IT documentation. The source of truth is the
 [`lbnl-science-it/scienceit-docs`](https://github.com/lbnl-science-it/scienceit-docs)
-GitHub repository — the HPC pages live under `docs/hpc/` on the `main` branch and are
-fetched directly, so this skill works without a local checkout of the repo.
+GitHub repository — the pages live under `docs/` (mainly `docs/hpc/`, plus the Globus
+data-transfer pages under `docs/data/`) on the `main` branch and are fetched directly,
+so this skill works without a local checkout of the repo.
 
 ## How to use this skill
 
@@ -66,9 +67,12 @@ Cite the public site URL, not the raw file path or the GitHub URL.
 ## Scope
 
 In scope: Lawrencium (LRC), Einsteinium, and the supported research clusters on the
-LBNL Supercluster — accounts, access, Slurm, software, data transfer, and Open
-OnDemand. Out of scope for this skill: cloud services, Globus/data-transfer-system
-pages, and general (non-LBNL) computing. Decline or redirect out-of-scope questions.
+LBNL Supercluster — accounts, access, Slurm, software, data transfer (the lrc-xfer DTN
+and Globus), and Open OnDemand. Globus is covered because it is the primary way LBNL
+researchers move data to and from Lawrencium; the connector pages for cloud storage
+(Google Drive, AWS S3, Google Cloud Storage) are included as part of Globus. Out of
+scope for this skill: cloud compute services (AWS/GCP accounts and VMs) and general
+(non-LBNL) computing. Decline or redirect out-of-scope questions.
 
 ## Doc map
 
@@ -100,6 +104,11 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 
 ### Data transfer
 - **Using the lrc-xfer DTN** — `docs/hpc/data-transfer-node.md` — The dedicated data transfer node for moving data to/from the cluster.
+- **Globus** — `docs/data/globus.md` — What Globus is, LBL's Globus UI at `globus.lbl.gov`, the managed endpoints (Lawrencium, Google Drive, AWS S3, Google Cloud Storage), and setting up a Globus Connect Personal endpoint.
+- **Globus for Lawrencium** — `docs/data/globus-instructions.md` — Logging in to `globus.lbl.gov`, finding the `lbnl#lrc` endpoint, and transferring files to/from Lawrencium.
+- **Globus for Google Drive** — `docs/data/globus-google-drive.md` — Using the LBNL Gdrive Access endpoint and creating a guest collection for a Google Drive path.
+- **Globus AWS S3 Connector** — `docs/data/globus-aws-s3-connector.md` — Configuring the LBNL AWS S3 collection with an IAM access key to transfer to/from an S3 bucket.
+- **Globus Google Cloud Storage Connector** — `docs/data/globus-google-cloud-storage-connector.md` — Configuring the LBNL Google Cloud Storage collection with your LBL credentials to transfer to/from a GCS bucket.
 
 ### Running jobs
 - **Slurm Overview** — `docs/hpc/running/slurm-overview.md` — Slurm resource manager: TRES, associations, partitions, QoS, submitting jobs.

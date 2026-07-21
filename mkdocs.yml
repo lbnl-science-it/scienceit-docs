@@ -70,6 +70,7 @@ nav:
           - Ollama with Jupyter and VS Code: hpc/openondemand/ollama-jupyter-vscode.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
       - Acknowledgement: hpc/acknowledgement.md
+      - Lawrencium Skill for Claude: hpc/claude-plugin.md
 
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
