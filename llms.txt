@@ -13,6 +13,7 @@
 
 - [Lawrencium Overview](https://scienceit-docs.lbl.gov/hpc/index.md)
 - [Acknowledgement](https://scienceit-docs.lbl.gov/hpc/acknowledgement/index.md)
+- [Lawrencium Skill for Claude](https://scienceit-docs.lbl.gov/hpc/claude-plugin/index.md)
 - [Using the lrc-xfer DTN](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md)
 - [Frequently Asked Questions](https://scienceit-docs.lbl.gov/hpc/faqs/index.md)
 - [Getting Started](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
