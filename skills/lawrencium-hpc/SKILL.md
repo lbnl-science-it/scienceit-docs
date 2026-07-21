@@ -8,26 +8,28 @@ description: >-
   PyTorch/TensorFlow/Ray, VASP, Ollama/vLLM), Open OnDemand and Jupyter, the lrc-xfer
   data transfer node, and the supported research (condo) clusters. Use whenever a
   question concerns Lawrencium, Einsteinium, LBNL/Berkeley Lab research computing, or
-  running jobs on these systems. Read the Markdown source under docs/hpc/ directly
-  instead of fetching or scraping HTML from scienceit-docs.lbl.gov.
+  running jobs on these systems. Fetch the Markdown source from the scienceit-docs
+  GitHub repository instead of scraping HTML from scienceit-docs.lbl.gov.
 license: BSD-3-Clause
 ---
 
 # Lawrencium HPC documentation
 
 This skill lets you answer Lawrencium/Einsteinium HPC questions from the
-**Markdown source** of the Science IT documentation, which lives under
-[`docs/hpc/`](../../docs/hpc/) in this repository.
+**Markdown source** of the Science IT documentation. The source of truth is the
+[`lbnl-science-it/scienceit-docs`](https://github.com/lbnl-science-it/scienceit-docs)
+GitHub repository — the HPC pages live under `docs/hpc/` on the `main` branch and are
+fetched directly, so this skill works without a local checkout of the repo.
 
 ## How to use this skill
 
-1. **Read the Markdown, not the website.** Every page on
-   `https://scienceit-docs.lbl.gov` is generated from a `.md` file under
-   `docs/hpc/`. Always open the `.md` file directly (with your file-reading tool).
-   Do **not** fetch or scrape the rendered HTML — the Markdown is the source of
-   truth, is cheaper to read, and has no navigation/markup noise.
+1. **Fetch the raw Markdown, not the website.** Every page on
+   `https://scienceit-docs.lbl.gov` is generated from a `.md` file under `docs/hpc/`
+   in the GitHub repo. Fetch the **raw** Markdown (see *Fetching a page* below) with
+   your web-fetch tool. Do **not** scrape the rendered HTML — the Markdown is the
+   source of truth, is cheaper to read, and has no navigation/markup noise.
 2. **Route with the doc map below.** Match the user's question to one or more pages
-   in the map, then read those files. Start narrow (the most specific page) and
+   in the map, then fetch those files. Start narrow (the most specific page) and
    widen only if needed.
 3. **Ground every answer in what you read.** If a topic is not covered by these
    files, say so plainly rather than guessing. Never invent partition names, module
@@ -37,16 +39,29 @@ This skill lets you answer Lawrencium/Einsteinium HPC questions from the
    macros, and `{: ...}` attribute lists. Treat these as formatting wrappers; read
    through them to the underlying content.
 
+## Fetching a page
+
+The doc map below lists each page by its repository path (e.g. `docs/hpc/faqs.md`).
+To fetch the raw Markdown, prepend the raw base URL for the `main` branch:
+
+```
+https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/
+```
+
+- `docs/hpc/faqs.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/faqs.md>
+- `docs/hpc/running/slurm-overview.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/running/slurm-overview.md>
+
 ## Citing sources
 
-When an answer draws on a page, cite it with its public URL. Convert the file path
-to a URL by removing the leading `docs/`, dropping the `.md` extension, adding a
-trailing `/`, and prefixing `https://scienceit-docs.lbl.gov/`:
+When an answer draws on a page, cite it with its **public site URL** (not the raw
+GitHub URL). Convert the repository path by removing the leading `docs/`, dropping
+the `.md` extension, adding a trailing `/`, and prefixing
+`https://scienceit-docs.lbl.gov/`:
 
 - `docs/hpc/faqs.md` → <https://scienceit-docs.lbl.gov/hpc/faqs/>
 - `docs/hpc/running/slurm-overview.md` → <https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/>
 
-Cite the public URL, not the raw file path.
+Cite the public site URL, not the raw file path or the GitHub URL.
 
 ## Scope
 
