@@ -2,7 +2,12 @@
 
 Agent Skills that let Claude, `claude-science`, and other LLM agents answer
 questions directly from the **Markdown source** of this documentation, instead of
-fetching and parsing the rendered HTML from `scienceit-docs.lbl.gov`.
+scraping the rendered HTML from `scienceit-docs.lbl.gov`.
+
+The Markdown is fetched from the
+[`lbnl-science-it/scienceit-docs`](https://github.com/lbnl-science-it/scienceit-docs)
+GitHub repository (raw files on the `main` branch), so a skill works without a local
+checkout of the docs — only the small `SKILL.md` needs to be installed.
 
 Each subdirectory is one skill: a folder with a `SKILL.md` file whose YAML front
 matter declares a `name` and a `description` (what it covers and when to use it).
@@ -17,33 +22,67 @@ table of topics to the `.md` files that answer them.
 
 ## Using the skills
 
-### Claude Code / Claude Agent SDK
+### Claude Code — install as a plugin (recommended)
 
-Claude Code discovers skills placed in a `.claude/skills/` directory. Point it at
-this folder — from the repository root:
+This repository is also a Claude Code **plugin marketplace**, so users can install
+the skill without cloning anything. In Claude Code:
 
-```bash
-mkdir -p .claude/skills
-ln -s ../../skills/lawrencium-hpc .claude/skills/lawrencium-hpc
+```
+/plugin marketplace add lbnl-science-it/scienceit-docs
+/plugin install lawrencium-hpc@scienceit-docs
 ```
 
-(Copy instead of symlink if your setup does not follow symlinks.) Claude then loads
-a skill on demand when a question matches its `description`.
+Then reload plugins (or restart the session) and the skill loads on demand whenever a
+question matches its `description`:
 
-### claude-science and other LLM agents
+```
+/reload-plugins
+```
 
-Any agent that can read local files can use a skill without special support:
+Installs default to **user** scope (available in every project). To share it with a
+team via the repo, install with `--scope project`, which records it in
+`.claude/settings.json`.
 
-1. Read the skill's `SKILL.md`.
-2. Use its **doc map** to pick the relevant `docs/hpc/*.md` file(s).
-3. Read those Markdown files and answer from them, citing the public URL as
-   described in the skill.
+The marketplace and plugin are defined by two manifests at the repository root —
+[`.claude-plugin/marketplace.json`](../.claude-plugin/marketplace.json) (the catalog)
+and [`.claude-plugin/plugin.json`](../.claude-plugin/plugin.json) (the plugin, whose
+`skills/` directory is auto-discovered).
 
-The whole point is that agents read the `.md` files directly — no HTML scraping.
+### Claude Code — manual install (without the marketplace)
 
-## Maintaining a skill
+Alternatively, symlink the skill into a skills directory yourself. Claude Code
+discovers skills in `~/.claude/skills/`, which makes them available in every
+project — from a checkout of this repository:
 
-The doc map in each `SKILL.md` mirrors the site navigation in
-[`mkdocs.yml`](../mkdocs.yml). When you add, remove, or rename a page under
-`docs/hpc/`, update the corresponding entry in
-[`lawrencium-hpc/SKILL.md`](lawrencium-hpc/SKILL.md) so the map stays in sync.
+```bash
+mkdir -p ~/.claude/skills
+ln -s "$(pwd)/skills/lawrencium-hpc" ~/.claude/skills/lawrencium-hpc
+```
+
+(Copy instead of symlink if your setup does not follow symlinks.) To scope a skill to
+a single project instead, install it into that project's `.claude/skills/` directory
+rather than `~/.claude/skills/`.
+
+### Claude Code — allow fetching the docs without a prompt
+
+However you install the skill, the pages are fetched with the `WebFetch` tool, so
+Claude Code asks for permission the first time it hits each domain. To pre-approve
+the raw GitHub host,
+add a `WebFetch` rule to your settings. Use `~/.claude/settings.json` to apply it to
+all projects, or the repo's `.claude/settings.json` to scope it to this project:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
+```
+
+If the key already exists, add the string to the existing `permissions.allow` array
+rather than duplicating the block. With this rule in place, fetching any
+`raw.githubusercontent.com/lbnl-science-it/scienceit-docs/...` page runs without a
+prompt.
+

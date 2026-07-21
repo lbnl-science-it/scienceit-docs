@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "scienceit-docs",
+  "owner": {
+    "name": "Science IT, IT Division, Lawrence Berkeley National Laboratory",
+    "email": "scienceithelp@lbl.gov"
+  },
+  "description": "Skills that let Claude answer LBNL Science IT questions from the scienceit-docs Markdown source.",
+  "plugins": [
+    {
+      "name": "lawrencium-hpc",
+      "source": ".",
+      "description": "Answer Lawrencium (LRC) & Einsteinium HPC questions from the scienceit-docs Markdown source instead of scraping HTML."
+    }
+  ]
+}

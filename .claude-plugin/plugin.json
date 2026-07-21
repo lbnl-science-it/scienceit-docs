@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "lawrencium-hpc",
+  "description": "Answer Lawrencium (LRC) & Einsteinium HPC questions from the scienceit-docs Markdown source instead of scraping HTML from scienceit-docs.lbl.gov.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Science IT, IT Division, Lawrence Berkeley National Laboratory",
+    "email": "scienceithelp@lbl.gov"
+  },
+  "homepage": "https://scienceit-docs.lbl.gov",
+  "repository": "https://github.com/lbnl-science-it/scienceit-docs",
+  "license": "BSD-3-Clause",
+  "keywords": ["hpc", "lawrencium", "einsteinium", "slurm", "lbnl", "scienceit"]
+}
