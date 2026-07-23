@@ -478,6 +478,7 @@ Host lrc-login
    User username
    HostName lrc-login.lbl.gov
    IdentityFile ~/.ssh/ssh_certs/lrc_cert
+   IdentitiesOnly yes
 ```
 
 When you connect to Lawrencium through VSCode Remote - SSH, **please be careful to not run computations when you are on the login node**.
