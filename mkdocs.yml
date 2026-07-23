@@ -71,7 +71,9 @@ nav:
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
       - Acknowledgement: hpc/acknowledgement.md
       - Lawrencium Skill for Claude: hpc/claude-plugin.md
-
+  - Kubernetes:
+      - Getting Started: kubernetes/index.md
+      - National Research Platform: nrp/index.md
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
@@ -85,8 +87,6 @@ nav:
          - Amazon Web Services: cloud/aws.md
          - Google Cloud Platform: cloud/gcp.md
      - Google Cloud Skills Boost: cloud/gcp-skills-boost.md
-  - National Research Platform:
-      - National Research Platform: nrp/index.md
   - Support & Training:
       - HPC Help Desk: help/index.md
       - Training: help/training.md
