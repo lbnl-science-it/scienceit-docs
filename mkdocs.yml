@@ -73,7 +73,9 @@ nav:
       - Lawrencium Skill for Claude: hpc/claude-plugin.md
   - Kubernetes:
       - Getting Started: kubernetes/index.md
+      - Access and Login: kubernetes/access-and-login.md
       - National Research Platform: nrp/index.md
+      
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
