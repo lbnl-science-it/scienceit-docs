@@ -5,7 +5,7 @@ nav:
   - Home: index.md
   - High Performance Computing:
       - Lawrencium Overview: hpc/index.md
-      - Live Cluster Status: hpc/status.md
+      #- Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
       - Frequently Asked Questions: hpc/faqs.md
       - Account Management:
