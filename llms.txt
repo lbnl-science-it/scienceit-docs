@@ -17,7 +17,7 @@
 - [Using the lrc-xfer DTN](https://scienceit-docs.lbl.gov/hpc/data-transfer-node/index.md)
 - [Frequently Asked Questions](https://scienceit-docs.lbl.gov/hpc/faqs/index.md)
 - [Getting Started](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
-- [Live Cluster Status](https://scienceit-docs.lbl.gov/hpc/status/index.md)
+- [LBL Compute Clusters Live Status](https://scienceit-docs.lbl.gov/hpc/status/index.md)
 - [Logging in](https://scienceit-docs.lbl.gov/hpc/accounts/loggingin/index.md)
 - [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md)
 - [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
