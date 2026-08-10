@@ -2919,28 +2919,11 @@
 <p>Once your account is created, follow the steps below to access Berkelium.</p>
 <p>Access to Berkelium is managed through <a href="https://openid.net/developers/how-connect-works/">OpenID Connect (OIDC)</a>. Instead of a long-lived credential, you download a <code>kubeconfig</code> file for the cluster, and <code>kubectl</code> authenticates you through your browser the first time you run a command. The resulting access token is stored in your local keychain, so you only sign in occasionally.</p>
 <h2 id="1-download-the-kubeconfig-file">1. Download the kubeconfig file<a class="headerlink" href="#1-download-the-kubeconfig-file" title="Permanent link">&para;</a></h2>
-<p>Download the config file for the cluster you have been granted access to and place it in your <code>~/.kube</code> directory:</p>
-<table>
-<thead>
-<tr>
-<th>Cluster</th>
-<th>Config file</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Berkelium</td>
-<td><a href="assets/config_berkelium_auth.yaml">config_berkelium_auth.yaml</a></td>
-</tr>
-</tbody>
-</table>
+<p>Download the config file for Berkelium after you have been granted access to it, and place it in your <code>~/.kube</code> directory:</p>
+<p><a class="md-button md-button--primary" download="config_berkelium.yaml" href="../config_berkelium.yaml"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Config File</a></p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.kube
-mv<span class="w"> </span>~/Downloads/config_berkelium_auth.yaml<span class="w"> </span>~/.kube/
+mv<span class="w"> </span>~/Downloads/config_berkelium.yaml<span class="w"> </span>~/.kube/
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Draft</p>
-<p>The config files are not yet published. Contact the Science IT team to obtain the file for your cluster.</p>
-</div>
 <h2 id="2-install-kubectl">2. Install kubectl<a class="headerlink" href="#2-install-kubectl" title="Permanent link">&para;</a></h2>
 <p><code>kubectl</code> is the command line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:</p>
 <ul>
@@ -2962,7 +2945,7 @@ mv<span class="w"> </span>~/Downloads/config_berkelium_auth.yaml<span class="w">
 </div>
 <h2 id="4-select-a-cluster">4. Select a cluster<a class="headerlink" href="#4-select-a-cluster" title="Permanent link">&para;</a></h2>
 <p>Point <code>kubectl</code> at the config file you downloaded:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/config_berkelium_auth.yaml
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/config_berkelium.yaml
 </code></pre></div>
 <p>If you work with more than one cluster, <a href="https://github.com/sbstp/kubie">kubie</a> makes switching between them easier. It starts a subshell with the selected context, so different terminal windows can talk to different clusters at the same time.</p>
 <div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>kubie<span class="w">   </span><span class="c1"># macOS</span>

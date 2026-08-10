@@ -1,0 +1,31 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpekNDQVRDZ0F3SUJBZ0lSQU5JNU1YaGRwSk1XckswbXUyMERxVjR3Q2dZSUtvWkl6ajBFQXdJd0ZURVQKTUJFR0ExVUVDaE1LYTNWaVpYSnVaWFJsY3pBZUZ3MHlOakEzTURFeU16TTNNelJhRncwek5qQTJNamd5TXpNMwpNelJhTUJVeEV6QVJCZ05WQkFvVENtdDFZbVZ5Ym1WMFpYTXdXVEFUQmdjcWhrak9QUUlCQmdncWhrak9QUU1CCkJ3TkNBQVIybHJORkhZUkZDemtvQVZOTHRIMEZRQWJVSm4veFdJb0x6NEQ2VVRadjU0bk1ORy9pWk9wRitDY0sKWmZOd2h1NWFmWStFdkRHVWtqRXZDYUFGN053dW8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbApCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPCkJCWUVGSjRaTEorOWd1OVpMS3NQVWU4S2hpbnNSbmdqTUFvR0NDcUdTTTQ5QkFNQ0Ewa0FNRVlDSVFEMFNQdTAKT3ZnNzJNRmpEMklzcE84TXZ3dVBPc2NwZVd3MUUyOEwyRTVCRWdJaEFLSkVqQmdVMCs2REQ2ZUZMVDJuNmlGZgo4OWE3Tm5keC9DbVpOb0M1ZmlwTwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://[2620:83:8000:157::f]:6443
+  name: berkelium
+contexts:
+- context:
+    cluster: berkelium
+    namespace: default
+    user: oidc@berkelium
+  name: oidc@berkelium
+current-context: oidc@berkelium
+kind: Config
+users:
+- name: oidc@berkelium
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - oidc-login
+      - get-token
+      - --token-cache-storage=keyring
+      - --oidc-issuer-url=https://auth.lbl.gov/application/o/berkelium-k8s/
+      - --oidc-client-id=fJViF79iPIMqRFnIojzaatoo8CJNXmHs22lXqBkE 
+      - --listen-address=0.0.0.0:8000
+      - --oidc-extra-scope=profile,groups,offline_access
+      command: kubectl
+      env: null
+      interactiveMode: IfAvailable
+      provideClusterInfo: false
