@@ -12,12 +12,15 @@ Access to Berkelium is managed through [OpenID Connect (OIDC)](https://openid.ne
 
 Download the config file for Berkelium after you have been granted access to it, and place it in your `~/.kube` directory:
 
-[:material-download: Download Config File](config_berkelium.yaml){ .md-button .md-button--primary download="config_berkelium.yaml" }
+[:material-download: Download Config File](config){ .md-button .md-button--primary download="config" }
 
 ```sh
 mkdir -p ~/.kube
-mv ~/Downloads/config_berkelium.yaml ~/.kube/
+mv ~/Downloads/config ~/.kube/
 ```
+
+!!! note "Already have a `~/.kube/config`?"
+    `kubectl` reads `~/.kube/config` by default, so do not overwrite it if it already holds credentials for another cluster. Save the Berkelium file under a different name, for example `~/.kube/config_berkelium.yaml`, and point `kubectl` at it with the `KUBECONFIG` environment variable or with [kubie](https://github.com/sbstp/kubie) (see [Select a cluster](#4-select-a-cluster)).
 
 ## 2. Install kubectl
 
@@ -48,7 +51,21 @@ brew install kubelogin
 
 ## 4. Select a cluster
 
-Point `kubectl` at the config file you downloaded:
+Confirm that `kubectl` is using the config file you downloaded:
+
+```console
+$ kubectl config get-contexts
+CURRENT   NAME             CLUSTER     AUTHINFO         NAMESPACE
+*         oidc@berkelium   berkelium   oidc@berkelium
+```
+
+The `*` in the `CURRENT` column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed and you need to select Berkelium explicitly:
+
+```sh
+kubectl config use-context oidc@berkelium
+```
+
+If you saved the Berkelium file under a different name, point `kubectl` at it first:
 
 ```sh
 export KUBECONFIG=~/.kube/config_berkelium.yaml
