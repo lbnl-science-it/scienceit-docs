@@ -10,19 +10,14 @@ Access to Berkelium is managed through [OpenID Connect (OIDC)](https://openid.ne
 
 ## 1. Download the kubeconfig file
 
-Download the config file for the cluster you have been granted access to and place it in your `~/.kube` directory:
+Download the config file for Berkelium after you have been granted access to it, and place it in your `~/.kube` directory:
 
-| Cluster | Config file |
-| --- | --- |
-| Berkelium | [config_berkelium_auth.yaml](assets/config_berkelium_auth.yaml) |
+[:material-download: Download Config File](config_berkelium.yaml){ .md-button .md-button--primary download="config_berkelium.yaml" }
 
 ```sh
 mkdir -p ~/.kube
-mv ~/Downloads/config_berkelium_auth.yaml ~/.kube/
+mv ~/Downloads/config_berkelium.yaml ~/.kube/
 ```
-
-!!! note "Draft"
-    The config files are not yet published. Contact the Science IT team to obtain the file for your cluster.
 
 ## 2. Install kubectl
 
@@ -56,7 +51,7 @@ brew install kubelogin
 Point `kubectl` at the config file you downloaded:
 
 ```sh
-export KUBECONFIG=~/.kube/config_berkelium_auth.yaml
+export KUBECONFIG=~/.kube/config_berkelium.yaml
 ```
 
 If you work with more than one cluster, [kubie](https://github.com/sbstp/kubie) makes switching between them easier. It starts a subshell with the selected context, so different terminal windows can talk to different clusters at the same time.
