@@ -1,5 +1,9 @@
 # Get access and log in
 
+!!! warning "Under construction"
+
+    The Berkelium cluster and this documentation are actively being worked on. Details on this page may change without notice. If something does not work as described, please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.
+
 Once your account is created, follow the steps below to access Berkelium.
 
 Access to Berkelium is managed through [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/). Instead of a long-lived credential, you download a `kubeconfig` file for the cluster, and `kubectl` authenticates you through your browser the first time you run a command. The resulting access token is stored in your local keychain, so you only sign in occasionally.
