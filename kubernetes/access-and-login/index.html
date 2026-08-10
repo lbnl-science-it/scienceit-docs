@@ -2920,10 +2920,14 @@
 <p>Access to Berkelium is managed through <a href="https://openid.net/developers/how-connect-works/">OpenID Connect (OIDC)</a>. Instead of a long-lived credential, you download a <code>kubeconfig</code> file for the cluster, and <code>kubectl</code> authenticates you through your browser the first time you run a command. The resulting access token is stored in your local keychain, so you only sign in occasionally.</p>
 <h2 id="1-download-the-kubeconfig-file">1. Download the kubeconfig file<a class="headerlink" href="#1-download-the-kubeconfig-file" title="Permanent link">&para;</a></h2>
 <p>Download the config file for Berkelium after you have been granted access to it, and place it in your <code>~/.kube</code> directory:</p>
-<p><a class="md-button md-button--primary" download="config_berkelium.yaml" href="../config_berkelium.yaml"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Config File</a></p>
+<p><a class="md-button md-button--primary" download="config" href="../config"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> Download Config File</a></p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.kube
-mv<span class="w"> </span>~/Downloads/config_berkelium.yaml<span class="w"> </span>~/.kube/
+mv<span class="w"> </span>~/Downloads/config<span class="w"> </span>~/.kube/
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Already have a <code>~/.kube/config</code>?</p>
+<p><code>kubectl</code> reads <code>~/.kube/config</code> by default, so do not overwrite it if it already holds credentials for another cluster. Save the Berkelium file under a different name, for example <code>~/.kube/config_berkelium.yaml</code>, and point <code>kubectl</code> at it with the <code>KUBECONFIG</code> environment variable or with <a href="https://github.com/sbstp/kubie">kubie</a> (see <a href="#4-select-a-cluster">Select a cluster</a>).</p>
+</div>
 <h2 id="2-install-kubectl">2. Install kubectl<a class="headerlink" href="#2-install-kubectl" title="Permanent link">&para;</a></h2>
 <p><code>kubectl</code> is the command line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:</p>
 <ul>
@@ -2944,7 +2948,15 @@ mv<span class="w"> </span>~/Downloads/config_berkelium.yaml<span class="w"> </sp
 <p><code>kubectl</code> discovers plugins by name, so the binary must be on your <code>PATH</code> as <code>kubectl-oidc_login</code>. The packaged installs take care of this for you.</p>
 </div>
 <h2 id="4-select-a-cluster">4. Select a cluster<a class="headerlink" href="#4-select-a-cluster" title="Permanent link">&para;</a></h2>
-<p>Point <code>kubectl</code> at the config file you downloaded:</p>
+<p>Confirm that <code>kubectl</code> is using the config file you downloaded:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts
+<span class="go">CURRENT   NAME             CLUSTER     AUTHINFO         NAMESPACE</span>
+<span class="go">*         oidc@berkelium   berkelium   oidc@berkelium</span>
+</code></pre></div>
+<p>The <code>*</code> in the <code>CURRENT</code> column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed and you need to select Berkelium explicitly:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>oidc@berkelium
+</code></pre></div>
+<p>If you saved the Berkelium file under a different name, point <code>kubectl</code> at it first:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/config_berkelium.yaml
 </code></pre></div>
 <p>If you work with more than one cluster, <a href="https://github.com/sbstp/kubie">kubie</a> makes switching between them easier. It starts a subshell with the selected context, so different terminal windows can talk to different clusters at the same time.</p>
