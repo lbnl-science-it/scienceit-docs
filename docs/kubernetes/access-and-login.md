@@ -4,8 +4,6 @@
 
     The Berkelium cluster and this documentation are actively being worked on. Details on this page may change without notice. If something does not work as described, please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.
 
-Once your account is created, follow the steps below to access Berkelium.
-
 Access to Berkelium is managed through [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/). Instead of a long-lived credential, you download a `kubeconfig` file for the cluster, and `kubectl` authenticates you through your browser the first time you run a command. The resulting access token is stored in your local keychain, so you only sign in occasionally.
 
 ## 1. Download the kubeconfig file
@@ -24,7 +22,7 @@ mv ~/Downloads/config ~/.kube/
 
 ## 2. Install kubectl
 
-`kubectl` is the command line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:
+`kubectl` is the command-line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:
 
 - [Install kubectl on macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
 - [Install kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
@@ -38,7 +36,7 @@ kubectl version --client
 
 ## 3. Install the OIDC plugin
 
-Authentication is handled by [`kubelogin`](https://github.com/int128/kubelogin), a `kubectl` plugin that performs the browser based OIDC login and caches the resulting token. Follow the [setup instructions](https://github.com/int128/kubelogin#setup) in the kubelogin repository to install it.
+Authentication is handled by [`kubelogin`](https://github.com/int128/kubelogin), a `kubectl` plugin that performs the browser-based OIDC login and caches the resulting token. Follow the [setup instructions](https://github.com/int128/kubelogin#setup) in the kubelogin repository to install it.
 
 If you use [Homebrew](https://brew.sh) (on either macOS or Linux), the plugin is a single command:
 
@@ -59,7 +57,7 @@ CURRENT   NAME             CLUSTER     AUTHINFO         NAMESPACE
 *         oidc@berkelium   berkelium   oidc@berkelium
 ```
 
-The `*` in the `CURRENT` column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed and you need to select Berkelium explicitly:
+The `*` in the `CURRENT` column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed, and you need to select Berkelium explicitly:
 
 ```sh
 kubectl config use-context oidc@berkelium
@@ -88,11 +86,11 @@ kubectl get pods
 
 Your browser will open and prompt you to sign in. Once you have authenticated, the access token is written to your local vault (the Keychain on macOS) and the command completes. Subsequent commands reuse the cached token, and you will only be asked to sign in again after it expires.
 
-When you login for the first time you will see the error:
+When you log in for the first time you will see the error:
 
-!!! warning "First login error message"
+!!! warning "Expected message on first login"
 
-    `Error from server (Forbidden): pods is forbidden: User "http://cilogon.org/serverE/users/.." cannot list resource "pods" in API group "" in the namespace "default"".`
+    `Error from server (Forbidden): pods is forbidden: User "http://cilogon.org/serverE/users/.." cannot list resource "pods" in API group "" in the namespace "default".`
 
 This means you've set up correctly. Let us know the desired namespaces you'd like to access, and we will update you when you have the right permissions.
 
@@ -101,3 +99,4 @@ This means you've set up correctly. Let us know the desired namespaces you'd lik
 - **The browser does not open.** Copy the URL printed in the terminal and open it manually. If you are working over SSH, forward the local port `kubelogin` listens on (`8000` by default).
 - **`error: unknown command "oidc-login"`.** The plugin is not on your `PATH` under the name `kubectl-oidc_login`. Check with `kubectl plugin list`.
 - **Commands run against the wrong cluster.** Confirm which config is active with `kubectl config current-context` and check the value of `KUBECONFIG`.
+- **Authentication is stuck or the cached token is bad.** Clear the cache with `kubectl oidc-login clean` and run a `kubectl` command again to re-authenticate.
