@@ -2916,7 +2916,6 @@
 <p class="admonition-title">Under construction</p>
 <p>The Berkelium cluster and this documentation are actively being worked on. Details on this page may change without notice. If something does not work as described, please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.</p>
 </div>
-<p>Once your account is created, follow the steps below to access Berkelium.</p>
 <p>Access to Berkelium is managed through <a href="https://openid.net/developers/how-connect-works/">OpenID Connect (OIDC)</a>. Instead of a long-lived credential, you download a <code>kubeconfig</code> file for the cluster, and <code>kubectl</code> authenticates you through your browser the first time you run a command. The resulting access token is stored in your local keychain, so you only sign in occasionally.</p>
 <h2 id="1-download-the-kubeconfig-file">1. Download the kubeconfig file<a class="headerlink" href="#1-download-the-kubeconfig-file" title="Permanent link">&para;</a></h2>
 <p>Download the config file for Berkelium after you have been granted access to it, and place it in your <code>~/.kube</code> directory:</p>
@@ -2929,7 +2928,7 @@ mv<span class="w"> </span>~/Downloads/config<span class="w"> </span>~/.kube/
 <p><code>kubectl</code> reads <code>~/.kube/config</code> by default, so do not overwrite it if it already holds credentials for another cluster. Save the Berkelium file under a different name, for example <code>~/.kube/config_berkelium.yaml</code>, and point <code>kubectl</code> at it with the <code>KUBECONFIG</code> environment variable or with <a href="https://github.com/sbstp/kubie">kubie</a> (see <a href="#4-select-a-cluster">Select a cluster</a>).</p>
 </div>
 <h2 id="2-install-kubectl">2. Install kubectl<a class="headerlink" href="#2-install-kubectl" title="Permanent link">&para;</a></h2>
-<p><code>kubectl</code> is the command line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:</p>
+<p><code>kubectl</code> is the command-line tool used to talk to a Kubernetes cluster. Follow the official instructions for your operating system:</p>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/">Install kubectl on macOS</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/">Install kubectl on Linux</a></li>
@@ -2939,7 +2938,7 @@ mv<span class="w"> </span>~/Downloads/config<span class="w"> </span>~/.kube/
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>version<span class="w"> </span>--client
 </code></pre></div>
 <h2 id="3-install-the-oidc-plugin">3. Install the OIDC plugin<a class="headerlink" href="#3-install-the-oidc-plugin" title="Permanent link">&para;</a></h2>
-<p>Authentication is handled by <a href="https://github.com/int128/kubelogin"><code>kubelogin</code></a>, a <code>kubectl</code> plugin that performs the browser based OIDC login and caches the resulting token. Follow the <a href="https://github.com/int128/kubelogin#setup">setup instructions</a> in the kubelogin repository to install it.</p>
+<p>Authentication is handled by <a href="https://github.com/int128/kubelogin"><code>kubelogin</code></a>, a <code>kubectl</code> plugin that performs the browser-based OIDC login and caches the resulting token. Follow the <a href="https://github.com/int128/kubelogin#setup">setup instructions</a> in the kubelogin repository to install it.</p>
 <p>If you use <a href="https://brew.sh">Homebrew</a> (on either macOS or Linux), the plugin is a single command:</p>
 <div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>kubelogin
 </code></pre></div>
@@ -2953,7 +2952,7 @@ mv<span class="w"> </span>~/Downloads/config<span class="w"> </span>~/.kube/
 <span class="go">CURRENT   NAME             CLUSTER     AUTHINFO         NAMESPACE</span>
 <span class="go">*         oidc@berkelium   berkelium   oidc@berkelium</span>
 </code></pre></div>
-<p>The <code>*</code> in the <code>CURRENT</code> column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed and you need to select Berkelium explicitly:</p>
+<p>The <code>*</code> in the <code>CURRENT</code> column marks the context that commands will run against. If you have access to multiple Kubernetes clusters, several contexts will be listed, and you need to select Berkelium explicitly:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>oidc@berkelium
 </code></pre></div>
 <p>If you saved the Berkelium file under a different name, point <code>kubectl</code> at it first:</p>
@@ -2968,10 +2967,10 @@ kubie<span class="w"> </span>ctx<span class="w">            </span><span class="
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods
 </code></pre></div>
 <p>Your browser will open and prompt you to sign in. Once you have authenticated, the access token is written to your local vault (the Keychain on macOS) and the command completes. Subsequent commands reuse the cached token, and you will only be asked to sign in again after it expires.</p>
-<p>When you login for the first time you will see the error:</p>
+<p>When you log in for the first time you will see the error:</p>
 <div class="admonition warning">
-<p class="admonition-title">First login error message</p>
-<p><code>Error from server (Forbidden): pods is forbidden: User "http://cilogon.org/serverE/users/.." cannot list resource "pods" in API group "" in the namespace "default"".</code></p>
+<p class="admonition-title">Expected message on first login</p>
+<p><code>Error from server (Forbidden): pods is forbidden: User "http://cilogon.org/serverE/users/.." cannot list resource "pods" in API group "" in the namespace "default".</code></p>
 </div>
 <p>This means you've set up correctly. Let us know the desired namespaces you'd like to access, and we will update you when you have the right permissions.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
@@ -2979,6 +2978,7 @@ kubie<span class="w"> </span>ctx<span class="w">            </span><span class="
 <li><strong>The browser does not open.</strong> Copy the URL printed in the terminal and open it manually. If you are working over SSH, forward the local port <code>kubelogin</code> listens on (<code>8000</code> by default).</li>
 <li><strong><code>error: unknown command "oidc-login"</code>.</strong> The plugin is not on your <code>PATH</code> under the name <code>kubectl-oidc_login</code>. Check with <code>kubectl plugin list</code>.</li>
 <li><strong>Commands run against the wrong cluster.</strong> Confirm which config is active with <code>kubectl config current-context</code> and check the value of <code>KUBECONFIG</code>.</li>
+<li><strong>Authentication is stuck or the cached token is bad.</strong> Clear the cache with <code>kubectl oidc-login clean</code> and run a <code>kubectl</code> command again to re-authenticate.</li>
 </ul>
 
 
