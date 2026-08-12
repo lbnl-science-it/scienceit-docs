@@ -88,14 +88,13 @@ kubectl get pods
 
 Your browser will open and prompt you to sign in. Once you have authenticated, the access token is written to your local vault (the Keychain on macOS) and the command completes. Subsequent commands reuse the cached token, and you will only be asked to sign in again after it expires.
 
-```console
-$ kubectl get pods
-NAME                        READY   STATUS    RESTARTS   AGE
-my-pod-7d8f9c5b4d-x2klm     1/1     Running   0          3h
-```
+When you login for the first time you will see the error:
 
-!!! tip "No pods yet?"
-    A response of `No resources found in <namespace> namespace.` means the login worked and your namespace is simply empty.
+!!! warning "First login error message"
+
+    `Error from server (Forbidden): pods is forbidden: User "http://cilogon.org/serverE/users/.." cannot list resource "pods" in API group "" in the namespace "default"".`
+
+This means you've set up correctly. Let us know the desired namespaces you'd like to access, and we will update you when you have the right permissions.
 
 ## Troubleshooting
 
