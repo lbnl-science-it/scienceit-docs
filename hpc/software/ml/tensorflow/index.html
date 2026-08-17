@@ -2961,7 +2961,7 @@
 <h2 id="example-slurm-script">Example SLURM script<a class="headerlink" href="#example-slurm-script" title="Permanent link">&para;</a></h2>
 <p>The follow SLURM script shows how to run a tensorflow script on 1 H100 GPU card.
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=&quot;TensorFlowCIFAR10&quot;</span>
+<span class="c1">#SBATCH --job-name="TensorFlowCIFAR10"</span>
 <span class="c1">#SBATCH --ntasks=1</span>
 <span class="c1">#SBATCH --cpus-per-task=14</span>
 <span class="c1">#SBATCH --output=tf_job.out</span>
@@ -3027,6 +3027,47 @@ srun<span class="w"> </span>python<span class="w"> </span>cifar10.py
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ray/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ray">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ray
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../alphafold3/" class="md-footer__link md-footer__link--next" aria-label="Next: Alphafold3">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Alphafold3
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
     <div class="md-footer-meta md-typeset">
         <div class="md-footer-meta__inner md-grid">
 

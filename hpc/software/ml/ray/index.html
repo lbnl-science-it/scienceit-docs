@@ -3048,7 +3048,7 @@ module<span class="w"> </span>load<span class="w"> </span>ml/ray/2.54.1
 <span class="nv">head_node_ip</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>--ip-address<span class="k">)</span>
 
 <span class="nv">port</span><span class="o">=</span><span class="m">6379</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting Ray head node on </span><span class="nv">$head_node</span><span class="s2"> with IP </span><span class="nv">$head_node_ip</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Starting Ray head node on </span><span class="nv">$head_node</span><span class="s2"> with IP </span><span class="nv">$head_node_ip</span><span class="s2">"</span>
 srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes<span class="o">=</span><span class="m">1</span><span class="w"> </span>-w<span class="w"> </span><span class="si">${</span><span class="nv">head_node</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>ray<span class="w"> </span>start<span class="w"> </span>--head<span class="w"> </span><span class="se">\</span>
 <span class="w">              </span>--port<span class="o">=</span><span class="si">${</span><span class="nv">port</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
@@ -3057,7 +3057,7 @@ srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><s
 
 sleep<span class="w"> </span><span class="m">5</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Give Ray time to initialize&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Give Ray time to initialize"</span>
 <span class="c1"># increase the sleep time if needed to ensure ray is properly initialized</span>
 sleep<span class="w"> </span><span class="m">15</span><span class="w"> </span>
 
@@ -3066,8 +3066,8 @@ sleep<span class="w"> </span><span class="m">15</span><span class="w"> </span>
 <span class="c1"># Ray worker node(s) initialization</span>
 <span class="nv">n_workers</span><span class="o">=</span><span class="k">$((</span><span class="nv">SLURM_JOB_NUM_NODES</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$n_workers</span><span class="s2">&quot;</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Launching </span><span class="nv">$n_workers</span><span class="s2"> worker nodes...&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$n_workers</span><span class="s2">"</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Launching </span><span class="nv">$n_workers</span><span class="s2"> worker nodes..."</span>
 <span class="w">    </span>sleep<span class="w"> </span><span class="m">10</span>
 <span class="w">    </span>srun<span class="w"> </span>-n<span class="w"> </span><span class="nv">$n_workers</span><span class="w"> </span>--nodes<span class="o">=</span><span class="nv">$n_workers</span><span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>--ntasks-per-node<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
@@ -3087,13 +3087,13 @@ python<span class="w"> </span>compute_pi.py
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
 
-<span class="n">ray</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">ray</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="s1">'auto'</span><span class="p">)</span>
 
 <span class="nd">@ray</span><span class="o">.</span><span class="n">remote</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">pi4_sample</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;pi4 sample runs sample_count experiments, and returns the</span>
+<span class="w">    </span><span class="sd">"""pi4 sample runs sample_count experiments, and returns the</span>
 <span class="sd">    fraction of time it was inside the circle.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">in_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
@@ -3106,7 +3106,7 @@ python<span class="w"> </span>compute_pi.py
 
 <span class="n">FULL_SAMPLE_COUNT</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1"># 100 billion samples!</span>
 <span class="n">BATCHES</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">FULL_SAMPLE_COUNT</span> <span class="o">/</span> <span class="n">SAMPLE_COUNT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Doing </span><span class="si">{</span><span class="n">BATCHES</span><span class="si">}</span><span class="s1"> batches&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Doing </span><span class="si">{</span><span class="n">BATCHES</span><span class="si">}</span><span class="s1"> batches'</span><span class="p">)</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BATCHES</span><span class="p">):</span>
@@ -3114,7 +3114,7 @@ python<span class="w"> </span>compute_pi.py
 <span class="n">output</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">dur</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running </span><span class="si">{</span><span class="n">FULL_SAMPLE_COUNT</span><span class="si">}</span><span class="s1"> tests took </span><span class="si">{</span><span class="n">dur</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Running </span><span class="si">{</span><span class="n">FULL_SAMPLE_COUNT</span><span class="si">}</span><span class="s1"> tests took </span><span class="si">{</span><span class="n">dur</span><span class="si">}</span><span class="s1"> seconds'</span><span class="p">)</span>
 
 <span class="n">pi</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pi</span><span class="p">))</span>
@@ -3147,7 +3147,7 @@ module<span class="w"> </span>load<span class="w"> </span>ml/ray/2.54.1
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">RAY_ADDRESS</span><span class="o">=</span>&lt;head-node-ip&gt;:&lt;port&gt;<span class="w">      </span><span class="c1"># from echo $RAY_ADDRESS</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">RAY_AUTH_MODE</span><span class="o">=</span>token
-<span class="nb">export</span><span class="w"> </span><span class="nv">RAY_AUTH_TOKEN</span><span class="o">=</span><span class="s2">&quot;&lt;your-token&gt;&quot;</span><span class="w">          </span><span class="c1"># from more $RAY_AUTH_TOKEN_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RAY_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"&lt;your-token&gt;"</span><span class="w">          </span><span class="c1"># from more $RAY_AUTH_TOKEN_PATH</span>
 
 srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nodes<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>--ntasks-per-node<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
@@ -3213,6 +3213,47 @@ srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><s
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../pytorch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: PyTorch">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                PyTorch
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tensorflow/" class="md-footer__link md-footer__link--next" aria-label="Next: TensorFlow">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                TensorFlow
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
     <div class="md-footer-meta md-typeset">
         <div class="md-footer-meta__inner md-grid">
 

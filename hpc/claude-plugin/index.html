@@ -3050,9 +3050,9 @@
 <h2 id="allow-fetching-the-docs-without-a-prompt">Allow fetching the docs without a prompt<a class="headerlink" href="#allow-fetching-the-docs-without-a-prompt" title="Permanent link">&para;</a></h2>
 <p>The plugin fetches pages with Claude Code's <code>WebFetch</code> tool, so the first time it accesses a domain, Claude Code asks for your permission. To pre-approve the GitHub host that serves the raw Markdown, add a <code>WebFetch</code> rule to your settings. Use <code>~/.claude/settings.json</code> to apply it everywhere, or a project's <code>.claude/settings.json</code> to scope it to that project:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;allow&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;WebFetch(domain:raw.githubusercontent.com)&quot;</span>
+<span class="w">  </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"allow"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"WebFetch(domain:raw.githubusercontent.com)"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3114,6 +3114,47 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../acknowledgement/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Acknowledgement">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Acknowledgement
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../data/globus/" class="md-footer__link md-footer__link--next" aria-label="Next: Globus">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Globus
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
     <div class="md-footer-meta md-typeset">
         <div class="md-footer-meta__inner md-grid">
 

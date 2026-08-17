@@ -3053,7 +3053,7 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>cuda-core<span class="w"> </span>numba-cuda<span class="w"> </span>nvmath-python<span class="w"> </span>ipykernel
 
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>cudapython<span class="w">  </span><span class="se">\</span>
-<span class="w">                            </span>--display-name<span class="w"> </span><span class="s2">&quot;CUDA Python&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--display-name<span class="w"> </span><span class="s2">"CUDA Python"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                            </span>--env<span class="w"> </span>PATH<span class="w"> </span><span class="nv">$PATH</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                            </span>--env<span class="w"> </span>LD_LIBRARY_PATH<span class="w"> </span><span class="nv">$LD_LIBRARY_PATH</span>
 </code></pre></div>
@@ -3063,21 +3063,21 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 <p>To add a new kernel to your Jupyter environment, you can also manually create a subdirectory within <code>$HOME/.local/share/jupyter/kernels</code>. Within the subdirectory, you’ll need a configuration file, <code>kernel.json</code>. Each new kernel should have its own subdirectory containing a configuration file.</p>
 <p>As an example, below is the content of <code>~/.local/share/jupyter/kernels/cudapython/kernel.json</code> file that we just created using the <code>python -m ipykernel install</code> command in the previous section. You can create and/or edit this file as needed. Note that below we have used $SCRATCH instead of the actual path but you will need to provide the full path to your python executable. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w"> </span><span class="nt">&quot;argv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;$SCRATCH/cudapython/bin/python&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;ipykernel_launcher&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;{connection_file}&quot;</span>
+<span class="w"> </span><span class="nt">"argv"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">"$SCRATCH/cudapython/bin/python"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"-m"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"ipykernel_launcher"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"-f"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"{connection_file}"</span>
 <span class="w"> </span><span class="p">],</span>
-<span class="w"> </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUDA Python&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;debugger&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w"> </span><span class="nt">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CUDA Python"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"python"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"debugger"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w"> </span><span class="p">},</span>
-<span class="w"> </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/location/to/path1:/location/to/path2&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/location/to/path1:/location/to/path2&quot;</span>
+<span class="w"> </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"PATH"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/location/to/path1:/location/to/path2"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"LD_LIBRARY_PATH"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/location/to/path1:/location/to/path2"</span>
 <span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3097,7 +3097,7 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 conda<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span>numpy2test<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>ipykernel
 <span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>numpy2test
 conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">2</span>.4.2
-python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>numpy2<span class="w"> </span>--display-name<span class="o">=</span><span class="s2">&quot;Numpy 2.4.2 (Python 3.12)&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>numpy2<span class="w"> </span>--display-name<span class="o">=</span><span class="s2">"Numpy 2.4.2 (Python 3.12)"</span>
 </code></pre></div>
 <p>Now you can choose the kernel you just created from the kernel list in your Jupyter environment on Open OnDemand. </p>
 <h3 id="using-apptainer-images">Using apptainer images<a class="headerlink" href="#using-apptainer-images" title="Permanent link">&para;</a></h3>
@@ -3111,21 +3111,21 @@ apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvcr.io/nv
 </code></pre></div>
 <p>You can then manually create a <code>kernel.json</code> file in <code>~/.local/share/jupyter/kernels/rapids</code> with the following content.</p>
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;argv&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">     </span><span class="s2">&quot;apptainer&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;exec&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;--nv&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;/path/to/notebooks_25.04-cuda11.8-py3.12.sif&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;python&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;-m&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;ipykernel_launcher&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;-f&quot;</span>,
-<span class="w">     </span><span class="s2">&quot;{connection_file}&quot;</span>
+<span class="w">    </span><span class="s2">"argv"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">     </span><span class="s2">"apptainer"</span>,
+<span class="w">     </span><span class="s2">"exec"</span>,
+<span class="w">     </span><span class="s2">"--nv"</span>,
+<span class="w">     </span><span class="s2">"/path/to/notebooks_25.04-cuda11.8-py3.12.sif"</span>,
+<span class="w">     </span><span class="s2">"python"</span>,
+<span class="w">     </span><span class="s2">"-m"</span>,
+<span class="w">     </span><span class="s2">"ipykernel_launcher"</span>,
+<span class="w">     </span><span class="s2">"-f"</span>,
+<span class="w">     </span><span class="s2">"{connection_file}"</span>
 <span class="w">    </span><span class="o">]</span>,
-<span class="w">    </span><span class="s2">&quot;display_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;RAPIDS 25.04 Kernel&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;language&quot;</span>:<span class="w"> </span><span class="s2">&quot;python&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;metadata&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">     </span><span class="s2">&quot;debugger&quot;</span>:<span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="s2">"display_name"</span>:<span class="w"> </span><span class="s2">"RAPIDS 25.04 Kernel"</span>,
+<span class="w">    </span><span class="s2">"language"</span>:<span class="w"> </span><span class="s2">"python"</span>,
+<span class="w">    </span><span class="s2">"metadata"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">     </span><span class="s2">"debugger"</span>:<span class="w"> </span><span class="nb">true</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -3181,6 +3181,47 @@ apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvcr.io/nv
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ollama-jupyter-vscode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ollama with Jupyter and VS Code">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ollama with Jupyter and VS Code
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../acknowledgement/" class="md-footer__link md-footer__link--next" aria-label="Next: Acknowledgement">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Acknowledgement
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
     <div class="md-footer-meta md-typeset">
         <div class="md-footer-meta__inner md-grid">
 
