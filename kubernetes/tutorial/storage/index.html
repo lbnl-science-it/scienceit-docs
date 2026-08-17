@@ -10,24 +10,24 @@
       
       
       
-        <link rel="canonical" href="https://scienceit-docs.lbl.gov/kubernetes/">
+        <link rel="canonical" href="https://scienceit-docs.lbl.gov/kubernetes/tutorial/storage/">
       
       
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Kubernetes Cluster - Science IT Technical Documentation</title>
+        <title>Storage Tutorial - Science IT Technical Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes-cluster" class="md-skip">
+        <a href="#storage-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +98,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes Cluster
+              Storage Tutorial
             
           </span>
         </div>
@@ -180,7 +180,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -199,7 +199,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../hpc/" class="md-tabs__link">
+        <a href="../../../hpc/" class="md-tabs__link">
           
   
     
@@ -219,7 +219,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../data/globus/" class="md-tabs__link">
+        <a href="../../../data/globus/" class="md-tabs__link">
           
   
     
@@ -239,7 +239,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cloud/" class="md-tabs__link">
+        <a href="../../../cloud/" class="md-tabs__link">
           
   
     
@@ -259,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../nrp/" class="md-tabs__link">
+        <a href="../../../nrp/" class="md-tabs__link">
           
   
     
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../help/" class="md-tabs__link">
+        <a href="../../../help/" class="md-tabs__link">
           
   
     
@@ -320,9 +320,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     Science IT Technical Documentation
@@ -337,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -398,7 +398,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../hpc/" class="md-nav__link ">
+            <a href="../../../hpc/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -431,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/getting-started/" class="md-nav__link">
+      <a href="../../../hpc/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -452,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/faqs/" class="md-nav__link">
+      <a href="../../../hpc/faqs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -521,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/accounts/project-accounts/" class="md-nav__link">
+      <a href="../../../hpc/accounts/project-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -542,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/accounts/user-accounts/" class="md-nav__link">
+      <a href="../../../hpc/accounts/user-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/accounts/loggingin/" class="md-nav__link">
+      <a href="../../../hpc/accounts/loggingin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/accounts/mfa/" class="md-nav__link">
+      <a href="../../../hpc/accounts/mfa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/lawrencium/" class="md-nav__link">
+      <a href="../../../hpc/systems/lawrencium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/einsteinium/" class="md-nav__link">
+      <a href="../../../hpc/systems/einsteinium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -753,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/alsacc/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/alsacc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -774,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/catamount/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/catamount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -795,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/catscan/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/catscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -816,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/dirac1/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/dirac1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -837,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/etna/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/etna/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -858,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/systems/supported/mhg/" class="md-nav__link">
+      <a href="../../../hpc/systems/supported/mhg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -939,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/data-transfer-node/" class="md-nav__link">
+      <a href="../../../hpc/data-transfer-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -960,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus-instructions/" class="md-nav__link">
+      <a href="../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1049,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/software-module-farm/" class="md-nav__link">
+      <a href="../../../hpc/software/software-module-farm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1070,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/module-management/" class="md-nav__link">
+      <a href="../../../hpc/software/module-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1137,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/compilers/gcc/" class="md-nav__link">
+      <a href="../../../hpc/software/compilers/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1158,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/compilers/intel/" class="md-nav__link">
+      <a href="../../../hpc/software/compilers/intel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1179,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/compilers/nvhpc/" class="md-nav__link">
+      <a href="../../../hpc/software/compilers/nvhpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1254,7 +1254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/languages/python/" class="md-nav__link">
+      <a href="../../../hpc/software/languages/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1275,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/languages/julia/" class="md-nav__link">
+      <a href="../../../hpc/software/languages/julia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1296,7 +1296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/languages/R/" class="md-nav__link">
+      <a href="../../../hpc/software/languages/R/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1373,7 +1373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/ml/pytorch/" class="md-nav__link">
+      <a href="../../../hpc/software/ml/pytorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1394,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/ml/ray/" class="md-nav__link">
+      <a href="../../../hpc/software/ml/ray/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1415,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/ml/tensorflow/" class="md-nav__link">
+      <a href="../../../hpc/software/ml/tensorflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1436,7 +1436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/ml/alphafold3/" class="md-nav__link">
+      <a href="../../../hpc/software/ml/alphafold3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1507,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/applications/vasp/" class="md-nav__link">
+      <a href="../../../hpc/software/applications/vasp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1580,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/mpi/openmpi/" class="md-nav__link">
+      <a href="../../../hpc/software/mpi/openmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1601,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/mpi/intelmpi/" class="md-nav__link">
+      <a href="../../../hpc/software/mpi/intelmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1680,7 +1680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/libraries/fftw/" class="md-nav__link">
+      <a href="../../../hpc/software/libraries/fftw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1701,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/libraries/hdf5/" class="md-nav__link">
+      <a href="../../../hpc/software/libraries/hdf5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1722,7 +1722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/libraries/netcdf/" class="md-nav__link">
+      <a href="../../../hpc/software/libraries/netcdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1743,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/libraries/mkl/" class="md-nav__link">
+      <a href="../../../hpc/software/libraries/mkl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1764,7 +1764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/libraries/cuda/" class="md-nav__link">
+      <a href="../../../hpc/software/libraries/cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1837,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/performance/gnu-gprof/" class="md-nav__link">
+      <a href="../../../hpc/software/performance/gnu-gprof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1858,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/performance/intel-vtune/" class="md-nav__link">
+      <a href="../../../hpc/software/performance/intel-vtune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1931,7 +1931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/llms/ollama/" class="md-nav__link">
+      <a href="../../../hpc/software/llms/ollama/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1952,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/software/llms/vllm/" class="md-nav__link">
+      <a href="../../../hpc/software/llms/vllm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2037,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/running/slurm-overview/" class="md-nav__link">
+      <a href="../../../hpc/running/slurm-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/running/script-examples/" class="md-nav__link">
+      <a href="../../../hpc/running/script-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2079,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/running/monitor-jobs/" class="md-nav__link">
+      <a href="../../../hpc/running/monitor-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2100,7 +2100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/running/gnu-parallel/" class="md-nav__link">
+      <a href="../../../hpc/running/gnu-parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2177,7 +2177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/openondemand/overview/" class="md-nav__link">
+      <a href="../../../hpc/openondemand/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2198,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/openondemand/jupyter-server/" class="md-nav__link">
+      <a href="../../../hpc/openondemand/jupyter-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2219,7 +2219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/openondemand/ollama-jupyter-vscode/" class="md-nav__link">
+      <a href="../../../hpc/openondemand/ollama-jupyter-vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2240,7 +2240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/openondemand/packages-kernels/" class="md-nav__link">
+      <a href="../../../hpc/openondemand/packages-kernels/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2269,7 +2269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/acknowledgement/" class="md-nav__link">
+      <a href="../../../hpc/acknowledgement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2290,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hpc/claude-plugin/" class="md-nav__link">
+      <a href="../../../hpc/claude-plugin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2368,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus/" class="md-nav__link">
+      <a href="../../../data/globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2389,7 +2389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus-instructions/" class="md-nav__link">
+      <a href="../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2410,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus-google-drive/" class="md-nav__link">
+      <a href="../../../data/globus-google-drive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2431,7 +2431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus-aws-s3-connector/" class="md-nav__link">
+      <a href="../../../data/globus-aws-s3-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2452,7 +2452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/globus-google-cloud-storage-connector/" class="md-nav__link">
+      <a href="../../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2505,7 +2505,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cloud/" class="md-nav__link ">
+            <a href="../../../cloud/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2582,7 +2582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/aws/" class="md-nav__link">
+      <a href="../../../cloud/aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2603,7 +2603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/gcp/" class="md-nav__link">
+      <a href="../../../cloud/gcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2632,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/gcp-skills-boost/" class="md-nav__link">
+      <a href="../../../cloud/gcp-skills-boost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2681,7 +2681,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../nrp/" class="md-nav__link ">
+            <a href="../../../nrp/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2741,7 +2741,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../help/" class="md-nav__link ">
+            <a href="../../../help/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2774,7 +2774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../help/training/" class="md-nav__link">
+      <a href="../../../help/training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2795,7 +2795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../help/llms/" class="md-nav__link">
+      <a href="../../../help/llms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2836,6 +2836,107 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temporary-storage-with-emptydir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporary storage with emptyDir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Temporary storage with emptyDir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-the-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start the deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-persistent-volume-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a persistent volume claim
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a persistent volume claim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirming-the-data-persists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirming the data persists
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploring-storage-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring storage classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleaning-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleaning up
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2849,39 +2950,188 @@
                   
 
 
-<h1 id="kubernetes-cluster">Kubernetes Cluster<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Under Development</p>
-<p><strong>Berkelium</strong> is a Kubernetes cluster for Berkeley Lab. Berkelium is currently under development (Fall 2026) and is only available to select test users. If you are interested please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.</p>
+<h1 id="storage-tutorial">Storage Tutorial<a class="headerlink" href="#storage-tutorial" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Under construction</p>
+<p>The Berkelium cluster and this documentation are actively being worked on. Details on this page may change without notice. If something does not work as described, please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.</p>
 </div>
-<div class="grid cards">
+<p>In the <a href="../basic/">Basic Kubernetes</a> tutorial you saw that pods are stateless: files you create inside a container are gone the moment the pod restarts. This tutorial covers the other half of that story — how to get storage that outlives a pod, and how to attach it to your containers.</p>
+<p>In Kubernetes, a <strong>PersistentVolumeClaim</strong> (PVC) is a request for storage from a <strong>StorageClass</strong> defined in the cluster. StorageClasses abstract away the details of storage provisioning, so you can ask for "10 GiB of block storage" without knowing anything about the hardware behind it.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>This tutorial builds on <a href="../basic/">Basic Kubernetes</a>. You should be comfortable creating pods and deployments from YAML manifests, and <code>kubectl get pods</code> should return a result rather than an authentication error. Make sure your namespace is set as described in <a href="../basic/#setting-your-namespace">Setting your namespace</a>.</p>
+<h2 id="storage-types">Storage types<a class="headerlink" href="#storage-types" title="Permanent link">&para;</a></h2>
+<p>A Kubernetes cluster offers several ways to hold data:</p>
 <ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.67 13.67c-.47.46-1.04.83-1.67 1.06V23H8v-2H5v-3h3v-3.28c-1.74-.62-3-2.26-3-4.22C5 8 7 6 9.5 6h.1c-.47.95-.68 2-.57 3.08-.59.2-1.03.76-1.03 1.42 0 .83.67 1.5 1.5 1.5.23 0 .45-.06.65-.15.64.84 1.52 1.47 2.52 1.82m8.06 5.77-2.76 1.16-.78-1.84-2.76 1.17-1.17-2.77L16.03 16l-1.27-3c-1.85.08-3.65-.95-4.41-2.75-.96-2.29.12-4.93 2.41-5.9.24-.1.5-.17.74-.23C12.84 2.87 11.5 2 10 2 7.79 2 6 3.79 6 6v.24c-.3.26-.6.58-.85.91C5.06 6.78 5 6.4 5 6c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.42-.6 2.67-1.55 3.57.42.43 1.05.56 1.63.31.77-.32 1.12-1.2.8-1.96a1 1 0 0 0-.14-.26C15.9 7.13 16 6.58 16 6c0-.63-.1-1.24-.28-1.81 1.28.36 2.38 1.25 2.93 2.57.76 1.8.24 3.81-1.15 5.05zM13 8.6c.37-.41.65-.89.82-1.42-.54.27-.85.82-.82 1.42"/></svg></span> <strong>Access and Login</strong></p>
-<hr />
-<p>Download your <code>kubeconfig</code>, install <code>kubectl</code>, and authenticate to the cluster with OIDC.</p>
-<p><a href="access-and-login/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Get access and log in</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m2.8-10V9.5C14.8 8.1 13.4 7 12 7S9.2 8.1 9.2 9.5V11c-.6 0-1.2.6-1.2 1.2v3.5c0 .7.6 1.3 1.2 1.3h5.5c.7 0 1.3-.6 1.3-1.2v-3.5c0-.7-.6-1.3-1.2-1.3m-1.3 0h-3V9.5c0-.8.7-1.3 1.5-1.3s1.5.5 1.5 1.3z"/></svg></span> <strong>Cluster Policies</strong></p>
-<hr />
-<p>Namespaces, resource quotas, storage, and the rules of the road for running on Berkelium.</p>
-<p><em>Coming soon</em></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72 5.18 9 12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg></span> <strong>Tutorials</strong></p>
-<hr />
-<p>Step-by-step examples: deploying a pod, attaching persistent storage, running batch jobs, and using GPUs.</p>
-<p><a href="tutorial/basic/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Start with Basic Kubernetes</a></p>
-</li>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 15H6l-4 4V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1m5-6v14l-4-4H8a1 1 0 0 1-1-1v-1h14V8h1a1 1 0 0 1 1 1M8.19 4c-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77l.01.03h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91C7.11 9.08 7 9.5 7 10h2c0-.31.04-.56.13-.74s.26-.36.51-.52c.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82C9.85 4.23 9.12 4 8.19 4M7 11v2h2v-2zm6 2h2v-2h-2zm0-9v6h2V4z"/></svg></span> <strong>FAQs</strong></p>
-<hr />
-<p>Common questions about accounts, quotas, images, and troubleshooting.</p>
-<p><em>Coming soon</em></p>
-</li>
+<li><strong>Local storage.</strong> Pods can use storage directly attached to the node they are scheduled on. It is fast, but it is not portable across nodes and it disappears if the node fails or the pod is rescheduled elsewhere.</li>
+<li><strong>Persistent volumes (PV).</strong> Cluster-wide storage resources. They are not tied to any particular pod. On Berkelium, PVs are created dynamically when you make a claim, so you will rarely create one by hand.</li>
+<li><strong>Persistent volume claims (PVC).</strong> Requests for storage made by you, specifying size, access mode, and storage class, without needing to know the underlying implementation.</li>
+<li><strong>Object storage.</strong> S3-compatible storage, accessed over the network from inside your container rather than mounted as a filesystem.</li>
 </ul>
+<p>PVCs are scoped to a namespace: a claim created in one namespace is not visible or usable from another.</p>
+<h2 id="temporary-storage-with-emptydir">Temporary storage with emptyDir<a class="headerlink" href="#temporary-storage-with-emptydir" title="Permanent link">&para;</a></h2>
+<p>An <code>emptyDir</code> volume is created empty when a pod is assigned to a node, and it lives exactly as long as that pod does. When the pod is removed, its contents are deleted permanently. It is useful as scratch space — a place for intermediate files, caches, or output that you will copy elsewhere before the job ends — and it is shared between all containers in the same pod.</p>
+<div class="admonition warning">
+<p class="admonition-title">emptyDir uses the node's disk</p>
+<p>An <code>emptyDir</code> consumes ephemeral storage on the node your pod landed on. If you expect to write a significant amount of scratch data, declare it with <code>resources.requests.ephemeral-storage</code> (and optionally a matching limit) so the scheduler places your pod on a node that can hold it. Pods that write far more ephemeral data than they requested can be evicted.</p>
 </div>
+<p>Copy the manifest below into a new file called <code>strg1.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-storage</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-storage</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-storage</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-storage</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypod</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Mi</span>
+<span class="w">             </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">           </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Mi</span>
+<span class="w">             </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apk</span><span class="nv"> </span><span class="s">add</span><span class="nv"> </span><span class="s">dumb-init</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">dumb-init</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">100000"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mydata</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/myscratch</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mydata</span>
+<span class="w">        </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>Two things are worth noticing before you run it. This is a <em>deployment</em> rather than a bare pod, so the cluster will recreate the container if it dies — which is what makes the experiment below interesting. And the image is <code>alpine</code>, not <code>ubuntu</code>.</p>
+<h3 id="start-the-deployment">Start the deployment<a class="headerlink" href="#start-the-deployment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>strg1.yaml
+</code></pre></div>
+<p>Find the pod the deployment created for you:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
+<p>Now log in. If you reach for the command you used in the previous tutorial:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>test-storage-&lt;hash&gt;<span class="w"> </span>--<span class="w"> </span>/bin/bash
+</code></pre></div>
+<p>it will fail. Alpine Linux is a minimal, security-oriented distribution that is popular in containers precisely because it is small — and one of the things it leaves out is <code>bash</code>. It ships <code>ash</code> (the Almquist Shell) instead, which is POSIX-compliant and covers the basics but lacks many of <code>bash</code>'s conveniences. So use:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>test-storage-&lt;hash&gt;<span class="w"> </span>--<span class="w"> </span>/bin/ash
+</code></pre></div>
+<p>Once inside, create a directory under the mounted volume and put a file in it:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/mnt/myscratch/<span class="nv">$USER</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>/mnt/myscratch/<span class="nv">$USER</span>/notes.txt
+</code></pre></div>
+<p>Type a line or two, then press <code>Control-D</code> to write the file. Create some files outside <code>/mnt/myscratch</code> as well — in <code>/root</code> or <code>/tmp</code>, for instance — so you can compare what happens to them.</p>
+<p>Now kill the container from the inside:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>Because this is a deployment, the cluster brings up a replacement pod. Wait a few seconds, list the pods again (the hash in the name will have changed), and log back in with <code>/bin/ash</code>. Both the files in <code>/mnt/myscratch</code> and the ones elsewhere are gone: the <code>emptyDir</code> did not survive the pod, and neither did the container's own filesystem.</p>
+<p>Delete the deployment before moving on:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>strg1.yaml
+</code></pre></div>
+<h2 id="creating-a-persistent-volume-claim">Creating a persistent volume claim<a class="headerlink" href="#creating-a-persistent-volume-claim" title="Permanent link">&para;</a></h2>
+<p>Alongside the compute nodes, Berkelium has a distributed <a href="https://ceph.io/">Ceph</a> storage cluster that provides persistent storage to pods. Ceph gives us scalability, high availability, fault tolerance, and dynamic provisioning: when you create a claim, a volume is created for you automatically.</p>
+<p>The manifest below does both halves of the job in one file — it requests 10 GiB of Ceph RBD block storage, and defines a pod that mounts it at <code>/data1</code>. Save it as <code>pvc.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-spss-rbd</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ceph-rbd</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol-container</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16Mi</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Gi</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"infinity"</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/data1"</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol1</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol1</span>
+<span class="w">      </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-spss-rbd</span>
+</code></pre></div>
+<p>The <code>---</code> separator lets a single file hold more than one object. The three fields that connect them are worth tracing: the claim is named <code>test-spss-rbd</code>; the pod's <code>volumes</code> section attaches that claim and gives it the local name <code>vol1</code>; and <code>volumeMounts</code> mounts <code>vol1</code> into the container at <code>/data1</code>.</p>
+<p>The <code>accessModes</code> field asks for <code>ReadWriteOnce</code>, which means the volume can be mounted read-write by a single node at a time. This is the normal choice for block storage like Ceph RBD, and it is what you want for most single-pod workloads. If you need several pods on different nodes to write to the same volume simultaneously, you need a shared filesystem class instead.</p>
+<p>Create both objects:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>pvc.yaml
+</code></pre></div>
+<p>Check the claim:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
+<p>The <code>STATUS</code> column should read <code>Bound</code>, which means a persistent volume was provisioned and attached to your claim. If it stays <code>Pending</code>, describe it to see why:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>describe<span class="w"> </span>pvc<span class="w"> </span>test-spss-rbd
+</code></pre></div>
+<p>Once the pod is <code>Running</code>, log in and look at the mount:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vol-pod<span class="w"> </span>--<span class="w"> </span>/bin/bash
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>df<span class="w"> </span>-h<span class="w"> </span>/data1
+</code></pre></div>
+<p>You should see roughly 10 GiB of space mounted at <code>/data1</code>. Write something to it:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/data1/<span class="nv">$USER</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>/data1/<span class="nv">$USER</span>/notes.txt
+</code></pre></div>
+<p>Then exit the pod.</p>
+<h3 id="confirming-the-data-persists">Confirming the data persists<a class="headerlink" href="#confirming-the-data-persists" title="Permanent link">&para;</a></h3>
+<p>Delete the pod, but leave the claim alone:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>vol-pod
+</code></pre></div>
+<p>Recreate it from the same file:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pvc.yaml
+</code></pre></div>
+<p>Use <code>apply</code> rather than <code>create</code> here: the PVC in the file already exists, and <code>create</code> would fail on it. <code>apply</code> leaves the existing claim untouched and creates just the missing pod.</p>
+<p>Log back in and look in <code>/data1</code>:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vol-pod<span class="w"> </span>--<span class="w"> </span>/bin/bash
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>/data1/<span class="nv">$USER</span>
+</code></pre></div>
+<p>Your file is still there. The pod was destroyed and rebuilt, but the volume — and everything on it — outlived it. That is the whole point of a persistent volume claim: keep your data in the volume, and treat everything else in the container as disposable.</p>
+<h2 id="exploring-storage-classes">Exploring storage classes<a class="headerlink" href="#exploring-storage-classes" title="Permanent link">&para;</a></h2>
+<p>The class you request determines what kind of storage you get. List the classes available on the cluster with:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>storageclass
+</code></pre></div>
+<p>Not every class listed will be usable by you or by your namespace, and the class marked <code>(default)</code> is what you get if you omit <code>storageClassName</code> from your claim. In general, block storage classes such as <code>ceph-rbd</code> give the best performance for a single pod, while shared filesystem classes trade some performance for the ability to mount the same volume from many pods at once. Choose based on whether your workload needs concurrent access.</p>
+<div class="admonition tip">
+<p class="admonition-title">Keep compute near storage</p>
+<p>Volumes are attached over the network. For I/O-heavy work, scheduling your pods close to the storage they use makes a measurable difference.</p>
+</div>
+<h2 id="cleaning-up">Cleaning up<a class="headerlink" href="#cleaning-up" title="Permanent link">&para;</a></h2>
+<p>Berkelium is a shared resource, so clean up when you are finished. Delete the pod and the claim:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>pvc.yaml
+</code></pre></div>
+<p>Then confirm nothing is left behind:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+kubectl<span class="w"> </span>get<span class="w"> </span>deployments
+kubectl<span class="w"> </span>get<span class="w"> </span>pvc
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Deleting a claim deletes your data</p>
+<p>Removing a PVC releases the underlying volume and destroys its contents. Copy anything you want to keep off the volume first.</p>
+</div>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>More Berkelium tutorials, covering batch jobs and using GPUs, are coming soon. If you run into trouble or have questions about storage on Berkelium, contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.</p>
 
 
 
@@ -2957,10 +3207,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
