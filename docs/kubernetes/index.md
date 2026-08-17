@@ -26,9 +26,9 @@
 
     ---
 
-    Step-by-step examples: deploying a pod, running batch jobs, and using GPUs.
+    Step-by-step examples: deploying a pod, attaching persistent storage, running batch jobs, and using GPUs.
 
-    *Coming soon*
+    [:octicons-arrow-right-24: Start with Basic Kubernetes](tutorial/basic.md)
 
 -   :material-frequently-asked-questions:{ .lg .middle } **FAQs**
 
