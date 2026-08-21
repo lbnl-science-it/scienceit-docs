@@ -23,9 +23,6 @@ hide:
     ---
 
     - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/) {{ext}}
-    !!! warning "**Lawrencium Outage Aug 14 - Aug 21**"
-
-        Maintenance downtime for Lawrencium beginning at **8:00 am on Friday, August 14th, 2026**. We expect to restore service by the **end of day on Friday, August 21, 2026**.
 
 -   ### **HPC Helpdesk**
 
