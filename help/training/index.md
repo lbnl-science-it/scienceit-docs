@@ -2,9 +2,21 @@
 
 Click [here](https://it.lbl.gov/service/scienceit/training-and-workshops/) for a list of previous HPC trainings and workshops.
 
+### **Upcoming Trainings**
+
+ScienceIT team is regulary organizing the AI related or HPC trainings for lab users which are posted here.
+
+**Secure Coding in the Age of AI**
+
+This training offers a new security-awareness for everyone who writes code at the Lab—from novices leveraging AI to seasoned developers. The goal of the training is providing a shared vocabulary and a practical security mindset for all.
+
+**Date:** Friday, September 11, 2026
+
+**Time:** 10:00 AM to 11:00 AM **Links:** [Registration](https://docs.google.com/forms/d/e/1FAIpQLSelU7zWnBhBvlmATyIjOoYQlVvAfgIr2cUfXQmyShxCfjrGtg/viewform)
+
 ### **Recent Trainings**
 
-HPCS team provides training in the beginning of the year and in fall to introduce new users to the basics of HPC at Lawrencium. Upcoming trainings are announced here.
+HPCS team provides training in the beginning of the year and in fall to introduce new users to the basics of HPC at Lawrencium.
 
 **Distributed & AI-Ready: NRP & Ray Training**
 
