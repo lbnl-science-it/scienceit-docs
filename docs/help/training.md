@@ -5,8 +5,11 @@ Click [here](https://it.lbl.gov/service/scienceit/training-and-workshops/){:targ
 
 ### **Upcoming Trainings**
 ScienceIT team is regulary organizing the AI related or HPC trainings for lab users which are posted here.
+
 !!! note "**Secure Coding in the Age of AI**"
+
     This training offers a new security-awareness for everyone who writes code at the Lab—from novices leveraging AI to seasoned developers. The goal of the training is providing a shared vocabulary and a practical security mindset for all. 
+    
     **Date:** Friday, September 11, 2026
 
     **Time:** 10:00 AM to 11:00 AM 
