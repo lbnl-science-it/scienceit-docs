@@ -10,7 +10,7 @@ ScienceIT team is regulary organizing the AI related or HPC trainings for lab us
     **Date:** Friday, September 11, 2026
 
     **Time:** 10:00 AM to 11:00 AM 
-    **Links:** [Registration]()
+    **Links:** [Registration](https://docs.google.com/forms/d/e/1FAIpQLSelU7zWnBhBvlmATyIjOoYQlVvAfgIr2cUfXQmyShxCfjrGtg/viewform)
 
 ### **Recent Trainings**
 HPCS team provides training in the beginning of the year and in fall to introduce new users to the basics of HPC at Lawrencium.  
