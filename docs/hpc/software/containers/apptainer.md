@@ -4,13 +4,24 @@ Docker cannot be run on the cluster, as it requires root access to function. On 
 
 # Prerequisites
 
-An active allocation is required to build the container. When possible, please use an interactive session when building a container. Container builds can exceed the 20 GB cap of the $HOME directory. Redirection to scratch space may be needed before building:
-Overwrite the default cache and tmp directories for Apptainer:
-```shell 
-mkdir APPTAINER_TMPDIR APPTAINER_CACHEDIR
-export APPTAINER_TMPDIR=$PWD/APPTAINER_TMPDIR
-export APPTAINER_CACHEDIR=$PWD/APPTAINER_CACHEDIR 
-```
+An active allocation is required to build the container. When possible, please use an interactive session when building a container. Container builds can exceed the 30 GB cap of the $HOME directory. Redirection to scratch space may be needed before building:
+
+Overwrite the default cache and tmp directories for Apptainer using one of the two methods described below:
+
+* The information pulled into the $SCRATCH directory will persist after the job is complete, so use the above method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the following commands to pull to $SCRATCH: 
+    ```shell 
+    mkdir $SCRATCH/APPTAINER_TMPDIR $SCRATCH/APPTAINER_CACHEDIR
+    export APPTAINER_TMPDIR=$SCRATCH/APPTAINER_TMPDIR
+    export APPTAINER_CACHEDIR=$SCRATCH/APPTAINER_CACHEDIR 
+    ```
+
+* If the information does not need to persist, use the disk storage allocated to each compute node under the `/tmp` directory. This is much faster than the previous method. However, keep in mind that any data written to this storage will be wiped following job completion. Run the following commands to pull to `/tmp`:
+    ```shell
+    mkdir /tmp/APPTAINER_TMPDIR /tmp/APPTAINER_CACHEDIR
+    export APPTAINER_TMPDIR=/tmp/APPTAINER_TMPDIR
+    export APPTAINER_CACHEDIR=/tmp/APPTAINER_CACHEDIR
+    ```
+
 # Pulling a Container from an OCI (Open Container Initiative) registry
 
 For this demonstration, the image will be pulled from Nvidia’s registry, nvcr.io. The image path being used in this example is:
@@ -228,7 +239,7 @@ Here is an example of a batch script for a GPU job:
 #SBATCH --gres=gpu:A40:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=16
 #SBATCH --time=02:00:00
 #SBATCH --output=gpu_job_%j.log
 
