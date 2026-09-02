@@ -3374,6 +3374,59 @@ For visual analysis, you can run `vtune-gui` on a terminal of a Open OnDemand De
 
 Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
+## `es3` Partition
+
+`es3` is a partition consisting of `RTX PRO 6000 Blackwell` GPU nodes built on AMD EPYC processors, providing a high core count per node alongside four GPU cards. `es3` partition nodes were introduced in 2026 to support growing AI/ML workflow needs. Five of the eight `es3` nodes are condo nodes.
+
+| Accelerator                   | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores per Node | CPU RAM per Node | Infiniband |
+| ----------------------------- | ----- | ------------------------ | ------------- | ------------------ | ---------------- | ---------- |
+| NVIDIA RTX PRO 6000 Blackwell | 8     | 4x 96 GB                 | AMD EPYC 9754 | 128                | 384 GB or 768 GB | HDR        |
+
+### How to specify desired GPU card(s)
+
+QoS values pending
+
+The `qos` values for the `es3` partition have not been configured yet for all users, and will be documented here once they are available.
+
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 32 CPU cores for each GPU card on the `es3` partition.
+
+Examples:
+
+- Request one RTX PRO 6000 card: `--partition=es3 --gres=gpu:RTX6000:1 --cpus-per-task=32 --ntasks=1`
+- Request four RTX PRO 6000 cards: `--partition=es3 --gres=gpu:RTX6000:4 --cpus-per-task=32 --ntasks=4`
+
+Example slurm script on `es3`
+
+```
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es3
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --gres=gpu:RTX6000:1
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=test
+#SBATCH --account=account_name
+#SBATCH --partition=es3
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=32
+#SBATCH --gres=gpu:RTX6000:4
+#SBATCH --time=1:00:00
+
+module load ml/pytorch
+python train.py
+```
+
 ## `es2` Partition
 
 `es2` is a partition consisting of `H100` and `H200` GPU nodes. These nodes have been added in 2024 and 2025 to meet AI/LLM related research needs in addition to the growing use of GPUs in scientific computing.
