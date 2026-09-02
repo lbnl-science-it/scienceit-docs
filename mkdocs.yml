@@ -60,7 +60,7 @@ nav:
               - Ollama: hpc/software/llms/ollama.md
               - vLLM: hpc/software/llms/vllm.md
           - Containers:
-              - Apptainer: hpc/software/containers/Apptainer_guide.md
+              - Apptainer: hpc/software/containers/apptainer.md
 
       - Running Jobs:
           - Slurm Overview: hpc/running/slurm-overview.md
