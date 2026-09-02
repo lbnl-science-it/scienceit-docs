@@ -8,14 +8,14 @@ An active allocation is required to build the container. When possible, please u
 
 Overwrite the default cache and tmp directories for Apptainer using one of the two methods described below:
 
-* The information pulled into the $SCRATCH directory will persist after the job is complete, so use the above method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the following commands to pull to $SCRATCH: 
+* The information pulled into the $SCRATCH directory will persist after the job is complete, so use the following method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the commands below to pull to $SCRATCH: 
     ```shell 
     mkdir $SCRATCH/APPTAINER_TMPDIR $SCRATCH/APPTAINER_CACHEDIR
     export APPTAINER_TMPDIR=$SCRATCH/APPTAINER_TMPDIR
     export APPTAINER_CACHEDIR=$SCRATCH/APPTAINER_CACHEDIR 
     ```
 
-* If the information does not need to persist, use the disk storage allocated to each compute node under the `/tmp` directory. This is much faster than the previous method. However, keep in mind that any data written to this storage will be wiped following job completion. Run the following commands to pull to `/tmp`:
+* If information does not need to persist, use the disk storage allocated to each compute node under the `/tmp` directory. Pulling data onto these disks will be much faster than using `$SCRATCH`; however, keep in mind that any data written to this storage will be wiped after job completion. Run the following commands to pull data to `/tmp`:
     ```shell
     mkdir /tmp/APPTAINER_TMPDIR /tmp/APPTAINER_CACHEDIR
     export APPTAINER_TMPDIR=/tmp/APPTAINER_TMPDIR
@@ -208,7 +208,7 @@ Here is an example of a batch script for a CPU job:
 #!/bin/bash
 #SBATCH --job-name=cpu_job
 #SBATCH --partition=lr8
-#SBATCH --account=ac_scsguest
+#SBATCH --account=[account_name]
 #SBATCH --qos=lr8_normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
