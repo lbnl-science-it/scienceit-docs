@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://scienceit-docs.lbl.gov/cloud/gcp-skills-boost/">
+        <link rel="canonical" href="https://scienceit-docs.lbl.gov/hpc/software/containers/apptainer/">
       
       
-        <link rel="prev" href="../gcp/">
+        <link rel="prev" href="../../llms/vllm/">
       
       
-        <link rel="next" href="../../nrp/">
+        <link rel="next" href="../../../running/slurm-overview/">
       
       
-      <link rel="icon" href="../../assets/favicon.png">
+      <link rel="icon" href="../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Google Cloud Skills Boost - Science IT Technical Documentation</title>
+        <title>Apptainer - Science IT Technical Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#google-cloud-skills-boost" class="md-skip">
+        <a href="#containerization-platform" class="md-skip">
           Skip to content
         </a>
       
@@ -102,9 +102,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../../.." title="Science IT Technical Documentation" class="md-header__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Google Cloud Skills Boost
+              Apptainer
             
           </span>
         </div>
@@ -184,7 +184,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -199,11 +199,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../hpc/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -223,7 +225,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../data/globus/" class="md-tabs__link">
+        <a href="../../../../data/globus/" class="md-tabs__link">
           
   
     
@@ -239,13 +241,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../cloud/" class="md-tabs__link">
           
   
     
@@ -265,7 +265,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../nrp/" class="md-tabs__link">
+        <a href="../../../../nrp/" class="md-tabs__link">
           
   
     
@@ -285,7 +285,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../help/" class="md-tabs__link">
+        <a href="../../../../help/" class="md-tabs__link">
           
   
     
@@ -326,9 +326,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
+    <a href="../../../.." title="Science IT Technical Documentation" class="md-nav__button md-logo" aria-label="Science IT Technical Documentation" data-md-component="logo">
       
-  <img src="../../assets/scienceitlogo.png" alt="logo">
+  <img src="../../../../assets/scienceitlogo.png" alt="logo">
 
     </a>
     Science IT Technical Documentation
@@ -343,7 +343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -360,6 +360,8 @@
       
   
   
+    
+  
   
   
     
@@ -392,19 +394,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../hpc/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -415,13 +420,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             High Performance Computing
@@ -437,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/faqs/" class="md-nav__link">
+      <a href="../../../faqs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -527,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/project-accounts/" class="md-nav__link">
+      <a href="../../../accounts/project-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -548,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/user-accounts/" class="md-nav__link">
+      <a href="../../../accounts/user-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -569,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/loggingin/" class="md-nav__link">
+      <a href="../../../accounts/loggingin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -590,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/accounts/mfa/" class="md-nav__link">
+      <a href="../../../accounts/mfa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/lawrencium/" class="md-nav__link">
+      <a href="../../../systems/lawrencium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -686,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/einsteinium/" class="md-nav__link">
+      <a href="../../../systems/einsteinium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/alsacc/" class="md-nav__link">
+      <a href="../../../systems/supported/alsacc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -780,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/catamount/" class="md-nav__link">
+      <a href="../../../systems/supported/catamount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -801,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/catscan/" class="md-nav__link">
+      <a href="../../../systems/supported/catscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -822,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/dirac1/" class="md-nav__link">
+      <a href="../../../systems/supported/dirac1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -843,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/etna/" class="md-nav__link">
+      <a href="../../../systems/supported/etna/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -864,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/systems/supported/mhg/" class="md-nav__link">
+      <a href="../../../systems/supported/mhg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/data-transfer-node/" class="md-nav__link">
+      <a href="../../../data-transfer-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus-instructions/" class="md-nav__link">
+      <a href="../../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -992,8 +997,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1025,11 +1032,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
@@ -1043,7 +1050,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_7">
             <span class="md-nav__icon md-icon"></span>
             Software
@@ -1057,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/software-module-farm/" class="md-nav__link">
+      <a href="../../software-module-farm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1078,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/module-management/" class="md-nav__link">
+      <a href="../../module-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1145,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/compilers/gcc/" class="md-nav__link">
+      <a href="../../compilers/gcc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1166,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/compilers/intel/" class="md-nav__link">
+      <a href="../../compilers/intel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1187,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/compilers/nvhpc/" class="md-nav__link">
+      <a href="../../compilers/nvhpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/python/" class="md-nav__link">
+      <a href="../../languages/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1283,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/julia/" class="md-nav__link">
+      <a href="../../languages/julia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1304,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/languages/R/" class="md-nav__link">
+      <a href="../../languages/R/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/ml/pytorch/" class="md-nav__link">
+      <a href="../../ml/pytorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/ml/ray/" class="md-nav__link">
+      <a href="../../ml/ray/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/ml/tensorflow/" class="md-nav__link">
+      <a href="../../ml/tensorflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1444,7 +1451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/ml/alphafold3/" class="md-nav__link">
+      <a href="../../ml/alphafold3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/applications/vasp/" class="md-nav__link">
+      <a href="../../applications/vasp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1588,7 +1595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/mpi/openmpi/" class="md-nav__link">
+      <a href="../../mpi/openmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1609,7 +1616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/mpi/intelmpi/" class="md-nav__link">
+      <a href="../../mpi/intelmpi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1688,7 +1695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/fftw/" class="md-nav__link">
+      <a href="../../libraries/fftw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1709,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/hdf5/" class="md-nav__link">
+      <a href="../../libraries/hdf5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1730,7 +1737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/netcdf/" class="md-nav__link">
+      <a href="../../libraries/netcdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1751,7 +1758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/mkl/" class="md-nav__link">
+      <a href="../../libraries/mkl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1772,7 +1779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/libraries/cuda/" class="md-nav__link">
+      <a href="../../libraries/cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1845,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/performance/gnu-gprof/" class="md-nav__link">
+      <a href="../../performance/gnu-gprof/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1866,7 +1873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/performance/intel-vtune/" class="md-nav__link">
+      <a href="../../performance/intel-vtune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1939,7 +1946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/llms/ollama/" class="md-nav__link">
+      <a href="../../llms/ollama/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1960,7 +1967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/software/llms/vllm/" class="md-nav__link">
+      <a href="../../llms/vllm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1986,8 +1993,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1999,11 +2008,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_11" checked>
         
           
           <label class="md-nav__link" for="__nav_2_7_11" id="__nav_2_7_11_label" tabindex="0">
@@ -2017,7 +2026,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_11_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_7_11">
             <span class="md-nav__icon md-icon"></span>
             Containers
@@ -2028,10 +2037,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../hpc/software/containers/apptainer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2040,6 +2058,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2116,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/slurm-overview/" class="md-nav__link">
+      <a href="../../../running/slurm-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2137,7 +2156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/script-examples/" class="md-nav__link">
+      <a href="../../../running/script-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2158,7 +2177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/monitor-jobs/" class="md-nav__link">
+      <a href="../../../running/monitor-jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2179,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/running/gnu-parallel/" class="md-nav__link">
+      <a href="../../../running/gnu-parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2256,7 +2275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/overview/" class="md-nav__link">
+      <a href="../../../openondemand/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2277,7 +2296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/jupyter-server/" class="md-nav__link">
+      <a href="../../../openondemand/jupyter-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2298,7 +2317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/ollama-jupyter-vscode/" class="md-nav__link">
+      <a href="../../../openondemand/ollama-jupyter-vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2319,7 +2338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/openondemand/packages-kernels/" class="md-nav__link">
+      <a href="../../../openondemand/packages-kernels/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2348,7 +2367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/acknowledgement/" class="md-nav__link">
+      <a href="../../../acknowledgement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2369,7 +2388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hpc/claude-plugin/" class="md-nav__link">
+      <a href="../../../claude-plugin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2447,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus/" class="md-nav__link">
+      <a href="../../../../data/globus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2468,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus-instructions/" class="md-nav__link">
+      <a href="../../../../data/globus-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2489,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus-google-drive/" class="md-nav__link">
+      <a href="../../../../data/globus-google-drive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2510,7 +2529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus-aws-s3-connector/" class="md-nav__link">
+      <a href="../../../../data/globus-aws-s3-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2531,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
+      <a href="../../../../data/globus-google-cloud-storage-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2556,8 +2575,6 @@
       
   
   
-    
-  
   
   
     
@@ -2574,22 +2591,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../../cloud/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2600,13 +2614,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Cloud Services
@@ -2666,7 +2680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws/" class="md-nav__link">
+      <a href="../../../../cloud/aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2687,7 +2701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gcp/" class="md-nav__link">
+      <a href="../../../../cloud/gcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2713,30 +2727,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Google Cloud Skills Boost
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../cloud/gcp-skills-boost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,53 +2739,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#benefits-of-google-cloud-skills-boost" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benefits of Google Cloud Skills Boost
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eligibility-and-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eligibility and Access
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-request-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to request access?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2832,7 +2779,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../nrp/" class="md-nav__link ">
+            <a href="../../../../nrp/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2892,7 +2839,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../help/" class="md-nav__link ">
+            <a href="../../../../help/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2925,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/training/" class="md-nav__link">
+      <a href="../../../../help/training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2946,7 +2893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../help/llms/" class="md-nav__link">
+      <a href="../../../../help/llms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2987,41 +2934,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#benefits-of-google-cloud-skills-boost" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benefits of Google Cloud Skills Boost
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eligibility-and-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eligibility and Access
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-request-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to request access?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3035,25 +2947,195 @@
                   
 
 
-<h1 id="google-cloud-skills-boost">Google Cloud Skills Boost<a class="headerlink" href="#google-cloud-skills-boost" title="Permanent link">&para;</a></h1>
-<p>LBNL has limited licences for <a href="https://cloudskillsboost.google" target="_blank">Google Cloud Skills Boost</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>. This platform offers a comprehensive catalog of courses to enhance your knowledge and skills in various Google Cloud technologies. </p>
-<h2 id="benefits-of-google-cloud-skills-boost">Benefits of Google Cloud Skills Boost<a class="headerlink" href="#benefits-of-google-cloud-skills-boost" title="Permanent link">&para;</a></h2>
+<h1 id="containerization-platform">Containerization Platform<a class="headerlink" href="#containerization-platform" title="Permanent link">&para;</a></h1>
+<p>Docker cannot be run on the cluster, as it requires root access to function. On a multi-user system like Lawrencium, this would pose a security risk. In order to safely run a container on the cluster, you may use Apptainer. This page will outline how to build a container from scratch as well as how to build one from an OCI registry.</p>
+<h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
+<p>An active allocation is required to build the container. When possible, please use an interactive session when building a container. Container builds can exceed the 30 GB cap of the $HOME directory. Redirection to scratch space may be needed before building:</p>
+<p>Overwrite the default cache and tmp directories for Apptainer using one of the two methods described below:</p>
 <ul>
-<li><strong>Hands-on Learning</strong>: Gain practical experience with Google Cloud through interactive labs</li>
-<li><strong>Explore a wide range of cloud topics</strong>, such as:<ul>
-<li>Google Cloud Computing Foundations</li>
-<li>Manage Kubernetes in Google Cloud</li>
-<li>Use Machine Learning APIs on Google Cloud</li>
-<li>Weather Data in BigQuery</li>
-<li>And many more!</li>
-</ul>
+<li>
+<p>The information pulled into the $SCRATCH directory will persist after the job is complete, so use the following method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the commands below to pull to $SCRATCH: 
+    <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span><span class="nv">$SCRATCH</span>/APPTAINER_TMPDIR<span class="w"> </span><span class="nv">$SCRATCH</span>/APPTAINER_CACHEDIR
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/APPTAINER_TMPDIR
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/APPTAINER_CACHEDIR<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>If information does not need to persist, use the disk storage allocated to each compute node under the <code>/tmp</code> directory. Pulling data onto these disks will be much faster than using <code>$SCRATCH</code>; however, keep in mind that any data written to this storage will be wiped after job completion. Run the following commands to pull data to <code>/tmp</code>:
+    <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/tmp/APPTAINER_TMPDIR<span class="w"> </span>/tmp/APPTAINER_CACHEDIR
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span>/tmp/APPTAINER_TMPDIR
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span>/tmp/APPTAINER_CACHEDIR
+</code></pre></div></p>
 </li>
 </ul>
-<h2 id="eligibility-and-access">Eligibility and Access<a class="headerlink" href="#eligibility-and-access" title="Permanent link">&para;</a></h2>
-<p>This opportunity is available to <strong>LBNL staff and researchers</strong> interested in advancing their Google Cloud proficiency. </p>
-<p>No Google Cloud account is required to access the Google Cloud Skills Boost subscription.</p>
-<h2 id="how-to-request-access">How to request access?<a class="headerlink" href="#how-to-request-access" title="Permanent link">&para;</a></h2>
-<p>If you are a LBNL researcher or staff interested in making use of the <em>Google Cloud Skills Boost</em>, please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>. </p>
+<h1 id="pulling-a-container-from-an-oci-open-container-initiative-registry">Pulling a Container from an OCI (Open Container Initiative) registry<a class="headerlink" href="#pulling-a-container-from-an-oci-open-container-initiative-registry" title="Permanent link">&para;</a></h1>
+<p>For this demonstration, the image will be pulled from Nvidia’s registry, nvcr.io. The image path being used in this example is:</p>
+<pre><code>nvcr.io/nvidia/pytorch:26.07-py3
+</code></pre>
+<p>To pull this image, run:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>pytorch.sif<span class="w"> </span>docker://nvcr.io/nvidia/pytorch:26.07-py3
+</code></pre></div>
+Here is the template for the build command (when building from an OCI registry):
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span>docker://<span class="o">[</span>image<span class="w"> </span>path<span class="o">]</span>
+</code></pre></div></p>
+<h3 id="target-variances">Target variances<a class="headerlink" href="#target-variances" title="Permanent link">&para;</a></h3>
+<p>The beginning of the URI in the template (docker://)  will change if the image is not being built from an OCI registry. Find the list of other targets and methods of building them <a href="https://apptainer.org/docs/user/latest/build_a_container.html">here</a>.</p>
+<h3 id="building-for-a-different-architecture">Building for a Different Architecture<a class="headerlink" href="#building-for-a-different-architecture" title="Permanent link">&para;</a></h3>
+<p>By default, <code>apptainer pull</code> will construct a container that matches the host system’s architecture. The <code>--arch</code> option can be used to build for another CPU architecture.</p>
+<p>Example of building for an arm64 host: 
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>--arch<span class="w"> </span>arm64<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span>docker://<span class="o">[</span>image<span class="w"> </span>path<span class="o">]</span>
+</code></pre></div></p>
+<h1 id="creating-an-image-and-pushing-to-a-registry-docker">Creating an Image and Pushing to a Registry (Docker)<a class="headerlink" href="#creating-an-image-and-pushing-to-a-registry-docker" title="Permanent link">&para;</a></h1>
+<p>This section assumes that you already have a Dockerfile for your image, as well as an account with DockerHub.</p>
+<p>Assuming that your Dockerfile is in your current working directory, follow these commands to create and push image (Make sure you do this part on your device and not on the cluster):
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="o">=</span>my_username
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my_tagname<span class="w"> </span>.
+docker<span class="w"> </span>tag<span class="w"> </span>my_tagname<span class="w"> </span>my_username/name_of_image:0.1<span class="w">  </span>
+docker<span class="w"> </span>push<span class="w"> </span>my_username/name_of_image
+</code></pre></div>
+Now that the image has been pushed to the registry (DockerHub), simply follow the previous section's instructions to pull the image onto the cluster. In this case, after logging on to a compute node, simply run:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>image_name.sif<span class="w"> </span>docker://my_username/name_of_image:0.1
+</code></pre></div></p>
+<h1 id="building-a-container-from-scratch">Building a Container from Scratch<a class="headerlink" href="#building-a-container-from-scratch" title="Permanent link">&para;</a></h1>
+<h2 id="definition-file">Definition File<a class="headerlink" href="#definition-file" title="Permanent link">&para;</a></h2>
+<p>There are millions of different images available on OCI registries; however, it often will be the case that an image doesn't match your exact specifications. In the case where fine-tuning is needed, you must create the container from a definition file. The Apptainer definition file has two parts:</p>
+<p>Templates are given below the example snippets.</p>
+<h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h3>
+<p>The header specifies the core operating system of the build, allowing for fine-tuning on aspects like the OS version and packages to be installed.</p>
+<p>The header will always include the keyword <code>Bootstrap</code> at the very top of the file. There are several bootstrap agents to choose from, but this example will focus on the <code>docker</code> bootstrap agent, which allows pulling of docker layers to create a base image.</p>
+<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
+From:<span class="w"> </span>nvcr.io/nvidia/pytorch:26.07-py3
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span><span class="o">[</span>bootstrap<span class="w"> </span>agent<span class="o">]</span>
+From:<span class="w"> </span><span class="o">[</span>registry<span class="o">]</span>/<span class="o">[</span>namespace<span class="o">]</span>/<span class="o">[</span>container<span class="o">]</span>:<span class="o">[</span>tag<span class="o">]</span>@<span class="o">[</span>digest<span class="o">]</span>
+</code></pre></div>
+Different bootstrap agents will have different keywords. For the Docker boostrap agent, the <code>From</code> is a mandatory keyword that sets the base image.</p>
+<p><code>registry</code> is optional and will by default direct to docker hub. <code>namespace</code> is optional and will default to <code>library</code>. <code>tag</code> is also optional and will default to <code>latest</code>. </p>
+<h3 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h3>
+<p>The remaining portion of the definition file is populated by sections. Sections are optional and more than one instance of a particular section may exist within the definition file. Each section begins with <code>%</code> followed by the name of the section.</p>
+<p>Here is the example definition file that makes use of all available sections:</p>
+<p><div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
+From:<span class="w"> </span>nvcr.io/nvidia/pytorch:<span class="o">{{</span><span class="w"> </span>VERSION<span class="w"> </span><span class="o">}}</span>
+
+%arguments
+<span class="w">    </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">26</span>.07-py3
+%setup
+<span class="w">    </span>touch<span class="w"> </span>/file1
+<span class="w">    </span>touch<span class="w"> </span><span class="si">${</span><span class="nv">APPTAINER_ROOTFS</span><span class="si">}</span>/file2
+
+%files
+<span class="w">    </span>/file1<span class="w"> </span>/opt/file1
+
+%environment
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LISTEN_PORT</span><span class="o">=</span><span class="m">12345</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C
+
+%post
+<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>netcat
+<span class="w">    </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>wandb
+<span class="w">    </span><span class="nv">NOW</span><span class="o">=</span><span class="sb">`</span>date<span class="sb">`</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"export NOW=\"</span><span class="si">${</span><span class="nv">NOW</span><span class="si">}</span><span class="s2">\""</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$APPTAINER_ENVIRONMENT</span>
+
+%runscript
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Container was created </span><span class="nv">$NOW</span><span class="s2">"</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Arguments received: </span><span class="nv">$*</span><span class="s2">"</span>
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>python<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+
+%startscript
+<span class="w">    </span>nc<span class="w"> </span>-lp<span class="w"> </span><span class="nv">$LISTEN_PORT</span>
+
+%test
+<span class="w">    </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">"PyTorch"</span><span class="w"> </span>/opt/nvidia/nvidia_entrypoint.sh<span class="w"> </span><span class="o">||</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w">  </span><span class="s2">"import torch; print(torch.__version__)"</span>
+
+%labels
+<span class="w">    </span>Author<span class="w"> </span>your_username@lbl.gov
+<span class="w">    </span>Version<span class="w"> </span>v0.0.1
+<span class="w">    </span>Base<span class="w"> </span>nvcr.io/nvidia/pytorch:26.07-py3
+
+%help
+<span class="w">    </span>This<span class="w"> </span>container<span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>NVIDIAs<span class="w"> </span>NGC<span class="w"> </span>PyTorch<span class="w"> </span>image<span class="w"> </span><span class="o">(</span><span class="m">26</span>.07-py3<span class="o">)</span>,
+<span class="w">    </span>with<span class="w"> </span>netcat<span class="w"> </span>and<span class="w"> </span>wandb<span class="w"> </span>added.<span class="w"> </span>Run<span class="w"> </span>a<span class="w"> </span>script<span class="w"> </span>with:
+<span class="w">    </span>apptainer<span class="w"> </span>run<span class="w"> </span>pytorch-full.sif<span class="w"> </span>my_script.py
+</code></pre></div>
+<a href="https://apptainer.org/docs/user/latest/definition_files.html#sections">Breakdown of sections</a></p>
+<h2 id="building-from-the-definition-file">Building from the Definition File<a class="headerlink" href="#building-from-the-definition-file" title="Permanent link">&para;</a></h2>
+<p>With the definition file created, all that's left is to build the image. </p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>pytorch.sif<span class="w"> </span>/Users/Bob/documents/pytorch.def
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span><span class="o">[</span>path<span class="w"> </span>to<span class="w"> </span>def<span class="w"> </span>file<span class="o">]</span>
+</code></pre></div>
+<h3 id="about-fakeroot">About Fakeroot<a class="headerlink" href="#about-fakeroot" title="Permanent link">&para;</a></h3>
+<p>The fakeroot feature <code>-f</code> or <code>--fakeroot</code>, which allows root emulation, is not used above, as it is already implied for an unprivileged user.</p>
+<h1 id="running-and-interacting-with-a-container">Running and Interacting with a Container<a class="headerlink" href="#running-and-interacting-with-a-container" title="Permanent link">&para;</a></h1>
+<p>There are three main ways to run apptainer containers:</p>
+<p>Command templates are given below the example snippets.</p>
+<p><strong><code>apptainer exec</code></strong>: run a single command inside the container and exit:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apptainer exec [container] [command]
+</code></pre></div></p>
+<p><strong><code>apptainer shell</code></strong>: drop into an interactive shell inside the container:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>shell<span class="w"> </span>pytorch.sif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apptainer shell [container]
+</code></pre></div></p>
+<p><strong><code>apptainer run</code></strong>: execute the container's default runscript (if it has one):
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>pytorch.sif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apptainer run [container]
+</code></pre></div></p>
+<h3 id="creating-an-instance">Creating an Instance<a class="headerlink" href="#creating-an-instance" title="Permanent link">&para;</a></h3>
+<p>Using <code>exec</code> <code>shell</code> or <code>run</code> allows for a quick one-time interaction where the container is stopped after execution. To keep a container running in the background, you must start an instance.</p>
+<p>Here is the template to do so:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span><span class="o">[</span>image<span class="w"> </span>name<span class="o">]</span>.sif<span class="w"> </span><span class="o">[</span>instance<span class="w"> </span>name<span class="o">]</span>
+</code></pre></div></p>
+<h3 id="gpu-access">GPU access<a class="headerlink" href="#gpu-access" title="Permanent link">&para;</a></h3>
+<p>If GPU access is needed, make sure to use <code>--nv</code>, to bind in the host's NVIDIA driver and libraries:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
+</code></pre></div></p>
+<p>In this example, without <code>--nv</code>, <code>torch.cuda.is_available()</code>
+returns <code>False</code> even on a GPU node.</p>
+<h2 id="running-container-on-a-gpu-or-cpu">Running Container on a GPU or CPU<a class="headerlink" href="#running-container-on-a-gpu-or-cpu" title="Permanent link">&para;</a></h2>
+<p>In order to run the container specifically on a GPU or CPU, a batch script with the appropriate specifications must be submitted via <code>sbatch</code>.</p>
+<h3 id="cpu-job">CPU Job<a class="headerlink" href="#cpu-job" title="Permanent link">&para;</a></h3>
+<p>Here is an example of a batch script for a CPU job:
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=cpu_job</span>
+<span class="c1">#SBATCH --partition=lr8</span>
+<span class="c1">#SBATCH --account=[account_name]</span>
+<span class="c1">#SBATCH --qos=lr8_normal</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=4</span>
+<span class="c1">#SBATCH --time=02:00:00</span>
+<span class="c1">#SBATCH --output=cpu_job_%j.log</span>
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>script.py
+</code></pre></div>
+Note that the partition specified is part of the CPU cluster. Make sure the exact specifications are identified for your particular job.</p>
+<p>Submit with:
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>cpu_job.sh
+</code></pre></div></p>
+<h3 id="gpu-job">GPU Job<a class="headerlink" href="#gpu-job" title="Permanent link">&para;</a></h3>
+<p>For a GPU job, request a GPU-enabled partition and add <code>--gres=gpu:[type]:[count]</code>. Inside the container call, include <code>--nv</code> so the container can see the host's driver:</p>
+<p>Here is an example of a batch script for a GPU job:
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=gpu_job</span>
+<span class="c1">#SBATCH --partition=es1</span>
+<span class="c1">#SBATCH --account=ac_scsguest</span>
+<span class="c1">#SBATCH --qos=es_normal</span>
+<span class="c1">#SBATCH --gres=gpu:A40:1</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
+<span class="c1">#SBATCH --time=02:00:00</span>
+<span class="c1">#SBATCH --output=gpu_job_%j.log</span>
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
+</code></pre></div></p>
+<p>Similarly, submit with:
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>gpu_job.sh
+</code></pre></div></p>
 
 
 
@@ -3074,7 +3156,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 10, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 2, 2026</span>
   </span>
 
     
@@ -3112,7 +3194,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../gcp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Google Cloud Platform">
+          <a href="../../llms/vllm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: vLLM">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3122,20 +3204,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Google Cloud Platform
+                vLLM
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../nrp/" class="md-footer__link md-footer__link--next" aria-label="Next: National Research Platform">
+          <a href="../../../running/slurm-overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Slurm Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                National Research Platform
+                Slurm Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3167,10 +3249,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "search.highlight", "navigation.instant", "navigation.top", "navigation.path", "navigation.footer", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>

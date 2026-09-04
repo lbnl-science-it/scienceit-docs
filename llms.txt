@@ -37,6 +37,7 @@
 - [GCC](https://scienceit-docs.lbl.gov/hpc/software/compilers/gcc/index.md)
 - [Intel](https://scienceit-docs.lbl.gov/hpc/software/compilers/intel/index.md)
 - [NVHPC](https://scienceit-docs.lbl.gov/hpc/software/compilers/nvhpc/index.md)
+- [Apptainer](https://scienceit-docs.lbl.gov/hpc/software/containers/apptainer/index.md)
 - [R](https://scienceit-docs.lbl.gov/hpc/software/languages/R/index.md)
 - [Julia](https://scienceit-docs.lbl.gov/hpc/software/languages/julia/index.md)
 - [Python](https://scienceit-docs.lbl.gov/hpc/software/languages/python/index.md)
