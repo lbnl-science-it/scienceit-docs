@@ -1523,6 +1523,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Loading AlphaFold 3 module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-new-in-304" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's new in 3.0.4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3031,6 +3046,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Loading AlphaFold 3 module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-new-in-304" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's new in 3.0.4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3058,26 +3088,70 @@
 
 
 <h1 id="alphafold-3-on-lawrencium">AlphaFold 3 on Lawrencium<a class="headerlink" href="#alphafold-3-on-lawrencium" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/google-deepmind/alphafold3.git" target="_blank">AlphaFold 3</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is a new AI model developed by <a href="https://deepmind.google/" target="_blank">Google DeepMind</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> and <a href="https://www.isomorphiclabs.com/" target="_blank">Isomorphic Labs</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> for generating 3D predictions of biological systems. The software package and the public database are now available ont the Lawrencium cluster.</p>
+<p><a href="https://github.com/google-deepmind/alphafold3.git" target="_blank">AlphaFold 3</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> is a new AI model developed by <a href="https://deepmind.google/" target="_blank">Google DeepMind</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> and <a href="https://www.isomorphiclabs.com/" target="_blank">Isomorphic Labs</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> for generating 3D predictions of biological systems. The software package and the public database are now available on the Lawrencium cluster.</p>
 <h2 id="genetic-databases">Genetic Databases<a class="headerlink" href="#genetic-databases" title="Permanent link">&para;</a></h2>
 <p>The genetic database required for AlphaFold 3 is saved under the shared directory <code>/clusterfs/collections/Alphafold3/public-db</code> on the cluster.</p>
 <h2 id="model-parameters">Model Parameters<a class="headerlink" href="#model-parameters" title="Permanent link">&para;</a></h2>
-<p>The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms <a href="https://github.com/google-deepmind/alphafold3/blob/v3.0.0/WEIGHTS_TERMS_OF_USE.md" target="_blank">Model Parameters Terms of Use</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
-<p>Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this <a href="https://forms.gle/svvpY4u2jsHEwWYS6">form</a>. If you have any questions about fields of the form then you may send us an inquiry at <a href="mailto:hpcshelp@lbl.gov">hpcshelp@lbl.gov</a>. Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory <code>model_param</code>. The parameters file is a single file approximately 1GB in size.</p>
+<p>The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms <a href="https://github.com/google-deepmind/alphafold3/blob/v3.0.4/WEIGHTS_TERMS_OF_USE.md" target="_blank">Model Parameters Terms of Use</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
+<p>Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this <a href="https://forms.gle/svvpY4u2jsHEwWYS6">form</a>. If you have any questions about fields of the form then you may send us an inquiry at <a href="mailto:scienceithelp@lbl.gov">scienceithelp@lbl.gov</a>. Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory <code>model_param</code>. The parameters file is a single file approximately 1GB in size.</p>
 <h2 id="loading-alphafold-3-module">Loading AlphaFold 3 module<a class="headerlink" href="#loading-alphafold-3-module" title="Permanent link">&para;</a></h2>
+<p>Two versions of AlphaFold 3 are available as modules on the cluster:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>AlphaFold 3 version</th>
+<th>Supported GPU partitions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ml/alphafold3/3.0.4</code> (default)</td>
+<td>3.0.4</td>
+<td><code>es3</code> (RTX PRO 6000 Blackwell), <code>es2</code> (H100/H200) and <code>es1</code></td>
+</tr>
+<tr>
+<td><code>ml/alphafold3/3.0.1</code></td>
+<td>3.0.1</td>
+<td><code>es2</code> (H100/H200) and <code>es1</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Blackwell (<code>es3</code>) requires version 3.0.4</p>
+<p>Version <code>3.0.1</code> predates upstream support for NVIDIA Blackwell GPUs and will <strong>not</strong> run on the <code>es3</code> partition. If you are submitting to <code>es3</code>, you must load <code>ml/alphafold3/3.0.4</code>.</p>
+<p>Note that as of September 2026, <code>es3</code> is <strong>not</strong> yet available for general usage. </p>
+</div>
+<p>Loading the module without a version now gives you <code>3.0.4</code>:</p>
 <div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3
 </code></pre></div>
-<p>The <code>ml/alphafold3</code> module defines various environment variables such as <code>ALPHAFOLD_DIR</code> and <code>DB_DIR</code> that can be used to run a job as shown below. Users will have to setup environment variable for <code>MODEL_PARAMETERS_DIR</code> before running the script or it can be setup directly in the job submission script as shown below.</p>
+<p>We recommend loading an explicit version in your job scripts so that your runs stay reproducible when the default changes:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
+</code></pre></div>
+<p>Both modules define the same environment variables, such as <code>ALPHAFOLD_DIR</code> and <code>DB_DIR</code>, that can be used to run a job as shown below. Users will have to setup environment variable for <code>MODEL_PARAMETERS_DIR</code> before running the script or it can be setup directly in the job submission script as shown below.</p>
+<h3 id="whats-new-in-304">What's new in 3.0.4<a class="headerlink" href="#whats-new-in-304" title="Permanent link">&para;</a></h3>
+<p>Highlights from the upstream releases between <code>3.0.1</code> and <code>3.0.4</code>:</p>
+<ul>
+<li><strong>NVIDIA Blackwell GPU support</strong> (3.0.2), which is what makes this version usable on the <code>es3</code> partition.</li>
+<li><strong>Sharded database searching</strong> giving 10-30x faster MSA searches, and Tokamax flash-attention support (3.0.2).</li>
+<li>Much faster confidence JSON serialization, along with glycan and chain description handling fixes (3.0.3).</li>
+<li>Updated JAX and Tokamax for improved performance, reduced memory use in outer product calculations, and chain IDs in the confidence JSON output (3.0.4).</li>
+</ul>
+<p>For the complete list of changes, see the <a href="https://github.com/google-deepmind/alphafold3/releases" target="_blank">AlphaFold 3 release notes</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>.</p>
 <h2 id="running">Running<a class="headerlink" href="#running" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>Use <code>python /app/alphafold/run_alphafold.py</code> when using the <code>alphafold3.sif</code> image from the <code>ml/alphafold3</code> module. This is different from the official instructions on the <code>alphafold3</code> github page. See the sample slurm script below.</li>
+<li>Use <code>python /app/alphafold/run_alphafold.py</code> when using the <code>alphafold3.sif</code> image from either <code>ml/alphafold3</code> module. This is different from the official instructions on the <code>alphafold3</code> github page. See the sample slurm script below.</li>
 </ul>
 </div>
-<p>Below is a sample script to run <code>alphafold3</code> after loading <code>ml/alphafold3</code> module. It assumes the presence of <code>fold_input.json</code> in <code>$HOME/af_input</code> and saves output to <code>$HOME/af_output</code>. Please pay close attention to different options, path and variables and make changes as necessary.</p>
+<p>Below is a sample script to run <code>alphafold3</code> after loading the <code>ml/alphafold3</code> module. It assumes the presence of <code>fold_input.json</code> in <code>$HOME/af_input</code> and saves output to <code>$HOME/af_output</code>. Please pay close attention to different options, path and variables and make changes as necessary.</p>
+<p>The <code>es2</code> and <code>es3</code> tabs differ only in the slurm resource request and the module version; the <code>apptainer exec</code> command is identical. Note that <code>es3</code> requires 32 CPU cores per GPU card, whereas <code>es2</code> requires 14. Both module versions also run on the older <code>es1</code> GPU partition; adapt the <code>--partition</code>, <code>--qos</code>, <code>--gres</code> and <code>--cpus-per-task</code> lines accordingly - see the <a href="../../../systems/einsteinium/">Einsteinium GPU cluster</a> page for the correct values for each partition.</p>
 <div class="admonition example">
 <p class="admonition-title">Example 1: Running both Data Pipeline and Inference</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">es2 (H100/H200)</label><label for="__tabbed_1_2">es3 (Blackwell)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><span class="filename">af3_example.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --account=&lt;account&gt;</span>
 <span class="c1">#SBATCH --partition=es2</span>
@@ -3088,7 +3162,7 @@
 <span class="c1">#SBATCH --qos=es2_normal</span>
 <span class="c1">#SBATCH --time=1:30:00</span>
 
-module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
 
 <span class="c1"># export MODEL_PARAMETERS_DIR variable according to where they are saved</span>
 <span class="c1">#If model parameters are saved in your home directory</span>
@@ -3108,12 +3182,49 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
 <span class="w">                    </span>--db_dir<span class="o">=</span>/root/public_databases<span class="w"> </span><span class="se">\</span>
 <span class="w">                    </span>--output_dir<span class="o">=</span>/root/af_output
 </code></pre></div>
+<p>This script also works with <code>ml/alphafold3/3.0.1</code> if you need the older version for reproducibility.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">af3_example.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --account=&lt;account&gt;</span>
+<span class="c1">#SBATCH --partition=es3</span>
+<span class="c1">#SBATCH --gres=gpu:RTX6000:1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=32</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --qos=&lt;es3_qos_pending&gt;</span>
+<span class="c1">#SBATCH --time=1:30:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
+
+<span class="c1"># export MODEL_PARAMETERS_DIR variable according to where they are saved</span>
+<span class="c1">#If model parameters are saved in your home directory</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_PARAMETERS_DIR</span><span class="o">=</span>/global/home/users/<span class="nv">$USER</span>/model_param
+
+<span class="c1">#If model parameters are saved in your group directory</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_PARAMETERS_DIR</span><span class="o">=</span>/global/home/groups/&lt;project_name&gt;/model_param
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--bind<span class="w"> </span><span class="nv">$HOME</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$HOME</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$MODEL_PARAMETERS_DIR</span>:/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$DB_DIR</span>:/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span><span class="nv">$ALPHAFOLD_DIR</span>/alphafold3.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>python<span class="w"> </span>/app/alphafold/run_alphafold.py<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--json_path<span class="o">=</span>/root/af_input/fold_input.json<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--model_dir<span class="o">=</span>/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--db_dir<span class="o">=</span>/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--output_dir<span class="o">=</span>/root/af_output
+</code></pre></div>
+<p>The <code>qos</code> values for the <code>es3</code> partition have not been configured for all users yet, so substitute the <code>--qos</code> line above once they are available. Only <code>ml/alphafold3/3.0.4</code> runs on this partition.</p>
+</div>
+</div>
+</div>
 </div>
 <p>Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) portions of the job using options <code>--run_data_pipeline</code> and <code>--run_inference</code> options. It is also possible to run the data pipeline on a CPU partition such as lr6 followed the inference on a GPU partition using slurm dependency.</p>
 <div class="admonition example">
 <p class="admonition-title">Example 2: Running Data Pipeline and Inference Separately</p>
-<p>First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">af3_data.sh</label><label for="__tabbed_1_2">af3_inference.sh</label></div>
+<p>First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below; pick the inference script that matches the GPU partition you intend to use.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">af3_data.sh</label><label for="__tabbed_2_2">af3_inference.sh (es2)</label><label for="__tabbed_2_3">af3_inference.sh (es3)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -3127,7 +3238,7 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
 <span class="c1">#SBATCH --output=%x_%a.out</span>
 <span class="c1">#SBATCH --error=%x_%a.err</span>
 
-module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.1
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
 
 apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
 <span class="w">               </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
@@ -3158,7 +3269,37 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
 <span class="c1">#SBATCH --output=%x_%a.out</span>
 <span class="c1">#SBATCH --error=%x_%a.err</span>
 
-module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.1
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
+
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_model:/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$DB_DIR</span>:/root/public_databases<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span><span class="nv">$ALPHAFOLD_DIR</span>/alphafold3.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>python<span class="w"> </span>/app/alphafold/run_alphafold.py<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--json_path<span class="o">=</span>/root/af_output/&lt;job_name&gt;/&lt;job_name&gt;_data.json<span class="w"> </span><span class="se">\ </span>
+<span class="w">                    </span>--model_dir<span class="o">=</span>/root/models<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--db_dir<span class="o">=</span>/root/af_output/&lt;job_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--run_data_pipeline<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--run_inference<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --account=&lt;account&gt;</span>
+<span class="c1">#SBATCH --partition=es3</span>
+<span class="c1">#SBATCH --cpus-per-task=32</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --gres=gpu:RTX6000:1</span>
+<span class="c1">#SBATCH --qos=&lt;es3_qos_pending&gt;</span>
+<span class="c1">#SBATCH --time=0:30:0</span>
+<span class="c1">#SBATCH --kill-on-invalid-dep=yes</span>
+<span class="c1">#SBATCH --job-name=inf_rtx6000</span>
+<span class="c1">#SBATCH --output=%x_%a.out</span>
+<span class="c1">#SBATCH --error=%x_%a.err</span>
+
+module<span class="w"> </span>load<span class="w"> </span>ml/alphafold3/3.0.4
 
 apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_input:/root/af_input<span class="w"> </span><span class="se">\</span>
 <span class="w">                    </span>--bind<span class="w"> </span><span class="nv">$PWD</span>/af_output:/root/af_output<span class="w"> </span><span class="se">\</span>
@@ -3203,7 +3344,7 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 14, 2026</span>
   </span>
 
     

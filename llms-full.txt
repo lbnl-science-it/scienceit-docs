@@ -2987,7 +2987,7 @@ Please follow the official [vLLM documentation](https://docs.vllm.ai/en/v0.19.0/
 
 # AlphaFold 3 on Lawrencium
 
-[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git) is a new AI model developed by [Google DeepMind](https://deepmind.google/) and [Isomorphic Labs](https://www.isomorphiclabs.com/) for generating 3D predictions of biological systems. The software package and the public database are now available ont the Lawrencium cluster.
+[AlphaFold 3](https://github.com/google-deepmind/alphafold3.git) is a new AI model developed by [Google DeepMind](https://deepmind.google/) and [Isomorphic Labs](https://www.isomorphiclabs.com/) for generating 3D predictions of biological systems. The software package and the public database are now available on the Lawrencium cluster.
 
 ## Genetic Databases
 
@@ -2995,25 +2995,59 @@ The genetic database required for AlphaFold 3 is saved under the shared director
 
 ## Model Parameters
 
-The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms [Model Parameters Terms of Use](https://github.com/google-deepmind/alphafold3/blob/v3.0.0/WEIGHTS_TERMS_OF_USE.md) .
+The model parameters are the result of training the AlphaFold model and required for inference pipeline of AlphaFold 3. The model parameters are distributed separately from the source code by Google DeepMind and subject to terms [Model Parameters Terms of Use](https://github.com/google-deepmind/alphafold3/blob/v3.0.4/WEIGHTS_TERMS_OF_USE.md) .
 
-Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this [form](https://forms.gle/svvpY4u2jsHEwWYS6). If you have any questions about fields of the form then you may send us an inquiry at [hpcshelp@lbl.gov](mailto:hpcshelp@lbl.gov). Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory `model_param`. The parameters file is a single file approximately 1GB in size.
+Lawrencium users interested in using AlphaFold 3 are required to abide to above terms. Users can request a personal copy of the model parameters directly from Google DeepMind by filling out this [form](https://forms.gle/svvpY4u2jsHEwWYS6). If you have any questions about fields of the form then you may send us an inquiry at [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov). Once you get response and directions from Google DeepMind on obtaining model parameters you may save the parameters file in your home directory or project directory (if you are sharing with your group members) inside directory `model_param`. The parameters file is a single file approximately 1GB in size.
 
 ## Loading AlphaFold 3 module
+
+Two versions of AlphaFold 3 are available as modules on the cluster:
+
+| Module                          | AlphaFold 3 version | Supported GPU partitions                                    |
+| ------------------------------- | ------------------- | ----------------------------------------------------------- |
+| `ml/alphafold3/3.0.4` (default) | 3.0.4               | `es3` (RTX PRO 6000 Blackwell), `es2` (H100/H200) and `es1` |
+| `ml/alphafold3/3.0.1`           | 3.0.1               | `es2` (H100/H200) and `es1`                                 |
+
+Blackwell (`es3`) requires version 3.0.4
+
+Version `3.0.1` predates upstream support for NVIDIA Blackwell GPUs and will **not** run on the `es3` partition. If you are submitting to `es3`, you must load `ml/alphafold3/3.0.4`.
+
+Note that as of September 2026, `es3` is **not** yet available for general usage.
+
+Loading the module without a version now gives you `3.0.4`:
 
 ```
 module load ml/alphafold3
 ```
 
-The `ml/alphafold3` module defines various environment variables such as `ALPHAFOLD_DIR` and `DB_DIR` that can be used to run a job as shown below. Users will have to setup environment variable for `MODEL_PARAMETERS_DIR` before running the script or it can be setup directly in the job submission script as shown below.
+We recommend loading an explicit version in your job scripts so that your runs stay reproducible when the default changes:
+
+```
+module load ml/alphafold3/3.0.4
+```
+
+Both modules define the same environment variables, such as `ALPHAFOLD_DIR` and `DB_DIR`, that can be used to run a job as shown below. Users will have to setup environment variable for `MODEL_PARAMETERS_DIR` before running the script or it can be setup directly in the job submission script as shown below.
+
+### What's new in 3.0.4
+
+Highlights from the upstream releases between `3.0.1` and `3.0.4`:
+
+- **NVIDIA Blackwell GPU support** (3.0.2), which is what makes this version usable on the `es3` partition.
+- **Sharded database searching** giving 10-30x faster MSA searches, and Tokamax flash-attention support (3.0.2).
+- Much faster confidence JSON serialization, along with glycan and chain description handling fixes (3.0.3).
+- Updated JAX and Tokamax for improved performance, reduced memory use in outer product calculations, and chain IDs in the confidence JSON output (3.0.4).
+
+For the complete list of changes, see the [AlphaFold 3 release notes](https://github.com/google-deepmind/alphafold3/releases) .
 
 ## Running
 
 Note
 
-- Use `python /app/alphafold/run_alphafold.py` when using the `alphafold3.sif` image from the `ml/alphafold3` module. This is different from the official instructions on the `alphafold3` github page. See the sample slurm script below.
+- Use `python /app/alphafold/run_alphafold.py` when using the `alphafold3.sif` image from either `ml/alphafold3` module. This is different from the official instructions on the `alphafold3` github page. See the sample slurm script below.
 
-Below is a sample script to run `alphafold3` after loading `ml/alphafold3` module. It assumes the presence of `fold_input.json` in `$HOME/af_input` and saves output to `$HOME/af_output`. Please pay close attention to different options, path and variables and make changes as necessary.
+Below is a sample script to run `alphafold3` after loading the `ml/alphafold3` module. It assumes the presence of `fold_input.json` in `$HOME/af_input` and saves output to `$HOME/af_output`. Please pay close attention to different options, path and variables and make changes as necessary.
+
+The `es2` and `es3` tabs differ only in the slurm resource request and the module version; the `apptainer exec` command is identical. Note that `es3` requires 32 CPU cores per GPU card, whereas `es2` requires 14. Both module versions also run on the older `es1` GPU partition; adapt the `--partition`, `--qos`, `--gres` and `--cpus-per-task` lines accordingly - see the [Einsteinium GPU cluster](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/index.md) page for the correct values for each partition.
 
 Example 1: Running both Data Pipeline and Inference
 
@@ -3030,7 +3064,7 @@ af3_example.sh
 #SBATCH --qos=es2_normal
 #SBATCH --time=1:30:00
 
-module load ml/alphafold3
+module load ml/alphafold3/3.0.4
 
 # export MODEL_PARAMETERS_DIR variable according to where they are saved
 #If model parameters are saved in your home directory
@@ -3051,11 +3085,49 @@ apptainer exec --nv --bind $HOME/af_input:/root/af_input \
                     --output_dir=/root/af_output
 ```
 
+This script also works with `ml/alphafold3/3.0.1` if you need the older version for reproducibility.
+
+af3_example.sh
+
+```
+#!/bin/bash
+#SBATCH --account=<account>
+#SBATCH --partition=es3
+#SBATCH --gres=gpu:RTX6000:1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --nodes=1
+#SBATCH --qos=<es3_qos_pending>
+#SBATCH --time=1:30:00
+
+module load ml/alphafold3/3.0.4
+
+# export MODEL_PARAMETERS_DIR variable according to where they are saved
+#If model parameters are saved in your home directory
+export MODEL_PARAMETERS_DIR=/global/home/users/$USER/model_param
+
+#If model parameters are saved in your group directory
+export MODEL_PARAMETERS_DIR=/global/home/groups/<project_name>/model_param
+
+apptainer exec --nv --bind $HOME/af_input:/root/af_input \
+                    --bind $HOME/af_output:/root/af_output \
+                    --bind $MODEL_PARAMETERS_DIR:/root/models \
+                    --bind $DB_DIR:/root/public_databases \
+                    $ALPHAFOLD_DIR/alphafold3.sif \
+                    python /app/alphafold/run_alphafold.py \
+                    --json_path=/root/af_input/fold_input.json \
+                    --model_dir=/root/models \
+                    --db_dir=/root/public_databases \
+                    --output_dir=/root/af_output
+```
+
+The `qos` values for the `es3` partition have not been configured for all users yet, so substitute the `--qos` line above once they are available. Only `ml/alphafold3/3.0.4` runs on this partition.
+
 Alphafold3 allows you to separate the data pipeline (CPU) and inference (GPU) portions of the job using options `--run_data_pipeline` and `--run_inference` options. It is also possible to run the data pipeline on a CPU partition such as lr6 followed the inference on a GPU partition using slurm dependency.
 
 Example 2: Running Data Pipeline and Inference Separately
 
-First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below:
+First, create two separate slurm scripts for data pipeline and inference. See example scripts in the tabs below; pick the inference script that matches the GPU partition you intend to use.
 
 ```
 #!/bin/bash
@@ -3069,7 +3141,7 @@ First, create two separate slurm scripts for data pipeline and inference. See ex
 #SBATCH --output=%x_%a.out
 #SBATCH --error=%x_%a.err
 
-module load ml/alphafold3/3.0.1
+module load ml/alphafold3/3.0.4
 
 apptainer exec --bind $PWD/af_input:/root/af_input \
                --bind $PWD/af_output:/root/af_output \
@@ -3100,7 +3172,37 @@ apptainer exec --bind $PWD/af_input:/root/af_input \
 #SBATCH --output=%x_%a.out
 #SBATCH --error=%x_%a.err
 
-module load ml/alphafold3/3.0.1
+module load ml/alphafold3/3.0.4
+
+apptainer exec --nv --bind $PWD/af_input:/root/af_input \
+                    --bind $PWD/af_output:/root/af_output \
+                    --bind $PWD/af_model:/root/models \
+                    --bind $DB_DIR:/root/public_databases \
+                    $ALPHAFOLD_DIR/alphafold3.sif \
+                    python /app/alphafold/run_alphafold.py \
+                    --json_path=/root/af_output/<job_name>/<job_name>_data.json \ 
+                    --model_dir=/root/models \
+                    --db_dir=/root/af_output/<job_name> \
+                    --run_data_pipeline=false \
+                    --run_inference=true
+```
+
+```
+#!/bin/bash
+#SBATCH --account=<account>
+#SBATCH --partition=es3
+#SBATCH --cpus-per-task=32
+#SBATCH --ntasks=1
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:RTX6000:1
+#SBATCH --qos=<es3_qos_pending>
+#SBATCH --time=0:30:0
+#SBATCH --kill-on-invalid-dep=yes
+#SBATCH --job-name=inf_rtx6000
+#SBATCH --output=%x_%a.out
+#SBATCH --error=%x_%a.err
+
+module load ml/alphafold3/3.0.4
 
 apptainer exec --nv --bind $PWD/af_input:/root/af_input \
                     --bind $PWD/af_output:/root/af_output \
