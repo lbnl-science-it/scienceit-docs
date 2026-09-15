@@ -7,7 +7,7 @@ Please make sure you have configured [Multi-Factor Authentication (MFA)](https:/
 You’ll need to generate and enter a one-time password each time that you log in. You’ll use an application called Google Authenticator to generate these passwords, which you can install and run on your smartphone and/or tablet. For instructions on setting up and using Google Authenticator, see [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md). Once you have your PIN+OTP set up you can login to cluster using a ssh client of your choice or Linux/Mac terminal as
 
 ```
-ssh username@lrc-login.lbl.gov
+ssh your-username@lrc-login.lbl.gov
 ```
 
 You will be prompted to enter your password. Enter your PIN+OTP without any spaces. For example if your pin is `0123` and OTP is `456789`, then you will type it as `0123456789`. Note that the characters won’t appear on the screen.
@@ -33,10 +33,10 @@ The script `request_cert.sh` (when used with `-p lrc`) will create a certificate
 ```
 cd lrc-scripts 
 ./request_cert.sh -p lrc
-ssh -i ~/.ssh/ssh_certs/lrc_cert -l username lrc-login.lbl.gov
+ssh -i ~/.ssh/ssh_certs/lrc_cert -l your-username lrc-login.lbl.gov
 ```
 
-where `username` is your Lawrencium user name.
+where `your-username` is your Lawrencium user name.
 
 To list help options for the script:
 
@@ -50,7 +50,7 @@ The SSH Certificate method is useful for users interested in using the [Remote-S
 
 ```
 Host lrc-login
-   User username
+   User your-username
    HostName lrc-login.lbl.gov
    IdentityFile ~/.ssh/ssh_certs/lrc_cert
    IdentitiesOnly yes
@@ -77,14 +77,14 @@ Host lrc-login
     IdentityFile ~/.ssh/ssh_certs/lrc_cert
     IdentitiesOnly yes
     ForwardAgent yes
-    User username
+    User your-username
 
 Host n????.???
     LogLevel QUIET
     StrictHostKeyChecking no
     ProxyJump lrc-login
     HostName %h
-    User username
+    User your-username
 ```
 
 Once you have the allocation, try connecting to the host: `> Remote-SSH: Connect to Host...` from the Command Palette using the hostname of the node allocated to you on the cluster. If you are prompted for a password use your cluster password (PIN+OTP).
