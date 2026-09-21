@@ -1,0 +1,33 @@
+name = "scienceit-docs-chat"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Non-secret configuration. Every value here can be overridden per-environment,
+# and locally through .dev.vars. The API key is NOT here: it is a secret
+# (`wrangler secret put CBORG_API_KEY`).
+[vars]
+# CBorg's OpenAI-compatible gateway. Confirm in the CBorg docs.
+CBORG_BASE_URL = "https://api.cborg.lbl.gov"
+# TODO: confirm the current model IDs in the CBorg docs before deploying.
+CBORG_MODEL = "lbl/cborg-chat:latest"
+# Where the Worker fetches the documentation text (cached for 1 hour).
+LLMS_FULL_URL = "https://scienceit-docs.lbl.gov/llms-full.txt"
+# Comma-separated list of origins allowed to call /chat (no trailing slashes).
+# The localhost entries are for the local demo; remove them for production.
+ALLOWED_ORIGINS = "https://scienceit-docs.lbl.gov,http://localhost:8000,http://127.0.0.1:8000"
+# Context window of the chosen model, used only for the size warning.
+MODEL_CONTEXT_TOKENS = "128000"
+# Request validation limits.
+MAX_MESSAGES = "20"
+MAX_MESSAGE_CHARS = "4000"
+MAX_PAYLOAD_BYTES = "60000"
+# Cap on generated tokens per reply.
+MAX_OUTPUT_TOKENS = "1000"
+
+# Per-IP rate limiting via Cloudflare's rate limiting binding.
+# `period` must be 10 or 60 (seconds). `namespace_id` is any unique integer
+# string within your account.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
