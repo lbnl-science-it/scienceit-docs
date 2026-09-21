@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat widget demo</title>
+  <style>body{font-family:system-ui,sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem}</style>
+</head>
+<body>
+  <h1>Chat widget demo</h1>
+  <p>Click the button in the bottom-right corner and ask a question about the docs.</p>
+  <p>This page must be served over http (not opened as a file), e.g.
+     <code>python3 -m http.server 8000</code> in this folder, then visit
+     <code>http://localhost:8000/demo.html</code>. The Worker must be running
+     via <code>wrangler dev</code> on port 8787.</p>
+
+  <!-- The whole integration is this one tag. -->
+  <script src="chatbot.js" data-endpoint="http://localhost:8787/chat"></script>
+</body>
+</html>

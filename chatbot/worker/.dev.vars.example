@@ -1,0 +1,7 @@
+# Copy this file to .dev.vars (which is git-ignored) and fill in your key.
+# Wrangler loads .dev.vars automatically during `wrangler dev`.
+CBORG_API_KEY=paste-your-cborg-api-key-here
+
+# Optional overrides of the [vars] in wrangler.toml:
+# CBORG_MODEL=lbl/cborg-chat:latest
+# LLMS_FULL_URL=https://scienceit-docs.lbl.gov/llms-full.txt
