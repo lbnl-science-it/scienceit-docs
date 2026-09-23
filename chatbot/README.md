@@ -16,8 +16,10 @@ Requires Node 18+.
 cd worker
 npm install
 cp .dev.vars.example .dev.vars      # then edit .dev.vars and paste your CBorg key
-npx wrangler dev                    # Worker on http://localhost:8787
+npx wrangler dev
 ```
+
+The Worker now listens on <http://localhost:8787> (the default; don't pass it as an argument). Leave this terminal running.
 
 In a second terminal:
 
@@ -67,7 +69,7 @@ Set non-secret values in `worker/wrangler.toml` under `[vars]`, or in `.dev.vars
 |---|---|---|
 | `CBORG_API_KEY` | (required) | **Secret.** CBorg API key. Set with `wrangler secret put` (deployed) or `.dev.vars` (local). Never commit it. |
 | `CBORG_BASE_URL` | `https://api.cborg.lbl.gov` | OpenAI-compatible base URL. The Worker calls `<base>/chat/completions`. |
-| `CBORG_MODEL` | `lbl/cborg-chat:latest` | Model ID. **Confirm current IDs in the CBorg docs.** |
+| `CBORG_MODEL` | `anthropic/claude-sonnet` | Model ID. **Confirm current IDs in the CBorg docs.** |
 | `LLMS_FULL_URL` | `https://scienceit-docs.lbl.gov/llms-full.txt` | Where the docs text is fetched from. Cached for 1 hour (Cache API plus an in-memory fallback, since the Cache API is a no-op on `*.workers.dev`). |
 | `ALLOWED_ORIGINS` | site + localhost:8000 | Comma-separated origins allowed to call `/chat`. Exact match, no trailing slash. |
 | `MODEL_CONTEXT_TOKENS` | `128000` | Model context window; only used to log a warning when the docs (estimated at 4 chars/token) are too large. |

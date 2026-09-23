@@ -1,0 +1,1 @@
+../../chatbot/widget/chatbot.js
