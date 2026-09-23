@@ -23,7 +23,7 @@ const DEFAULTS = {
   // CBorg is OpenAI-compatible; we call `${CBORG_BASE_URL}/chat/completions`.
   CBORG_BASE_URL: "https://api.cborg.lbl.gov",
   // TODO: confirm the current model IDs in the CBorg docs. Model names change.
-  CBORG_MODEL: "lbl/cborg-chat:latest",
+  CBORG_MODEL: "anthropic/claude-sonnet",
   MODEL_CONTEXT_TOKENS: 128000,
   MAX_MESSAGES: 20,
   MAX_MESSAGE_CHARS: 4000,
