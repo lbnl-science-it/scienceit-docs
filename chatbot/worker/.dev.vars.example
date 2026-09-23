@@ -3,5 +3,5 @@
 CBORG_API_KEY=paste-your-cborg-api-key-here
 
 # Optional overrides of the [vars] in wrangler.toml:
-# CBORG_MODEL=lbl/cborg-chat:latest
+# CBORG_MODEL=anthropic/claude-sonnet
 # LLMS_FULL_URL=https://scienceit-docs.lbl.gov/llms-full.txt

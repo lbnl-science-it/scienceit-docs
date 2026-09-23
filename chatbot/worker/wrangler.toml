@@ -9,7 +9,7 @@ compatibility_date = "2025-01-01"
 # CBorg's OpenAI-compatible gateway. Confirm in the CBorg docs.
 CBORG_BASE_URL = "https://api.cborg.lbl.gov"
 # TODO: confirm the current model IDs in the CBorg docs before deploying.
-CBORG_MODEL = "lbl/cborg-chat:latest"
+CBORG_MODEL = "anthropic/claude-sonnet"
 # Where the Worker fetches the documentation text (cached for 1 hour).
 LLMS_FULL_URL = "https://scienceit-docs.lbl.gov/llms-full.txt"
 # Comma-separated list of origins allowed to call /chat (no trailing slashes).
