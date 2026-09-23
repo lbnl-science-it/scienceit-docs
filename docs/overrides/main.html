@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+  {{ super() }}
+  {#- Docs chat widget. Only added when a Worker endpoint is configured, so
+      normal builds are unaffected. See chatbot/README.md. -#}
+  {% if config.extra.chatbot_endpoint %}
+  <script src="{{ 'assets/chatbot.js' | url }}"
+          data-endpoint="{{ config.extra.chatbot_endpoint }}"></script>
+  {% endif %}
+{% endblock %}
