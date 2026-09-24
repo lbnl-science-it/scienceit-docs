@@ -4,6 +4,14 @@
     
     Principal Investigators (PIs) can sponsor researchers, students and external collaborators for cluster accounts. Account requests and approval are done through the [MyLRC portal](https://mylrc.lbl.gov/). Either the PI or a user can place a user account creation request on the MyLRC portal. Please see the [MyLRC documentation](https://it.lbl.gov/service/scienceit/high-performance-computing/mylrc-lawrencium-account-management-system/){:target="_blank"} {{ ext }} to learn how to submit a request. Upon request, an automatic email will be sent to your PI for approval. When the PI approves the request, it will be processed and the user is notified through email upon account availability.
 
+??? question "Why am I charged $25/month when I haven't run any jobs?"
+
+    The $25/month fee (LRCACT) is an account fee for account maintenance and home directory backups, not a compute charge. It is charged every month as long as the user account and its home directory exist, whether or not jobs are run and regardless of project type or membership. Compute usage is charged separately (LRCCPU), and only for jobs under recharge (`ac_*`) accounts. See [Charges and Billing](accounts/charges.md).
+
+??? question "How do I stop the monthly account fee?"
+
+    Close the user account. The PI, the project's main contact or the account holder can request closure by submitting a [user account closure request](https://lbl.freshservice.com/a/catalog/request-items/166){:target="_blank"} {{ ext }} on Freshservice. Removing a user from a project in myLRC does not close their user account. Accounts are not closed automatically when someone leaves the Lab or stops using the cluster. See [Stopping the Account Fee](accounts/charges.md#stopping-the-account-fee).
+
 ??? question "How do I submit my first job?"
 
     Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](running/slurm-overview.md#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](running/script-examples.md). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.

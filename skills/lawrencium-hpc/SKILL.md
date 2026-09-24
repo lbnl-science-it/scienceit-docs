@@ -88,6 +88,7 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 ### Account management
 - **Project Accounts** — `docs/hpc/accounts/project-accounts.md` — Eligibility and the PI-sponsored project/condo model.
 - **User Accounts** — `docs/hpc/accounts/user-accounts.md` — Requesting an account via the MyLRC portal and OTP token setup.
+- **Charges and Billing** — `docs/hpc/accounts/charges.md` — The $25/month per-user account fee (LRCACT), charged as long as the account exists regardless of usage or project membership; compute charges (LRCCPU) for `ac_*` recharge accounts; how to stop charges by closing the account.
 - **Logging in** — `docs/hpc/accounts/loggingin.md` — SSH login to `lrc-login.lbl.gov` with PIN+OTP; login-node etiquette.
 - **Multi-Factor Authentication** — `docs/hpc/accounts/mfa.md` — Setting up and managing OTP/MFA tokens.
 

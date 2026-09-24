@@ -32,6 +32,14 @@
 
     [:octicons-arrow-right-24: View recharge rates](#recharge-model)
 
+-   :material-receipt-text-outline:{ .lg .middle } **Charges and Billing**
+
+    ---
+
+    The $25/month account fee (LRCACT) that applies to every user account, and compute charges (LRCCPU) for recharge accounts.
+
+    [:octicons-arrow-right-24: View charges and billing](accounts/charges.md)
+
 -   :material-calendar-clock:{ .lg .middle } **Scheduler Configuration**
 
     ---
@@ -83,6 +91,10 @@ LBNL has made a significant investment in developing this platform to meet the m
 
 Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.
 
+!!! note "Compute charges vs. the account fee"
+
+    The recharge rates below apply only to jobs run under recharge (`ac_*`) accounts, and appear as LRCCPU in the LBL Cost Browser. Separately, every user account is charged a $25/month account fee (LRCACT), whether or not jobs are run. See [Charges and Billing](accounts/charges.md).
+
 ### CPU Partitions Recharge Rates
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate | 
 | --------- | ----------- | ------------------------- | ----------------------- |
@@ -120,7 +132,7 @@ Lawrencium cluster uses [SLURM to submit jobs](running/slurm-overview.md) as the
 
 * For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 * If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
-* Condo users please use the proper condo QoS, e.g., `--qos=condo_xyz`, as well as the proper recharge account `--account=lr_xyz`.
+* Condo users please use the proper condo QoS, e.g., `--qos=condo_xyz`, as well as the proper condo account `--account=lr_xyz`.
 * The partition name is always required in all cases, e.g., `--partition=lr6`.
 
 
