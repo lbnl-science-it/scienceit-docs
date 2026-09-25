@@ -222,6 +222,7 @@ export default {
     }
 
     // --- Rate limit per client IP -------------------------------------------
+    console.log("[trace] before rate limiter");
     if (env.RATE_LIMITER) {
       const ip = request.headers.get("CF-Connecting-IP") || "unknown";
       const { success } = await env.RATE_LIMITER.limit({ key: ip });
@@ -233,6 +234,7 @@ export default {
     } else {
       console.warn("RATE_LIMITER binding not found; rate limiting is disabled.");
     }
+    console.log("[trace] after rate limiter");
 
     // --- Payload size check (before parsing) --------------------------------
     const maxBytes = num(env, "MAX_PAYLOAD_BYTES");
@@ -256,6 +258,7 @@ export default {
     if (error) return jsonError(400, "invalid_request", error, cors);
 
     // --- Load docs and build the upstream request ---------------------------
+    console.log("[trace] before loadDocs");
     let docs;
     try {
       docs = await loadDocs(env, ctx);
@@ -263,9 +266,11 @@ export default {
       console.error("Could not load documentation:", e.message);
       return jsonError(502, "docs_unavailable", "The documentation could not be loaded.", cors);
     }
+    console.log("[trace] after loadDocs, chars:", docs.length);
 
     const baseUrl = (env.CBORG_BASE_URL || DEFAULTS.CBORG_BASE_URL).replace(/\/+$/, "");
     let upstream;
+    console.log("[trace] before CBorg fetch, url:", `${baseUrl}/chat/completions`);
     try {
       upstream = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",

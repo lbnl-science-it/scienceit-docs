@@ -8,12 +8,14 @@ widget/chatbot.js  --POST /chat-->  worker (holds CBORG_API_KEY)  -->  CBorg
 
 The browser never sees the API key; it only lives in a Worker secret.
 
-## 1. Local demo
+## 1. Local preview (docs site)
 
-Requires Node 18+.
+The widget is previewed inside the real docs site, built with MkDocs, not as a standalone page. Requires Node 18+ and Python 3.10+ (see the repo's own README/`requirements.txt` for the site's Python setup).
+
+Terminal 1 — the Worker:
 
 ```bash
-cd worker
+cd chatbot/worker
 npm install
 cp .dev.vars.example .dev.vars      # then edit .dev.vars and paste your CBorg key
 npx wrangler dev
@@ -21,16 +23,16 @@ npx wrangler dev
 
 The Worker now listens on <http://localhost:8787> (the default; don't pass it as an argument). Leave this terminal running.
 
-In a second terminal:
+Terminal 2 — the site, from the repo root:
 
 ```bash
-cd widget
-python3 -m http.server 8000
+source .venv/bin/activate           # the site's Python virtualenv
+CHATBOT_ENDPOINT=http://localhost:8787/chat mkdocs serve
 ```
 
-Open <http://localhost:8000/demo.html> (serve it over http; opening the file directly sends `Origin: null`, which the CORS allowlist rejects).
+Open <http://127.0.0.1:8000>. The widget appears on every page (it's wired in via `docs/overrides/main.html` and `mkdocs.yml`'s `extra.chatbot_endpoint`, which is empty — and the widget hidden — unless `CHATBOT_ENDPOINT` is set). `docs/assets/chatbot.js` is a symlink to `widget/chatbot.js`, so there's one copy of the widget code.
 
-Before it works, confirm the model ID in `worker/wrangler.toml` against the CBorg docs.
+Before it works, confirm the model ID in `worker/wrangler.toml` against the CBorg docs, and make sure your IP is authorized at the CBorg key manager (CBorg rejects requests from unrecognized IPs, including most VPNs off LBLnet).
 
 ## 2. Deploy
 
@@ -48,16 +50,22 @@ Wrangler prints the Worker URL (e.g. `https://scienceit-docs-chat.<account>.work
 
 ## 3. Embedding on the real site
 
-Host `chatbot.js` somewhere on your site (or a CDN) and add one tag to any page:
+This is already wired up (see §1): `docs/overrides/main.html` adds the `<script>` tag on every page, reading its endpoint from `mkdocs.yml`'s `extra.chatbot_endpoint` (itself read from the `CHATBOT_ENDPOINT` env var, defaulting to empty/off). For production, set `CHATBOT_ENDPOINT` to the deployed Worker URL in your build environment, e.g.:
+
+```bash
+CHATBOT_ENDPOINT=https://scienceit-docs-chat.<account>.workers.dev/chat mkdocs build
+```
+
+The script tag itself looks like:
 
 ```html
-<script src="/assets/chatbot.js"
+<script src="assets/chatbot.js"
         data-endpoint="https://scienceit-docs-chat.<account>.workers.dev/chat"></script>
 ```
 
-Optional attributes: `data-title`, `data-greeting`, `data-color` (accent color, e.g. `#005f9e`).
+Optional attributes: `data-title`, `data-subtitle`, `data-greeting`, `data-color` (accent color, e.g. `#005f9e`) — set them as extra attributes on the `<script>` tag in `docs/overrides/main.html` if you want to override the defaults.
 
-For MkDocs (Material), put the tag in a theme override, e.g. `docs/overrides/main.html` inside `{% block scripts %}{{ super() }} ... {% endblock %}`, and copy `chatbot.js` into `docs/assets/`.
+To embed on a different site instead, host `chatbot.js` there and add the same tag to its pages.
 
 The widget keeps history in memory only, so a page reload starts a new conversation.
 
