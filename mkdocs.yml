@@ -11,6 +11,7 @@ nav:
       - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
           - User Accounts: hpc/accounts/user-accounts.md
+          - Charges and Billing: hpc/accounts/charges.md
           - Logging in: hpc/accounts/loggingin.md
           - Multi-Factor Authentication: hpc/accounts/mfa.md
       - Computing Systems:
