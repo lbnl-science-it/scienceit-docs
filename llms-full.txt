@@ -140,6 +140,14 @@ Lawrencium is located at the Berkeley Data Center in Building 50B-1275. The data
 
   [View recharge rates](#recharge-model)
 
+- **Charges and Billing**
+
+  ______________________________________________________________________
+
+  The $25/month account fee (LRCACT) that applies to every user account, and compute charges (LRCCPU) for recharge accounts.
+
+  [View charges and billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md)
+
 - **Scheduler Configuration**
 
   ______________________________________________________________________
@@ -188,6 +196,10 @@ LBNL has made a significant investment in developing this platform to meet the m
 
 Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.
 
+Compute charges vs. the account fee
+
+The recharge rates below apply only to jobs run under recharge (`ac_*`) accounts, and appear as LRCCPU in the LBL Cost Browser. Separately, every user account is charged a $25/month account fee (LRCACT), whether or not jobs are run. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
+
 ### CPU Partitions Recharge Rates
 
 | Partition | Shared or Exclusive | SU to Core CPU Hour Ratio | Effective Recharge Rate   |
@@ -227,7 +239,7 @@ Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hp
 
 - For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 - If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
-- Condo users please use the proper condo QoS, e.g., `--qos=condo_xyz`, as well as the proper recharge account `--account=lr_xyz`.
+- Condo users please use the proper condo QoS, e.g., `--qos=condo_xyz`, as well as the proper condo account `--account=lr_xyz`.
 - The partition name is always required in all cases, e.g., `--partition=lr6`.
 
 Fair-share policy
@@ -362,6 +374,14 @@ How do I get a user account on the Lawrencium cluster?
 
 Principal Investigators (PIs) can sponsor researchers, students and external collaborators for cluster accounts. Account requests and approval are done through the [MyLRC portal](https://mylrc.lbl.gov/). Either the PI or a user can place a user account creation request on the MyLRC portal. Please see the [MyLRC documentation](https://it.lbl.gov/service/scienceit/high-performance-computing/mylrc-lawrencium-account-management-system/) to learn how to submit a request. Upon request, an automatic email will be sent to your PI for approval. When the PI approves the request, it will be processed and the user is notified through email upon account availability.
 
+Why am I charged $25/month when I haven't run any jobs?
+
+The $25/month fee (LRCACT) is an account fee for account maintenance and home directory backups, not a compute charge. It is charged every month as long as the user account and its home directory exist, whether or not jobs are run and regardless of project type or membership. Compute usage is charged separately (LRCCPU), and only for jobs under recharge (`ac_*`) accounts. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
+
+How do I stop the monthly account fee?
+
+Close the user account. The PI, the project's main contact or the account holder can request closure by submitting a [user account closure request](https://lbl.freshservice.com/a/catalog/request-items/166) on Freshservice. Removing a user from a project in myLRC does not close their user account. Accounts are not closed automatically when someone leaves the Lab or stops using the cluster. See [Stopping the Account Fee](https://scienceit-docs.lbl.gov/hpc/accounts/charges/#stopping-the-account-fee).
+
 How do I submit my first job?
 
 Login to the cluster using any of the terminal options of your choice. You may login to cluster using the server name **`lrc-login.lbl.gov`**. Use your user name and PIN+OTP combination to login successfully. Upon login you will be end up on one of the login nodes in your home directory. Please do not submit jobs on the login nodes. You would request a compute node either using an interactive or batch slurm session. You need to know your [slurm association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) before scheduling a slurm session. Check out slurm job submission [examples here](https://scienceit-docs.lbl.gov/hpc/running/script-examples/index.md). Depending on type of job for example CPU only, GPU, MPI, serial, you could visit the slurm script examples on this page.
@@ -422,9 +442,13 @@ Another useful option for fast local storage is `/dev/shm`, which provides a sma
 
 There are three primary ways/projects to obtain access to Lawrencium:
 
-- PI Computing Allowance (PCA): free 500K SUs annual renewable
+- PI Computing Allowance (PCA): no-cost compute of 500K SUs, renewable annually
 - Condo: purchase and contribute Condo nodes to the Lawrencium cluster
-- Recharge: charged at a minimal recharge rate roughly at $0.01/SU
+- Recharge: compute charged at a minimal recharge rate roughly at $0.01/SU
+
+Monthly account fee
+
+In addition to any compute charges, every user account is charged $25/month for account maintenance and home directory backups, for as long as the account exists. This applies to all project types, including PCA and condo, whether or not jobs are run. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
 
 [How to get a Project Account on Lawrencium?](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 
@@ -463,6 +487,87 @@ When you log into a cluster, you’ll land on one of several login nodes. Here y
 We provide interactive Apps, such as Jupyter notebooks, RStudio, MatLab, through the browser-based Open OnDemand service at <https://lrc-ondemand.lbl.gov> . Use your LRC username and PIN+one-time password(OTP).
 
 # HPC Clusters @ Berkeley Lab - Live Status
+
+# Charges and Billing
+
+Lawrencium has two separate charges. They appear in the LBL Cost Browser under the codes **LRCACT** and **LRCCPU**.
+
+The $25/month account fee is for the account, not for compute
+
+Every Lawrencium user account is charged **$25 per month (LRCACT)** for account maintenance and home directory backups. The charge is made **as long as the user account and its home directory exist**, regardless of:
+
+- whether any jobs were run that month,
+- the type of project the user belongs to (PCA, Condo or Recharge),
+- whether the user still belongs to any project, or whether the account is blocked from logging in.
+
+The only way to stop this charge is to [close the user account](#stopping-the-account-fee).
+
+## The Two Charges at a Glance
+
+|                       | LRCACT (account fee)                               | LRCCPU (compute usage)                                                                                                    |
+| --------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Amount**            | $25 per user account per month                     | $0.01 per Service Unit (SU); the [effective rate](https://scienceit-docs.lbl.gov/hpc/#recharge-model) varies by partition |
+| **Applies to**        | Every user account on the cluster                  | Jobs run under a recharge (`ac_*`) project account                                                                        |
+| **Depends on usage?** | **No**                                             | Yes                                                                                                                       |
+| **Covers**            | Account maintenance and home directory backups     | Compute time used by jobs                                                                                                 |
+| **Billed to**         | The PID selected when the user account was created | The PID associated with the recharge project account                                                                      |
+| **Stops when**        | The user account is closed                         | No more jobs are run under the `ac_*` account                                                                             |
+
+## Account Fee (LRCACT)
+
+The $25/month fee is charged per **user account**, not per project. A user who belongs to several projects still has one user account and pays one account fee.
+
+The fee is billed to the Project ID (PID) selected when the cluster account was created. To bill the fee to a different PID, submit a [PID change request](https://lbl.freshservice.com/a/catalog/request-items/167) .
+
+Accounts are not closed automatically
+
+User accounts are **not** closed automatically when someone leaves the Lab, finishes a project, stops running jobs, or is removed from their last project. In each of these cases the account and its home directory still exist, so the account fee is still charged. PIs should request closure of accounts that are no longer needed.
+
+## Compute Usage (LRCCPU)
+
+Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](https://scienceit-docs.lbl.gov/hpc/#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) can estimate the SUs used by a job.
+
+The prefix of a project account shows whether compute usage under it is charged:
+
+| Account prefix | Project type                 | Compute charges (LRCCPU)                               |
+| -------------- | ---------------------------- | ------------------------------------------------------ |
+| `pc_*`         | PI Computing Allowance (PCA) | None; compute is at no cost up to the annual allowance |
+| `lr_*`         | Condo                        | None, when running within the condo contribution       |
+| `ac_*`         | Recharge                     | $0.01/SU (effective rate varies by partition)          |
+
+To see which project accounts you can use, run:
+
+```
+sacctmgr show association -p user=$USER
+```
+
+See [Slurm Association](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/#slurm-association) for how to read the output.
+
+Running beyond a condo contribution or a PCA allowance
+
+A condo or PCA project does not automatically come with a recharge (`ac_*`) account, and jobs do not automatically switch to one. To run outside a condo contribution, or after a PCA allowance is used up, the PI must request a recharge (or PCA) project account at the [myLRC portal](https://mylrc.lbl.gov/) . Users must then set `--account` in their Slurm scripts to the new account.
+
+## Examples
+
+I have a PCA (`pc_*`) account only. Am I charged anything?
+
+There are no compute charges for jobs under a PCA account. You are still charged the $25/month account fee for as long as your user account exists.
+
+I haven't run any jobs in months. Why am I still charged $25/month?
+
+The account fee pays for account maintenance and home directory backups, not for compute. It is charged every month as long as your user account and home directory exist, whether or not you run jobs.
+
+A student or postdoc has left the Lab. Does their account fee stop?
+
+No. Accounts are not closed automatically when someone leaves the Lab. The PI or main contact should request closure of the account and arrange for the user's files and data to be moved.
+
+## Stopping the Account Fee
+
+To stop the account fee, the user account must be closed. The PI, the project's main contact or the account holder can request closure by submitting a [user account closure request](https://lbl.freshservice.com/a/catalog/request-items/166) on Freshservice. Removing a user from a project in the [myLRC portal](https://mylrc.lbl.gov/) does **not** close their user account or stop the account fee. Before closing an account, copy any software, files or data that others depend on out of the user's home directory. Once an account is closed, the account fee no longer appears on the next month's bill.
+
+See [Closing User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md) for more details.
+
+Questions about charges can be sent to [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
 
 # Logging in to Lawrencium
 
@@ -677,15 +782,15 @@ To request a PCA, Condo or Recharge project on Lawrencium, please send your requ
 
 ### Changing Your ProjectID and Valid ProjectID
 
-If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
+If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by submitting a [PID change request](https://lbl.freshservice.com/a/catalog/request-items/167) .
 
-To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied.
+To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied. A blocked account is still charged the $25/month account fee, because the account and its home directory still exist. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
 
 ### Allocations
 
 **Computer Time**: We are currently not using an allocation process to allocate compute time to individual projects. Instead, usage and priority will be regulated by a scheduler policy intended to provide a level of fairness across users. If needed, a committee consisting of scientific division representatives will review the need for allocations if demand exceeds supply.
 
-**Cost**: There is a nominal charge of $25/mo/user for the use of Lawrencium to cover the costs of home directory storage and backups. PCA Project accounts are not charged for usage. Recharge accounts are charged $0.01/SU for compute. Account fees and cpu usage will appear as LRCACT and LRCCPU in the LBL Cost Browser.
+**Cost**: Every user account is charged an account fee of $25/month (LRCACT) for account maintenance and home directory backups. This fee is for the account, not for compute: it is charged as long as the account exists, whether or not the user runs jobs or belongs to a project. Compute usage is charged (LRCCPU) only for jobs run under recharge (`ac_*`) accounts, at $0.01/SU. PCA and condo accounts are not charged for compute usage. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md) for details.
 
 **Storage**: Home directory space have a quota set at 30GB per user and is available at: `/global/home/users/<username>`. Users may also use the scratch shared filesystem: `/global/scratch/users/<username>` if they need more storage for a limited time; this scratch space is intended for short term use and should be considered volatile. Backups are not performed on this file system. Users should make sure to have a back up of these files to some external permanent storage as soon as they are generated on the cluster. More information on Storage.
 
@@ -709,7 +814,11 @@ Accounts are added on a first come, first served basis upon approval of the PI f
 
 Closing User Accounts
 
-The PI for the project or the main contact is responsible for notifying HPCS to close user accounts and the disposition of the user’s software, files and data. In some cases, users share software and data from their home directory and others may depend on them. For this reason, account terminations have to be requested by PI, the main account or the user of the account. User accounts are not automatically deactivated upon termination of an employee because many people change their employment status, but remain engaged with the project. Send your requests at [myLRC portal](https://mylrc.lbl.gov/) .
+The PI for the project or the main contact is responsible for notifying HPCS to close user accounts and the disposition of the user’s software, files and data. In some cases, users share software and data from their home directory and others may depend on them. For this reason, account terminations have to be requested by PI, the main account or the user of the account. User accounts are not automatically deactivated upon termination of an employee because many people change their employment status, but remain engaged with the project. Send your requests using the [user account closure request](https://lbl.freshservice.com/a/catalog/request-items/166) on Freshservice. Removing a user from a project in the [myLRC portal](https://mylrc.lbl.gov/) does not close their user account.
+
+The account fee continues until the account is closed
+
+Every user account is charged $25/month for account maintenance and home directory backups for as long as the account exists. This is true even if the user no longer runs jobs, has left the Lab, or no longer belongs to any project. Once an account is closed, the fee no longer appears on the next month's bill. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
 
 Questions regarding requesting new or removing accounts can be directed to [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
 
@@ -1284,7 +1393,7 @@ parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --res
 - `-a`: task list as input to GNU parallel
 - `–sshloginfile/-slf`: compute node list
 - `–{}` : take values from the task list, one line at a time as parameters to the application/serial task (e.g. run-blast.sh)
-- \`–{/.}\`\`:remove path and file extension
+- `{/.}`:remove path and file extension
 - `–output/{/.}`: specify output/file.blst as the blast result;
 - `–colsep`: used as column separator, such as comma, tab, space for the input task list
 - `–jobs`: number of tasks per node

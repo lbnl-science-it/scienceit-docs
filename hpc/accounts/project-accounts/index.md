@@ -14,15 +14,15 @@ To request a PCA, Condo or Recharge project on Lawrencium, please send your requ
 
 ### Changing Your ProjectID and Valid ProjectID
 
-If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by sending us email at [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
+If your projectID associated with project accounts on Lawrencium expires or becomes invalid, you can request of changing your projectID by submitting a [PID change request](https://lbl.freshservice.com/a/catalog/request-items/167) .
 
-To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied.
+To maintain your Lawrencium user account, you must have a valid PID. If your PID becomes invalid or you lose access to projects, for example, if you leave the last project or a PI removes you from it, your account will be temporarily blocked from logging into the cluster until a valid PID is supplied. A blocked account is still charged the $25/month account fee, because the account and its home directory still exist. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
 
 ### Allocations
 
 **Computer Time**: We are currently not using an allocation process to allocate compute time to individual projects. Instead, usage and priority will be regulated by a scheduler policy intended to provide a level of fairness across users. If needed, a committee consisting of scientific division representatives will review the need for allocations if demand exceeds supply.
 
-**Cost**: There is a nominal charge of $25/mo/user for the use of Lawrencium to cover the costs of home directory storage and backups. PCA Project accounts are not charged for usage. Recharge accounts are charged $0.01/SU for compute. Account fees and cpu usage will appear as LRCACT and LRCCPU in the LBL Cost Browser.
+**Cost**: Every user account is charged an account fee of $25/month (LRCACT) for account maintenance and home directory backups. This fee is for the account, not for compute: it is charged as long as the account exists, whether or not the user runs jobs or belongs to a project. Compute usage is charged (LRCCPU) only for jobs run under recharge (`ac_*`) accounts, at $0.01/SU. PCA and condo accounts are not charged for compute usage. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md) for details.
 
 **Storage**: Home directory space have a quota set at 30GB per user and is available at: `/global/home/users/<username>`. Users may also use the scratch shared filesystem: `/global/scratch/users/<username>` if they need more storage for a limited time; this scratch space is intended for short term use and should be considered volatile. Backups are not performed on this file system. Users should make sure to have a back up of these files to some external permanent storage as soon as they are generated on the cluster. More information on Storage.
 

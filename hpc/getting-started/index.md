@@ -4,9 +4,13 @@
 
 There are three primary ways/projects to obtain access to Lawrencium:
 
-- PI Computing Allowance (PCA): free 500K SUs annual renewable
+- PI Computing Allowance (PCA): no-cost compute of 500K SUs, renewable annually
 - Condo: purchase and contribute Condo nodes to the Lawrencium cluster
-- Recharge: charged at a minimal recharge rate roughly at $0.01/SU
+- Recharge: compute charged at a minimal recharge rate roughly at $0.01/SU
+
+Monthly account fee
+
+In addition to any compute charges, every user account is charged $25/month for account maintenance and home directory backups, for as long as the account exists. This applies to all project types, including PCA and condo, whether or not jobs are run. See [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md).
 
 [How to get a Project Account on Lawrencium?](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 

@@ -73,7 +73,7 @@ parallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --res
 - `-a`: task list as input to GNU parallel
 - `–sshloginfile/-slf`: compute node list
 - `–{}` : take values from the task list, one line at a time as parameters to the application/serial task (e.g. run-blast.sh)
-- \`–{/.}\`\`:remove path and file extension
+- `{/.}`:remove path and file extension
 - `–output/{/.}`: specify output/file.blst as the blast result;
 - `–colsep`: used as column separator, such as comma, tab, space for the input task list
 - `–jobs`: number of tasks per node

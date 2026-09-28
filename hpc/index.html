@@ -494,6 +494,8 @@
       
         
       
+        
+      
     
     
       
@@ -558,6 +560,27 @@
   
   <span class="md-ellipsis">
     User Accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="accounts/charges/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Charges and Billing
   </span>
   
 
@@ -3028,6 +3051,12 @@
 <p><a href="#recharge-model"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> View recharge rates</a></p>
 </li>
 <li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg></span> <strong>Charges and Billing</strong></p>
+<hr />
+<p>The $25/month account fee (LRCACT) that applies to every user account, and compute charges (LRCCPU) for recharge accounts.</p>
+<p><a href="accounts/charges/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> View charges and billing</a></p>
+</li>
+<li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg></span> <strong>Scheduler Configuration</strong></p>
 <hr />
 <p>Slurm partitions, accounts, and QoS options, along with the fair-share policy and job prioritization.</p>
@@ -3152,6 +3181,10 @@
 <h2 id="recharge-model">Recharge Model<a class="headerlink" href="#recharge-model" title="Permanent link">&para;</a></h2>
 <p>LBNL has made a significant investment in developing this platform to meet the midrange computing requirement at Berkeley Lab. The primary purpose is to provide a sustainable way to host all the condo projects while meeting the computing requirements from other users. To achieve this goal, condo users are allowed to run within their condo contributions for free. However normal users who would like to use the Lawrencium cluster are subject to the LBNL recharge rate. </p>
 <p>Condo users who would need to run outside of their condo contributions are also subject to the same recharge rate as normal users. For this purpose, condo users will obtain either one or two projects/accounts when their accounts are created on Lawrencium, per the instruction we receive from the PI of the condo project. They would need to provide the correct project when running jobs inside or outside of their condo contributions, which will be explained in detail in the Scheduler Configuration section below. The current recharge rate is $0.01 per Service Unit (1 cent per service unit, SU). Due to the hardware architecture difference we discount effective recharge rate for older generations of hardware. Please refer to the following table for the current recharge rate for each partition.</p>
+<div class="admonition note">
+<p class="admonition-title">Compute charges vs. the account fee</p>
+<p>The recharge rates below apply only to jobs run under recharge (<code>ac_*</code>) accounts, and appear as LRCCPU in the LBL Cost Browser. Separately, every user account is charged a $25/month account fee (LRCACT), whether or not jobs are run. See <a href="accounts/charges/">Charges and Billing</a>.</p>
+</div>
 <h3 id="cpu-partitions-recharge-rates">CPU Partitions Recharge Rates<a class="headerlink" href="#cpu-partitions-recharge-rates" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3268,7 +3301,7 @@
 <ul>
 <li>For normal users to use the Lawrencium resource the proper project account, e.g., <code>--account=ac_abc</code>, is needed. The QoS <code>lr_normal</code> is also required based on the partition that the job is submitted to, e.g., <code>--qos=lr_normal</code>.</li>
 <li>If a debug job is desired the <code>lr_debug</code> QoS should be specified, e.g., <code>--qos=lr_debug</code> so that the scheduler can adjust job priority accordingly.</li>
-<li>Condo users please use the proper condo QoS, e.g., <code>--qos=condo_xyz</code>, as well as the proper recharge account <code>--account=lr_xyz</code>.</li>
+<li>Condo users please use the proper condo QoS, e.g., <code>--qos=condo_xyz</code>, as well as the proper condo account <code>--account=lr_xyz</code>.</li>
 <li>The partition name is always required in all cases, e.g., <code>--partition=lr6</code>.</li>
 </ul>
 <div class="admonition note">
@@ -3299,7 +3332,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2026</span>
   </span>
 
     
