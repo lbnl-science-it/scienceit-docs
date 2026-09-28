@@ -4,7 +4,7 @@ We provide some general guidelines to both users and agents on this page while u
 
 !!! note "Installation"
 
-    Currently, we do not provide a centralized installation of popular AI coding tools such as `claude` and `codex`. Users can follow the official installation guidelines from these tools to install them in their home directories.t Please reach out to us at scienceithelp@lbl.gov if you need additional help. In addition, please follow the guidelines on this page.
+    Currently, we do not provide a centralized installation of popular AI coding tools such as `claude` and `codex`. Users can follow the official installation guidelines from these tools to install them in their home directories. Please reach out to us at scienceithelp@lbl.gov if you need additional help. In addition, please follow the guidelines on this page.
 
     You can also install VS Code extensions of these tools and run them on a compute node through the Remote SSH feature. See our [documentation](../accounts/loggingin.md#vs-code-remote-ssh) on VS Code Remote SSH for more details.
 

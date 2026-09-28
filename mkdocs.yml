@@ -73,8 +73,10 @@ nav:
           - Jupyter Server: hpc/openondemand/jupyter-server.md
           - Ollama with Jupyter and VS Code: hpc/openondemand/ollama-jupyter-vscode.md
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
+      - AI Tools:
+          - Using AI Agents on Lawrencium: hpc/ai-tools/ai-agents.md
+          - Lawrencium Skill: hpc/ai-tools/claude-plugin.md
       - Acknowledgement: hpc/acknowledgement.md
-      - Lawrencium Skill for Claude: hpc/claude-plugin.md
 
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
