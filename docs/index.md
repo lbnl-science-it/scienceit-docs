@@ -18,11 +18,14 @@ hide:
     - [MyLRC User Account Portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }} 
     - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html){:target="_blank"} {{ ext }}
 
--   ### **Systems Status**
+-   ### **News & Status**
 
     ---
 
-    - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/) {{ext}}
+    - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/){:target="_blank"} {{ ext }}
+    - :material-new-box: **Oct 15:** [Berkelium Kubernetes training](help/training.md). Register now.
+    - :material-new-box: [AI Tools on Lawrencium](hpc/ai-tools/ai-agents.md)
+    - :material-new-box: [Charges and Billing](hpc/accounts/charges.md): LRCACT account fee explained
 
 -   ### **HPC Helpdesk**
 
@@ -51,14 +54,14 @@ hide:
     - [:simple-github: Science IT GitHub Repository](https://github.com/lbnl-science-it){:target="_blank"}{{ ext }}
     - [LBNL IT Division Homepage](https://it.lbl.gov){:target="_blank"} {{ ext }}
     - [LBNL Library E-Book Collection](https://commons.lbl.gov/display/rst/E-Books){:target="_blank"} {{ ext }}
-    - [Mac & PC Support Support](https://it.lbl.gov/group/it-support-services/workstation-support/){:target="_blank"} {{ ext }}
+    - [Mac & PC Support](https://it.lbl.gov/group/it-support-services/workstation-support/){:target="_blank"} {{ ext }}
     - [NERSC Technical Documentation](https://docs.nersc.gov){:target="_blank"} {{ ext }}
     - [UC Berkeley Research IT Documentation](https://docs-research-it.berkeley.edu/){:target="_blank"} {{ ext }}
 
 -   ### **Can't find what you are looking for?**
 
     ---
-    * [Ask a LLM Model in the CBorg AI Portal](https://cborg.lbl.gov/){:target="_blank"} {{ ext }}.
+    * [Ask a LLM in the CBorg AI Portal](https://cborg.lbl.gov/){:target="_blank"} {{ ext }}.
 
     * Contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a> to discuss your needs in scientific computing, research data management, cloud computing, AI/ML workflows, and more.
 
