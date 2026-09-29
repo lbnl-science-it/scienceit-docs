@@ -4,6 +4,8 @@ title: Science IT Support
 
 # Support Resources
 
+Need help? You can [contact the HPC Helpdesk](#hpc-helpdesk), [ask an AI assistant](llms.md), or [join a training or workshop](training.md).
+
 ## HPC Helpdesk
 
 Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.
