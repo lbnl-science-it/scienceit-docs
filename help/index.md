@@ -1,5 +1,7 @@
 # Support Resources
 
+Need help? You can [contact the HPC Helpdesk](#hpc-helpdesk), [ask an AI assistant](https://scienceit-docs.lbl.gov/help/llms/index.md), or [join a training or workshop](https://scienceit-docs.lbl.gov/help/training/index.md).
+
 ## HPC Helpdesk
 
 Contact us for help with debugging jobs on our HPC clusters, software installation, user account management and more.

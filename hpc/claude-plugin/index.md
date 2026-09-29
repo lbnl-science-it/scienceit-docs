@@ -60,7 +60,7 @@ If a `permissions.allow` array already exists, add the string to it rather than 
 
 ## Other ways to ask
 
-Prefer not to use Claude Code? See [Asking LLMs](https://scienceit-docs.lbl.gov/help/llms/index.md) for the Lawrencium AI assistant (`lrc-agent`), the CBorg Science IT assistant, and the single-file `llms-full.txt` context bundle you can drop into any large-context chat model.
+Prefer not to use Claude Code? See [Asking LLMs](https://scienceit-docs.lbl.gov/help/llms/index.md) for the CBorg Science IT assistant and the single-file `llms-full.txt` context bundle you can drop into any large-context chat model.
 
 ## Feedback
 
