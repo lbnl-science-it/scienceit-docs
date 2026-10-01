@@ -13,23 +13,31 @@ You can also install VS Code extensions of these tools and run them on a compute
 - Long-running or compute intensive tasks should be performed on compute nodes through Slurm allocations. As such, agentic coding tools should generally be run through interactive slurm allocations rather than on login nodes.
 - We provide sample markdown instructions on this page that you should add to `~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md` on Lawrencium so that `claude` and `codex` follow the guidelines for resource usage. If you use other AI agents, read their documentation to find the location where such instructions should be placed.
 
+## Guidelines for Agents
+
 Content to add to `AGENTS.md` or `CLAUDE.md`
 
 ```
 ## Filesystem
 - Never run a recursive traversal on `/`, `/global`, `/global/home/`, 
-`/global/software', or any other shared directory.
+`/global/software', `/global/scratch`, or any other shared directory.
 - Only use filesystem tools inside a specific user or project subdirectory 
 I own or pointed at; for e.g.: `/global/home/users/$USER/<dir>`, 
 `/global/scratch/users/$USER/<dir>`. Even in this case, always bound 
 traversals: add `-maxdepth`, target an exact subpath and avoid wildcard 
 globs that expand to thousands of entries.
 - Use `module av` and `module spider` commands to search for software 
-installed on the software module farm 
+installed on the software module farm
+
+## Quotas
+- Home directory `/global/home/users/<username>` quota is 30GB for each user 
 
 ## Compute
 - Never use login nodes for computation. Only use a login node for 
 file editing and small builds.
+
+## Slurm
+- Do not exceed 100 jobs per user (pending and running combined)
 
 ## Documentation
 - Lawrencium documentation can be found at: https://scienceit-docs.lbl.gov 
