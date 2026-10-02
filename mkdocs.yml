@@ -1,5 +1,5 @@
-site_name: Science IT Technical Documentation
-site_description: Science IT at LBNL technical documentation for HPC, Cloud and Data
+site_name: ScienceIT Technical Documentation
+site_description: ScienceIT at LBNL technical documentation for HPC, Cloud and Data
 site_url: https://scienceit-docs.lbl.gov
 nav:
   - Home: index.md
@@ -77,7 +77,10 @@ nav:
           - Using AI Agents on Lawrencium: hpc/ai-tools/ai-agents.md
           - Lawrencium Skill: hpc/ai-tools/claude-plugin.md
       - Acknowledgement: hpc/acknowledgement.md
-
+  - Kubernetes:
+      - Kubernetes Overview: kubernetes/index.md
+      - Berkelium Portal: https://berkelium.scs.lbl.gov
+      - National Research Platform: nrp/index.md
   - Globus Transfer System:
       #- Globus Transfer System Overview: data/index.md
       - Globus: data/globus.md
@@ -91,8 +94,9 @@ nav:
          - Amazon Web Services: cloud/aws.md
          - Google Cloud Platform: cloud/gcp.md
      - Google Cloud Skills Boost: cloud/gcp-skills-boost.md
-  - National Research Platform:
-      - National Research Platform: nrp/index.md
+  - ComputeView: https://computeview.lbl.gov/
+  #- National Research Platform:
+  #    - National Research Platform: nrp/index.md
   - Support & Training:
       - HPC Help Desk: help/index.md
       - Training: help/training.md

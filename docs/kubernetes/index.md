@@ -1,43 +1,9 @@
 # Kubernetes Cluster
 
-!!! note "Under Development"
+**Berkelium** is a high-performance Kubernetes cluster for Berkeley Lab researchers, operated by ScienceIT. It supports both long-running services, AI/ML and batch workloads, run as containers. Berkelium offers CPU and GPU compute nodes and persistent storage, and you access it with standard Kubernetes tools such as `kubectl`, signing in with your Berkeley Lab identity.
 
-    **Berkelium** is a Kubernetes cluster for Berkeley Lab. Berkelium is currently under development (Fall 2026) and is only available to select test users. If you are interested please contact us at <a href="mailto:scienceit@lbl.gov">scienceit@lbl.gov</a>.
+Links to the Berkelium portal and its user documentation are below:
 
-<div class="grid cards" markdown>
-
--   :material-key-chain:{ .lg .middle } **Access and Login**
-
-    ---
-
-    Download your `kubeconfig`, install `kubectl`, and authenticate to the cluster with OIDC.
-
-    [:octicons-arrow-right-24: Get access and log in](access-and-login.md)
-
--   :material-shield-lock-outline:{ .lg .middle } **Cluster Policies**
-
-    ---
-
-    Namespaces, resource quotas, storage, and the rules of the road for running on Berkelium.
-
-    *Coming soon*
-
--   :material-school-outline:{ .lg .middle } **Tutorials**
-
-    ---
-
-    Step-by-step examples: deploying a pod, attaching persistent storage, running batch jobs, and using GPUs.
-
-    [:octicons-arrow-right-24: Start with Basic Kubernetes](tutorial/basic.md)
-
--   :material-frequently-asked-questions:{ .lg .middle } **FAQs**
-
-    ---
-
-    Common questions about accounts, quotas, images, and troubleshooting.
-
-    *Coming soon*
-
-
-</div>
+- [Berkelium Portal](https://berkelium.scs.lbl.gov/)
+- [Berkelium Documentation](https://berkelium.scs.lbl.gov/docs/)
 
