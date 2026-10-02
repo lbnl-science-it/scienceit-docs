@@ -1,6 +1,6 @@
-# Science IT Technical Documentation
+# ScienceIT Technical Documentation
 
-> Science IT at LBNL technical documentation for HPC, Cloud and Data
+> ScienceIT at LBNL technical documentation for HPC, Cloud and Data
 
 # Usage and Help
 
