@@ -23,7 +23,6 @@ hide:
     ---
 
     - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/){:target="_blank"} {{ ext }}
-    - :material-new-box: **Oct 15:** [Berkelium Kubernetes training](help/training.md). Register now.
     - :material-new-box: [AI Tools on Lawrencium](hpc/ai-tools/ai-agents.md)
     - :material-new-box: [Charges and Billing](hpc/accounts/charges.md): LRCACT account fee explained
 
