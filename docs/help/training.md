@@ -10,11 +10,11 @@ ScienceIT team is regulary organizing the AI related or HPC trainings for lab us
 
     ScienceIT has launched a new pilot called [Berkelium](https://berkelium.scs.lbl.gov/), Berkeley Lab’s new Kubernetes cluster for building, testing, automating, and sharing scientific work. Researchers can learn how to get started during an upcoming training session. 
     
-    **Date**: Thursday, October 15, 2026
+    **Date**: TBD
     
-    **Time**: 12:00 PM to 1:00 PM
+    **Time**: TBD
 
-    **Links**: [Register for the training here](https://forms.gle/wfcxjbG6NjxRkZ19A).    
+    **Links**: [Register to express your interest here](https://forms.gle/wfcxjbG6NjxRkZ19A).    
 
 
 ### **Recent Trainings**
