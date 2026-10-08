@@ -12,11 +12,18 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 ### How to specify desired GPU card(s)
 
-!!! warning "QoS values pending"
+Two `qos` values are available on the `es3` partition:
 
-    The `qos` values for the `es3` partition have not been configured yet for all users, and will be documented here once they are available. 
+| QoS | Where jobs run | Limits | Notes |
+| --- | -------------- | ------ | ----- |
+| `es3_normal` | Institutional nodes | 3-day max wall time, up to 5 nodes per user | Standard priority |
+| `es3_lowprio` | Idle condo nodes | Low priority | Free of charge; jobs can be preempted and requeued when condo owners need their nodes |
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 32 CPU cores for each GPU card on the `es3` partition.
+!!! warning "Checkpoint your `es3_lowprio` jobs"
+
+    Jobs under `es3_lowprio` can be preempted at any time. Save checkpoint files regularly so that a preempted job can resume from its last checkpoint after it is requeued.
+
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 32 CPU cores for each GPU card on the `es3` partition. Together with the [charging factor](../index.md#gpu-partitions-recharge-rates) of 1.0 for the `es3` partition, this means that each `GPU-hour` under `es3_normal` incurs at least 32 Service Units (SUs).
 
 Examples:
 
@@ -32,6 +39,7 @@ Examples:
         #SBATCH --job-name=test
         #SBATCH --account=account_name
         #SBATCH --partition=es3
+        #SBATCH --qos=es3_normal
         #SBATCH --nodes=1
         #SBATCH --ntasks=1
         #SBATCH --cpus-per-task=32
@@ -47,6 +55,7 @@ Examples:
         #SBATCH --job-name=test
         #SBATCH --account=account_name
         #SBATCH --partition=es3
+        #SBATCH --qos=es3_normal
         #SBATCH --nodes=1
         #SBATCH --ntasks=4
         #SBATCH --cpus-per-task=32
@@ -69,7 +78,7 @@ Examples:
 ### How to specify desired GPU card(s)
 The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the charging factor of 2.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 28 Service Units (SUs).   
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the [charging factor](../index.md#gpu-partitions-recharge-rates) of 4.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 56 Service Units (SUs).
 
 Examples:
 
