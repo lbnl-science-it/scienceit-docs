@@ -12,7 +12,7 @@ Lawrencium consists of multiple generations of compute nodes with the `lr8` part
 
 LRC Jobscript Generator
 
-You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
 
 | Partition | Nodes | CPU                  | Cores per Node | Memory per Node | Infiniband |
 | --------- | ----- | -------------------- | -------------- | --------------- | ---------- |

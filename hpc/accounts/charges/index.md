@@ -35,7 +35,7 @@ User accounts are **not** closed automatically when someone leaves the Lab, fini
 
 ## Compute Usage (LRCCPU)
 
-Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](https://scienceit-docs.lbl.gov/hpc/#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) can estimate the SUs used by a job.
+Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](https://scienceit-docs.lbl.gov/hpc/#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) can estimate the SUs used by a job.
 
 The prefix of a project account shows whether compute usage under it is charged:
 

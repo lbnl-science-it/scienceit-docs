@@ -11,7 +11,7 @@
   - [Getting Started with Lawrencium](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
   - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/)
   - [MyLRC User Account Portal](https://mylrc.lbl.gov/)
-  - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html)
+  - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/)
 - ### **News & Status**
   ______________________________________________________________________
   - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/)
@@ -243,7 +243,7 @@ The usage calculation is based on the resource that is allocated to the job inst
 
 instead of: $0.0050/(core x hour) x 1 core x 24 hours = $0.12.
 
-You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
 
 ## Scheduler Configuration
 
@@ -537,7 +537,7 @@ User accounts are **not** closed automatically when someone leaves the Lab, fini
 
 ## Compute Usage (LRCCPU)
 
-Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](https://scienceit-docs.lbl.gov/hpc/#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) can estimate the SUs used by a job.
+Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](https://scienceit-docs.lbl.gov/hpc/#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) can estimate the SUs used by a job.
 
 The prefix of a project account shows whether compute usage under it is charged:
 
@@ -4201,7 +4201,7 @@ Lawrencium consists of multiple generations of compute nodes with the `lr8` part
 
 LRC Jobscript Generator
 
-You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
 
 | Partition | Nodes | CPU                  | Cores per Node | Memory per Node | Infiniband |
 | --------- | ----- | -------------------- | -------------- | --------------- | ---------- |

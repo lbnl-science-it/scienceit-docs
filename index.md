@@ -5,7 +5,7 @@
   - [Getting Started with Lawrencium](https://scienceit-docs.lbl.gov/hpc/getting-started/index.md)
   - [Open OnDemand Portal](https://lrc-ondemand.lbl.gov/)
   - [MyLRC User Account Portal](https://mylrc.lbl.gov/)
-  - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html)
+  - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/)
 - ### **News & Status**
   ______________________________________________________________________
   - [HPC Service Announcements](https://it.lbl.gov/service/scienceit/high-performance-computing/status/)
