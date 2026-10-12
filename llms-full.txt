@@ -228,7 +228,12 @@ The recharge rates below apply only to jobs run under recharge (`ac_*`) accounts
 | --------- | ------------------- | ------------------------- | ----------------------- |
 | es0       | Shared              | 0                         | free                    |
 | es1       | Shared              | 1.0                       | $0.01 per Core CPU Hour |
-| es2       | Shared              | 2.0                       | $0.02 per Core CPU Hour |
+| es2       | Shared              | 4.0                       | $0.04 per Core CPU Hour |
+| es3       | Shared              | 1.0                       | $0.01 per Core CPU Hour |
+
+GPU-hour cost on `es2` and `es3`
+
+GPU jobs are charged for the CPU cores allocated with each GPU: 14 cores per GPU on `es2` and 32 cores per GPU on `es3`. One GPU-hour therefore costs 56 SU ($0.56) on `es2` and 32 SU ($0.32) on `es3`.
 
 Usage Calculation
 
@@ -242,7 +247,7 @@ You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-
 
 ## Scheduler Configuration
 
-Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, es1, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, lr7, lr8, es0, es1, es2, es3, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
 
 - For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 - If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
@@ -3961,19 +3966,26 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 ## `es3` Partition
 
-`es3` is a partition consisting of `RTX PRO 6000 Blackwell` GPU nodes built on AMD EPYC processors, providing a high core count per node alongside four GPU cards. `es3` partition nodes were introduced in 2026 to support growing AI/ML workflow needs. Five of the eight `es3` nodes are condo nodes.
+`es3` is a partition consisting of `RTX PRO 6000 Blackwell` GPU nodes built on AMD EPYC processors, providing a high core count per node alongside four GPU cards. `es3` partition nodes were introduced in 2026 to support growing AI/ML workflow needs. Five of the `es3` nodes are condo nodes.
 
 | Accelerator                   | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores per Node | CPU RAM per Node | Infiniband |
 | ----------------------------- | ----- | ------------------------ | ------------- | ------------------ | ---------------- | ---------- |
-| NVIDIA RTX PRO 6000 Blackwell | 8     | 4x 96 GB                 | AMD EPYC 9754 | 128                | 384 GB or 768 GB | HDR        |
+| NVIDIA RTX PRO 6000 Blackwell | 12    | 4x 96 GB                 | AMD EPYC 9754 | 128                | 384 GB or 768 GB | HDR        |
 
 ### How to specify desired GPU card(s)
 
-QoS values pending
+Two `qos` values are available on the `es3` partition:
 
-The `qos` values for the `es3` partition have not been configured yet for all users, and will be documented here once they are available.
+| QoS           | Where jobs run      | Limits                                      | Notes                                                                                 |
+| ------------- | ------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `es3_normal`  | Institutional nodes | 3-day max wall time, up to 5 nodes per user | Standard priority                                                                     |
+| `es3_lowprio` | Idle condo nodes    | Low priority                                | Free of charge; jobs can be preempted and requeued when condo owners need their nodes |
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 32 CPU cores for each GPU card on the `es3` partition.
+Checkpoint your `es3_lowprio` jobs
+
+Jobs under `es3_lowprio` can be preempted at any time. Save checkpoint files regularly so that a preempted job can resume from its last checkpoint after it is requeued.
+
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 32 CPU cores for each GPU card on the `es3` partition. Together with the [charging factor](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates) of 1.0 for the `es3` partition, this means that each `GPU-hour` under `es3_normal` incurs at least 32 Service Units (SUs).
 
 Examples:
 
@@ -3987,6 +3999,7 @@ Example slurm script on `es3`
 #SBATCH --job-name=test
 #SBATCH --account=account_name
 #SBATCH --partition=es3
+#SBATCH --qos=es3_normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
@@ -4002,6 +4015,7 @@ python train.py
 #SBATCH --job-name=test
 #SBATCH --account=account_name
 #SBATCH --partition=es3
+#SBATCH --qos=es3_normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=32
@@ -4025,7 +4039,7 @@ python train.py
 
 The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
 
-Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the charging factor of 2.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 28 Service Units (SUs).
+Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the [charging factor](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates) of 4.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 56 Service Units (SUs).
 
 Examples:
 
