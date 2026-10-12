@@ -3,12 +3,12 @@
 Einsteinium is an institutional GPU cluster that was deployed to meet the growing computational demand for researchers doing machine learning and deep learning. The system is named after the chemical element with symbol `Es` and atomic number 99 which was discovered at Lawrence Berkeley National Laboratory in 1952 and in honor of Albert Einstein who developed the theory of relativity.
 
 ## `es3` Partition
-`es3` is a partition consisting of `RTX PRO 6000 Blackwell` GPU nodes built on AMD EPYC processors, providing a high core count per node alongside four GPU cards. `es3` partition nodes were introduced in 2026 to support growing AI/ML workflow needs. Five of the eight `es3` nodes are condo nodes.
+`es3` is a partition consisting of `RTX PRO 6000 Blackwell` GPU nodes built on AMD EPYC processors, providing a high core count per node alongside four GPU cards. `es3` partition nodes were introduced in 2026 to support growing AI/ML workflow needs. Five of the `es3` nodes are condo nodes.
 
 
 | Accelerator | Nodes | GPUs per Node/GPU Memory | CPU Processor | CPU Cores per Node | CPU RAM per Node | Infiniband |
 | ----------- | ----- | ------------------------ | ------------- | --------- | ------- | ---------- |
-| NVIDIA RTX PRO 6000 Blackwell | 8 | 4x 96 GB | AMD EPYC 9754 | 128 | 384 GB or 768 GB | HDR |
+| NVIDIA RTX PRO 6000 Blackwell | 12 | 4x 96 GB | AMD EPYC 9754 | 128 | 384 GB or 768 GB | HDR |
 
 ### How to specify desired GPU card(s)
 

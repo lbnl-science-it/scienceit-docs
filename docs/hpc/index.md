@@ -119,7 +119,7 @@ Condo users who would need to run outside of their condo contributions are also 
 
 !!! note "GPU-hour cost on `es2` and `es3`"
 
-    GPU jobs are charged for the CPU cores allocated with each GPU: 14 cores per GPU on `es2` and 32 cores per GPU on `es3`. One GPU-hour therefore costs 56 SU ($0.56) on `es2` and 32 SU ($0.32) on `es3`. Jobs that run on `es3` under the `es3_lowprio` QoS are free of charge.
+    GPU jobs are charged for the CPU cores allocated with each GPU: 14 cores per GPU on `es2` and 32 cores per GPU on `es3`. One GPU-hour therefore costs 56 SU (\$0.56) on `es2` and 32 SU (\$0.32) on `es3`.
 
 !!! note "Usage Calculation"
 
