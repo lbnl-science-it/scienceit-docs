@@ -3388,7 +3388,6 @@
 <thead>
 <tr>
 <th>QoS</th>
-<th>Where jobs run</th>
 <th>Limits</th>
 <th>Notes</th>
 </tr>
@@ -3396,15 +3395,13 @@
 <tbody>
 <tr>
 <td><code>es3_normal</code></td>
-<td>Institutional nodes</td>
 <td>3-day max wall time, up to 5 nodes per user</td>
 <td>Standard priority</td>
 </tr>
 <tr>
 <td><code>es3_lowprio</code></td>
-<td>Idle condo nodes</td>
 <td>Low priority</td>
-<td>Free of charge; jobs can be preempted and requeued when condo owners need their nodes</td>
+<td>Free of charge; jobs can be preempted and requeued when condo owners need their nodes. Not available to PI Computing Allowance (PCA) accounts (<code>pc_*</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -3493,7 +3490,7 @@ python<span class="w"> </span>train.py
 </tbody>
 </table>
 <h3 id="how-to-specify-desired-gpu-cards_1">How to specify desired GPU card(s)<a class="headerlink" href="#how-to-specify-desired-gpu-cards_1" title="Permanent link">&para;</a></h3>
-<p>The normal <code>qos</code> for the <code>es2</code> partition is called <code>es2_normal</code>. The other <code>qos</code> values are <code>es_debug</code> and <code>es_lowprio</code>.</p>
+<p>The normal <code>qos</code> for the <code>es2</code> partition is called <code>es2_normal</code>. The other <code>qos</code> values are <code>es_debug</code> and <code>es_lowprio</code>. Note that <code>es_lowprio</code> is not available to PI Computing Allowance (PCA) accounts (<code>pc_*</code>).</p>
 <p>Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the <code>es2</code> partitions. Together with the <a href="../../#gpu-partitions-recharge-rates">charging factor</a> of 4.0 for the <code>es2</code> partition, this means that each <code>GPU-hour</code> on the <code>es2</code> partition incurs at least 56 Service Units (SUs).</p>
 <p>Examples:</p>
 <ul>

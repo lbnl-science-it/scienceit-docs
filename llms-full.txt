@@ -259,6 +259,7 @@ Fair-share policy
 A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. All accounts are given equal shares value of 1. All users under each account associated within a partition is subjected to decay’g in priority based on the resources used and the overall parent account usage. Usage is a value between 0.0 and 1.0 that associates proportional usage of the system. A value of 0 indicates that the association is over-served. In other words that account has used its share of the resources and will be given a lower value of shares compared to users who have not used as much resources.
 
 - Job prioritization is based on Age, Fairshare, Partition and QOS. Note: `lr_lowprio` qos jobs are not given any prioritization and some QOS have higher values than others.
+- Low priority QoSes (`*_lowprio`, e.g., `lr_lowprio`, `es_lowprio`, `es3_lowprio`) are not available to PI Computing Allowance (PCA) accounts (`pc_*`).
 - If a node feature is not provided, the job will be dispatched to nodes based on a predefined order; for `lr5` the order is: `lr5_c28`, `lr5_c20`.
 
 # Acknowledgement
@@ -441,6 +442,8 @@ which outputs:
 ```
 lr_lowprio   00:01:00     requeue
 ```
+
+Note that low priority QoSes (`*_lowprio`) are not available to PI Computing Allowance (PCA) accounts (`pc_*`).
 
 How do I utilize local disk on the compute node during a job for caching datasets and intermediate files during a job?
 
@@ -1905,7 +1908,7 @@ perceus-00|pc_acctB|userA|lr5|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr4|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr3|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|cf1|1|||||||||||||cf_debug,cf_normal|||
-perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_lowprio,es_normal|||
+perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_normal|||
 ```
 
 The Account, Partition, and QOS indicate which partitions and QoSes you have access to under each of your account(s).
@@ -3976,10 +3979,10 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 Two `qos` values are available on the `es3` partition:
 
-| QoS           | Where jobs run      | Limits                                      | Notes                                                                                 |
-| ------------- | ------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `es3_normal`  | Institutional nodes | 3-day max wall time, up to 5 nodes per user | Standard priority                                                                     |
-| `es3_lowprio` | Idle condo nodes    | Low priority                                | Free of charge; jobs can be preempted and requeued when condo owners need their nodes |
+| QoS           | Limits                                      | Notes                                                                                                                                                  |
+| ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `es3_normal`  | 3-day max wall time, up to 5 nodes per user | Standard priority                                                                                                                                      |
+| `es3_lowprio` | Low priority                                | Free of charge; jobs can be preempted and requeued when condo owners need their nodes. Not available to PI Computing Allowance (PCA) accounts (`pc_*`) |
 
 Checkpoint your `es3_lowprio` jobs
 
@@ -4037,7 +4040,7 @@ python train.py
 
 ### How to specify desired GPU card(s)
 
-The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
+The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`. Note that `es_lowprio` is not available to PI Computing Allowance (PCA) accounts (`pc_*`).
 
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the [charging factor](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates) of 4.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 56 Service Units (SUs).
 

@@ -60,6 +60,8 @@ which outputs:
 lr_lowprio   00:01:00     requeue
 ```
 
+Note that low priority QoSes (`*_lowprio`) are not available to PI Computing Allowance (PCA) accounts (`pc_*`).
+
 How do I utilize local disk on the compute node during a job for caching datasets and intermediate files during a job?
 
 Once you have SLURM allocation on a compute node, the `/tmp` directory on that compute node is mapped to the local storage. In some cases, it can be beneficial to use `/tmp` in a SLURM allocation as the local disk may give you faster I/O than when using scratch. Please remember that `/tmp` in a SLURM allocation is only available when your job is running; therefore, any data that you need later must be copied to another location (e.g. your HOME or SCRATCH directory) before your job terminates.

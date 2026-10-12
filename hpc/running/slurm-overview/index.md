@@ -64,7 +64,7 @@ perceus-00|pc_acctB|userA|lr5|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr4|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|lr3|1|||||||||||||lr_debug,lr_normal|||
 perceus-00|pc_acctB|userA|cf1|1|||||||||||||cf_debug,cf_normal|||
-perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_lowprio,es_normal|||
+perceus-00|pc_acctB|userA|es1|1|||||||||||||es_debug,es_normal|||
 ```
 
 The Account, Partition, and QOS indicate which partitions and QoSes you have access to under each of your account(s).

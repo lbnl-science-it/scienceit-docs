@@ -3506,6 +3506,7 @@
 </div>
 <ul>
 <li>Job prioritization is based on Age, Fairshare, Partition and QOS. Note: <code>lr_lowprio</code> qos jobs are not given any prioritization and some QOS have higher values than others.</li>
+<li>Low priority QoSes (<code>*_lowprio</code>, e.g., <code>lr_lowprio</code>, <code>es_lowprio</code>, <code>es3_lowprio</code>) are not available to PI Computing Allowance (PCA) accounts (<code>pc_*</code>).</li>
 <li>If a node feature is not provided, the job will be dispatched to nodes based on a predefined order; for <code>lr5</code> the order is: <code>lr5_c28</code>, <code>lr5_c20</code>.</li>
 </ul>
 

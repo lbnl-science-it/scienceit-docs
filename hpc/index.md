@@ -142,4 +142,5 @@ Fair-share policy
 A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced. All accounts are given equal shares value of 1. All users under each account associated within a partition is subjected to decay’g in priority based on the resources used and the overall parent account usage. Usage is a value between 0.0 and 1.0 that associates proportional usage of the system. A value of 0 indicates that the association is over-served. In other words that account has used its share of the resources and will be given a lower value of shares compared to users who have not used as much resources.
 
 - Job prioritization is based on Age, Fairshare, Partition and QOS. Note: `lr_lowprio` qos jobs are not given any prioritization and some QOS have higher values than others.
+- Low priority QoSes (`*_lowprio`, e.g., `lr_lowprio`, `es_lowprio`, `es3_lowprio`) are not available to PI Computing Allowance (PCA) accounts (`pc_*`).
 - If a node feature is not provided, the job will be dispatched to nodes based on a predefined order; for `lr5` the order is: `lr5_c28`, `lr5_c20`.

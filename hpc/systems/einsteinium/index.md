@@ -14,10 +14,10 @@ Einsteinium is an institutional GPU cluster that was deployed to meet the growin
 
 Two `qos` values are available on the `es3` partition:
 
-| QoS           | Where jobs run      | Limits                                      | Notes                                                                                 |
-| ------------- | ------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `es3_normal`  | Institutional nodes | 3-day max wall time, up to 5 nodes per user | Standard priority                                                                     |
-| `es3_lowprio` | Idle condo nodes    | Low priority                                | Free of charge; jobs can be preempted and requeued when condo owners need their nodes |
+| QoS           | Limits                                      | Notes                                                                                                                                                  |
+| ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `es3_normal`  | 3-day max wall time, up to 5 nodes per user | Standard priority                                                                                                                                      |
+| `es3_lowprio` | Low priority                                | Free of charge; jobs can be preempted and requeued when condo owners need their nodes. Not available to PI Computing Allowance (PCA) accounts (`pc_*`) |
 
 Checkpoint your `es3_lowprio` jobs
 
@@ -75,7 +75,7 @@ python train.py
 
 ### How to specify desired GPU card(s)
 
-The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`.
+The normal `qos` for the `es2` partition is called `es2_normal`. The other `qos` values are `es_debug` and `es_lowprio`. Note that `es_lowprio` is not available to PI Computing Allowance (PCA) accounts (`pc_*`).
 
 Due to hardware configuation, special attention is needed to ensure the ratio of CPU-core# to GPU#. You must request 14 CPU cores for each GPU card on the `es2` partitions. Together with the [charging factor](https://scienceit-docs.lbl.gov/hpc/#gpu-partitions-recharge-rates) of 4.0 for the `es2` partition, this means that each `GPU-hour` on the `es2` partition incurs at least 56 Service Units (SUs).
 
