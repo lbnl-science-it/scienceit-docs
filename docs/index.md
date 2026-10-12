@@ -16,7 +16,7 @@ hide:
     - [:fontawesome-solid-computer: Getting Started with Lawrencium](hpc/getting-started.md) 
     - [:simple-jupyter: Open OnDemand Portal](https://lrc-ondemand.lbl.gov/){:target="_blank"} {{ ext }} 
     - [MyLRC User Account Portal](https://mylrc.lbl.gov/){:target="_blank"} {{ ext }} 
-    - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html){:target="_blank"} {{ ext }}
+    - [LRC Slurm Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/){:target="_blank"} {{ ext }}
 
 -   ### **News & Status**
 

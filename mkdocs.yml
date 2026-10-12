@@ -8,6 +8,7 @@ nav:
       #- Live Cluster Status: hpc/status.md
       - Getting Started: hpc/getting-started.md
       - Frequently Asked Questions: hpc/faqs.md
+      - Jobscript Generator: https://lbnl-science-it.github.io/lrc-jobscript/
       - Account Management:
           - Project Accounts: hpc/accounts/project-accounts.md
           - User Accounts: hpc/accounts/user-accounts.md

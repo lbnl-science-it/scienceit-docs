@@ -35,7 +35,7 @@ The fee is billed to the Project ID (PID) selected when the cluster account was 
 
 ## Compute Usage (LRCCPU)
 
-Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](../index.md#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html){:target="_blank"} {{ ext }} can estimate the SUs used by a job.
+Compute charges apply only to jobs submitted with a recharge project account (`ac_*`), for example `--account=ac_abc`. The charge depends on the partition, the resources allocated to the job and how long the job runs. See the [Recharge Model](../index.md#recharge-model) for the SU rates of each partition and an example of how usage is calculated. The [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/){:target="_blank"} {{ ext }} can estimate the SUs used by a job.
 
 The prefix of a project account shows whether compute usage under it is charged:
 

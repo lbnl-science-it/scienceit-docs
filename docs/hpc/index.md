@@ -129,7 +129,7 @@ Condo users who would need to run outside of their condo contributions are also 
     
     instead of: $0.0050/(core x hour) x 1 core x 24 hours = $0.12.
 
-    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/src/lrc-calculator.html) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
+    You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-jobscript/) page to generate sample slurm job submission scripts targeting different partitions, and to get an estimate of the Service Units (SUs) based on the system and number of hours of usage.
 
 ## Scheduler Configuration 
 
