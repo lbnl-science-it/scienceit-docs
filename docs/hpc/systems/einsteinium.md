@@ -17,7 +17,7 @@ Two `qos` values are available on the `es3` partition:
 | QoS | Limits | Notes |
 | --- | ------ | ----- |
 | `es3_normal` | 3-day max wall time, up to 5 nodes per user | Standard priority |
-| `es3_lowprio` | Low priority | Free of charge; jobs can be preempted and requeued when condo owners need their nodes. Not available to PI Computing Allowance (PCA) accounts (`pc_*`) |
+| `es3_lowprio` | Low priority (available to condo and `ac_` accounts) | Free of charge; jobs can be preempted and requeued when condo owners need their nodes. Not available `pc_` accounts |
 
 !!! warning "Checkpoint your `es3_lowprio` jobs"
 
