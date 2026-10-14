@@ -5,12 +5,17 @@
     "name": "Science IT, IT Division, Lawrence Berkeley National Laboratory",
     "email": "scienceithelp@lbl.gov"
   },
-  "description": "Skills that let Claude answer LBNL Science IT questions from the scienceit-docs Markdown source.",
+  "description": "Skills and tools for LBNL Science IT: answer questions from the scienceit-docs Markdown source, and get Lawrencium SSH certificates.",
   "plugins": [
     {
       "name": "lawrencium-hpc",
       "source": ".",
       "description": "Answer Lawrencium (LRC) & Einsteinium HPC questions from the scienceit-docs Markdown source instead of scraping HTML."
+    },
+    {
+      "name": "lrc-cert",
+      "source": "./plugins/lrc-cert",
+      "description": "Get a 12-hour Lawrencium SSH certificate for lrc-login from a /lrc-cert pane in Claude Code (username, PIN and OTP)."
     }
   ]
 }
