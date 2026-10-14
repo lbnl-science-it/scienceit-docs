@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "lrc-cert",
+  "description": "Get a 12-hour Lawrencium SSH certificate for lrc-login from a /lrc-cert pane in Claude Code (username, PIN and OTP).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Science IT, IT Division, Lawrence Berkeley National Laboratory",
+    "email": "scienceithelp@lbl.gov"
+  },
+  "homepage": "https://scienceit-docs.lbl.gov",
+  "repository": "https://github.com/lbnl-science-it/scienceit-docs",
+  "license": "BSD-3-Clause",
+  "keywords": ["hpc", "lawrencium", "ssh", "certificate", "mfa", "lbnl", "scienceit"],
+  "types": "./types/index.d.ts"
+}
