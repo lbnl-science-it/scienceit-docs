@@ -76,7 +76,7 @@ nav:
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
       - AI Tools:
           - Using AI Agents on Lawrencium: hpc/ai-tools/ai-agents.md
-          - Lawrencium Skill: hpc/ai-tools/claude-plugin.md
+          - Lawrencium Skill: hpc/ai-tools/lawrencium-skill.md
       - Acknowledgement: hpc/acknowledgement.md
   - Kubernetes:
       - Kubernetes Overview: kubernetes/index.md

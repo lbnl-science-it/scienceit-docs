@@ -27,8 +27,9 @@ so this skill works without a local checkout of the repo.
 1. **Fetch the raw Markdown, not the website.** Every page on
    `https://scienceit-docs.lbl.gov` is generated from a `.md` file under `docs/hpc/`
    in the GitHub repo. Fetch the **raw** Markdown (see *Fetching a page* below) with
-   your web-fetch tool. Do **not** scrape the rendered HTML — the Markdown is the
-   source of truth, is cheaper to read, and has no navigation/markup noise.
+   your web-fetch tool, or `curl -sL <url>` if you only have a shell. Do **not**
+   scrape the rendered HTML — the Markdown is the source of truth, is cheaper to
+   read, and has no navigation/markup noise.
 2. **Route with the doc map below.** Match the user's question to one or more pages
    in the map, then fetch those files. Start narrow (the most specific page) and
    widen only if needed.
@@ -43,14 +44,27 @@ so this skill works without a local checkout of the repo.
 ## Fetching a page
 
 The doc map below lists each page by its repository path (e.g. `docs/hpc/faqs.md`).
-To fetch the raw Markdown, prepend the raw base URL for the `main` branch:
+Use the first of these sources that works for you:
 
-```
-https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/
-```
+1. **A local checkout.** If you are working inside a checkout of `scienceit-docs`
+   (the repository root has `mkdocs.yml` and `skills/lawrencium-hpc/`), read the
+   file at that path directly. No network access is needed.
+2. **Raw GitHub (the default).** Prepend the raw base URL for the `main` branch:
 
-- `docs/hpc/faqs.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/faqs.md>
-- `docs/hpc/running/slurm-overview.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/running/slurm-overview.md>
+   ```
+   https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/
+   ```
+
+   - `docs/hpc/faqs.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/faqs.md>
+   - `docs/hpc/running/slurm-overview.md` → <https://raw.githubusercontent.com/lbnl-science-it/scienceit-docs/main/docs/hpc/running/slurm-overview.md>
+
+3. **The docs site's Markdown copy.** If `raw.githubusercontent.com` is blocked,
+   take the page's public site URL (see *Citing sources* below) and append
+   `index.md`. These copies are built from the same source, with macros expanded.
+   - `docs/hpc/faqs.md` → <https://scienceit-docs.lbl.gov/hpc/faqs/index.md>
+4. **Everything in one file.** If you can fetch only one URL, or need many pages at
+   once, fetch <https://scienceit-docs.lbl.gov/llms-full.txt>. It holds every page
+   in the doc map (about 70k tokens).
 
 ## Citing sources
 
@@ -155,6 +169,9 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 - **GNU Gprof** — `docs/hpc/software/performance/gnu-gprof.md` — Profiling C/C++/Fortran with `gprof`.
 - **Intel VTune** — `docs/hpc/software/performance/intel-vtune.md` — Finding hotspots with Intel VTune Profiler.
 
+### Software — containers
+- **Apptainer** — `docs/hpc/software/containers/apptainer.md` — Running containers without Docker: pulling from OCI registries, building from a definition file (fakeroot), redirecting the cache to scratch, and GPU access.
+
 ### Software — LLMs
 - **Ollama** — `docs/hpc/software/llms/ollama.md` — Running open-weight LLMs via the `ollama` module.
 - **vLLM** — `docs/hpc/software/llms/vllm.md` — Serving open-weight LLMs via the `vllm` module.
@@ -164,3 +181,7 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 - **Jupyter Server** — `docs/hpc/openondemand/jupyter-server.md` — Running Jupyter notebooks on Lawrencium compute.
 - **Ollama with Jupyter and VS Code** — `docs/hpc/openondemand/ollama-jupyter-vscode.md` — The Ollama + JupyterAI + VS Code Continue app for local LLMs.
 - **Adding Packages and Kernels** — `docs/hpc/openondemand/packages-kernels.md` — Managing Python packages and Jupyter kernels (miniforge3).
+
+### AI tools
+- **Using AI Agents on Lawrencium** — `docs/hpc/ai-tools/ai-agents.md` — Guidelines for running AI coding agents such as `claude` and `codex` on Lawrencium (use compute nodes through Slurm, not login nodes), with sample instructions to add to `CLAUDE.md` or `AGENTS.md`.
+- **Lawrencium Skill** — `docs/hpc/ai-tools/lawrencium-skill.md` — Installing this skill as a Claude Code plugin and allowing it to fetch the docs.
