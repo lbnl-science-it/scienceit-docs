@@ -6,13 +6,15 @@ from a pane inside Claude Code.
 
 ## Install
 
-At a `claude` prompt in a terminal:
+In a terminal:
 
 ```
-/plugin install lrc-cert --marketplace lbnl-science-it/scienceit-docs
+claude plugin marketplace add lbnl-science-it/scienceit-docs
+claude plugin install lrc-cert@scienceit-docs
 ```
 
-Answer `y` to add the marketplace, then choose a scope.
+Already inside Claude Code? Run the same commands with `/plugin` in place of
+`claude plugin`, then `/reload-plugins`.
 
 ## Use
 

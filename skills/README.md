@@ -25,15 +25,16 @@ table of topics to the `.md` files that answer them.
 ### Claude Code — install as a plugin (recommended)
 
 This repository is also a Claude Code **plugin marketplace**, so users can install
-the skill without cloning anything. In Claude Code:
+the skill without cloning anything. In a terminal:
 
 ```
-/plugin marketplace add lbnl-science-it/scienceit-docs
-/plugin install lawrencium-hpc@scienceit-docs
+claude plugin marketplace add lbnl-science-it/scienceit-docs
+claude plugin install lawrencium-hpc@scienceit-docs
 ```
 
-Then reload plugins (or restart the session) and the skill loads on demand whenever a
-question matches its `description`:
+From inside a Claude Code session, run the same commands with `/plugin` in place of
+`claude plugin`, then reload plugins (or restart the session). The skill loads on
+demand whenever a question matches its `description`:
 
 ```
 /reload-plugins

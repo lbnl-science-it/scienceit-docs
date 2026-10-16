@@ -15,14 +15,14 @@ Once installed, whenever you ask a question about accounts, logging in, Slurm, s
 
 ## Install the plugin
 
-This repository doubles as a Claude Code **plugin marketplace**, so you do not need to clone anything. From inside a Claude Code session, add the marketplace and install the plugin:
+This repository doubles as a Claude Code **plugin marketplace**, so you do not need to clone anything. In a terminal, add the marketplace and install the plugin:
 
 ```
-/plugin marketplace add lbnl-science-it/scienceit-docs
-/plugin install lawrencium-hpc@scienceit-docs
+claude plugin marketplace add lbnl-science-it/scienceit-docs
+claude plugin install lawrencium-hpc@scienceit-docs
 ```
 
-Then reload plugins (or restart the session):
+Already inside a Claude Code session? Run the same commands with `/plugin` in place of `claude plugin`, then reload plugins (or restart the session):
 
 ```
 /reload-plugins
