@@ -13,8 +13,9 @@ CBORG_MODEL = "lbl/cborg-mini"
 # Where the Worker fetches the documentation text (cached for 1 hour).
 LLMS_FULL_URL = "https://scienceit-docs.lbl.gov/llms-full.txt"
 # Comma-separated list of origins allowed to call /chat (no trailing slashes).
-# The localhost entries are for the local demo; remove them for production.
-ALLOWED_ORIGINS = "https://scienceit-docs.lbl.gov,http://localhost:8000,http://127.0.0.1:8000"
+# This is the production value. For local dev, override it in .dev.vars
+# (see .dev.vars.example) so localhost doesn't leak into the deployed Worker.
+ALLOWED_ORIGINS = "https://scienceit-docs.lbl.gov,http://localhost:8787,http://127.0.0.1:8000"
 # Context window of the chosen model, used only for the size warning.
 MODEL_CONTEXT_TOKENS = "128000"
 # Request validation limits.
