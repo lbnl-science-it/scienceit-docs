@@ -23,6 +23,7 @@
 - [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 - [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
 - [Using AI Agents on Lawrencium](https://scienceit-docs.lbl.gov/hpc/ai-tools/ai-agents/index.md)
+- [Using Claude Science with Lawrencium](https://scienceit-docs.lbl.gov/hpc/ai-tools/claude-science/index.md)
 - [Lawrencium Skill](https://scienceit-docs.lbl.gov/hpc/ai-tools/lawrencium-skill/index.md)
 - [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/index.md)
 - [Ollama with Jupyter and VS Code](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/index.md)
