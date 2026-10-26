@@ -25,7 +25,8 @@ The entire documentation corpus (`llms-full.txt`) is injected into the system pr
                             │  Cloudflare Worker       │
                             │  scienceit-docs-chat     │
                             │  - CORS allowlist        │
-                            │  - per-IP rate limit     │
+                            │  - global + per-IP limit │
+                            │  - Turnstile / session   │
                             │  - input validation      │
                             │  - prompt assembly       │
                             │  - holds CBORG_API_KEY   │
@@ -44,8 +45,9 @@ The Worker exists for exactly one structural reason: **the CBORG API key must ne
 
 Single file, zero dependencies, no build step. An IIFE that reads its configuration from `data-*` attributes on its own `<script>` tag, then mounts a floating action button and chat panel into a **Shadow DOM** root so the host page's CSS cannot leak in or out.
 
-- Config via `document.currentScript.dataset`: `endpoint`, `title`, `subtitle`, `greeting`, `color`.
-- Conversation history is held **in memory only** (`var history = []`). A page reload starts a fresh conversation. No cookies, no `localStorage`, no server-side session.
+- Config via `document.currentScript.dataset`: `endpoint`, `turnstile-sitekey`, `title`, `subtitle`, `greeting`, `color`.
+- Conversation history is held **in memory only** (`var history = []`), as is the session token. A page reload starts a fresh conversation and a fresh challenge. No cookies, no `localStorage`, no server-side session state — the token's signature carries everything the Worker needs.
+- Loads the Turnstile script on first send, not on page load, so readers who never open the chat pay nothing for it.
 - Ships its own minimal Markdown renderer ([`renderMarkdown`](widget/chatbot.js#L69)) — fenced code, inline code, headings, lists, bold/italic, links. Input is HTML-escaped **before** formatting rules run, and only `http(s)` and site-relative URLs are linkified, so streamed model output cannot inject markup or `javascript:` URLs.
 - Published to the site as `docs/assets/chatbot.js`, which is a **symlink** to `widget/chatbot.js`. One copy of the source.
 
@@ -56,8 +58,11 @@ A single `fetch(request, env, ctx)` handler serving one route: `POST /chat`. Req
 | Stage | Behavior on failure |
 |---|---|
 | CORS origin check against `ALLOWED_ORIGINS` | `403 origin_not_allowed` |
-| `CBORG_API_KEY` presence check | `500 server_misconfigured` |
+| Secrets present (`CBORG_API_KEY`, `TURNSTILE_SECRET`, `SESSION_SECRET`) | `500 server_misconfigured` |
+| Limiter bindings present — **fails closed** | `503 limiter_unavailable` |
+| Global rate limit via `GLOBAL_LIMITER` | `503 at_capacity` + `Retry-After: 60` |
 | Per-IP rate limit via `RATE_LIMITER` binding | `429 rate_limited` + `Retry-After: 60` |
+| Turnstile or signed session token | `401 verification_required` / `403 verification_failed` |
 | Payload size (`Content-Length` **and** actual byte length) | `413 payload_too_large` |
 | JSON parse | `400 invalid_json` |
 | Schema validation ([`validate`](worker/src/index.js#L158)) | `400 invalid_request` |
@@ -89,7 +94,7 @@ LBNL's OpenAI-compatible gateway. The Worker calls `${CBORG_BASE_URL}/chat/compl
 
 Two operational gotchas:
 - **Model IDs change.** `wrangler.toml` currently pins `lbl/cborg-mini`; confirm against the CBORG docs before deploying.
-- **CBORG enforces IP allowlisting.** Requests from unrecognized IPs are rejected — including most VPNs off LBLnet. Authorize your IP in the CBORG key manager, and note that a deployed Worker egresses from Cloudflare IPs, not yours.
+- **Key type determines reachability.** A standard CBORG key is IP-allowlisted and rejects unrecognized sources, including most VPNs off LBLnet — and a deployed Worker egresses from Cloudflare IPs scattered across their edge, which cannot practically be allowlisted. Deploying to Cloudflare therefore requires an **open key** (any IP). That removes the infrastructure blocker and makes Turnstile load-bearing: the allowlist is no longer providing incidental access control, so the Worker is the only gate.
 
 ---
 
@@ -145,13 +150,17 @@ Wrangler serves on `http://localhost:8787` by default — don't pass a URL argum
 
 `.dev.vars` overrides `wrangler.toml`'s `[vars]` for local runs only. This is deliberate: it keeps `localhost` origins out of the deployed Worker's `ALLOWED_ORIGINS`.
 
+`.dev.vars.example` ships Cloudflare's published always-passes Turnstile **test** secret, so local dev exercises the same auth path as production with no bypass flag that could be left switched on by accident. Pair it with test site key `1x00000000000000000000AA` in the widget.
+
 ### Run the widget against it
 
 In a second terminal, from the repo root:
 
 ```bash
 source .venv/bin/activate
-CHATBOT_ENDPOINT=http://localhost:8787/chat mkdocs serve
+CHATBOT_ENDPOINT=http://localhost:8787/chat \
+CHATBOT_TURNSTILE_SITEKEY=1x00000000000000000000AA \
+  mkdocs serve
 ```
 
 Open <http://127.0.0.1:8000>. The widget appears on every page via [`docs/overrides/main.html`](../docs/overrides/main.html), which injects the `<script>` tag only when `extra.chatbot_endpoint` is non-empty. With `CHATBOT_ENDPOINT` unset the widget is simply absent — normal doc builds are unaffected.
@@ -202,7 +211,9 @@ If you add a suite, the right tool is [`@cloudflare/vitest-pool-workers`](https:
 ```bash
 cd chatbot/worker
 npx wrangler login
-npx wrangler secret put CBORG_API_KEY   # paste the key when prompted
+npx wrangler secret put CBORG_API_KEY     # paste the key when prompted
+npx wrangler secret put TURNSTILE_SECRET  # from the Turnstile dashboard
+npx wrangler secret put SESSION_SECRET    # openssl rand -base64 32
 npx wrangler deploy
 ```
 
@@ -214,7 +225,9 @@ Deploys are atomic and instantly rolled back with `npx wrangler rollback`.
 
 The widget ships with the docs site; there is no separate frontend deploy. Push to `main` and CI runs `mkdocs gh-deploy --force`.
 
-To turn the widget on in production, set a repository **variable** (Settings → Secrets and variables → Actions → **Variables**) named `CHATBOT_ENDPOINT` to `https://<worker-url>/chat`. The workflow already reads `vars.CHATBOT_ENDPOINT`. A variable, not a secret — the endpoint lands in public page source regardless, and masking it would only make CI logs harder to read.
+To turn the widget on in production, set two repository **variables** (Settings → Secrets and variables → Actions → **Variables**): `CHATBOT_ENDPOINT` as `https://<worker-url>/chat`, and `CHATBOT_TURNSTILE_SITEKEY` as the site key from the Turnstile dashboard. Variables, not secrets — both land in public page source regardless, and masking them would only make CI logs harder to read.
+
+The widget mounts only when **both** are set. A missing site key means no widget rather than a widget that fails on every message.
 
 To preview a production build locally:
 
@@ -245,7 +258,11 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 | `MAX_MESSAGE_CHARS` | `4000` | Per-message cap. |
 | `MAX_PAYLOAD_BYTES` | `60000` | Body size cap, checked twice. |
 | `MAX_OUTPUT_TOKENS` | `1000` | Per-reply generation cap. |
+| `TURNSTILE_SECRET` | *(required)* | **Secret.** Pairs with the public site key in the widget. Local dev uses Cloudflare's always-passes test secret. |
+| `SESSION_SECRET` | *(required)* | **Secret.** Signs session tokens; `openssl rand -base64 32`. Rotating it forces every reader to re-verify. |
+| `SESSION_TTL_MINUTES` | `30` | How long a solved challenge lasts before re-verification. |
 | `RATE_LIMITER` *(binding)* | 10 req / 60s per IP | `[[ratelimits]]` block in `wrangler.toml`. |
+| `GLOBAL_LIMITER` *(binding)* | 120 req / 60s total | Global spend ceiling across all callers. |
 
 ### Edge caching
 
@@ -255,11 +272,28 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 - **Tuning.** `DOCS_CACHE_SECONDS` in [`worker/src/index.js`](worker/src/index.js#L34) is the single knob. Lower it for fresher answers at the cost of more origin fetches; the corpus is a static asset on GitHub Pages, so those fetches are cheap.
 - **Chat responses are never cached** — `Cache-Control: no-store` on the SSE response.
 
+### Authentication
+
+The CBORG key accepts any source IP, which means this Worker is the only thing between the public internet and billable inference. Access is gated by [Turnstile](https://developers.cloudflare.com/turnstile/) — proof that a real browser on a real page is calling, with no login for readers.
+
+Turnstile tokens are single-use and expire in about five minutes, so verifying one per message would mean a `siteverify` round-trip every turn. Instead the first message is verified upstream and the Worker returns an HMAC-signed session token (`X-Session-Token`) that later messages carry. Checking it is local and needs no storage, because the signature *is* the state. Tokens are bound to the client IP, so one solved challenge can't be shared across a botnet, and `crypto.subtle.verify` compares in constant time — don't swap it for a string comparison.
+
+**CORS is not authentication.** It only constrains browsers; any script can spoof an `Origin` header. Turnstile is the actual gate.
+
+Turnstile is not unbreakable — solver services exist. What it does is raise the per-request cost of abuse from roughly zero to non-trivial, which handles opportunistic bots and will not stop a determined adversary. A small number of privacy-tooling users will fail the challenge and see an error.
+
 ### Rate limiting
 
-Cloudflare's native rate-limiting binding, keyed on `CF-Connecting-IP`, at 10 requests per 60 seconds. `period` must be `10` or `60`; no other values are accepted. If the binding is missing the Worker logs a warning and **fails open** — it serves traffic unlimited rather than rejecting it, so check `wrangler tail` for that warning after any config change.
+Two Cloudflare rate-limit bindings, both **failing closed**:
 
-**CORS is not authentication.** It only constrains browsers; any script can spoof an `Origin` header. The rate limit is the real guard, and the reason it exists is cost: the full corpus is sent upstream on every single request. If abuse becomes a problem, add [Turnstile](https://developers.cloudflare.com/turnstile/) or real auth in front of `/chat`.
+- `RATE_LIMITER` — 10 requests / 60s, keyed on `CF-Connecting-IP`.
+- `GLOBAL_LIMITER` — 120 requests / 60s across all callers, keyed on a constant.
+
+The global one exists because per-IP limiting bounds individual abusers but never the aggregate: a thousand IPs each staying politely under the per-IP cap is fully compliant and unbounded in cost. `period` accepts only `10` or `60`, so this expresses a per-minute ceiling, not a daily budget — a daily cap would need a KV or Durable Object counter.
+
+If either binding is missing the Worker returns `503` rather than serving unlimited traffic. That's deliberate: on an endpoint that spends money, a visible outage beats an invisible bill, and a config regression gets noticed in minutes instead of next month.
+
+Limits run *before* authentication so that unauthenticated floods can't hammer Turnstile's `siteverify` endpoint.
 
 ### Monitoring
 
@@ -271,10 +305,13 @@ npx wrangler tail --status error       # errors only
 What to watch for in the logs:
 
 - `llms-full.txt is ~N tokens` — the corpus is at 80%+ of the context window. Trim the docs or move to a larger-context model before requests start failing.
-- `RATE_LIMITER binding not found` — rate limiting is silently off.
-- `Upstream error <status>` — CBORG rejections, including IP-allowlist failures. Truncated to 500 chars, logged only, never returned to clients.
-- `CBORG_API_KEY is not set` — the secret was lost, typically after recreating the Worker.
+- `Rate limiter bindings missing; refusing traffic` — every request is now 503. Check `wrangler.toml`.
+- `Global rate limit reached` — either real traffic growth or abuse. Identify which before raising the ceiling.
+- `Turnstile rejected: [...]` — the error codes distinguish an expired token from a failed challenge from a bad secret.
+- `Upstream error <status>` — CBORG rejections. Truncated to 500 chars, logged only, never returned to clients.
+- `<NAME> is not set` — a secret was lost, typically after recreating the Worker.
 
-The Cloudflare dashboard (Workers & Pages → `scienceit-docs-chat` → Metrics) gives request volume, error rate, CPU time, and subrequest counts. A rising 502 rate points at CBORG; a rising 429 rate is either genuine load or a single abusive IP, which the `tail` output will identify.
+The Cloudflare dashboard (Workers & Pages → `scienceit-docs-chat` → Metrics) gives request volume, error rate, CPU time, and subrequest counts. A rising 502 rate points at CBORG; a rising 429 is either genuine load or a single abusive IP, which `tail` will identify; a rising 401/403 rate suggests either a Turnstile misconfiguration or someone probing the endpoint.
 
-Request volume is also a direct cost proxy: every request means one full-corpus prompt upstream, so a volume spike is a spend spike.
+Request volume remains a direct cost proxy — every request still ships the full corpus upstream, so a volume spike is a spend spike.
+

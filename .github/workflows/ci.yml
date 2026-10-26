@@ -32,4 +32,5 @@ jobs:
         env:
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
           CHATBOT_ENDPOINT: ${{ vars.CHATBOT_ENDPOINT }}
+          CHATBOT_TURNSTILE_SITEKEY: ${{ vars.CHATBOT_TURNSTILE_SITEKEY }}
         run: mkdocs gh-deploy --force

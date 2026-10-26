@@ -25,6 +25,9 @@ MAX_PAYLOAD_BYTES = "60000"
 # Cap on generated tokens per reply.
 MAX_OUTPUT_TOKENS = "1000"
 
+# Session lifetime before a reader must solve another Turnstile challenge.
+SESSION_TTL_MINUTES = "30"
+
 # Per-IP rate limiting via Cloudflare's rate limiting binding.
 # `period` must be 10 or 60 (seconds). `namespace_id` is any unique integer
 # string within your account.
@@ -32,3 +35,12 @@ MAX_OUTPUT_TOKENS = "1000"
 name = "RATE_LIMITER"
 namespace_id = "1001"
 simple = { limit = 10, period = 60 }
+
+# Global ceiling across ALL callers, keyed on a constant. Per-IP limits bound
+# individual abusers but not total spend; this is the actual cost cap. Raise it
+# once you know what a busy day looks like — it should sit above normal peak
+# traffic and below a budget you would be unhappy to pay.
+[[ratelimits]]
+name = "GLOBAL_LIMITER"
+namespace_id = "1002"
+simple = { limit = 120, period = 60 }

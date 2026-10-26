@@ -1,3 +1,13 @@
 CBORG_API_KEY=paste-your-cborg-api-key-here
-# Overrides wrangler.toml's ALLOWED_ORIGINS for local `wrangler dev` only.
 ALLOWED_ORIGINS=https://scienceit-docs.lbl.gov,http://localhost:8000,http://127.0.0.1:8000
+
+# Cloudflare's published "always passes" Turnstile test secret. Local dev then
+# runs the same code path as production, with no bypass flag that could be left
+# switched on by accident. Pair it with site key 1x00000000000000000000AA.
+# In production this is a real secret: `wrangler secret put TURNSTILE_SECRET`.
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+
+# Signs session tokens. Any long random string; generate with:
+#   openssl rand -base64 32
+# Rotating it invalidates every live session, and readers simply re-verify.
+SESSION_SECRET=local-dev-only-not-a-real-secret

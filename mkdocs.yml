@@ -145,6 +145,10 @@ extra:
   # Chat widget Worker URL. Empty = no widget. Set via env var, e.g.
   # CHATBOT_ENDPOINT=http://localhost:8787/chat mkdocs serve
   chatbot_endpoint: !ENV [CHATBOT_ENDPOINT, ""]
+  # Turnstile site key for the chat widget. Public by design (it ships in page
+  # source); the matching secret lives in the Worker. Locally, Cloudflare's
+  # always-passes test key 1x00000000000000000000AA works.
+  chatbot_turnstile_sitekey: !ENV [CHATBOT_TURNSTILE_SITEKEY, ""]
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY

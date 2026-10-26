@@ -27,6 +27,7 @@
       (script && script.dataset.greeting) ||
       "Hi! Ask me anything about the documentation.",
     color: (script && script.dataset.color) || "#005f9e",
+    sitekey: (script && script.dataset.turnstileSitekey) || "",
   };
   // Keep in sync with MAX_MESSAGES on the Worker.
   var MAX_HISTORY = 20;
@@ -34,6 +35,73 @@
   // In-memory conversation: [{role: "user"|"assistant", content: "..."}]
   var history = [];
   var busy = false;
+
+  // ------------------------------------------------------------------ turnstile
+  // Proof-of-humanity, so the chat endpoint isn't free inference for bots.
+  // Only the first message solves a challenge: the Worker answers with a signed
+  // session token that later messages reuse, so there is no per-turn check.
+  var sessionToken = null;
+  var tsBox = null;
+  var tsId = null;
+  var tsPending = null;
+  var tsScript = null;
+
+  function tsSettle(ok, value) {
+    if (!tsPending) return;
+    var p = tsPending;
+    tsPending = null;
+    if (ok) p.resolve(value);
+    else p.reject(new Error(value));
+  }
+
+  function loadTurnstile() {
+    if (tsScript) return tsScript;
+    tsScript = new Promise(function (resolve, reject) {
+      if (window.turnstile) return resolve();
+      var s = document.createElement("script");
+      s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      s.async = true;
+      s.defer = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error("Could not load the verification check.")); };
+      document.head.appendChild(s);
+    });
+    return tsScript;
+  }
+
+  // Resolves with a single-use Turnstile token. The widget renders once and is
+  // reset for each later challenge; `interaction-only` keeps it invisible unless
+  // Cloudflare decides this reader has to click something. It lives outside the
+  // Shadow DOM because Turnstile renders an iframe and expects a normal parent.
+  function getTurnstileToken() {
+    return new Promise(function (resolve, reject) {
+      if (!cfg.sitekey) {
+        reject(new Error("Chat is not configured for verification."));
+        return;
+      }
+      tsPending = { resolve: resolve, reject: reject };
+      loadTurnstile().then(
+        function () {
+          if (tsId !== null) {
+            window.turnstile.reset(tsId);
+            return;
+          }
+          tsBox = document.createElement("div");
+          tsBox.style.cssText =
+            "position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2147483647";
+          document.body.appendChild(tsBox);
+          tsId = window.turnstile.render(tsBox, {
+            sitekey: cfg.sitekey,
+            appearance: "interaction-only",
+            callback: function (token) { tsSettle(true, token); },
+            "error-callback": function () { tsSettle(false, "Verification failed. Please try again."); },
+            "timeout-callback": function () { tsSettle(false, "Verification timed out. Please try again."); },
+          });
+        },
+        function (err) { tsSettle(false, err.message); }
+      );
+    });
+  }
 
   // ------------------------------------------------------------------ markdown
   function escapeHtml(s) {
@@ -302,6 +370,14 @@
     sendBtn.disabled = b;
   }
 
+  function postChat(payload, headers) {
+    return fetch(cfg.endpoint, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({ messages: payload }),
+    });
+  }
+
   async function send(text) {
     history.push({ role: "user", content: text });
     addMessage("user", text);
@@ -315,11 +391,23 @@
     var reply = "";
 
     try {
-      var res = await fetch(cfg.endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: payload }),
-      });
+      var headers = { "Content-Type": "application/json" };
+      if (sessionToken) headers["X-Session-Token"] = sessionToken;
+      else headers["X-Turnstile-Token"] = await getTurnstileToken();
+
+      var res = await postChat(payload, headers);
+
+      // 401 means the session lapsed or was rejected: re-verify once and retry.
+      if (res.status === 401) {
+        sessionToken = null;
+        res = await postChat(payload, {
+          "Content-Type": "application/json",
+          "X-Turnstile-Token": await getTurnstileToken(),
+        });
+      }
+
+      var refreshed = res.headers.get("X-Session-Token");
+      if (refreshed) sessionToken = refreshed;
 
       if (!res.ok) {
         // The Worker returns {error:{message}} for failures.

@@ -4,8 +4,9 @@
   {{ super() }}
   {#- Docs chat widget. Only added when a Worker endpoint is configured, so
       normal builds are unaffected. See chatbot/README.md. -#}
-  {% if config.extra.chatbot_endpoint %}
+  {% if config.extra.chatbot_endpoint and config.extra.chatbot_turnstile_sitekey %}
   <script src="{{ 'assets/chatbot.js' | url }}"
-          data-endpoint="{{ config.extra.chatbot_endpoint }}"></script>
+          data-endpoint="{{ config.extra.chatbot_endpoint }}"
+          data-turnstile-sitekey="{{ config.extra.chatbot_turnstile_sitekey }}"></script>
   {% endif %}
 {% endblock %}

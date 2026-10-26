@@ -23,12 +23,13 @@ const DEFAULTS = {
   // CBorg is OpenAI-compatible; we call `${CBORG_BASE_URL}/chat/completions`.
   CBORG_BASE_URL: "https://api.cborg.lbl.gov",
   // TODO: confirm the current model IDs in the CBorg docs. Model names change.
-  CBORG_MODEL: "anthropic/claude-sonnet",
+  CBORG_MODEL: "lbl/cborg-mini",
   MODEL_CONTEXT_TOKENS: 128000,
   MAX_MESSAGES: 20,
   MAX_MESSAGE_CHARS: 4000,
   MAX_PAYLOAD_BYTES: 60000,
   MAX_OUTPUT_TOKENS: 1000,
+  SESSION_TTL_MINUTES: 30,
 };
 
 const DOCS_CACHE_SECONDS = 3600; // cache llms-full.txt for 1 hour
@@ -129,11 +130,89 @@ function corsHeaders(request, env) {
   return {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, X-Turnstile-Token, X-Session-Token",
+    // Without this the widget's JS cannot read the refreshed session token.
+    "Access-Control-Expose-Headers": "X-Session-Token",
     "Access-Control-Max-Age": "86400",
     // The response depends on the Origin header, so caches must key on it.
     Vary: "Origin",
   };
+}
+
+// ---------------------------------------------------------------------------
+// Authentication
+// ---------------------------------------------------------------------------
+// The CBorg key is open (any IP), so this Worker is the only thing standing
+// between the public internet and billable inference. Turnstile proves "a real
+// browser on a real page" without making readers log in.
+//
+// Turnstile tokens are single-use and short-lived, so verifying one per message
+// would mean a siteverify round-trip on every turn. Instead we verify once and
+// mint an HMAC-signed session token that later requests carry; checking it is
+// local and needs no storage, because the signature *is* the state.
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
+function hmacKey(secret, usage) {
+  return crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    [usage]
+  );
+}
+
+/** Issue a session token bound to this IP and expiring after SESSION_TTL_MINUTES. */
+async function mintSession(env, ip) {
+  const exp = Date.now() + num(env, "SESSION_TTL_MINUTES") * 60 * 1000;
+  const sig = await crypto.subtle.sign(
+    "HMAC",
+    await hmacKey(env.SESSION_SECRET, "sign"),
+    new TextEncoder().encode(`${exp}.${ip}`)
+  );
+  return `${exp}.${btoa(String.fromCharCode(...new Uint8Array(sig)))}`;
+}
+
+/**
+ * Verify a session token. Bound to the IP so one solved challenge cannot be
+ * shared across a botnet. Uses crypto.subtle.verify, which compares in constant
+ * time — do not replace it with a string comparison.
+ */
+async function verifySession(env, token, ip) {
+  const [exp, sigB64] = (token || "").split(".");
+  if (!exp || !sigB64) return false;
+  if (!Number.isFinite(Number(exp)) || Date.now() > Number(exp)) return false;
+  let sig;
+  try {
+    sig = Uint8Array.from(atob(sigB64), (c) => c.charCodeAt(0));
+  } catch {
+    return false; // malformed base64
+  }
+  return crypto.subtle.verify(
+    "HMAC",
+    await hmacKey(env.SESSION_SECRET, "verify"),
+    sig,
+    new TextEncoder().encode(`${exp}.${ip}`)
+  );
+}
+
+async function verifyTurnstile(env, token, ip) {
+  if (!token) return false;
+  try {
+    const res = await fetch(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: token, remoteip: ip }),
+      signal: AbortSignal.timeout(10000),
+    });
+    const data = await res.json();
+    if (!data.success) console.warn("Turnstile rejected:", JSON.stringify(data["error-codes"]));
+    return data.success === true;
+  } catch (e) {
+    // A siteverify outage must not become an open door.
+    console.error("Turnstile verification failed:", e.message);
+    return false;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -215,26 +294,61 @@ export default {
       return jsonError(403, "origin_not_allowed", "This origin is not allowed.", null);
     }
 
-    // Fail early with a clear (but non-leaky) message if the secret is missing.
-    if (!env.CBORG_API_KEY) {
-      console.error("CBORG_API_KEY is not set. Run `wrangler secret put CBORG_API_KEY`.");
-      return jsonError(500, "server_misconfigured", "The chat service is not configured.", cors);
+    // Fail early with a clear (but non-leaky) message if a secret is missing.
+    for (const name of ["CBORG_API_KEY", "TURNSTILE_SECRET", "SESSION_SECRET"]) {
+      if (!env[name]) {
+        console.error(`${name} is not set. Run \`wrangler secret put ${name}\`.`);
+        return jsonError(500, "server_misconfigured", "The chat service is not configured.", cors);
+      }
     }
 
-    // --- Rate limit per client IP -------------------------------------------
-    console.log("[trace] before rate limiter");
-    if (env.RATE_LIMITER) {
-      const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-      const { success } = await env.RATE_LIMITER.limit({ key: ip });
-      if (!success) {
-        return jsonError(429, "rate_limited", "Too many requests. Please wait a minute.", cors, {
-          "Retry-After": "60",
-        });
-      }
-    } else {
-      console.warn("RATE_LIMITER binding not found; rate limiting is disabled.");
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+
+    // --- Rate limits --------------------------------------------------------
+    // Both fail CLOSED. A missing binding is a config regression, and on an
+    // endpoint that spends money we would rather have a visible outage than an
+    // invisible bill. Limits run before auth so that unauthenticated floods
+    // cannot hammer Turnstile's siteverify endpoint.
+    if (!env.GLOBAL_LIMITER || !env.RATE_LIMITER) {
+      console.error("Rate limiter bindings missing; refusing traffic. Check wrangler.toml.");
+      return jsonError(503, "limiter_unavailable", "Service temporarily unavailable.", cors, {
+        "Retry-After": "60",
+      });
     }
-    console.log("[trace] after rate limiter");
+
+    // Per-IP limiting bounds individuals but never the aggregate: a thousand
+    // IPs each staying under the per-IP limit is compliant and unbounded in
+    // cost. The global ceiling is what actually caps spend.
+    const global = await env.GLOBAL_LIMITER.limit({ key: "global" });
+    if (!global.success) {
+      console.warn("Global rate limit reached.");
+      return jsonError(503, "at_capacity", "The service is busy. Please try again shortly.", cors, {
+        "Retry-After": "60",
+      });
+    }
+
+    const perIp = await env.RATE_LIMITER.limit({ key: ip });
+    if (!perIp.success) {
+      return jsonError(429, "rate_limited", "Too many requests. Please wait a minute.", cors, {
+        "Retry-After": "60",
+      });
+    }
+
+    // --- Authentication -----------------------------------------------------
+    // A valid session token skips the siteverify round-trip; otherwise the
+    // request must carry a fresh Turnstile token.
+    if (!(await verifySession(env, request.headers.get("X-Session-Token"), ip))) {
+      const turnstileToken = request.headers.get("X-Turnstile-Token");
+      if (!turnstileToken) {
+        // 401 tells the widget to solve a challenge and retry.
+        return jsonError(401, "verification_required", "Verification required.", cors);
+      }
+      if (!(await verifyTurnstile(env, turnstileToken, ip))) {
+        return jsonError(403, "verification_failed", "Verification failed. Please try again.", cors);
+      }
+    }
+    // Roll the session forward on every successful request.
+    const sessionToken = await mintSession(env, ip);
 
     // --- Payload size check (before parsing) --------------------------------
     const maxBytes = num(env, "MAX_PAYLOAD_BYTES");
@@ -311,6 +425,7 @@ export default {
       headers: {
         "Content-Type": "text/event-stream; charset=utf-8",
         "Cache-Control": "no-store",
+        "X-Session-Token": sessionToken,
         ...cors,
       },
     });
