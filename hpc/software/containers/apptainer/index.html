@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#containerization-platform" class="md-skip">
+        <a href="#containers-with-apptainer" class="md-skip">
           Skip to content
         </a>
       
@@ -2112,6 +2112,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Apptainer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2121,6 +2132,160 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulling-a-container-from-an-oci-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulling a Container from an OCI Registry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulling a Container from an OCI Registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-image-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Image Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulling-for-a-different-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulling for a Different Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-your-own-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Your Own Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-container-from-a-definition-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Container from a Definition File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Container from a Definition File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a Container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running a Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-instance-in-the-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running an Instance in the Background
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-container-in-a-batch-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a Container in a Batch Job
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3166,6 +3331,149 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulling-a-container-from-an-oci-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulling a Container from an OCI Registry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulling a Container from an OCI Registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-image-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Image Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulling-for-a-different-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulling for a Different Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-your-own-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Your Own Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-container-from-a-definition-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Container from a Definition File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Container from a Definition File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a Container
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running a Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-instance-in-the-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running an Instance in the Background
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-container-in-a-batch-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a Container in a Batch Job
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3179,158 +3487,179 @@
                   
 
 
-<h1 id="containerization-platform">Containerization Platform<a class="headerlink" href="#containerization-platform" title="Permanent link">&para;</a></h1>
-<p>Docker cannot be run on the cluster, as it requires root access to function. On a multi-user system like Lawrencium, this would pose a security risk. In order to safely run a container on the cluster, you may use Apptainer. This page will outline how to build a container from scratch as well as how to build one from an OCI registry.</p>
-<h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
-<p>An active allocation is required to build the container. When possible, please use an interactive session when building a container. Container builds can exceed the 30 GB cap of the $HOME directory. Redirection to scratch space may be needed before building:</p>
-<p>Overwrite the default cache and tmp directories for Apptainer using one of the two methods described below:</p>
-<ul>
-<li>
-<p>The information pulled into the $SCRATCH directory will persist after the job is complete, so use the following method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the commands below to pull to $SCRATCH: 
-    <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span><span class="nv">$SCRATCH</span>/APPTAINER_TMPDIR<span class="w"> </span><span class="nv">$SCRATCH</span>/APPTAINER_CACHEDIR
-<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/APPTAINER_TMPDIR
-<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/APPTAINER_CACHEDIR<span class="w"> </span>
-</code></pre></div></p>
-</li>
-<li>
-<p>If information does not need to persist, use the disk storage allocated to each compute node under the <code>/tmp</code> directory. Pulling data onto these disks will be much faster than using <code>$SCRATCH</code>; however, keep in mind that any data written to this storage will be wiped after job completion. Run the following commands to pull data to <code>/tmp</code>:
-    <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/tmp/APPTAINER_TMPDIR<span class="w"> </span>/tmp/APPTAINER_CACHEDIR
-<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span>/tmp/APPTAINER_TMPDIR
-<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span>/tmp/APPTAINER_CACHEDIR
-</code></pre></div></p>
-</li>
-</ul>
-<h1 id="pulling-a-container-from-an-oci-open-container-initiative-registry">Pulling a Container from an OCI (Open Container Initiative) registry<a class="headerlink" href="#pulling-a-container-from-an-oci-open-container-initiative-registry" title="Permanent link">&para;</a></h1>
-<p>For this demonstration, the image will be pulled from Nvidia’s registry, nvcr.io. The image path being used in this example is:</p>
-<pre><code>nvcr.io/nvidia/pytorch:26.07-py3
-</code></pre>
-<p>To pull this image, run:
+<h1 id="containers-with-apptainer">Containers with Apptainer<a class="headerlink" href="#containers-with-apptainer" title="Permanent link">&para;</a></h1>
+<p><a href="https://apptainer.org/docs/user/latest/" target="_blank">Apptainer</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> lets you run containers on Lawrencium without root privileges. This page covers pulling images from a container registry, building your own image from a definition file, and running containers interactively and in batch jobs.</p>
+<div class="admonition info">
+<p class="admonition-title">Why not Docker?</p>
+<p>Docker requires root access, which is a security risk on a shared, multi-user system like Lawrencium, so it is not available on the cluster. Apptainer can run most Docker images directly.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>You need an active allocation to build or pull containers. Build containers inside an <a href="../../../running/slurm-overview/">interactive job</a>, not on a login node. Inside a Slurm job, Apptainer's temporary and cache directories (<code>APPTAINER_TMPDIR</code> and <code>APPTAINER_CACHEDIR</code>) already default to the compute node's fast local <code>/tmp</code>, so no extra setup is needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Running Apptainer on a login node</p>
+<p>On a login node, container builds can fill up the limited <code>/tmp</code> quota. Before building or pulling, point Apptainer's temporary and cache directories to <code>$SCRATCH</code>:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$SCRATCH</span>/apptainer/tmp<span class="w"> </span><span class="nv">$SCRATCH</span>/apptainer/cache
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_TMPDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/apptainer/tmp
+<span class="nb">export</span><span class="w"> </span><span class="nv">APPTAINER_CACHEDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span>/apptainer/cache
+</code></pre></div>
+</div>
+<h2 id="pulling-a-container-from-an-oci-registry">Pulling a Container from an OCI Registry<a class="headerlink" href="#pulling-a-container-from-an-oci-registry" title="Permanent link">&para;</a></h2>
+<p>Use <code>apptainer pull</code> to download an image from an OCI (Open Container Initiative) registry, such as Docker Hub or NVIDIA's <code>nvcr.io</code>, and convert it to an Apptainer image (<code>.sif</code> file):</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span>docker://<span class="o">[</span>image<span class="w"> </span>path<span class="o">]</span>
+</code></pre></div>
+<p>For example, to pull NVIDIA's PyTorch image:</p>
 <div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>pytorch.sif<span class="w"> </span>docker://nvcr.io/nvidia/pytorch:26.07-py3
 </code></pre></div>
-Here is the template for the build command (when building from an OCI registry):
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span>docker://<span class="o">[</span>image<span class="w"> </span>path<span class="o">]</span>
-</code></pre></div></p>
-<h3 id="target-variances">Target variances<a class="headerlink" href="#target-variances" title="Permanent link">&para;</a></h3>
-<p>The beginning of the URI in the template (docker://)  will change if the image is not being built from an OCI registry. Find the list of other targets and methods of building them <a href="https://apptainer.org/docs/user/latest/build_a_container.html">here</a>.</p>
-<h3 id="building-for-a-different-architecture">Building for a Different Architecture<a class="headerlink" href="#building-for-a-different-architecture" title="Permanent link">&para;</a></h3>
-<p>By default, <code>apptainer pull</code> will construct a container that matches the host system’s architecture. The <code>--arch</code> option can be used to build for another CPU architecture.</p>
-<p>Example of building for an arm64 host: 
+<h3 id="other-image-sources">Other Image Sources<a class="headerlink" href="#other-image-sources" title="Permanent link">&para;</a></h3>
+<p>The <code>docker://</code> prefix tells Apptainer to pull from an OCI registry. Other prefixes, such as <code>library://</code> and <code>oras://</code>, pull from other sources. See <a href="https://apptainer.org/docs/user/latest/build_a_container.html" target="_blank">Build a Container</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> in the Apptainer documentation for the full list.</p>
+<h3 id="pulling-for-a-different-architecture">Pulling for a Different Architecture<a class="headerlink" href="#pulling-for-a-different-architecture" title="Permanent link">&para;</a></h3>
+<p>By default, <code>apptainer pull</code> fetches the image for the host's CPU architecture. Use <code>--arch</code> to fetch an image for another architecture:</p>
 <div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>--arch<span class="w"> </span>arm64<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span>docker://<span class="o">[</span>image<span class="w"> </span>path<span class="o">]</span>
-</code></pre></div></p>
-<h1 id="creating-an-image-and-pushing-to-a-registry-docker">Creating an Image and Pushing to a Registry (Docker)<a class="headerlink" href="#creating-an-image-and-pushing-to-a-registry-docker" title="Permanent link">&para;</a></h1>
-<p>This section assumes that you already have a Dockerfile for your image, as well as an account with DockerHub.</p>
-<p>Assuming that your Dockerfile is in your current working directory, follow these commands to create and push image (Make sure you do this part on your device and not on the cluster):
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lawrencium compute nodes are x86_64 (<code>amd64</code>). An <code>arm64</code> image will not run on them.</p>
+</div>
+<h2 id="using-your-own-docker-image">Using Your Own Docker Image<a class="headerlink" href="#using-your-own-docker-image" title="Permanent link">&para;</a></h2>
+<p>If you already have a Dockerfile, you can build the image on your own computer, push it to a registry such as Docker Hub, and then pull it onto the cluster.</p>
+<div class="admonition note">
+<p class="admonition-title">Run the Docker steps on your own computer, not on the cluster</p>
+</div>
+<p>From the directory containing your Dockerfile, build and push the image:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="o">=</span>my_username
-docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my_tagname<span class="w"> </span>.
-docker<span class="w"> </span>tag<span class="w"> </span>my_tagname<span class="w"> </span>my_username/name_of_image:0.1<span class="w">  </span>
-docker<span class="w"> </span>push<span class="w"> </span>my_username/name_of_image
+docker<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>-t<span class="w"> </span>my_username/name_of_image:0.1<span class="w"> </span>.
+docker<span class="w"> </span>push<span class="w"> </span>my_username/name_of_image:0.1
 </code></pre></div>
-Now that the image has been pushed to the registry (DockerHub), simply follow the previous section's instructions to pull the image onto the cluster. In this case, after logging on to a compute node, simply run:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>image_name.sif<span class="w"> </span>docker://my_username/name_of_image:0.1
-</code></pre></div></p>
-<h1 id="building-a-container-from-scratch">Building a Container from Scratch<a class="headerlink" href="#building-a-container-from-scratch" title="Permanent link">&para;</a></h1>
-<h2 id="definition-file">Definition File<a class="headerlink" href="#definition-file" title="Permanent link">&para;</a></h2>
-<p>There are millions of different images available on OCI registries; however, it often will be the case that an image doesn't match your exact specifications. In the case where fine-tuning is needed, you must create the container from a definition file. The Apptainer definition file has two parts:</p>
-<p>Templates are given below the example snippets.</p>
+<div class="admonition warning">
+<p class="admonition-title">Apple Silicon Macs</p>
+<p>Without <code>--platform linux/amd64</code>, Docker on an Apple Silicon (M-series) Mac builds an <code>arm64</code> image, which will not run on Lawrencium.</p>
+</div>
+<p>Then, from a compute node on the cluster, pull the image:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>pull<span class="w"> </span>name_of_image.sif<span class="w"> </span>docker://my_username/name_of_image:0.1
+</code></pre></div>
+<h2 id="building-a-container-from-a-definition-file">Building a Container from a Definition File<a class="headerlink" href="#building-a-container-from-a-definition-file" title="Permanent link">&para;</a></h2>
+<p>When no existing image matches your needs, write an Apptainer definition file (<code>.def</code>) that starts from a base image and adds your customizations. A definition file has two parts: a <strong>header</strong> and <strong>sections</strong>.</p>
 <h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h3>
-<p>The header specifies the core operating system of the build, allowing for fine-tuning on aspects like the OS version and packages to be installed.</p>
-<p>The header will always include the keyword <code>Bootstrap</code> at the very top of the file. There are several bootstrap agents to choose from, but this example will focus on the <code>docker</code> bootstrap agent, which allows pulling of docker layers to create a base image.</p>
-<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
-From:<span class="w"> </span>nvcr.io/nvidia/pytorch:26.07-py3
+<p>The header sets the base image. It always begins with the <code>Bootstrap</code> keyword, which selects the bootstrap agent. This page uses the <code>docker</code> agent, which builds from an image in an OCI registry:</p>
+<div class="highlight"><pre><span></span><code>Bootstrap: docker
+From: nvcr.io/nvidia/pytorch:26.07-py3
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span><span class="o">[</span>bootstrap<span class="w"> </span>agent<span class="o">]</span>
-From:<span class="w"> </span><span class="o">[</span>registry<span class="o">]</span>/<span class="o">[</span>namespace<span class="o">]</span>/<span class="o">[</span>container<span class="o">]</span>:<span class="o">[</span>tag<span class="o">]</span>@<span class="o">[</span>digest<span class="o">]</span>
+<p>For the <code>docker</code> agent, <code>From</code> is required and has the form:</p>
+<div class="highlight"><pre><span></span><code>From: [registry]/[namespace]/[container]:[tag]@[digest]
 </code></pre></div>
-Different bootstrap agents will have different keywords. For the Docker boostrap agent, the <code>From</code> is a mandatory keyword that sets the base image.</p>
-<p><code>registry</code> is optional and will by default direct to docker hub. <code>namespace</code> is optional and will default to <code>library</code>. <code>tag</code> is also optional and will default to <code>latest</code>. </p>
+<p>Only <code>container</code> is required. <code>registry</code> defaults to Docker Hub, <code>namespace</code> defaults to <code>library</code>, and <code>tag</code> defaults to <code>latest</code>. Other bootstrap agents use different keywords.</p>
 <h3 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h3>
-<p>The remaining portion of the definition file is populated by sections. Sections are optional and more than one instance of a particular section may exist within the definition file. Each section begins with <code>%</code> followed by the name of the section.</p>
-<p>Here is the example definition file that makes use of all available sections:</p>
-<p><div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
-From:<span class="w"> </span>nvcr.io/nvidia/pytorch:<span class="o">{{</span><span class="w"> </span>VERSION<span class="w"> </span><span class="o">}}</span>
+<p>The rest of the file consists of optional sections. Each one begins with <code>%</code> followed by the section name, and a section can appear more than once. See <a href="https://apptainer.org/docs/user/latest/definition_files.html#sections" target="_blank">Sections</a> <svg viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#64666A" d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg> in the Apptainer documentation for what each section does.</p>
+<details class="example">
+<summary>Example definition file using the most common sections</summary>
+<p>This example copies <code>my_script.py</code> from the build directory into the image, so keep the definition file and <code>my_script.py</code> in the same directory and run <code>apptainer build</code> from there.</p>
+<div class="highlight"><pre><span></span><code>Bootstrap: docker
+From: nvcr.io/nvidia/pytorch:{{ VERSION }}
 
 %arguments
-<span class="w">    </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">26</span>.07-py3
-%setup
-<span class="w">    </span>touch<span class="w"> </span>/file1
-<span class="w">    </span>touch<span class="w"> </span><span class="si">${</span><span class="nv">APPTAINER_ROOTFS</span><span class="si">}</span>/file2
+    VERSION=26.07-py3
 
 %files
-<span class="w">    </span>/file1<span class="w"> </span>/opt/file1
+    my_script.py /opt/my_script.py
 
 %environment
-<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LISTEN_PORT</span><span class="o">=</span><span class="m">12345</span>
-<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C
+    export LISTEN_PORT=12345
+    export LC_ALL=C
 
 %post
-<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>netcat
-<span class="w">    </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>wandb
-<span class="w">    </span><span class="nv">NOW</span><span class="o">=</span><span class="sb">`</span>date<span class="sb">`</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"export NOW=\"</span><span class="si">${</span><span class="nv">NOW</span><span class="si">}</span><span class="s2">\""</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$APPTAINER_ENVIRONMENT</span>
+    apt-get update &amp;&amp; apt-get install -y netcat-openbsd
+    pip install --no-cache-dir wandb
+    NOW=`date`
+    echo "export NOW=\"${NOW}\"" &gt;&gt; $APPTAINER_ENVIRONMENT
 
 %runscript
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Container was created </span><span class="nv">$NOW</span><span class="s2">"</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Arguments received: </span><span class="nv">$*</span><span class="s2">"</span>
-<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>python<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+    echo "Container was created $NOW"
+    echo "Arguments received: $*"
+    exec python "$@"
 
 %startscript
-<span class="w">    </span>nc<span class="w"> </span>-lp<span class="w"> </span><span class="nv">$LISTEN_PORT</span>
+    nc -l $LISTEN_PORT
 
 %test
-<span class="w">    </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">"PyTorch"</span><span class="w"> </span>/opt/nvidia/nvidia_entrypoint.sh<span class="w"> </span><span class="o">||</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w">  </span><span class="s2">"import torch; print(torch.__version__)"</span>
+    python -c "import torch; print(torch.__version__)"
 
 %labels
-<span class="w">    </span>Author<span class="w"> </span>your_username@lbl.gov
-<span class="w">    </span>Version<span class="w"> </span>v0.0.1
-<span class="w">    </span>Base<span class="w"> </span>nvcr.io/nvidia/pytorch:26.07-py3
+    Author your_username@lbl.gov
+    Version v0.0.1
+    Base nvcr.io/nvidia/pytorch:26.07-py3
 
 %help
-<span class="w">    </span>This<span class="w"> </span>container<span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>NVIDIAs<span class="w"> </span>NGC<span class="w"> </span>PyTorch<span class="w"> </span>image<span class="w"> </span><span class="o">(</span><span class="m">26</span>.07-py3<span class="o">)</span>,
-<span class="w">    </span>with<span class="w"> </span>netcat<span class="w"> </span>and<span class="w"> </span>wandb<span class="w"> </span>added.<span class="w"> </span>Run<span class="w"> </span>a<span class="w"> </span>script<span class="w"> </span>with:
-<span class="w">    </span>apptainer<span class="w"> </span>run<span class="w"> </span>pytorch-full.sif<span class="w"> </span>my_script.py
+    This container is based on NVIDIA's NGC PyTorch image (26.07-py3),
+    with netcat and wandb added. Run a script with:
+    apptainer run pytorch.sif /opt/my_script.py
 </code></pre></div>
-<a href="https://apptainer.org/docs/user/latest/definition_files.html#sections">Breakdown of sections</a></p>
-<h2 id="building-from-the-definition-file">Building from the Definition File<a class="headerlink" href="#building-from-the-definition-file" title="Permanent link">&para;</a></h2>
-<p>With the definition file created, all that's left is to build the image. </p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>pytorch.sif<span class="w"> </span>/Users/Bob/documents/pytorch.def
+</details>
+<h3 id="building-the-image">Building the Image<a class="headerlink" href="#building-the-image" title="Permanent link">&para;</a></h3>
+<p>Build the image with <code>apptainer build [name].sif [definition file]</code>. For example:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>pytorch.sif<span class="w"> </span>pytorch.def
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>.sif<span class="w"> </span><span class="o">[</span>path<span class="w"> </span>to<span class="w"> </span>def<span class="w"> </span>file<span class="o">]</span>
+<div class="admonition note">
+<p class="admonition-title">No <code>--fakeroot</code> needed</p>
+<p>Apptainer's fakeroot mode (<code>-f</code> or <code>--fakeroot</code>), which emulates root inside the build, is used automatically when an unprivileged user runs <code>apptainer build</code>, so you don't need to add it.</p>
+</div>
+<h2 id="running-a-container">Running a Container<a class="headerlink" href="#running-a-container" title="Permanent link">&para;</a></h2>
+<p>There are three main ways to run a container:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+<th>Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apptainer exec</code></td>
+<td>Runs a single command inside the container, then exits</td>
+<td><code>apptainer exec [container] [command]</code></td>
+</tr>
+<tr>
+<td><code>apptainer shell</code></td>
+<td>Opens an interactive shell inside the container</td>
+<td><code>apptainer shell [container]</code></td>
+</tr>
+<tr>
+<td><code>apptainer run</code></td>
+<td>Runs the container's default runscript (<code>%runscript</code>), if it has one</td>
+<td><code>apptainer run [container]</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.__version__)"</span>
+apptainer<span class="w"> </span>shell<span class="w"> </span>pytorch.sif
+apptainer<span class="w"> </span>run<span class="w"> </span>pytorch.sif<span class="w"> </span>my_script.py
 </code></pre></div>
-<h3 id="about-fakeroot">About Fakeroot<a class="headerlink" href="#about-fakeroot" title="Permanent link">&para;</a></h3>
-<p>The fakeroot feature <code>-f</code> or <code>--fakeroot</code>, which allows root emulation, is not used above, as it is already implied for an unprivileged user.</p>
-<h1 id="running-and-interacting-with-a-container">Running and Interacting with a Container<a class="headerlink" href="#running-and-interacting-with-a-container" title="Permanent link">&para;</a></h1>
-<p>There are three main ways to run apptainer containers:</p>
-<p>Command templates are given below the example snippets.</p>
-<p><strong><code>apptainer exec</code></strong>: run a single command inside the container and exit:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>apptainer exec [container] [command]
-</code></pre></div></p>
-<p><strong><code>apptainer shell</code></strong>: drop into an interactive shell inside the container:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>shell<span class="w"> </span>pytorch.sif
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>apptainer shell [container]
-</code></pre></div></p>
-<p><strong><code>apptainer run</code></strong>: execute the container's default runscript (if it has one):
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>pytorch.sif
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>apptainer run [container]
-</code></pre></div></p>
-<h3 id="creating-an-instance">Creating an Instance<a class="headerlink" href="#creating-an-instance" title="Permanent link">&para;</a></h3>
-<p>Using <code>exec</code> <code>shell</code> or <code>run</code> allows for a quick one-time interaction where the container is stopped after execution. To keep a container running in the background, you must start an instance.</p>
-<p>Here is the template to do so:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span><span class="o">[</span>image<span class="w"> </span>name<span class="o">]</span>.sif<span class="w"> </span><span class="o">[</span>instance<span class="w"> </span>name<span class="o">]</span>
-</code></pre></div></p>
-<h3 id="gpu-access">GPU access<a class="headerlink" href="#gpu-access" title="Permanent link">&para;</a></h3>
-<p>If GPU access is needed, make sure to use <code>--nv</code>, to bind in the host's NVIDIA driver and libraries:
+<h3 id="gpu-access">GPU Access<a class="headerlink" href="#gpu-access" title="Permanent link">&para;</a></h3>
+<p>To use GPUs, add <code>--nv</code>. This makes the host's NVIDIA driver and libraries available inside the container:</p>
 <div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
-</code></pre></div></p>
-<p>In this example, without <code>--nv</code>, <code>torch.cuda.is_available()</code>
-returns <code>False</code> even on a GPU node.</p>
-<h2 id="running-container-on-a-gpu-or-cpu">Running Container on a GPU or CPU<a class="headerlink" href="#running-container-on-a-gpu-or-cpu" title="Permanent link">&para;</a></h2>
-<p>In order to run the container specifically on a GPU or CPU, a batch script with the appropriate specifications must be submitted via <code>sbatch</code>.</p>
-<h3 id="cpu-job">CPU Job<a class="headerlink" href="#cpu-job" title="Permanent link">&para;</a></h3>
-<p>Here is an example of a batch script for a CPU job:
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Don't forget <code>--nv</code></p>
+<p>Without <code>--nv</code>, <code>torch.cuda.is_available()</code> returns <code>False</code>, even on a GPU node.</p>
+</div>
+<h3 id="running-an-instance-in-the-background">Running an Instance in the Background<a class="headerlink" href="#running-an-instance-in-the-background" title="Permanent link">&para;</a></h3>
+<p><code>exec</code>, <code>shell</code> and <code>run</code> stop the container when the command finishes. To keep a container running in the background (for example, to run a service defined in <code>%startscript</code>), start an instance:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>pytorch.sif<span class="w"> </span>my_instance<span class="w">     </span><span class="c1"># start the instance</span>
+apptainer<span class="w"> </span>instance<span class="w"> </span>list<span class="w">                              </span><span class="c1"># list running instances</span>
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://my_instance<span class="w"> </span><span class="o">[</span>command<span class="o">]</span><span class="w">      </span><span class="c1"># run a command in it</span>
+apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>my_instance<span class="w">                  </span><span class="c1"># stop it</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instances stop when the job that started them ends.</p>
+</div>
+<h2 id="running-a-container-in-a-batch-job">Running a Container in a Batch Job<a class="headerlink" href="#running-a-container-in-a-batch-job" title="Permanent link">&para;</a></h2>
+<p>To run a container non-interactively, put the <code>apptainer</code> command in a Slurm batch script. Save one of the scripts below (for example as <code>cpu_job.sh</code> or <code>gpu_job.sh</code>), adjust the account, partition and resources for your job, and submit it with <code>sbatch</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CPU job</label><label for="__tabbed_1_2">GPU job</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>This example uses the <code>lr8</code> partition on the Lawrencium CPU cluster.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --job-name=cpu_job</span>
 <span class="c1">#SBATCH --partition=lr8</span>
@@ -3342,19 +3671,17 @@ returns <code>False</code> even on a GPU node.</p>
 <span class="c1">#SBATCH --time=02:00:00</span>
 <span class="c1">#SBATCH --output=cpu_job_%j.log</span>
 
-apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>script.py
+apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>my_script.py
 </code></pre></div>
-Note that the partition specified is part of the CPU cluster. Make sure the exact specifications are identified for your particular job.</p>
-<p>Submit with:
 <div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>cpu_job.sh
-</code></pre></div></p>
-<h3 id="gpu-job">GPU Job<a class="headerlink" href="#gpu-job" title="Permanent link">&para;</a></h3>
-<p>For a GPU job, request a GPU-enabled partition and add <code>--gres=gpu:[type]:[count]</code>. Inside the container call, include <code>--nv</code> so the container can see the host's driver:</p>
-<p>Here is an example of a batch script for a GPU job:
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Request a GPU partition and GPUs with <code>--gres=gpu:[type]:[count]</code>, and add <code>--nv</code> to the <code>apptainer</code> command. Each GPU partition requires a specific CPU-to-GPU ratio. See the <a href="../../../systems/einsteinium/">Einsteinium GPU cluster</a> page for the correct values.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --job-name=gpu_job</span>
 <span class="c1">#SBATCH --partition=es1</span>
-<span class="c1">#SBATCH --account=ac_scsguest</span>
+<span class="c1">#SBATCH --account=[account_name]</span>
 <span class="c1">#SBATCH --qos=es_normal</span>
 <span class="c1">#SBATCH --gres=gpu:A40:1</span>
 <span class="c1">#SBATCH --nodes=1</span>
@@ -3364,10 +3691,12 @@ Note that the partition specified is part of the CPU cluster. Make sure the exac
 <span class="c1">#SBATCH --output=gpu_job_%j.log</span>
 
 apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>pytorch.sif<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.cuda.is_available())"</span>
-</code></pre></div></p>
-<p>Similarly, submit with:
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>gpu_job.sh
-</code></pre></div></p>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
@@ -3388,7 +3717,7 @@ apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 26, 2026</span>
   </span>
 
     
