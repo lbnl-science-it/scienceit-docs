@@ -1,252 +1,246 @@
-# Containerization Platform
+# Containers with Apptainer
 
-Docker cannot be run on the cluster, as it requires root access to function. On a multi-user system like Lawrencium, this would pose a security risk. In order to safely run a container on the cluster, you may use Apptainer. This page will outline how to build a container from scratch as well as how to build one from an OCI registry.
+[Apptainer](https://apptainer.org/docs/user/latest/){:target="_blank"} {{ ext }} lets you run containers on Lawrencium without root privileges. This page covers pulling images from a container registry, building your own image from a definition file, and running containers interactively and in batch jobs.
 
-# Prerequisites
+!!! info "Why not Docker?"
+    Docker requires root access, which is a security risk on a shared, multi-user system like Lawrencium, so it is not available on the cluster. Apptainer can run most Docker images directly.
 
-An active allocation is required to build the container. When possible, please use an interactive session when building a container. Container builds can exceed the 30 GB cap of the $HOME directory. Redirection to scratch space may be needed before building:
+## Prerequisites
 
-Overwrite the default cache and tmp directories for Apptainer using one of the two methods described below:
+You need an active allocation to build or pull containers. Build containers inside an [interactive job](../../running/slurm-overview.md), not on a login node. Inside a Slurm job, Apptainer's temporary and cache directories (`APPTAINER_TMPDIR` and `APPTAINER_CACHEDIR`) already default to the compute node's fast local `/tmp`, so no extra setup is needed.
 
-* The information pulled into the $SCRATCH directory will persist after the job is complete, so use the following method if that is a necessity. Keep note that $SCRATCH and $HOME are network storage that is accessible from anywhere on the cluster, making it rather slow. Run the commands below to pull to $SCRATCH: 
-    ```shell 
-    mkdir $SCRATCH/APPTAINER_TMPDIR $SCRATCH/APPTAINER_CACHEDIR
-    export APPTAINER_TMPDIR=$SCRATCH/APPTAINER_TMPDIR
-    export APPTAINER_CACHEDIR=$SCRATCH/APPTAINER_CACHEDIR 
-    ```
+!!! note "Running Apptainer on a login node"
+    On a login node, container builds can fill up the limited `/tmp` quota. Before building or pulling, point Apptainer's temporary and cache directories to `$SCRATCH`:
 
-* If information does not need to persist, use the disk storage allocated to each compute node under the `/tmp` directory. Pulling data onto these disks will be much faster than using `$SCRATCH`; however, keep in mind that any data written to this storage will be wiped after job completion. Run the following commands to pull data to `/tmp`:
     ```shell
-    mkdir /tmp/APPTAINER_TMPDIR /tmp/APPTAINER_CACHEDIR
-    export APPTAINER_TMPDIR=/tmp/APPTAINER_TMPDIR
-    export APPTAINER_CACHEDIR=/tmp/APPTAINER_CACHEDIR
+    mkdir -p $SCRATCH/apptainer/tmp $SCRATCH/apptainer/cache
+    export APPTAINER_TMPDIR=$SCRATCH/apptainer/tmp
+    export APPTAINER_CACHEDIR=$SCRATCH/apptainer/cache
     ```
 
-# Pulling a Container from an OCI (Open Container Initiative) registry
+## Pulling a Container from an OCI Registry
 
-For this demonstration, the image will be pulled from Nvidia’s registry, nvcr.io. The image path being used in this example is:
+Use `apptainer pull` to download an image from an OCI (Open Container Initiative) registry, such as Docker Hub or NVIDIA's `nvcr.io`, and convert it to an Apptainer image (`.sif` file):
 
-    nvcr.io/nvidia/pytorch:26.07-py3
-
-To pull this image, run:
-```shell
-apptainer pull pytorch.sif docker://nvcr.io/nvidia/pytorch:26.07-py3
-```
-Here is the template for the build command (when building from an OCI registry):
 ```shell
 apptainer pull [name].sif docker://[image path]
 ```
 
-### Target variances
-The beginning of the URI in the template (docker://)  will change if the image is not being built from an OCI registry. Find the list of other targets and methods of building them [here](https://apptainer.org/docs/user/latest/build_a_container.html).
+For example, to pull NVIDIA's PyTorch image:
 
-### Building for a Different Architecture
-By default, `apptainer pull` will construct a container that matches the host system’s architecture. The `--arch` option can be used to build for another CPU architecture.
+```shell
+apptainer pull pytorch.sif docker://nvcr.io/nvidia/pytorch:26.07-py3
+```
 
-Example of building for an arm64 host: 
+### Other Image Sources
+
+The `docker://` prefix tells Apptainer to pull from an OCI registry. Other prefixes, such as `library://` and `oras://`, pull from other sources. See [Build a Container](https://apptainer.org/docs/user/latest/build_a_container.html){:target="_blank"} {{ ext }} in the Apptainer documentation for the full list.
+
+### Pulling for a Different Architecture
+
+By default, `apptainer pull` fetches the image for the host's CPU architecture. Use `--arch` to fetch an image for another architecture:
+
 ```shell
 apptainer pull --arch arm64 [name].sif docker://[image path]
 ```
-# Creating an Image and Pushing to a Registry (Docker)
 
-This section assumes that you already have a Dockerfile for your image, as well as an account with DockerHub.
+!!! note
+    Lawrencium compute nodes are x86_64 (`amd64`). An `arm64` image will not run on them.
 
-Assuming that your Dockerfile is in your current working directory, follow these commands to create and push image (Make sure you do this part on your device and not on the cluster):
+## Using Your Own Docker Image
+
+If you already have a Dockerfile, you can build the image on your own computer, push it to a registry such as Docker Hub, and then pull it onto the cluster.
+
+!!! note "Run the Docker steps on your own computer, not on the cluster"
+
+From the directory containing your Dockerfile, build and push the image:
+
 ```shell
 docker login --username=my_username
-docker build -t my_tagname .
-docker tag my_tagname my_username/name_of_image:0.1  
-docker push my_username/name_of_image
+docker build --platform linux/amd64 -t my_username/name_of_image:0.1 .
+docker push my_username/name_of_image:0.1
 ```
-Now that the image has been pushed to the registry (DockerHub), simply follow the previous section's instructions to pull the image onto the cluster. In this case, after logging on to a compute node, simply run:
+
+!!! warning "Apple Silicon Macs"
+    Without `--platform linux/amd64`, Docker on an Apple Silicon (M-series) Mac builds an `arm64` image, which will not run on Lawrencium.
+
+Then, from a compute node on the cluster, pull the image:
+
 ```shell
-apptainer pull image_name.sif docker://my_username/name_of_image:0.1
-
+apptainer pull name_of_image.sif docker://my_username/name_of_image:0.1
 ```
-# Building a Container from Scratch
-## Definition File
-There are millions of different images available on OCI registries; however, it often will be the case that an image doesn't match your exact specifications. In the case where fine-tuning is needed, you must create the container from a definition file. The Apptainer definition file has two parts:
 
-Templates are given below the example snippets.
+## Building a Container from a Definition File
+
+When no existing image matches your needs, write an Apptainer definition file (`.def`) that starts from a base image and adds your customizations. A definition file has two parts: a **header** and **sections**.
 
 ### Header
-The header specifies the core operating system of the build, allowing for fine-tuning on aspects like the OS version and packages to be installed.
 
-The header will always include the keyword `Bootstrap` at the very top of the file. There are several bootstrap agents to choose from, but this example will focus on the `docker` bootstrap agent, which allows pulling of docker layers to create a base image.
+The header sets the base image. It always begins with the `Bootstrap` keyword, which selects the bootstrap agent. This page uses the `docker` agent, which builds from an image in an OCI registry:
 
-```shell
+```
 Bootstrap: docker
 From: nvcr.io/nvidia/pytorch:26.07-py3
 ```
 
-``` shell
-Bootstrap: [bootstrap agent]
+For the `docker` agent, `From` is required and has the form:
+
+```
 From: [registry]/[namespace]/[container]:[tag]@[digest]
 ```
-Different bootstrap agents will have different keywords. For the Docker boostrap agent, the `From` is a mandatory keyword that sets the base image.
 
-`registry` is optional and will by default direct to docker hub. `namespace` is optional and will default to `library`. `tag` is also optional and will default to `latest`. 
+Only `container` is required. `registry` defaults to Docker Hub, `namespace` defaults to `library`, and `tag` defaults to `latest`. Other bootstrap agents use different keywords.
 
 ### Sections
-The remaining portion of the definition file is populated by sections. Sections are optional and more than one instance of a particular section may exist within the definition file. Each section begins with `%` followed by the name of the section.
 
-Here is the example definition file that makes use of all available sections:
+The rest of the file consists of optional sections. Each one begins with `%` followed by the section name, and a section can appear more than once. See [Sections](https://apptainer.org/docs/user/latest/definition_files.html#sections){:target="_blank"} {{ ext }} in the Apptainer documentation for what each section does.
 
-```shell
-Bootstrap: docker
-From: nvcr.io/nvidia/pytorch:{{ VERSION }}
+??? example "Example definition file using the most common sections"
+    This example copies `my_script.py` from the build directory into the image, so keep the definition file and `my_script.py` in the same directory and run `apptainer build` from there.
 
-%arguments
-    VERSION=26.07-py3
-%setup
-    touch /file1
-    touch ${APPTAINER_ROOTFS}/file2
+    ```
+    Bootstrap: docker
+    From: nvcr.io/nvidia/pytorch:{{ VERSION }}
 
-%files
-    /file1 /opt/file1
+    %arguments
+        VERSION=26.07-py3
 
-%environment
-    export LISTEN_PORT=12345
-    export LC_ALL=C
+    %files
+        my_script.py /opt/my_script.py
 
-%post
-    apt-get update && apt-get install -y netcat
-    pip install --no-cache-dir wandb
-    NOW=`date`
-    echo "export NOW=\"${NOW}\"" >> $APPTAINER_ENVIRONMENT
+    %environment
+        export LISTEN_PORT=12345
+        export LC_ALL=C
 
-%runscript
-    echo "Container was created $NOW"
-    echo "Arguments received: $*"
-    exec python "$@"
+    %post
+        apt-get update && apt-get install -y netcat-openbsd
+        pip install --no-cache-dir wandb
+        NOW=`date`
+        echo "export NOW=\"${NOW}\"" >> $APPTAINER_ENVIRONMENT
 
-%startscript
-    nc -lp $LISTEN_PORT
+    %runscript
+        echo "Container was created $NOW"
+        echo "Arguments received: $*"
+        exec python "$@"
 
-%test
-    grep -q "PyTorch" /opt/nvidia/nvidia_entrypoint.sh || python -c  "import torch; print(torch.__version__)"
+    %startscript
+        nc -l $LISTEN_PORT
 
-%labels
-    Author your_username@lbl.gov
-    Version v0.0.1
-    Base nvcr.io/nvidia/pytorch:26.07-py3
+    %test
+        python -c "import torch; print(torch.__version__)"
 
-%help
-    This container is based on NVIDIAs NGC PyTorch image (26.07-py3),
-    with netcat and wandb added. Run a script with:
-    apptainer run pytorch-full.sif my_script.py
-```
-[Breakdown of sections](https://apptainer.org/docs/user/latest/definition_files.html#sections)
-## Building from the Definition File
-With the definition file created, all that's left is to build the image. 
+    %labels
+        Author your_username@lbl.gov
+        Version v0.0.1
+        Base nvcr.io/nvidia/pytorch:26.07-py3
 
-```shell
-apptainer build pytorch.sif /Users/Bob/documents/pytorch.def
-```
+    %help
+        This container is based on NVIDIA's NGC PyTorch image (26.07-py3),
+        with netcat and wandb added. Run a script with:
+        apptainer run pytorch.sif /opt/my_script.py
+    ```
+
+### Building the Image
+
+Build the image with `apptainer build [name].sif [definition file]`. For example:
 
 ```shell
-apptainer build [name].sif [path to def file]
+apptainer build pytorch.sif pytorch.def
 ```
-### About Fakeroot
-The fakeroot feature `-f` or `--fakeroot`, which allows root emulation, is not used above, as it is already implied for an unprivileged user.
 
+!!! note "No `--fakeroot` needed"
+    Apptainer's fakeroot mode (`-f` or `--fakeroot`), which emulates root inside the build, is used automatically when an unprivileged user runs `apptainer build`, so you don't need to add it.
 
-# Running and Interacting with a Container
+## Running a Container
 
-There are three main ways to run apptainer containers:
+There are three main ways to run a container:
 
-Command templates are given below the example snippets.
+| Command | What it does | Syntax |
+| ------- | ------------ | ------ |
+| `apptainer exec` | Runs a single command inside the container, then exits | `apptainer exec [container] [command]` |
+| `apptainer shell` | Opens an interactive shell inside the container | `apptainer shell [container]` |
+| `apptainer run` | Runs the container's default runscript (`%runscript`), if it has one | `apptainer run [container]` |
 
-**`apptainer exec`**: run a single command inside the container and exit:
+For example:
+
 ```shell
-apptainer exec pytorch.sif python -c "import torch; print(torch.cuda.is_available())"
-```
-```
-apptainer exec [container] [command]
-```
-
-**`apptainer shell`**: drop into an interactive shell inside the container:
-```shell
+apptainer exec pytorch.sif python -c "import torch; print(torch.__version__)"
 apptainer shell pytorch.sif
-```
-```
-apptainer shell [container]
+apptainer run pytorch.sif my_script.py
 ```
 
-**`apptainer run`**: execute the container's default runscript (if it has one):
-```shell
-apptainer run pytorch.sif
-```
-```
-apptainer run [container]
-```
+### GPU Access
 
-### Creating an Instance
-Using `exec` `shell` or `run` allows for a quick one-time interaction where the container is stopped after execution. To keep a container running in the background, you must start an instance.
+To use GPUs, add `--nv`. This makes the host's NVIDIA driver and libraries available inside the container:
 
-Here is the template to do so:
-```shell
-apptainer instance start [image name].sif [instance name]
-```
-
-### GPU access
-
-If GPU access is needed, make sure to use `--nv`, to bind in the host's NVIDIA driver and libraries:
 ```shell
 apptainer exec --nv pytorch.sif python -c "import torch; print(torch.cuda.is_available())"
 ```
 
-In this example, without `--nv`, `torch.cuda.is_available()`
-returns `False` even on a GPU node.
+!!! tip "Don't forget `--nv`"
+    Without `--nv`, `torch.cuda.is_available()` returns `False`, even on a GPU node.
 
-## Running Container on a GPU or CPU
-In order to run the container specifically on a GPU or CPU, a batch script with the appropriate specifications must be submitted via `sbatch`.
+### Running an Instance in the Background
 
-### CPU Job
-Here is an example of a batch script for a CPU job:
+`exec`, `shell` and `run` stop the container when the command finishes. To keep a container running in the background (for example, to run a service defined in `%startscript`), start an instance:
+
 ```shell
-#!/bin/bash
-#SBATCH --job-name=cpu_job
-#SBATCH --partition=lr8
-#SBATCH --account=[account_name]
-#SBATCH --qos=lr8_normal
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=02:00:00
-#SBATCH --output=cpu_job_%j.log
-
-apptainer exec pytorch.sif python script.py
-```
-Note that the partition specified is part of the CPU cluster. Make sure the exact specifications are identified for your particular job.
-
-Submit with:
-```shell
-sbatch cpu_job.sh
+apptainer instance start pytorch.sif my_instance     # start the instance
+apptainer instance list                              # list running instances
+apptainer exec instance://my_instance [command]      # run a command in it
+apptainer instance stop my_instance                  # stop it
 ```
 
-### GPU Job
+!!! note
+    Instances stop when the job that started them ends.
 
-For a GPU job, request a GPU-enabled partition and add `--gres=gpu:[type]:[count]`. Inside the container call, include `--nv` so the container can see the host's driver:
+## Running a Container in a Batch Job
 
-Here is an example of a batch script for a GPU job:
-``` shell
-#!/bin/bash
-#SBATCH --job-name=gpu_job
-#SBATCH --partition=es1
-#SBATCH --account=ac_scsguest
-#SBATCH --qos=es_normal
-#SBATCH --gres=gpu:A40:1
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --time=02:00:00
-#SBATCH --output=gpu_job_%j.log
+To run a container non-interactively, put the `apptainer` command in a Slurm batch script. Save one of the scripts below (for example as `cpu_job.sh` or `gpu_job.sh`), adjust the account, partition and resources for your job, and submit it with `sbatch`.
 
-apptainer exec --nv pytorch.sif python -c "import torch; print(torch.cuda.is_available())"
-```
+=== "CPU job"
 
-Similarly, submit with:
-```shell
-sbatch gpu_job.sh
-```
+    This example uses the `lr8` partition on the Lawrencium CPU cluster.
+
+    ```shell
+    #!/bin/bash
+    #SBATCH --job-name=cpu_job
+    #SBATCH --partition=lr8
+    #SBATCH --account=[account_name]
+    #SBATCH --qos=lr8_normal
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=4
+    #SBATCH --time=02:00:00
+    #SBATCH --output=cpu_job_%j.log
+
+    apptainer exec pytorch.sif python my_script.py
+    ```
+
+    ```shell
+    sbatch cpu_job.sh
+    ```
+
+=== "GPU job"
+
+    Request a GPU partition and GPUs with `--gres=gpu:[type]:[count]`, and add `--nv` to the `apptainer` command. Each GPU partition requires a specific CPU-to-GPU ratio. See the [Einsteinium GPU cluster](../../systems/einsteinium.md) page for the correct values.
+
+    ```shell
+    #!/bin/bash
+    #SBATCH --job-name=gpu_job
+    #SBATCH --partition=es1
+    #SBATCH --account=[account_name]
+    #SBATCH --qos=es_normal
+    #SBATCH --gres=gpu:A40:1
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=16
+    #SBATCH --time=02:00:00
+    #SBATCH --output=gpu_job_%j.log
+
+    apptainer exec --nv pytorch.sif python -c "import torch; print(torch.cuda.is_available())"
+    ```
+
+    ```shell
+    sbatch gpu_job.sh
+    ```
