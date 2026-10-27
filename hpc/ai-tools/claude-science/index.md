@@ -54,7 +54,7 @@ When the certificate expires, Claude Science can no longer reach the cluster to 
 Then, on the host's detail page, set:
 
 - **Scratch directory**: a directory on a shared filesystem that the compute nodes can also see, for example `/global/scratch/users/your-username/claude-science`. Do not use `/tmp` or another directory that is local to the login node. Keep in mind that your home directory has a 30 GB quota.
-- **Concurrent job limit**: Lawrencium allows at most 100 jobs per user, pending and running combined. Claude Science's default is 100, which counts only the jobs Claude submits. Set a lower limit (for example, 20) so that your own jobs and Claude's jobs together stay under the cluster limit.
+- **Concurrent job limit**: Claude Science's default is 100 concurrent jobs, which counts only the jobs Claude submits. Do not increase this number; submitting large number of jobs at once can negatively affect the scheduler.
 
 ## Host notes for Lawrencium
 
