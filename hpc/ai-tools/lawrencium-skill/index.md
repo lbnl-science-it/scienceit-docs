@@ -64,4 +64,4 @@ Prefer not to use Claude Code? See [Asking LLMs](https://scienceit-docs.lbl.gov/
 
 ## Feedback
 
-Questions or problems with the plugin? Contact the [HPC Help Desk](https://scienceit-docs.lbl.gov/hpc/ai-tools/help/index.md) or email [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).
+Questions or problems with the plugin? Contact the [HPC Help Desk](https://scienceit-docs.lbl.gov/help/index.md) or email [scienceithelp@lbl.gov](mailto:scienceithelp@lbl.gov).

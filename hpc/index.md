@@ -130,7 +130,7 @@ You can use the [LRC Jobscript Generator](https://lbnl-science-it.github.io/lrc-
 
 ## Scheduler Configuration
 
-Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, lr7, lr8, es0, es1, es2, es3, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio`. A standard fair-share policy with a decay half life value of 14 days (2 weeks) is enforced.
+Lawrencium cluster uses [SLURM to submit jobs](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/index.md) as the scheduler to manage jobs on the cluster. To use Lawrencium through slurm, the partition (`lr4, lr5, lr6, lr7, lr8, es0, es1, es2, es3, cm1, cm2` must be specified (`--partition=xxx`) along with account (`--account=xxx`). Currently the available QoS (Quality of Service)s are `lr_normal` and `lr_debug` and `lr_lowprio` on most `lr` partitions and `lr8_normal` on `lr8`.
 
 - For normal users to use the Lawrencium resource the proper project account, e.g., `--account=ac_abc`, is needed. The QoS `lr_normal` is also required based on the partition that the job is submitted to, e.g., `--qos=lr_normal`.
 - If a debug job is desired the `lr_debug` QoS should be specified, e.g., `--qos=lr_debug` so that the scheduler can adjust job priority accordingly.
