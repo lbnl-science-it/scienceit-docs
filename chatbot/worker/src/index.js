@@ -30,6 +30,7 @@ const DEFAULTS = {
   MAX_PAYLOAD_BYTES: 60000,
   MAX_OUTPUT_TOKENS: 1000,
   SESSION_TTL_MINUTES: 30,
+  SESSION_MAX_HOURS: 4,
 };
 
 const DOCS_CACHE_SECONDS = 3600; // cache llms-full.txt for 1 hour
@@ -90,7 +91,7 @@ async function loadDocs(env, ctx) {
     ctx.waitUntil(cache.put(cacheKey, res.clone()));
   }
 
-  const text = await res.text();
+  const text = sanitizeCorpus(await res.text());
   memo = { text, expires: now + DOCS_CACHE_SECONDS * 1000 };
   warnIfTooLarge(text, env);
   return text;
@@ -111,6 +112,20 @@ function warnIfTooLarge(docs, env) {
         `Little room is left for the conversation and the reply.`
     );
   }
+}
+
+/**
+ * Strip invisible characters from the corpus before it becomes a system prompt.
+ *
+ * Zero-width spaces, bidi overrides and word joiners render as nothing (or, in
+ * the case of RLO, silently reverse the text around them), so an instruction
+ * hidden with them is invisible in a browser and in a PR diff while the model
+ * reads it like any other text. The corpus is fetched from a URL and dropped
+ * verbatim into the system prompt, which makes it the one input here a reviewer
+ * cannot eyeball. Ordinary prose, Markdown and URLs are left byte-identical.
+ */
+export function sanitizeCorpus(text) {
+  return text.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u2069\uFEFF]/g, "");
 }
 
 // ---------------------------------------------------------------------------
@@ -140,6 +155,58 @@ function corsHeaders(request, env) {
 }
 
 // ---------------------------------------------------------------------------
+// Client identity
+// ---------------------------------------------------------------------------
+/**
+ * Reduce a client address to a rate-limit key.
+ *
+ * IPv4 is one address per client, so it passes through. IPv6 is not: an end
+ * site is routinely handed a whole /64, so using the address as the key gives a
+ * single client 2^64 buckets and no effective limit at all. Keying on the /64
+ * makes that one bucket.
+ *
+ * Returns null when there is no usable address, so the caller can fail closed.
+ * Defaulting to a placeholder would funnel every address-less request into one
+ * shared bucket — which is either a self-inflicted denial of service or, if the
+ * bucket is generous, an unmetered path.
+ */
+export function clientKey(ip) {
+  if (typeof ip !== "string") return null;
+  // A zone index ("fe80::1%eth0") is local to the host that wrote it, never
+  // part of the address, so two keys for one client without this.
+  const addr = ip.trim().split("%")[0].toLowerCase();
+  if (!addr) return null;
+  if (!addr.includes(":")) return addr; // IPv4
+
+  // An embedded IPv4 ("::ffff:192.0.2.1") identifies one host, not a prefix:
+  // every such address shares the same /64, so truncating would put all of
+  // them in a single bucket. These keep their full address.
+  const quad = addr.match(/(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+  let hextets = [];
+  let body = addr;
+  if (quad) {
+    const [a, b, c, d] = quad.slice(1).map(Number);
+    hextets = [((a << 8) | b).toString(16), ((c << 8) | d).toString(16)];
+    body = addr.slice(0, quad.index); // the "::ffff:" part, trailing colon kept
+  }
+
+  // Expand "::" before truncating. Slicing the first four groups off the raw
+  // text collapses nothing — split(":") on "2001:db8::1" yields four entries
+  // already, so the whole address would survive as its own key.
+  const sides = body.split("::");
+  const head = sides[0].split(":").filter(Boolean);
+  const tail = [...sides.slice(1).join(":").split(":").filter(Boolean), ...hextets];
+  const groups =
+    sides.length > 1
+      ? [...head, ...Array(Math.max(0, 8 - head.length - tail.length)).fill("0"), ...tail]
+      : [...head, ...hextets];
+
+  // Zero-pad so one host cannot present as two keys ("2001:db8" vs "2001:0db8").
+  const pad = (g) => g.slice(-4).padStart(4, "0");
+  return (quad ? groups.slice(0, 8) : groups.slice(0, 4)).map(pad).join(":");
+}
+
+// ---------------------------------------------------------------------------
 // Authentication
 // ---------------------------------------------------------------------------
 // The CBorg key is open (any IP), so this Worker is the only thing standing
@@ -162,38 +229,61 @@ function hmacKey(secret, usage) {
   );
 }
 
-/** Issue a session token bound to this IP and expiring after SESSION_TTL_MINUTES. */
-export async function mintSession(env, ip) {
+/**
+ * Issue a session token for this client key.
+ *
+ * The token carries two timestamps. `exp` is the idle window and is rolled
+ * forward on every request. `iat` is the moment the challenge behind it was
+ * actually solved, and is carried through unchanged by every subsequent mint —
+ * that is what puts a ceiling on the whole chain. Without it, rolling `exp`
+ * forward on each request means one solved challenge buys indefinite access to
+ * anything that keeps polling inside the idle window.
+ *
+ * Pass `iat` when re-minting for a request that arrived with a valid token, and
+ * omit it when the client has just solved a fresh challenge.
+ */
+export async function mintSession(env, key, iat = Date.now()) {
   const exp = Date.now() + num(env, "SESSION_TTL_MINUTES") * 60 * 1000;
   const sig = await crypto.subtle.sign(
     "HMAC",
     await hmacKey(env.SESSION_SECRET, "sign"),
-    new TextEncoder().encode(`${exp}.${ip}`)
+    new TextEncoder().encode(`${iat}.${exp}.${key}`)
   );
-  return `${exp}.${btoa(String.fromCharCode(...new Uint8Array(sig)))}`;
+  return `${iat}.${exp}.${btoa(String.fromCharCode(...new Uint8Array(sig)))}`;
 }
 
 /**
- * Verify a session token. Bound to the IP so one solved challenge cannot be
- * shared across a botnet. Uses crypto.subtle.verify, which compares in constant
- * time — do not replace it with a string comparison.
+ * Verify a session token. Returns the token's `iat` when valid, so the caller
+ * can carry it into the next mint, or null when not. `iat` is a number and so
+ * always truthy in practice, but callers should test against null rather than
+ * rely on that.
+ *
+ * Bound to the client key so one solved challenge cannot be shared across a
+ * botnet. Uses crypto.subtle.verify, which compares in constant time — do not
+ * replace it with a string comparison.
  */
-export async function verifySession(env, token, ip) {
-  const [exp, sigB64] = (token || "").split(".");
-  if (!exp || !sigB64) return false;
-  if (!Number.isFinite(Number(exp)) || Date.now() > Number(exp)) return false;
+export async function verifySession(env, token, key) {
+  const [iat, exp, sigB64] = (token || "").split(".");
+  if (!iat || !exp || !sigB64) return null;
+  if (!Number.isFinite(Number(exp)) || Date.now() > Number(exp)) return null;
+  // The absolute ceiling. A token past it is rejected however fresh its `exp`,
+  // which sends the client back through Turnstile.
+  if (!Number.isFinite(Number(iat))) return null;
+  const age = Date.now() - Number(iat);
+  if (age < 0 || age > num(env, "SESSION_MAX_HOURS") * 60 * 60 * 1000) return null;
   let sig;
   try {
     sig = Uint8Array.from(atob(sigB64), (c) => c.charCodeAt(0));
   } catch {
-    return false; // malformed base64
+    return null; // malformed base64
   }
-  return crypto.subtle.verify(
+  const ok = await crypto.subtle.verify(
     "HMAC",
     await hmacKey(env.SESSION_SECRET, "verify"),
     sig,
-    new TextEncoder().encode(`${exp}.${ip}`)
+    new TextEncoder().encode(`${iat}.${exp}.${key}`)
   );
+  return ok ? Number(iat) : null;
 }
 
 async function verifyTurnstile(env, token, ip) {
@@ -302,13 +392,23 @@ export default {
       }
     }
 
-    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    // Every per-client control below keys off the caller's address: the per-IP
+    // limit, the Turnstile check and the session binding. If Cloudflare did not
+    // give us one, none of them mean anything, so refuse rather than let the
+    // request through under a placeholder every caller would share.
+    const ip = request.headers.get("CF-Connecting-IP");
+    const rateKey = clientKey(ip);
+    if (!rateKey) {
+      console.error("Request has no CF-Connecting-IP; refusing traffic.");
+      return jsonError(503, "client_unidentified", "Service temporarily unavailable.", cors, {
+        "Retry-After": "60",
+      });
+    }
 
     // --- Rate limits --------------------------------------------------------
     // Both fail CLOSED. A missing binding is a config regression, and on an
     // endpoint that spends money we would rather have a visible outage than an
-    // invisible bill. Limits run before auth so that unauthenticated floods
-    // cannot hammer Turnstile's siteverify endpoint.
+    // invisible bill.
     if (!env.GLOBAL_LIMITER || !env.RATE_LIMITER) {
       console.error("Rate limiter bindings missing; refusing traffic. Check wrangler.toml.");
       return jsonError(503, "limiter_unavailable", "Service temporarily unavailable.", cors, {
@@ -316,18 +416,11 @@ export default {
       });
     }
 
-    // Per-IP limiting bounds individuals but never the aggregate: a thousand
-    // IPs each staying under the per-IP limit is compliant and unbounded in
-    // cost. The global ceiling is what actually caps spend.
-    const global = await env.GLOBAL_LIMITER.limit({ key: "global" });
-    if (!global.success) {
-      console.warn("Global rate limit reached.");
-      return jsonError(503, "at_capacity", "The service is busy. Please try again shortly.", cors, {
-        "Retry-After": "60",
-      });
-    }
-
-    const perIp = await env.RATE_LIMITER.limit({ key: ip });
+    // --- Per-client rate limit ----------------------------------------------
+    // This runs before auth, so an unauthenticated flood cannot hammer
+    // Turnstile's siteverify endpoint: whatever one client can spend on
+    // siteverify is bounded by its own bucket.
+    const perIp = await env.RATE_LIMITER.limit({ key: rateKey });
     if (!perIp.success) {
       return jsonError(429, "rate_limited", "Too many requests. Please wait a minute.", cors, {
         "Retry-After": "60",
@@ -337,18 +430,45 @@ export default {
     // --- Authentication -----------------------------------------------------
     // A valid session token skips the siteverify round-trip; otherwise the
     // request must carry a fresh Turnstile token.
-    if (!(await verifySession(env, request.headers.get("X-Session-Token"), ip))) {
+    //
+    // Both the check and the re-mint key on rateKey rather than the raw
+    // address. A /64 is one end site, and client OSes rotate the host part of
+    // an IPv6 address under RFC 4941 privacy extensions, so binding to the full
+    // address drops sessions mid-conversation for no security gain: an attacker
+    // holding a /64 could mint a token per address anyway, and the per-client
+    // limit above already meters the whole /64 as one bucket.
+    let iat = await verifySession(env, request.headers.get("X-Session-Token"), rateKey);
+    if (iat === null) {
       const turnstileToken = request.headers.get("X-Turnstile-Token");
       if (!turnstileToken) {
         // 401 tells the widget to solve a challenge and retry.
         return jsonError(401, "verification_required", "Verification required.", cors);
       }
+      // siteverify compares against the real client address, so it gets `ip`.
       if (!(await verifyTurnstile(env, turnstileToken, ip))) {
         return jsonError(403, "verification_failed", "Verification failed. Please try again.", cors);
       }
+      iat = Date.now(); // a freshly solved challenge starts a new chain
     }
-    // Roll the session forward on every successful request.
-    const sessionToken = await mintSession(env, ip);
+
+    // --- Global spend ceiling -----------------------------------------------
+    // Per-client limiting bounds individuals but never the aggregate: a
+    // thousand clients each staying under their own limit is compliant and
+    // unbounded in cost. This ceiling is what actually caps spend, so it sits
+    // after auth — where it meters requests that are about to reach the model,
+    // rather than letting unauthenticated noise burn the budget and lock out
+    // verified readers.
+    const global = await env.GLOBAL_LIMITER.limit({ key: "global" });
+    if (!global.success) {
+      console.warn("Global rate limit reached.");
+      return jsonError(503, "at_capacity", "The service is busy. Please try again shortly.", cors, {
+        "Retry-After": "60",
+      });
+    }
+
+    // Roll the idle window forward, carrying the original iat so the absolute
+    // ceiling still applies.
+    const sessionToken = await mintSession(env, rateKey, iat);
 
     // --- Payload size check (before parsing) --------------------------------
     const maxBytes = num(env, "MAX_PAYLOAD_BYTES");

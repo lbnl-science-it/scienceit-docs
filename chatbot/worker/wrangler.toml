@@ -25,8 +25,12 @@ MAX_PAYLOAD_BYTES = "60000"
 # Cap on generated tokens per reply.
 MAX_OUTPUT_TOKENS = "1000"
 
-# Session lifetime before a reader must solve another Turnstile challenge.
+# Idle window: how long a session survives without a request. Rolled forward on
+# every request, so an active reader is never interrupted.
 SESSION_TTL_MINUTES = "30"
+# Absolute ceiling on one solved challenge, however active the client. Caps the
+# rolling window above, which would otherwise grant indefinite access.
+SESSION_MAX_HOURS = "4"
 
 # Per-IP rate limiting via Cloudflare's rate limiting binding.
 # `period` must be 10 or 60 (seconds). `namespace_id` is any unique integer

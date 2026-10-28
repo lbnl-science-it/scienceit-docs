@@ -8,7 +8,13 @@ import {
   verifySession,
 } from "../src/index.js";
 
-const env = { SESSION_SECRET: "test-secret", SESSION_TTL_MINUTES: "30" };
+const env = {
+  SESSION_SECRET: "test-secret",
+  SESSION_TTL_MINUTES: "30",
+  SESSION_MAX_HOURS: "4",
+};
+
+const HOUR = 60 * 60 * 1000;
 
 describe("validate", () => {
   const ok = { messages: [{ role: "user", content: "hi" }] };
@@ -111,32 +117,64 @@ describe("sanitizeCorpus", () => {
 });
 
 describe("session tokens", () => {
-  it("round-trips for the same IP", async () => {
+  it("round-trips for the same key, returning the issue time", async () => {
     const t = await mintSession(env, "1.2.3.4");
-    expect(await verifySession(env, t, "1.2.3.4")).toBe(true);
+    expect(await verifySession(env, t, "1.2.3.4")).toBeTypeOf("number");
   });
 
-  it("is bound to the IP, so a solved challenge cannot be shared", async () => {
+  it("is bound to the key, so a solved challenge cannot be shared", async () => {
     const t = await mintSession(env, "1.2.3.4");
-    expect(await verifySession(env, t, "9.9.9.9")).toBe(false);
+    expect(await verifySession(env, t, "9.9.9.9")).toBeNull();
   });
 
   it("rejects a token signed with a different secret", async () => {
     const t = await mintSession({ ...env, SESSION_SECRET: "other" }, "1.2.3.4");
-    expect(await verifySession(env, t, "1.2.3.4")).toBe(false);
+    expect(await verifySession(env, t, "1.2.3.4")).toBeNull();
   });
 
   it("rejects a tampered or expired expiry", async () => {
     const t = await mintSession(env, "1.2.3.4");
-    const sig = t.split(".")[1];
-    expect(await verifySession(env, `${Date.now() + 9e9}.${sig}`, "1.2.3.4")).toBe(false);
-    expect(await verifySession(env, `${Date.now() - 1000}.${sig}`, "1.2.3.4")).toBe(false);
+    const [iat, , sig] = t.split(".");
+    expect(await verifySession(env, `${iat}.${Date.now() + 9e9}.${sig}`, "1.2.3.4")).toBeNull();
+    expect(await verifySession(env, `${iat}.${Date.now() - 1000}.${sig}`, "1.2.3.4")).toBeNull();
   });
 
   it("rejects malformed tokens without throwing", async () => {
-    for (const bad of ["", null, undefined, "nope", "abc.def", `${Date.now() + 9e5}.!!!`]) {
-      expect(await verifySession(env, bad, "1.2.3.4")).toBe(false);
+    const bad = ["", null, undefined, "nope", "abc.def", "abc.def.ghi", `1.${Date.now() + 9e5}.!!!`];
+    for (const t of bad) expect(await verifySession(env, t, "1.2.3.4")).toBeNull();
+  });
+
+  // The idle window rolls forward on every request. Without an absolute
+  // ceiling, one solved challenge buys indefinite access to anything that
+  // keeps polling inside that window.
+  it("enforces an absolute lifetime regardless of a fresh expiry", async () => {
+    const stale = await mintSession(env, "1.2.3.4", Date.now() - 5 * HOUR);
+    const [, exp] = stale.split(".");
+    expect(Number(exp)).toBeGreaterThan(Date.now()); // the idle window is current
+    expect(await verifySession(env, stale, "1.2.3.4")).toBeNull(); // but the chain is too old
+  });
+
+  it("accepts a token still inside the absolute lifetime", async () => {
+    const iat = Date.now() - 3 * HOUR;
+    expect(await verifySession(env, await mintSession(env, "1.2.3.4", iat), "1.2.3.4")).toBe(iat);
+  });
+
+  it("carries iat forward on re-mint, so rolling cannot extend the ceiling", async () => {
+    const iat = Date.now() - 3 * HOUR;
+    // What the handler does on each request: verify, then re-mint with the iat
+    // the verify returned.
+    let token = await mintSession(env, "1.2.3.4", iat);
+    for (let i = 0; i < 3; i++) {
+      const got = await verifySession(env, token, "1.2.3.4");
+      expect(got).toBe(iat);
+      token = await mintSession(env, "1.2.3.4", got);
     }
+    expect(token.split(".")[0]).toBe(String(iat));
+  });
+
+  it("rejects an issue time in the future", async () => {
+    const t = await mintSession(env, "1.2.3.4", Date.now() + HOUR);
+    expect(await verifySession(env, t, "1.2.3.4")).toBeNull();
   });
 });
 

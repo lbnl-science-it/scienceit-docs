@@ -260,7 +260,8 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 | `MAX_OUTPUT_TOKENS` | `1000` | Per-reply generation cap. |
 | `TURNSTILE_SECRET` | *(required)* | **Secret.** Pairs with the public site key in the widget. Local dev uses Cloudflare's always-passes test secret. |
 | `SESSION_SECRET` | *(required)* | **Secret.** Signs session tokens; `openssl rand -base64 32`. Rotating it forces every reader to re-verify. |
-| `SESSION_TTL_MINUTES` | `30` | How long a solved challenge lasts before re-verification. |
+| `SESSION_TTL_MINUTES` | `30` | Idle window for a session, rolled forward on every request. |
+| `SESSION_MAX_HOURS` | `4` | Absolute ceiling on one solved challenge, however active the client. |
 | `RATE_LIMITER` *(binding)* | 10 req / 60s per IP | `[[ratelimits]]` block in `wrangler.toml`. |
 | `GLOBAL_LIMITER` *(binding)* | 120 req / 60s total | Global spend ceiling across all callers. |
 
