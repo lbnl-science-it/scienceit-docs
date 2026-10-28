@@ -196,6 +196,12 @@
     });
   }
 
+  // Test seam. renderMarkdown is the boundary that keeps assistant output from
+  // becoming markup, so test/markdown.test.js pins its escaping. It lives inside
+  // this IIFE and nothing else here reads the global back; it exists only so the
+  // tests can reach the function.
+  window.__docsChatRenderMarkdown = renderMarkdown;
+
   // ------------------------------------------------------------------ icons
   // Small inline line-icons (stroke-based, so one `color` sets them all).
   var ICON_CHAT =

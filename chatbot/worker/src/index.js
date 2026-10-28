@@ -23,7 +23,7 @@ const DEFAULTS = {
   // CBorg is OpenAI-compatible; we call `${CBORG_BASE_URL}/chat/completions`.
   CBORG_BASE_URL: "https://api.cborg.lbl.gov",
   // TODO: confirm the current model IDs in the CBorg docs. Model names change.
-  CBORG_MODEL: "lbl/cborg-mini",
+  CBORG_MODEL: "lbl/cborg-coder-fast",
   MODEL_CONTEXT_TOKENS: 128000,
   MAX_MESSAGES: 20,
   MAX_MESSAGE_CHARS: 4000,
@@ -44,7 +44,7 @@ function num(env, name) {
 // ---------------------------------------------------------------------------
 // System prompt
 // ---------------------------------------------------------------------------
-function buildSystemPrompt(docs) {
+export function buildSystemPrompt(docs) {
   return `You are a documentation assistant for the ScienceIT docs site.
 
 Rules:
@@ -163,7 +163,7 @@ function hmacKey(secret, usage) {
 }
 
 /** Issue a session token bound to this IP and expiring after SESSION_TTL_MINUTES. */
-async function mintSession(env, ip) {
+export async function mintSession(env, ip) {
   const exp = Date.now() + num(env, "SESSION_TTL_MINUTES") * 60 * 1000;
   const sig = await crypto.subtle.sign(
     "HMAC",
@@ -178,7 +178,7 @@ async function mintSession(env, ip) {
  * shared across a botnet. Uses crypto.subtle.verify, which compares in constant
  * time — do not replace it with a string comparison.
  */
-async function verifySession(env, token, ip) {
+export async function verifySession(env, token, ip) {
   const [exp, sigB64] = (token || "").split(".");
   if (!exp || !sigB64) return false;
   if (!Number.isFinite(Number(exp)) || Date.now() > Number(exp)) return false;
@@ -234,7 +234,7 @@ function jsonError(status, code, message, cors, extraHeaders = {}) {
  * a user-facing message. Only "user" and "assistant" roles are accepted, so a
  * client can never inject its own system prompt.
  */
-function validate(body, env) {
+export function validate(body, env) {
   const maxMessages = num(env, "MAX_MESSAGES");
   const maxChars = num(env, "MAX_MESSAGE_CHARS");
 
