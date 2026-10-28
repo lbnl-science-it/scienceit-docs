@@ -3,13 +3,15 @@ name: lawrencium-hpc
 description: >-
   Answer questions about high-performance computing at Lawrence Berkeley National
   Laboratory (LBNL) — the Lawrencium (LRC) CPU cluster and Einsteinium GPU cluster.
-  Covers accounts & MFA, logging in, Slurm job scheduling and example scripts, the
-  Software Module Farm (compilers, Python/R/Julia, MPI, CUDA and other libraries,
-  PyTorch/TensorFlow/Ray, VASP, Ollama/vLLM), Open OnDemand and Jupyter, data transfer
-  with the lrc-xfer node and Globus, and the supported research (condo) clusters. Use whenever a
-  question concerns Lawrencium, Einsteinium, LBNL/Berkeley Lab research computing, or
-  running jobs on these systems. Fetch the Markdown source from the scienceit-docs
-  GitHub repository instead of scraping HTML from scienceit-docs.lbl.gov.
+  Covers accounts, MFA and SSH certificates, logging in to lrc-login, Slurm (sbatch,
+  srun, partitions such as lr6/lr7/lr8/es1, QoS, PCA/condo/ac_* accounts, example
+  scripts), the Software Module Farm (compilers, Python/R/Julia, MPI, CUDA and other
+  libraries, PyTorch/TensorFlow/Ray, AlphaFold3, VASP, Apptainer, Ollama/vLLM), Open
+  OnDemand and Jupyter, data transfer with the lrc-xfer node and Globus, $SCRATCH,
+  charges and billing, the supported research (condo) clusters, using AI agents and
+  Claude Science with Lawrencium, and how to get help. Use whenever a question concerns
+  Lawrencium, Einsteinium, LBNL/Berkeley Lab research computing, or running jobs on
+  these systems.
 license: BSD-3-Clause
 ---
 
@@ -25,7 +27,7 @@ so this skill works without a local checkout of the repo.
 ## How to use this skill
 
 1. **Fetch the raw Markdown, not the website.** Every page on
-   `https://scienceit-docs.lbl.gov` is generated from a `.md` file under `docs/hpc/`
+   `https://scienceit-docs.lbl.gov` is generated from a `.md` file under `docs/`
    in the GitHub repo. Fetch the **raw** Markdown (see *Fetching a page* below) with
    your web-fetch tool, or `curl -sL <url>` if you only have a shell. Do **not**
    scrape the rendered HTML — the Markdown is the source of truth, is cheaper to
@@ -34,8 +36,9 @@ so this skill works without a local checkout of the repo.
    in the map, then fetch those files. Start narrow (the most specific page) and
    widen only if needed.
 3. **Ground every answer in what you read.** If a topic is not covered by these
-   files, say so plainly rather than guessing. Never invent partition names, module
-   names, file paths, commands, email addresses, or URLs.
+   files, say so plainly rather than guessing, and point the user to the HPC Help
+   Desk (see *Support & training* in the doc map). Never invent partition names,
+   module names, file paths, commands, email addresses, or URLs.
 4. **Note on MkDocs syntax.** The Markdown uses some MkDocs Material extensions —
    `??? question` / `!!! note` admonitions, `=== "Tab"` content tabs, `{{ ext }}`
    macros, and `{: ...}` attribute lists. Treat these as formatting wrappers; read
@@ -71,18 +74,42 @@ Use the first of these sources that works for you:
 When an answer draws on a page, cite it with its **public site URL** (not the raw
 GitHub URL). Convert the repository path by removing the leading `docs/`, dropping
 the `.md` extension, adding a trailing `/`, and prefixing
-`https://scienceit-docs.lbl.gov/`:
+`https://scienceit-docs.lbl.gov/`. An `index.md` page maps to its directory, so drop
+`index` as well:
 
 - `docs/hpc/faqs.md` → <https://scienceit-docs.lbl.gov/hpc/faqs/>
 - `docs/hpc/running/slurm-overview.md` → <https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/>
+- `docs/hpc/index.md` → <https://scienceit-docs.lbl.gov/hpc/>
 
 Cite the public site URL, not the raw file path or the GitHub URL.
+
+## When running on Lawrencium
+
+If you are running on a Lawrencium login or compute node (for example, the hostname
+starts with `n0` or `lrc-login`, or `/global/home/users/$USER` exists), you can check
+the user's live state instead of relying on the docs alone:
+
+- **Before running commands on the cluster,** read `docs/hpc/ai-tools/ai-agents.md`
+  and follow its rules. In particular, never run recursive traversals over `/`,
+  `/global`, or other shared directories, and run compute-heavy work through Slurm,
+  not on the login node.
+- **Accounts, partitions, and QoS:** `sacctmgr show association -p user=$USER`
+  lists the Slurm account, partition, and QoS combinations the user can actually
+  submit with. QoS names vary by partition (for example, `lr8` uses `lr8_normal`), so
+  check this rather than assuming.
+- **Partitions and nodes:** `sinfo -p <partition>` shows the nodes and their state.
+- **Software:** `module avail <name>` and `module spider <name>` show which modules
+  and versions are actually installed.
+
+If what you find on the cluster disagrees with the docs, trust the live output, and
+tell the user about the discrepancy so they can report it to the HPC Help Desk.
 
 ## Scope
 
 In scope: Lawrencium (LRC), Einsteinium, and the supported research clusters on the
 LBNL Supercluster — accounts, access, Slurm, software, data transfer (the lrc-xfer DTN
-and Globus), and Open OnDemand. Globus is covered because it is the primary way LBNL
+and Globus), Open OnDemand, using AI tools on Lawrencium, and where to get help and
+training. Globus is covered because it is the primary way LBNL
 researchers move data to and from Lawrencium; the connector pages for cloud storage
 (Google Drive, AWS S3, Google Cloud Storage) are included as part of Globus. Out of
 scope for this skill: cloud compute services (AWS/GCP accounts and VMs) and general
@@ -94,7 +121,6 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 
 ### Overview & getting started
 - **Lawrencium Overview** — `docs/hpc/index.md` — What Lawrencium is: the LBNL Condo Cluster Computing (LC3) platform, part of the LBNL Supercluster.
-- **Live Cluster Status** — `docs/hpc/status.md` — Current cluster / queue status.
 - **Getting Started** — `docs/hpc/getting-started.md` — The primary ways to obtain access to Lawrencium.
 - **Frequently Asked Questions** — `docs/hpc/faqs.md` — Common questions: getting an account, submitting a first job, transferring data, max walltime, and more.
 - **Acknowledgement** — `docs/hpc/acknowledgement.md` — How to acknowledge Lawrencium in publications.
@@ -128,6 +154,7 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 ### Running jobs
 - **Slurm Overview** — `docs/hpc/running/slurm-overview.md` — Slurm resource manager: TRES, associations, partitions, QoS, submitting jobs.
 - **Example Scripts** — `docs/hpc/running/script-examples.md` — Job scripts for common cases: multi-core, GPU, low-priority condo, and long-running jobs.
+- **Jobscript Generator** — <https://lbnl-science-it.github.io/lrc-jobscript/> — An interactive web tool, not a Markdown page, that builds a Slurm script from a form. Suggest it to users who want to generate a script themselves.
 - **Monitor Jobs** — `docs/hpc/running/monitor-jobs.md` — Checking running jobs by Slurm job ID and inspecting usage.
 - **GNU Parallel** — `docs/hpc/running/gnu-parallel.md` — Grouping many (often serial) tasks into one Slurm submission across a node's cores.
 
@@ -185,3 +212,9 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 ### AI tools
 - **Using AI Agents on Lawrencium** — `docs/hpc/ai-tools/ai-agents.md` — Guidelines for running AI coding agents such as `claude` and `codex` on Lawrencium (use compute nodes through Slurm, not login nodes), with sample instructions to add to `CLAUDE.md` or `AGENTS.md`.
 - **Lawrencium Skill** — `docs/hpc/ai-tools/lawrencium-skill.md` — Installing this skill as a Claude Code plugin and allowing it to fetch the docs.
+- **Using Claude Science with Lawrencium** — `docs/hpc/ai-tools/claude-science.md` — Adding Lawrencium as a remote compute cluster in Claude Science: passwordless SSH with an SSH certificate, host setup, and how Claude Science submits Slurm jobs.
+
+### Support & training
+- **HPC Help Desk** — `docs/help/index.md` — How to get help: the scienceithelp@lbl.gov ticket email, Freshservice requests, HPC office hours, and Science IT consulting.
+- **Training** — `docs/help/training.md` — Upcoming and past Science IT training sessions and workshops.
+- **Asking LLMs** — `docs/help/llms.md` — The CBorg Lawrencium HPC & ScienceIT Assistant and the single-file `llms-full.txt` docs bundle.
