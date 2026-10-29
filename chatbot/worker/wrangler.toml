@@ -9,13 +9,15 @@ compatibility_date = "2025-01-01"
 # CBorg's OpenAI-compatible gateway. Confirm in the CBorg docs.
 CBORG_BASE_URL = "https://api.cborg.lbl.gov"
 # TODO: confirm the current model IDs in the CBorg docs before deploying.
-CBORG_MODEL = "lbl/cborg-mini"
+CBORG_MODEL = "lbl/cborg-mini-fast"
 # Where the Worker fetches the documentation text (cached for 1 hour).
 LLMS_FULL_URL = "https://scienceit-docs.lbl.gov/llms-full.txt"
 # Comma-separated list of origins allowed to call /chat (no trailing slashes).
-# This is the production value. For local dev, override it in .dev.vars
-# (see .dev.vars.example) so localhost doesn't leak into the deployed Worker.
-ALLOWED_ORIGINS = "https://scienceit-docs.lbl.gov,http://localhost:8787,http://127.0.0.1:8000"
+# Matched exactly against the request's Origin header, so this is the origin the
+# docs site is served from — not the Worker's own URL. Production only: for
+# local dev, override it in .dev.vars (see .dev.vars.example) so localhost
+# origins never reach the deployed Worker.
+ALLOWED_ORIGINS = "https://scienceit-docs.lbl.gov"
 # Context window of the chosen model, used only for the size warning.
 MODEL_CONTEXT_TOKENS = "128000"
 # Request validation limits.
@@ -24,6 +26,11 @@ MAX_MESSAGE_CHARS = "4000"
 MAX_PAYLOAD_BYTES = "60000"
 # Cap on generated tokens per reply.
 MAX_OUTPUT_TOKENS = "1000"
+# Upstream timeouts, in milliseconds. UPSTREAM_TIMEOUT_MS bounds the wait for
+# CBorg's response headers only, not the length of the stream that follows, so
+# raising MAX_OUTPUT_TOKENS does not require raising this.
+DOCS_FETCH_TIMEOUT_MS = "10000"
+UPSTREAM_TIMEOUT_MS = "90000"
 
 # Idle window: how long a session survives without a request. Rolled forward on
 # every request, so an active reader is never interrupted.

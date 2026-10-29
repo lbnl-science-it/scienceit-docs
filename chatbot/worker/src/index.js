@@ -23,7 +23,7 @@ const DEFAULTS = {
   // CBorg is OpenAI-compatible; we call `${CBORG_BASE_URL}/chat/completions`.
   CBORG_BASE_URL: "https://api.cborg.lbl.gov",
   // TODO: confirm the current model IDs in the CBorg docs. Model names change.
-  CBORG_MODEL: "lbl/cborg-coder-fast",
+  CBORG_MODEL: "lbl/cborg-mini-fast",
   MODEL_CONTEXT_TOKENS: 128000,
   MAX_MESSAGES: 20,
   MAX_MESSAGE_CHARS: 4000,
@@ -31,6 +31,11 @@ const DEFAULTS = {
   MAX_OUTPUT_TOKENS: 1000,
   SESSION_TTL_MINUTES: 30,
   SESSION_MAX_HOURS: 4,
+  // Upstream timeouts. Neither fetch may hang a reader's request indefinitely:
+  // a stalled socket would otherwise sit open until the Worker's own invocation
+  // limit kills it, which the widget sees as a hang rather than an error.
+  DOCS_FETCH_TIMEOUT_MS: 10000,
+  UPSTREAM_TIMEOUT_MS: 90000,
 };
 
 const DOCS_CACHE_SECONDS = 3600; // cache llms-full.txt for 1 hour
@@ -82,7 +87,9 @@ async function loadDocs(env, ctx) {
   let res = await cache.match(cacheKey);
 
   if (!res) {
-    const fresh = await fetch(url);
+    const fresh = await fetch(url, {
+      signal: AbortSignal.timeout(num(env, "DOCS_FETCH_TIMEOUT_MS")),
+    });
     if (!fresh.ok) throw new Error(`Fetching docs failed: HTTP ${fresh.status}`);
     // Re-wrap so we can set our own Cache-Control (1 hour) before storing.
     res = new Response(fresh.body, fresh);
@@ -492,7 +499,6 @@ export default {
     if (error) return jsonError(400, "invalid_request", error, cors);
 
     // --- Load docs and build the upstream request ---------------------------
-    console.log("[trace] before loadDocs");
     let docs;
     try {
       docs = await loadDocs(env, ctx);
@@ -500,11 +506,19 @@ export default {
       console.error("Could not load documentation:", e.message);
       return jsonError(502, "docs_unavailable", "The documentation could not be loaded.", cors);
     }
-    console.log("[trace] after loadDocs, chars:", docs.length);
 
     const baseUrl = (env.CBORG_BASE_URL || DEFAULTS.CBORG_BASE_URL).replace(/\/+$/, "");
+    // This timer covers everything up to the moment we hand the stream to the
+    // browser: the wait for response headers, and the error-body read below.
+    // We clear it before streaming rather than passing AbortSignal.timeout()
+    // straight to fetch, because a signal still attached once the body is
+    // flowing would truncate a long answer mid-sentence instead of failing it.
+    const upstreamAbort = new AbortController();
+    const upstreamTimer = setTimeout(
+      () => upstreamAbort.abort(),
+      num(env, "UPSTREAM_TIMEOUT_MS")
+    );
     let upstream;
-    console.log("[trace] before CBorg fetch, url:", `${baseUrl}/chat/completions`);
     try {
       upstream = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
@@ -519,8 +533,10 @@ export default {
           max_tokens: num(env, "MAX_OUTPUT_TOKENS"),
           messages: [{ role: "system", content: buildSystemPrompt(docs) }, ...messages],
         }),
+        signal: upstreamAbort.signal,
       });
     } catch (e) {
+      clearTimeout(upstreamTimer);
       console.error("Upstream fetch failed:", e.message);
       return jsonError(502, "upstream_unreachable", "Could not reach the AI service.", cors);
     }
@@ -528,6 +544,7 @@ export default {
     // On upstream errors, log details for us but return only a generic message.
     if (!upstream.ok || !upstream.body) {
       const detail = await upstream.text().catch(() => "");
+      clearTimeout(upstreamTimer);
       console.error(`Upstream error ${upstream.status}: ${detail.slice(0, 500)}`);
       const status = upstream.status === 429 ? 429 : 502;
       const message =
@@ -536,6 +553,9 @@ export default {
           : "The AI service returned an error. Please try again.";
       return jsonError(status, "upstream_error", message, cors);
     }
+
+    // Headers are in and the body is ours to stream: stop the clock.
+    clearTimeout(upstreamTimer);
 
     // --- Stream the SSE response straight through to the browser ------------
     // We pass `upstream.body` (a ReadableStream) without buffering it, so

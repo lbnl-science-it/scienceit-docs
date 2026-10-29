@@ -93,7 +93,7 @@ plugins:
 LBNL's OpenAI-compatible gateway. The Worker calls `${CBORG_BASE_URL}/chat/completions` with `stream: true` and a `Bearer` token. Because the API is OpenAI-shaped, the response is standard SSE with text deltas at `choices[0].delta.content`.
 
 Two operational gotchas:
-- **Model IDs change.** `wrangler.toml` currently pins `lbl/cborg-mini`; confirm against the CBORG docs before deploying.
+- **Model IDs change.** `wrangler.toml` currently pins `lbl/cborg-coder-fast`; confirm against the CBORG docs before deploying.
 - **Key type determines reachability.** A standard CBORG key is IP-allowlisted and rejects unrecognized sources, including most VPNs off LBLnet — and a deployed Worker egresses from Cloudflare IPs scattered across their edge, which cannot practically be allowlisted. Deploying to Cloudflare therefore requires an **open key** (any IP). That removes the infrastructure blocker and makes Turnstile load-bearing: the allowlist is no longer providing incidental access control, so the Worker is the only gate.
 
 ---
@@ -121,7 +121,7 @@ After loading, [`warnIfTooLarge()`](worker/src/index.js#L99) estimates token cou
 4. **Worker gate.** The request runs the pipeline in §1 (CORS → key check → rate limit → size → parse → validate).
 5. **Prompt construction.** [`buildSystemPrompt(docs)`](worker/src/index.js#L46) wraps the corpus in `=== DOCUMENTATION START/END ===` delimiters with rules that constrain the model to the provided docs, require a plain "couldn't find that" on a miss, request Markdown links from the embedded URLs, and instruct it to ignore user attempts to override those rules. The final upstream payload is `[{role: "system", content: systemPrompt}, ...userMessages]`.
 6. **LLM execution.** `POST ${CBORG_BASE_URL}/chat/completions` with `stream: true`, `max_tokens: MAX_OUTPUT_TOKENS`, and the `Authorization` header attached here and only here.
-7. **Streaming passthrough.** The Worker returns `upstream.body` — the raw `ReadableStream` — directly in a new `Response` with `Content-Type: text/event-stream` and `Cache-Control: no-store`. **Nothing is buffered or transformed**, so tokens reach the browser as fast as CBORG emits them.
+7. **Streaming passthrough.** A stalled upstream must not hang the reader, so the CBORG fetch carries an `AbortController` armed for `UPSTREAM_TIMEOUT_MS`. The timer is cleared the moment headers arrive and the body is ours — passing `AbortSignal.timeout()` straight to `fetch` would leave the signal attached while the body flowed and truncate any reply that took longer than the timeout to generate. It therefore bounds time-to-first-byte and the error-body read, never the stream. The Worker returns `upstream.body` — the raw `ReadableStream` — directly in a new `Response` with `Content-Type: text/event-stream` and `Cache-Control: no-store`. **Nothing is buffered or transformed**, so tokens reach the browser as fast as CBORG emits them.
 8. **Client parse.** The widget reads via `res.body.getReader()` + `TextDecoder`, buffers partial lines across chunks, and for each `data:` line parses `choices[0].delta.content`. `[DONE]` terminates. Malformed frames and keep-alives are swallowed by a `try/catch`.
 9. **DOM rendering.** On each delta the accumulated reply is re-rendered: `bubble.innerHTML = renderMarkdown(reply)`, then scroll to bottom. Re-rendering the whole string per token is intentional — it keeps partially-streamed Markdown (an unterminated code fence, for instance) displaying correctly, and the strings are small enough that the cost is irrelevant.
 10. **Completion / failure.** On success the reply is appended to `history`. On error: if partial text arrived it is kept, otherwise the empty bubble is removed and the user turn is popped so a retry does not duplicate it. An error bubble shows the Worker's `error.message`, which is always a safe, user-facing string.
@@ -250,7 +250,7 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 |---|---|---|
 | `CBORG_API_KEY` | *(required)* | **Secret.** `wrangler secret put` in prod, `.dev.vars` locally. |
 | `CBORG_BASE_URL` | `https://api.cborg.lbl.gov` | Worker calls `<base>/chat/completions`. |
-| `CBORG_MODEL` | `lbl/cborg-mini` | Confirm current IDs in the CBORG docs. |
+| `CBORG_MODEL` | `lbl/cborg-coder-fast` | Confirm current IDs in the CBORG docs. |
 | `LLMS_FULL_URL` | `https://scienceit-docs.lbl.gov/llms-full.txt` | Corpus source. Cached 1h. |
 | `ALLOWED_ORIGINS` | production origin | Comma-separated, exact match, no trailing slash. |
 | `MODEL_CONTEXT_TOKENS` | `128000` | Only drives the size warning. |
@@ -258,6 +258,8 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 | `MAX_MESSAGE_CHARS` | `4000` | Per-message cap. |
 | `MAX_PAYLOAD_BYTES` | `60000` | Body size cap, checked twice. |
 | `MAX_OUTPUT_TOKENS` | `1000` | Per-reply generation cap. |
+| `DOCS_FETCH_TIMEOUT_MS` | `10000` | Whole-request timeout on the corpus fetch, which is buffered. |
+| `UPSTREAM_TIMEOUT_MS` | `30000` | Wait for CBORG's response *headers*, not the stream length. See below. |
 | `TURNSTILE_SECRET` | *(required)* | **Secret.** Pairs with the public site key in the widget. Local dev uses Cloudflare's always-passes test secret. |
 | `SESSION_SECRET` | *(required)* | **Secret.** Signs session tokens; `openssl rand -base64 32`. Rotating it forces every reader to re-verify. |
 | `SESSION_TTL_MINUTES` | `30` | Idle window for a session, rolled forward on every request. |
