@@ -202,6 +202,48 @@
   // tests can reach the function.
   window.__docsChatRenderMarkdown = renderMarkdown;
 
+  // ------------------------------------------------------------------ thinking
+  // Reasoning models emit a scratchpad as well as an answer, and which stream it
+  // arrives on depends on the model: some send a separate SSE field
+  // (`delta.reasoning_content`), while the Gemma-family model behind
+  // cborg-mini-fast wraps it inline in the content as <think>...</think>. This
+  // splits the content stream into its two parts, so the thought process can go
+  // in its own box and stay out of the answer -- and out of the history sent
+  // back upstream, where a scratchpad is noise rather than context.
+  //
+  // Runs over the whole accumulated string on every chunk rather than
+  // incrementally, so a tag split across two chunks ("<thi" + "nk>") still
+  // parses once the rest arrives. Replies are capped at ~1k tokens, so
+  // re-scanning costs nothing.
+  var THINK_OPEN = /<(think|thinking|thought)>/i;
+
+  function splitThinking(raw) {
+    var think = [];
+    var answer = "";
+    var rest = raw;
+    var open;
+    while ((open = THINK_OPEN.exec(rest))) {
+      answer += rest.slice(0, open.index);
+      var after = rest.slice(open.index + open[0].length);
+      // open[1] comes from the alternation above, so it is one of three literals.
+      var close = new RegExp("</" + open[1] + ">", "i").exec(after);
+      if (!close) {
+        think.push(after); // no closing tag yet: still mid-thought
+        rest = "";
+        break;
+      }
+      think.push(after.slice(0, close.index));
+      rest = after.slice(close.index + close[0].length);
+    }
+    answer += rest;
+    // A thought block is followed by the blank lines that separated it from the
+    // answer; dropping them keeps the bubble from opening with a gap.
+    return { think: think.join("\n\n").trim(), answer: answer.replace(/^\s+/, "") };
+  }
+
+  // Test seam, like renderMarkdown above: test/thinking.test.js pins the split.
+  window.__docsChatSplitThinking = splitThinking;
+
   // ------------------------------------------------------------------ icons
   // Small inline line-icons (stroke-based, so one `color` sets them all).
   var ICON_CHAT =
@@ -215,6 +257,9 @@
   var ICON_SEND =
     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.4 21.6l19.2-9.1c.8-.4.8-1.6 0-2l-19.2-9.1c-.8-.4-1.7.4-1.4 1.2l2.6 7.5 11 1.4-11 1.4-2.6 7.5c-.3.8.6 1.6 1.4 1.2z"/></svg>';
   var DOTS = '<span class="dots"><span></span><span></span><span></span></span>';
+  var CARET =
+    '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" ' +
+    'stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
 
   // ------------------------------------------------------------------ styles
   var CSS = [
@@ -300,12 +345,35 @@
     "form button:disabled{opacity:.4;cursor:default}",
     "button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}",
 
+    // Generating indicator: a labelled row that sits under the bubble from the
+    // moment the request goes out until the last token lands, so the reader is
+    // never left watching a blank bubble wondering whether anything is coming.
+    ".status{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#65676b}",
+    ".status .dots{color:var(--accent)}",
+
+    // Thought process: a collapsible box above the answer, expanded by default
+    // so the reasoning is visible without a click. A reader who collapses it is
+    // not overridden: their choice sticks for the rest of that reply.
+    ".think{margin:0 0 8px;border:1px solid #e7e8eb;border-radius:10px;background:#f6f7f9}",
+    ".think[hidden]{display:none}",
+    ".think>summary{display:flex;align-items:center;gap:6px;padding:6px 10px;cursor:pointer;",
+    "list-style:none;font-size:12px;font-weight:500;color:#65676b;user-select:none}",
+    ".think>summary::-webkit-details-marker{display:none}",
+    ".think>summary:hover{color:#1c1e21}",
+    ".think .caret{width:12px;height:12px;flex-shrink:0;transition:transform .15s ease}",
+    ".think[open] .caret{transform:rotate(90deg)}",
+    ".think-body{max-height:150px;overflow-y:auto;padding:2px 10px 8px;font-size:12.5px;",
+    "line-height:1.5;color:#65676b;white-space:pre-wrap;overflow-wrap:anywhere}",
+
     "@media (prefers-color-scheme:dark){",
     ".panel{background:#242526;color:#e4e6eb}",
     ".msgs{background:#18191a}",
     ".msg.assistant{background:#3a3b3c;border-color:#4e4f50}",
     "form{background:#242526;border-color:#3e4042}",
-    "textarea{background:#3a3b3c;color:#e4e6eb;border-color:#4e4f50}}",
+    "textarea{background:#3a3b3c;color:#e4e6eb;border-color:#4e4f50}",
+    ".think{background:#303132;border-color:#4e4f50}",
+    ".status,.think>summary,.think-body{color:#b0b3b8}",
+    ".think>summary:hover{color:#e4e6eb}}",
   ].join("");
 
   // ------------------------------------------------------------------ DOM
@@ -339,6 +407,87 @@
     msgs.appendChild(el);
     msgs.scrollTop = msgs.scrollHeight;
     return el;
+  }
+
+  // A streaming assistant bubble: a thought box, the answer, and a status row
+  // saying what the model is doing. Returns the handles send() drives it with.
+  function addStream() {
+    var el = document.createElement("div");
+    el.className = "msg assistant";
+    el.innerHTML =
+      '<details class="think" hidden><summary>' + CARET +
+      '<span class="think-label">Thinking\u2026</span></summary>' +
+      // aria-hidden: .msgs is a live region, and announcing a whole scratchpad
+      // token by token would bury the answer under it. The box stays reachable
+      // by eye and by keyboard; only the running commentary is kept out of the
+      // announcement queue.
+      '<div class="think-body" aria-hidden="true"></div></details>' +
+      '<div class="answer"></div>' +
+      '<div class="status">' + DOTS +
+      '<span class="status-text">Thinking\u2026</span></div>';
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    var box = el.querySelector(".think");
+    var label = el.querySelector(".think-label");
+    var body = el.querySelector(".think-body");
+    var answerEl = el.querySelector(".answer");
+    var status = el.querySelector(".status");
+    var statusText = el.querySelector(".status-text");
+    var started = Date.now();
+    var answered = false;
+    var touched = false; // the reader opened or closed the box by hand
+    var ours = 0; // toggles this code caused, still to be seen by the listener
+
+    // <details> fires `toggle` for a programmatic change just as it does for a
+    // click, so the listener has to tell the two apart: the box's own auto-open
+    // would otherwise register as the reader's choice and latch `touched` on the
+    // first chunk, so a reader who then collapsed the box would have it sprung
+    // open again by the next token. The event is queued rather than dispatched
+    // synchronously, so this counts outstanding toggles rather than using a flag.
+    box.addEventListener("toggle", function () {
+      if (ours > 0) ours--;
+      else touched = true;
+    });
+    function setOpen(open) {
+      if (box.open === open) return;
+      ours++;
+      box.open = open;
+    }
+
+    return {
+      el: el,
+      // Re-render from the accumulated strings; returns the answer text so far.
+      render: function (content, fieldThought) {
+        var split = splitThinking(content);
+        var think =
+          fieldThought + (fieldThought && split.think ? "\n\n" : "") + split.think;
+        if (think) {
+          box.hidden = false;
+          // textContent, not renderMarkdown: half-formed reasoning is full of
+          // stray syntax, and it must never become markup.
+          body.textContent = think;
+          // Guarded by `touched` alone, so this re-asserts the default on
+          // every chunk but never fights a reader who collapsed the box.
+          if (!touched) setOpen(true);
+          body.scrollTop = body.scrollHeight; // follow the thought as it streams
+        }
+        if (split.answer) {
+          if (!answered) {
+            answered = true;
+            if (think) {
+              var secs = Math.max(1, Math.round((Date.now() - started) / 1000));
+              label.textContent = "Thought for " + secs + "s";
+            }
+            statusText.textContent = "Writing the answer\u2026";
+          }
+          answerEl.innerHTML = renderMarkdown(split.answer);
+        }
+        return split.answer;
+      },
+      // The turn is over, one way or another: drop the status row.
+      finish: function () { status.remove(); },
+    };
   }
 
   function togglePanel(open) {
@@ -393,8 +542,10 @@
     var payload = history.slice(-MAX_HISTORY);
     while (payload.length && payload[0].role !== "user") payload.shift();
 
-    var bubble = addMessage("assistant", ""); // shows the bouncing-dots indicator until text arrives
-    var reply = "";
+    var stream = addStream(); // dots + "Thinking..." until the first tokens land
+    var rawContent = ""; // the content stream, thought tags and all
+    var rawThought = ""; // thought text that arrived in its own SSE field
+    var reply = ""; // the answer alone, which is what history keeps
 
     try {
       var headers = { "Content-Type": "application/json" };
@@ -441,9 +592,15 @@
           if (data === "[DONE]") { done = true; break; }
           try {
             var delta = JSON.parse(data).choices[0].delta;
-            if (delta && delta.content) {
-              reply += delta.content;
-              bubble.innerHTML = renderMarkdown(reply);
+            if (!delta) continue;
+            // Thought output arrives in its own field on some models and inline
+            // in the content on others; splitThinking handles the inline form,
+            // so each is accumulated separately and merged at render time.
+            var thought = delta.reasoning_content || delta.reasoning;
+            if (thought) rawThought += thought;
+            if (delta.content) rawContent += delta.content;
+            if (thought || delta.content) {
+              reply = stream.render(rawContent, rawThought);
               msgs.scrollTop = msgs.scrollHeight;
             }
           } catch (_) { /* ignore keep-alives and partial JSON */ }
@@ -451,11 +608,12 @@
       }
 
       if (!reply) throw new Error("The assistant returned an empty response.");
+      stream.finish();
       history.push({ role: "assistant", content: reply });
     } catch (err) {
       // Drop the failed turn's empty bubble unless partial text arrived.
-      if (reply) history.push({ role: "assistant", content: reply });
-      else { bubble.remove(); history.pop(); }
+      if (reply) { stream.finish(); history.push({ role: "assistant", content: reply }); }
+      else { stream.el.remove(); history.pop(); }
       addMessage("error", err.message || "Network error. Please try again.");
     } finally {
       setBusy(false);
