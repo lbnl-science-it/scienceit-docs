@@ -46,4 +46,4 @@ When you log into a cluster, you’ll land on one of several login nodes. Here y
 
 ## Open OnDemand
 
-We provide interactive Apps, such as Jupyter notebooks, RStudio, MatLab, through the browser-based Open OnDemand service at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov){:target="_blank"} {{ ext }}. Use your LRC username and PIN+one-time password(OTP).
+We provide interactive apps, such as Jupyter notebooks, RStudio and MATLAB, through the browser-based Open OnDemand service at [https://lrc-ondemand.lbl.gov](https://lrc-ondemand.lbl.gov). Log in through CILogon with your Berkeley Lab identity. See [Open OnDemand Overview](openondemand/overview.md).
