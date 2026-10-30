@@ -20,6 +20,7 @@
 - [Charges and Billing](https://scienceit-docs.lbl.gov/hpc/accounts/charges/index.md)
 - [Logging in](https://scienceit-docs.lbl.gov/hpc/accounts/loggingin/index.md)
 - [Multi-Factor Authentication](https://scienceit-docs.lbl.gov/hpc/accounts/mfa/index.md)
+- [Using the MyLRC Portal](https://scienceit-docs.lbl.gov/hpc/accounts/mylrc/index.md)
 - [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/index.md)
 - [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/index.md)
 - [Using AI Agents on Lawrencium](https://scienceit-docs.lbl.gov/hpc/ai-tools/ai-agents/index.md)
