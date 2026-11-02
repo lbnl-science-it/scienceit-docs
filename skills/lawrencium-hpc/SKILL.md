@@ -3,7 +3,8 @@ name: lawrencium-hpc
 description: >-
   Answer questions about high-performance computing at Lawrence Berkeley National
   Laboratory (LBNL) — the Lawrencium (LRC) CPU cluster and Einsteinium GPU cluster.
-  Covers accounts, MFA and SSH certificates, logging in to lrc-login, Slurm (sbatch,
+  Covers accounts and projects in the MyLRC portal, MFA and SSH certificates, logging
+  in to lrc-login (including VS Code Remote-SSH), Slurm (sbatch,
   srun, partitions such as lr6/lr7/lr8/es1, QoS, PCA/condo/ac_* accounts, example
   scripts), the Software Module Farm (compilers, Python/R/Julia, MPI, CUDA and other
   libraries, PyTorch/TensorFlow/Ray, AlphaFold3, VASP, Apptainer, Ollama/vLLM), Open
@@ -127,9 +128,10 @@ Paths are relative to the repository root. Titles mirror the site navigation.
 
 ### Account management
 - **Project Accounts** — `docs/hpc/accounts/project-accounts.md` — Eligibility and the PI-sponsored project/condo model.
-- **User Accounts** — `docs/hpc/accounts/user-accounts.md` — Requesting an account via the MyLRC portal and OTP token setup.
+- **User Accounts** — `docs/hpc/accounts/user-accounts.md` — Short overview: user accounts are requested through MyLRC with PI approval; who can request account closure (via Freshservice) and the $25/month fee that continues until the account is closed.
+- **Using the MyLRC Portal** — `docs/hpc/accounts/mylrc.md` — Step-by-step use of `mylrc.lbl.gov`: registering via CILogon and signing the User Access Agreement, getting a user account by joining a project, waiting for the confirmation email before setting up OTP, requesting a new project, managing project members and project managers, checking allocations/SU usage and jobs, and changing email. Also covers what MyLRC cannot do: closing a user account or changing a project's PID (Freshservice requests) and deleting a project (email).
 - **Charges and Billing** — `docs/hpc/accounts/charges.md` — The $25/month per-user account fee (LRCACT), charged as long as the account exists regardless of usage or project membership; compute charges (LRCCPU) for `ac_*` recharge accounts; how to stop charges by closing the account.
-- **Logging in** — `docs/hpc/accounts/loggingin.md` — SSH login to `lrc-login.lbl.gov` with PIN+OTP; login-node etiquette.
+- **Logging in** — `docs/hpc/accounts/loggingin.md` — SSH login to `lrc-login.lbl.gov` with PIN+OTP; login-node etiquette; passwordless login with a 12-hour SSH certificate (`request_cert.sh -p lrc` from the `lrc-scripts` repo); VS Code Remote-SSH setup, including connecting to a compute node.
 - **Multi-Factor Authentication** — `docs/hpc/accounts/mfa.md` — Setting up and managing OTP/MFA tokens.
 
 ### Computing systems
