@@ -16,7 +16,7 @@ In addition to any compute charges, every user account is charged $25/month for 
 
 Project Group Directories
 
-Project group directories are not created by default. If you would like to create group directories wehre your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
+Project group directories are not created by default. If you would like to create group directories where your group members can share data and software, please submit a [service request on freshservice](https://lbl.freshservice.com/a/catalog/request-items/169).
 
 ## User Accounts
 
