@@ -32,6 +32,28 @@ MAX_OUTPUT_TOKENS = "1000"
 DOCS_FETCH_TIMEOUT_MS = "10000"
 UPSTREAM_TIMEOUT_MS = "90000"
 
+# Retrieval. RETRIEVAL_MODE is one of:
+#   full   - whole llms-full.txt in every prompt (the original behaviour)
+#   shadow - answer with full context, also run retrieval and log the result
+#   rag    - answer from retrieved sources; falls back to full if no index yet
+# Switching back to full is the rollback: no redeploy of anything else needed.
+RETRIEVAL_MODE = "shadow"
+# CBorg embedding model, used both by the indexer and for queries. Changing it
+# makes the indexer re-embed everything on its next run.
+EMBED_MODEL = "lbl/nomic-embed-text"
+# Page list for the indexer. Defaults to LLMS_FULL_URL with llms.txt swapped in.
+LLMS_TXT_URL = "https://scienceit-docs.lbl.gov/llms.txt"
+# Token budgets (estimated at 4 chars/token).
+RAG_CONTEXT_TOKENS = "4000"
+RAG_MAX_PER_PAGE = "3"
+MAX_HISTORY_TOKENS = "3000"
+# Past this the query embedding is abandoned and retrieval uses keywords only.
+EMBED_TIMEOUT_MS = "3000"
+# Outbound requests one indexer run may make. Workers Free allows 50 per
+# invocation; a build that needs more resumes on the next cron run. On Paid,
+# raise it (e.g. 500) to rebuild in a single run.
+INDEX_SUBREQUEST_BUDGET = "45"
+
 # Idle window: how long a session survives without a request. Rolled forward on
 # every request, so an active reader is never interrupted.
 SESSION_TTL_MINUTES = "30"
@@ -45,7 +67,7 @@ SESSION_MAX_HOURS = "4"
 [[ratelimits]]
 name = "RATE_LIMITER"
 namespace_id = "1001"
-simple = { limit = 10, period = 60 }
+simple = { limit = 30, period = 60 }
 
 # Global ceiling across ALL callers, keyed on a constant. Per-IP limits bound
 # individual abusers but not total spend; this is the actual cost cap. Raise it
@@ -55,3 +77,18 @@ simple = { limit = 10, period = 60 }
 name = "GLOBAL_LIMITER"
 namespace_id = "1002"
 simple = { limit = 120, period = 60 }
+
+# Retrieval index: chunks + vectors, written by the cron indexer and read on
+# each request (cached in memory per isolate). Create the namespace once with
+#   npx wrangler kv namespace create RAG_INDEX
+# and paste the id it prints here. `wrangler dev` uses a local store and
+# ignores the id.
+[[kv_namespaces]]
+binding = "RAG_INDEX"
+id = "544f1ae3d3f24199826e8ed29ef76471"
+
+# Rebuild the index when the docs change. A run where nothing changed costs one
+# fetch of llms-full.txt; after a docs deploy, answers update within this
+# interval (plus a run or two more on the Free plan for a full rebuild).
+[triggers]
+crons = ["*/10 * * * *"]

@@ -2,7 +2,12 @@
 
 A floating chat widget for the ScienceIT docs site, backed by a Cloudflare Worker that proxies to [CBORG](https://cborg.lbl.gov) (LBNL's OpenAI-compatible LLM gateway).
 
-The entire documentation corpus (`llms-full.txt`) is injected into the system prompt on every request. There is no RAG, no vector store, and no embeddings pipeline — the corpus is currently under ~50k tokens, which fits comfortably in the model's context window and is cheaper to operate than a retrieval layer.
+Answers are grounded in the docs in one of two ways, chosen by `RETRIEVAL_MODE`:
+
+- **`rag`**: each question retrieves the relevant sections (about 3k tokens) from an index of the docs, and only those go into the prompt. See [Retrieval (RAG)](#retrieval-rag).
+- **`full`**: the entire corpus (`llms-full.txt`, now about 73k tokens) goes into the system prompt on every request. This was the original design, and it is the fallback whenever no index is available.
+
+`shadow` answers like `full` but also runs retrieval and logs what it found, for checking retrieval on real traffic before switching.
 
 ---
 
@@ -68,7 +73,8 @@ A single `fetch(request, env, ctx)` handler serving one route: `POST /chat`. Req
 | Payload size (`Content-Length` **and** actual byte length) | `413 payload_too_large` |
 | JSON parse | `400 invalid_json` |
 | Schema validation ([`validate`](worker/src/index.js#L158)) | `400 invalid_request` |
-| Load `llms-full.txt` | `502 docs_unavailable` |
+| Retrieve sources (`rag` mode); on any failure, fall back to full context | — |
+| Load `llms-full.txt` (`full`/`shadow`, or `rag` fallback) | `502 docs_unavailable` |
 | Upstream CBORG call | `502 upstream_unreachable` / `502` / `429` |
 
 Validation only accepts `user` and `assistant` roles and rebuilds each message as `{role, content}`, dropping extra fields — **a client can never inject its own system prompt**. Upstream error bodies are logged server-side and never returned to the browser.
@@ -89,6 +95,37 @@ plugins:
 ```
 
 `absolute_link: true` matters: it means every page URL embedded in the corpus is fully qualified, so the model can emit working Markdown links that the widget renders as real anchors.
+
+### Retrieval (RAG)
+
+Source: [`worker/src/rag/`](worker/src/rag/). There is no vector database: the corpus is about 260 chunks, so the whole index (chunks and 768-dimensional vectors, ~1 MB) is held in memory per isolate and searched by brute force in a few milliseconds.
+
+**Indexing (cron, [`indexer.js`](worker/src/rag/indexer.js)).** A cron trigger (every 10 minutes) fetches `llms-full.txt` and hashes it. If the hash matches the published index, the run stops there. Otherwise it reads the page list from `llms.txt`, fetches each page's rendered Markdown (`<page>/index.md`), and splits it with [`chunk.js`](worker/src/rag/chunk.js):
+
+- sections start at H2/H3, and each chunk links to its anchor (`…/einsteinium/#how-to-specify-desired-gpu-cards_1`) using the same slug rules as MkDocs;
+- fenced code blocks are never split;
+- FAQ questions, which render as plain paragraphs, start a new chunk with their answer;
+- chunks are ~100–450 tokens, and undersized sections merge into a neighbour.
+
+Chunks are embedded with CBORG `lbl/nomic-embed-text`, using the `search_document:` / `search_query:` task prefixes that model needs. Only chunks whose text changed are re-embedded; the rest reuse their vectors. The result is written to KV (`RAG_INDEX`) under versioned keys, and a `manifest` key is flipped last, so readers never see a half-built index. Because indexing runs in the Worker, the CBORG key never leaves it and CI needs no secrets.
+
+Each run makes at most `INDEX_SUBREQUEST_BUDGET` outbound requests (the Workers Free plan allows 50 per invocation). A rebuild that doesn't fit saves its progress and resumes on the next run.
+
+**Query time ([`retrieve.js`](worker/src/rag/retrieve.js)).**
+
+1. **Build the search query.** It is the last user message. A short or referential follow-up ("now make it a GPU node") gets the previous two user messages prepended. There is no LLM rewrite step, which would add a round trip.
+2. **Search two ways.** BM25 keyword search (exact identifiers such as `lr_debug`, `es3`, pasted error strings) and vector search (paraphrase, messy phrasing), merged with Reciprocal Rank Fusion.
+3. **Select sources.** Take chunks in fused order up to `RAG_CONTEXT_TOKENS`, at most `RAG_MAX_PER_PAGE` per page so comparison and walkthrough questions get several pages.
+4. **Build the prompt.** The sources go in as numbered `<source title url>` blocks. History is trimmed to `MAX_HISTORY_TOKENS`.
+5. **Stream.** The response opens with one `data: {"sources": [...]}` frame. It has no `choices`, so the widget skips it, and the [eval runner](eval/README.md) uses it to measure retrieval recall.
+
+**Failure behaviour.**
+
+| Problem | What happens |
+|---|---|
+| Embedding call fails or exceeds `EMBED_TIMEOUT_MS` | Keyword search only |
+| Index built with a different `EMBED_MODEL` | Keyword search only, until the cron rebuilds it |
+| No index yet, or KV errors | Full-context mode for that request |
 
 ### CBORG
 
@@ -122,7 +159,7 @@ After loading, [`warnIfTooLarge()`](worker/src/index.js#L99) estimates token cou
 3. **Fetch.** `POST` to `cfg.endpoint` with `{"messages": [...]}`. An empty assistant bubble is rendered immediately showing a bouncing-dots indicator.
 4. **Worker gate.** The request runs the pipeline in §1 (CORS → key check → rate limit → size → parse → validate).
 5. **Prompt construction.** [`buildSystemPrompt(docs)`](worker/src/index.js#L46) wraps the corpus in `=== DOCUMENTATION START/END ===` delimiters with rules that constrain the model to the provided docs, require a plain "couldn't find that" on a miss, request Markdown links from the embedded URLs, and instruct it to ignore user attempts to override those rules. The final upstream payload is `[{role: "system", content: systemPrompt}, ...userMessages]`.
-6. **LLM execution.** `POST ${CBORG_BASE_URL}/chat/completions` with `stream: true`, `max_tokens: MAX_OUTPUT_TOKENS`, and the `Authorization` header attached here and only here.
+6. **LLM execution.** `POST ${CBORG_BASE_URL}/chat/completions` with `stream: true`, `stream_options: {include_usage: true}`, `max_tokens: MAX_OUTPUT_TOKENS`, and the `Authorization` header attached here and only here. The usage option adds a final frame with token counts and an empty delta: the widget skips it, and the [eval runner](eval/README.md) reads it.
 7. **Streaming passthrough.** A stalled upstream must not hang the reader, so the CBORG fetch carries an `AbortController` armed for `UPSTREAM_TIMEOUT_MS`. The timer is cleared the moment headers arrive and the body is ours — passing `AbortSignal.timeout()` straight to `fetch` would leave the signal attached while the body flowed and truncate any reply that took longer than the timeout to generate. It therefore bounds time-to-first-byte and the error-body read, never the stream. The Worker returns `upstream.body` — the raw `ReadableStream` — directly in a new `Response` with `Content-Type: text/event-stream` and `Cache-Control: no-store`. **Nothing is buffered or transformed**, so tokens reach the browser as fast as CBORG emits them.
 8. **Client parse.** The widget reads via `res.body.getReader()` + `TextDecoder`, buffers partial lines across chunks, and for each `data:` line parses `choices[0].delta.content`. `[DONE]` terminates. Malformed frames and keep-alives are swallowed by a `try/catch`.
 9. **DOM rendering.** On each delta the accumulated reply is re-rendered: `bubble.innerHTML = renderMarkdown(reply)`, then scroll to bottom. Re-rendering the whole string per token is intentional — it keeps partially-streamed Markdown (an unterminated code fence, for instance) displaying correctly, and the strings are small enough that the cost is irrelevant.
@@ -171,9 +208,21 @@ Because `docs/assets/chatbot.js` is a symlink, editing `widget/chatbot.js` and h
 
 Note the local Worker fetches `llms-full.txt` from the **production** site by default. To test against locally generated docs, point `LLMS_FULL_URL` in `.dev.vars` at your `mkdocs serve` instance.
 
+### Testing retrieval locally
+
+```bash
+cd chatbot/worker
+npx wrangler dev --test-scheduled --var RETRIEVAL_MODE:rag --var INDEX_SUBREQUEST_BUDGET:500
+curl "http://localhost:8787/__scheduled?cron=*/10+*+*+*+*"   # build the index (local KV)
+```
+
+The indexer logs `RAG indexer: {"status":"published",...}` after about a minute. After that, each chat request logs a `RAG:` line listing the sources it retrieved. The local KV persists under `.wrangler/`, so later runs report `"status":"current"` until the docs change.
+
 ### Tests
 
-**There is no automated test suite in this repository yet.** Verification today is manual. The transport contract is small enough to exercise with `curl` — run these against `wrangler dev`:
+`npm test` in `worker/` runs the Vitest suite. It covers validation, sessions, client keys, the widget's Markdown and thinking parsers, and the RAG modules: chunking, BM25, fusion, source selection, and the indexer end to end against an in-memory KV and a stubbed fetch. For answer quality, use the [eval](eval/README.md).
+
+The transport contract is small enough to exercise by hand with `curl` against `wrangler dev`:
 
 ```bash
 # Happy path: expect a text/event-stream of `data: {...}` frames ending in [DONE]
@@ -216,6 +265,7 @@ npx wrangler login
 npx wrangler secret put CBORG_API_KEY     # paste the key when prompted
 npx wrangler secret put TURNSTILE_SECRET  # from the Turnstile dashboard
 npx wrangler secret put SESSION_SECRET    # openssl rand -base64 32
+npx wrangler kv namespace create RAG_INDEX  # once; paste the id into wrangler.toml
 npx wrangler deploy
 ```
 
@@ -261,7 +311,16 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 | `MAX_PAYLOAD_BYTES` | `60000` | Body size cap, checked twice. |
 | `MAX_OUTPUT_TOKENS` | `1000` | Per-reply generation cap. |
 | `DOCS_FETCH_TIMEOUT_MS` | `10000` | Whole-request timeout on the corpus fetch, which is buffered. |
-| `UPSTREAM_TIMEOUT_MS` | `30000` | Wait for CBORG's response *headers*, not the stream length. See below. |
+| `UPSTREAM_TIMEOUT_MS` | `90000` | Wait for CBORG's response *headers*, not the stream length. See below. |
+| `RETRIEVAL_MODE` | `full` (`shadow` in `wrangler.toml`) | `full`, `shadow` or `rag`. Setting `full` is the rollback. |
+| `EMBED_MODEL` | `lbl/nomic-embed-text` | Used by the indexer and for queries. Changing it re-embeds everything on the next cron run. |
+| `LLMS_TXT_URL` | `LLMS_FULL_URL` with `llms.txt` | Page list for the indexer. |
+| `RAG_CONTEXT_TOKENS` | `4000` | Budget for retrieved sources per request. |
+| `RAG_MAX_PER_PAGE` | `3` | Chunks from any one page. |
+| `MAX_HISTORY_TOKENS` | `3000` | Earlier turns resent per request (`rag` mode). |
+| `EMBED_TIMEOUT_MS` | `3000` | Query-embedding timeout before falling back to keyword search. |
+| `INDEX_SUBREQUEST_BUDGET` | `45` | Outbound requests per indexer run. Raise on the Paid plan. |
+| `RAG_INDEX` *(binding)* | — | KV namespace holding the index. |
 | `TURNSTILE_SECRET` | *(required)* | **Secret.** Pairs with the public site key in the widget. Local dev uses Cloudflare's always-passes test secret. |
 | `SESSION_SECRET` | *(required)* | **Secret.** Signs session tokens; `openssl rand -base64 32`. Rotating it forces every reader to re-verify. |
 | `SESSION_TTL_MINUTES` | `30` | Idle window for a session, rolled forward on every request. |
@@ -270,6 +329,8 @@ Secrets go through `wrangler secret put` (encrypted at rest, never in the repo) 
 | `GLOBAL_LIMITER` *(binding)* | 120 req / 60s total | Global spend ceiling across all callers. |
 
 ### Edge caching
+
+In `rag` mode, freshness is set by the indexer instead: a docs deploy reaches answers within one cron interval (10 minutes), plus a run or two more for a full rebuild on the Free plan. Isolates check the KV manifest for a newer index once a minute. The rest of this section applies to `full`/`shadow` mode and to the RAG fallback.
 
 `llms-full.txt` is cached for 1 hour at two layers (see §2). The practical consequences:
 
