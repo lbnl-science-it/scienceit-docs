@@ -10,7 +10,7 @@ You can also install VS Code extensions of these tools and run them on a compute
 
 ## Guidelines for Users
 
-- Long-running or compute intensive tasks should be performed on compute nodes through Slurm allocations. As such, agentic coding tools should generally be run through interactive slurm allocations rather than on login nodes.
+- Long-running or compute intensive tasks should be performed on compute nodes through Slurm allocations. As such, agentic coding tools should generally be run through interactive slurm allocations rather than on login nodes. See [Running AI Agents in tmux on Compute Nodes](https://scienceit-docs.lbl.gov/hpc/ai-tools/tmux-slurm/index.md) for a workflow that keeps an agent running on a compute node after you log out.
 - We provide sample markdown instructions on this page that you should add to `~/.claude/CLAUDE.md` or `~/.codex/AGENTS.md` on Lawrencium so that `claude` and `codex` follow the guidelines for resource usage. If you use other AI agents, read their documentation to find the location where such instructions should be placed.
 
 ## Guidelines for Agents
@@ -34,7 +34,9 @@ installed on the software module farm
 
 ## Compute
 - Never use login nodes for computation. Only use a login node for 
-file editing and small builds.
+file editing and small builds. A simple way to test whether you are on a 
+compute node in a slurm allocation is through SLURM environment variables.  
+For example $SLURM_JOB_ID is set on a compute node when in a slurm allocation.
 
 ## Slurm
 - Do not exceed 100 jobs per user (pending and running combined)
