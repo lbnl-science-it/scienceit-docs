@@ -77,6 +77,7 @@ nav:
           - Adding Packages and Kernels: hpc/openondemand/packages-kernels.md
       - AI Tools:
           - Using AI Agents on Lawrencium: hpc/ai-tools/ai-agents.md
+          - Running AI Agents on Compute Nodes: hpc/ai-tools/tmux-slurm.md
           - Lawrencium Skill: hpc/ai-tools/lawrencium-skill.md
           - Using Claude Science with Lawrencium: hpc/ai-tools/claude-science.md
       - Acknowledgement: hpc/acknowledgement.md
