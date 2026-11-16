@@ -218,6 +218,8 @@ curl "http://localhost:8787/__scheduled?cron=*/10+*+*+*+*"   # build the index (
 
 The indexer logs `RAG indexer: {"status":"published",...}` after about a minute. After that, each chat request logs a `RAG:` line listing the sources it retrieved. The local KV persists under `.wrangler/`, so later runs report `"status":"current"` until the docs change.
 
+Local KV data is stored per namespace **id**. If you change the `id` in `wrangler.toml`, the local index is left behind under the old id, and `rag` mode falls back to full context (logging `no index is published yet`) until you trigger the indexer again. On the default budget of 45 requests per run, a full build takes several triggers; locally, pass `--var INDEX_SUBREQUEST_BUDGET:500` to finish in one.
+
 ### Tests
 
 `npm test` in `worker/` runs the Vitest suite. It covers validation, sessions, client keys, the widget's Markdown and thinking parsers, and the RAG modules: chunking, BM25, fusion, source selection, and the indexer end to end against an in-memory KV and a stubbed fetch. For answer quality, use the [eval](eval/README.md).

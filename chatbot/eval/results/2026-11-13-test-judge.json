@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "label": "test-judge",
+    "startedAt": "2026-11-13T19:09:21.324Z",
+    "commit": "6ed678e-dirty",
+    "endpoint": "http://localhost:8787/chat",
+    "runs": 1,
+    "judgeModel": "claude-sonnet-5-5",
+    "models": [
+      "lbl/cborg-coder-fast"
+    ]
+  },
+  "turns": [
+    {
+      "caseId": "p04-gpu-pytorch-script",
+      "category": "procedural",
+      "turn": 0,
+      "run": 0,
+      "q": "Write a batch script for a single-GPU PyTorch job.",
+      "pages": [
+        "hpc/software/ml/pytorch",
+        "hpc/running/script-examples",
+        "hpc/systems/einsteinium"
+      ],
+      "answer": "Assuming you want to run on the `es1` partition using an A40 GPU, here is a sample batch script:\n\n```bash\n#!/bin/bash\n#SBATCH --job-name=test\n#SBATCH --account=account_name\n#SBATCH --partition=es1\n#SBATCH --qos=es_normal\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=16\n#SBATCH --gres=gpu:A40:1\n#SBATCH --time=1:00:00\n\nmodule load ml/pytorch\npython train.py\n```\n\n[Einsteinium GPU Cluster › es1 Partition › How to specify desired GPU card(s)](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/#how-to-specify-desired-gpu-cards_2)",
+      "reasoningChars": 1721,
+      "ttftMs": 4851.531096,
+      "ttfaMs": 7983.77941,
+      "totalMs": 9041.781738,
+      "usage": {
+        "completion_tokens": 798,
+        "prompt_tokens": 3629,
+        "total_tokens": 4427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 596
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/systems/einsteinium"
+      ],
+      "retrieved": [
+        "hpc/software/containers/apptainer",
+        "hpc/software/ml/pytorch",
+        "hpc/systems/einsteinium",
+        "hpc/ai-tools/lawrencium-skill",
+        "hpc/software/ml/tensorflow",
+        "hpc/running/script-examples"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 2,
+        "grounded": true,
+        "reason": "The script matches the docs' es1 single-A40 example: es1 with es_normal, an account placeholder, 16 CPUs for one A40 GPU, a walltime, and `module load ml/pytorch`, with no invented facts."
+      }
+    },
+    {
+      "caseId": "p07-llm-serving",
+      "category": "procedural",
+      "turn": 0,
+      "run": 0,
+      "q": "How do I run an LLM with Ollama or vLLM on Lawrencium?",
+      "pages": [
+        "hpc/software/llms/ollama",
+        "hpc/software/llms/vllm",
+        "hpc/openondemand/ollama-jupyter-vscode"
+      ],
+      "answer": "### vLLM\nvLLM is provided as a module and should be run only on compute nodes, preferably using newer GPUs on the `es2` partition [vLLM on Lawrencium](https://scienceit-docs.lbl.gov/hpc/software/llms/vllm/).\n\n**Interactive Allocation:**\n1. Request an allocation (example):\n   ```bash\n   srun -p es2 -q es2_normal --gres=gpu:H100:1 -A account_name -N 1 -t 1:00:00 --cpus-per-task=14 --pty bash\n   ```\n2. Load the module:\n   ```bash\n   module load ai/vllm/0.19.0\n   ```\n3. Set the model cache directory for read-only access to the central repository:\n   ```bash\n   export HF_HOME=/global/scratch/collections/vllm\n   ```\n4. Serve a model (example):\n   ```bash\n   vllm serve openai/gpt-oss-20b --gpu-memory-utilization=0.85\n   ```\n\n**Interacting with vLLM:**\n* **Port:** vLLM serves on port `8000` by default (use `--port` to change it).\n* **Accessing a running job:** To get a shell inside your job allocation, use:\n  ```bash\n  srun --jobid=JOBID --overlap --pty bash\n  ```\n* **Listing models:** \n  ```bash\n  curl http://localhost:8000/v1/models\n  ```\n[vLLM on Lawrencium](https://scienceit-docs.lbl.gov/hpc/software/llms/vllm/)\n\n---\n\n### Ollama\nOllama should only be run on compute nodes. While CPU partitions can be used for small models, GPU partitions (`es0` or `es1`) provide better performance [Ollama on Lawrencium](https://scienceit-docs.lbl.gov/hpc/software/llms/ollama/).\n\n**Option 1: Interactive Allocation**\n1. Request an allocation (example):\n   ```bash\n   srun -p es0 -A account_name -q es_normal -N 1 -t 1:00:00 --gres=gpu:2 --cpus-per-task=2 --pty bash\n   ```\n2. Load a module (e.g., `ai/ollama/0.20.7`, `ai/ollama/0.12.6`, or `ai/ollama/0.6.8`) [Ollama on Lawrencium](https://scienceit-docs.lbl.gov/hpc/software/llms/ollama/).\n3. Launch the server in the background:\n   ```bash\n   ollama serve > /dev/null 2>&1 &\n   ```\n4. List available models:\n   ```bash\n   ollama list\n   ```\n5. Run a model for a terminal chat interface:\n   ```bash\n   ollama run <model_name>\n   ```\n\n**Option 2: Open OnDemand**\nYou can use the **Ollama - JupyterAI & VS Code** app on LRC Open OnDemand. It is recommended to choose the `es0` or `es1` partition [Using Ollama with Jupyter and VS Code](https://scienceit-docs.lbl.gov/hpc/openondemand/ollama-jupyter-vscode/).\n\n**Additional Ollama Tips:**\n* **Saving responses:** `ollama run <model_name> \"Your prompt\" > response.txt`\n* **Batch scripts:** Add a `sleep 10` command after `ollama serve` to allow the server time to start [Ollama on Lawrencium](https://scienceit-docs.lbl.gov/hpc/software/llms/ollama/).",
+      "reasoningChars": 0,
+      "ttftMs": 191.76369999999952,
+      "ttfaMs": 191.76369999999952,
+      "totalMs": 429.854953,
+      "usage": {
+        "completion_tokens": 1540,
+        "prompt_tokens": 3717,
+        "total_tokens": 5257,
+        "completion_tokens_details": {
+          "reasoning_tokens": 660
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/software/llms/vllm",
+        "hpc/software/llms/ollama",
+        "hpc/openondemand/ollama-jupyter-vscode"
+      ],
+      "retrieved": [
+        "hpc/software/llms/vllm",
+        "hpc/software/llms/ollama",
+        "hpc/openondemand/ollama-jupyter-vscode",
+        "help/llms",
+        "hpc/ai-tools/lawrencium-skill"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 2,
+        "grounded": true,
+        "reason": "The answer covers both Ollama and vLLM with GPU Slurm allocations on documented partitions, the correct modules, the serve commands, and the vLLM model storage path (HF_HOME), and everything it states matches the docs."
+      }
+    },
+    {
+      "caseId": "s01-new-student-to-gpu",
+      "category": "synthesis",
+      "turn": 0,
+      "run": 0,
+      "q": "I'm a new student. Walk me through everything from getting an account to running my first GPU job.",
+      "pages": [
+        "hpc/faqs",
+        "hpc/accounts/user-accounts",
+        "hpc/accounts/mfa",
+        "hpc/accounts/loggingin",
+        "hpc/systems/einsteinium",
+        "hpc/running/script-examples"
+      ],
+      "answer": "To get started from account creation to running your first GPU job, follow these steps:\n\n### 1. Get a User Account\nComplete your user account request at the [myLRC portal](https://mylrc.lbl.gov/) to obtain your account and a one-time password token generator. Accounts are added upon approval of the PI for the project [User Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/user-accounts/#how-to-get-a-user-account-on-lawrencium-how-to-add-additional-users-to-your-project).\n\n### 2. Log In to the Cluster\nUse one of the terminal options to log in to the server **`lrc-login.lbl.gov`** using your username and PIN+OTP combination [FAQs](https://scienceit-docs.lbl.gov/hpc/faqs/). \n\n**Important:** Do not run applications or submit jobs directly on the login nodes; use the SLURM job scheduler instead [Getting Started › Running Jobs](https://scienceit-docs.lbl.gov/hpc/getting-started/#running-jobs).\n\n### 3. Run a GPU Job\nYou must know your slurm association before scheduling a session [FAQs](https://scienceit-docs.lbl.gov/hpc/faqs/). You can run a GPU job either interactively or via a batch script.\n\n#### Option A: Interactive (via Open OnDemand)\n1. Log in to <https://lrc-ondemand.lbl.gov> using CILogon [Getting Started › Running Jobs](https://scienceit-docs.lbl.gov/hpc/getting-started/#running-jobs).\n2. To launch a Jupyter Server on one NVIDIA A40 GPU, select these parameters:\n   - **SLURM Partition:** `es1`\n   - **Name of SLURM Quality of Service (QoS):** `es_normal`\n   - **Number of nodes:** `1`\n   - **Select GPU Type:** `es1: NVidia A40 (40 GB) 1-4x`\n   - **Select number of GPU cards to use:** `1`\n   - Enter your **SLURM Project/Account Name**, **Wall Clock Time**, and **Name of the job** [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/#example-launch-a-jupyter-server-on-the-es1-gpu-parition).\n3. Click **Launch**, then click **Connect to Jupyter** once the server is ready [Jupyter Server](https://scienceit-docs.lbl.gov/hpc/openondemand/jupyter-server/#example-launch-a-jupyter-server-on-the-es1-gpu-parition).\n\n#### Option B: Batch Script (via SLURM)\nCreate a shell script (e.g., `gpu_job.sh`) with the following example configuration for one NVIDIA A40 GPU on the `es1` partition:\n\n```bash\n#!/bin/bash\n#SBATCH --job-name=test\n#SBATCH --account=account_name\n#SBATCH --partition=es1\n#SBATCH --qos=es_normal\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --cpus-per-task=16\n#SBATCH --gres=gpu:A40:1\n#SBATCH --time=1:00:00\n\nmodule load ml/pytorch\npython train.py\n```\nSubmit the job using the following command:\n```bash\nsbatch gpu_job.sh\n```\n[Einsteinium GPU Cluster › es1 Partition](https://scienceit-docs.lbl.gov/hpc/systems/einsteinium/#how-to-specify-desired-gpu-cards_2)",
+      "reasoningChars": 2454,
+      "ttftMs": 2099.807561999998,
+      "ttfaMs": 5449.441490000001,
+      "totalMs": 10020.315434,
+      "usage": {
+        "completion_tokens": 1544,
+        "prompt_tokens": 3608,
+        "total_tokens": 5152,
+        "completion_tokens_details": {
+          "reasoning_tokens": 684
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/accounts/user-accounts",
+        "hpc/faqs",
+        "hpc/getting-started",
+        "hpc/openondemand/jupyter-server",
+        "hpc/systems/einsteinium"
+      ],
+      "retrieved": [
+        "hpc/openondemand/jupyter-server",
+        "hpc/faqs",
+        "hpc/getting-started",
+        "hpc/accounts/user-accounts",
+        "hpc/software/containers/apptainer",
+        "hpc/accounts/charges",
+        "cloud",
+        "hpc/systems/einsteinium"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 1,
+        "grounded": true,
+        "reason": "The answer omits the MFA/OTP and PIN setup step (it only mentions a token generator in passing), does not mention the PI sponsorship step explicitly or the sacctmgr command for checking associations, though the es1 batch script and links are correct and nothing contradicts the docs."
+      }
+    },
+    {
+      "caseId": "s02-io-bound",
+      "category": "synthesis",
+      "turn": 0,
+      "run": 0,
+      "q": "My job reads a huge dataset and is I/O bound. What should I change?",
+      "pages": [
+        "hpc/faqs",
+        "hpc/index",
+        "data/scratch-filesystem"
+      ],
+      "answer": "For jobs with large I/O requirements, you should make the following changes:\n\n*   **Use the `SCRATCH` filesystem**: Use `SCRATCH` for reading or writing large amounts of data [3]. Do not run large I/O dependent jobs on HOME, GROUP, or GROUP-SW directories, as these are not designed for high performance and such behavior is explicitly prohibited; jobs doing so may be killed without notification [1].\n*   **Utilize local disk caching**: Once you have a SLURM allocation, you can use the `/tmp` directory on the compute node to cache datasets and intermediate files, which may provide faster I/O than `SCRATCH` [7]. Note that data in `/tmp` must be copied to another location (like HOME or SCRATCH) before the job terminates [7].\n*   **Use RAM storage**: For small, fast temporary filesystem space, you can use `/dev/shm`, which resides in RAM [7].",
+      "reasoningChars": 1230,
+      "ttftMs": 1617.2979919999998,
+      "ttfaMs": 2499.5093989999987,
+      "totalMs": 3584.6883080000007,
+      "usage": {
+        "completion_tokens": 518,
+        "prompt_tokens": 2651,
+        "total_tokens": 3169,
+        "completion_tokens_details": {
+          "reasoning_tokens": 313
+        }
+      },
+      "finishReason": "stop",
+      "cited": [],
+      "retrieved": [
+        "hpc/systems/supported/mhg",
+        "hpc/accounts/mylrc",
+        "data/scratch-filesystem",
+        "hpc/ai-tools/claude-science",
+        "hpc/running/monitor-jobs",
+        "hpc/running/slurm-overview",
+        "hpc/faqs",
+        "hpc/running/script-examples"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 2,
+        "grounded": true,
+        "reason": "The answer covers all rubric points: use SCRATCH instead of HOME, stage data to node-local /tmp and copy results out before the job ends, and use /dev/shm for small fast data. The warning about large I/O on HOME and group directories is not in the shown pages but is plausible and consistent with them."
+      }
+    },
+    {
+      "caseId": "s03-many-small-tasks",
+      "category": "synthesis",
+      "turn": 0,
+      "run": 0,
+      "q": "I need to run 500 small independent tasks. What's the best approach?",
+      "pages": [
+        "hpc/running/gnu-parallel"
+      ],
+      "answer": "For running a large number of small independent tasks, the best approach is to use **GNU Parallel**.\n\nDepending on the complexity and scale of your tasks, you can use one of two methods:\n\n### 1. Simple Parallelization\nFor simple tasks on a single node, you can use the `:::` syntax to pass input values. For example, to run three tasks using two cores:\n```bash\nparallel -j 2 cp file{}.in file{}.out ::: 1 2 3\n```\n[GNU Parallel › Basic Usage](https://scienceit-docs.lbl.gov/hpc/running/gnu-parallel/#basic-usage)\n\n### 2. Extended Parallelization (Across Multiple Nodes)\nFor a larger volume of tasks (like 500), it is recommended to use a SLURM job submission script combined with a task list and a serial bash script. This approach involves:\n\n*   **A Task List (`task.lst`)**: A file where each line contains the parameters for one task.\n*   **A Serial Bash Script**: A script that defines how to run a single instance of the task using the parameters provided by GNU Parallel.\n*   **A SLURM Submission Script**: This script allocates resources, generates a `hostfile` from `$SLURM_JOB_NODELIST`, and launches GNU Parallel.\n\n**Example SLURM command for GNU Parallel:**\n```bash\nparallel --jobs $JOBS_PER_NODE --slf hostfile --wd $WDIR --joblog task.log --resume --progress \\\n--colsep ' ' -a task.lst sh run-blast.sh {} output/{/.}.blst\n```\n[GNU Parallel › Basic Usage › Extended example](https://scienceit-docs.lbl.gov/hpc/running/gnu-parallel/#extended-example)\n\n### Useful GNU Parallel Flags\n*   `--jobs`: Number of tasks per node.\n*   `-a`: Specify the task list as input.\n*   `--slf`: Specify the compute node list (sshloginfile).\n*   `--joblog`: Keeps track of completed tasks.\n*   `--resume`: Allows jobs to resume from a checkpoint.\n*   `--progress`: Displays job progress.\n*   `--wd`: Sets the landing work directory on compute nodes.\n\n[GNU Parallel › Basic Usage › Extended example](https://scienceit-docs.lbl.gov/hpc/running/gnu-parallel/#extended-example)",
+      "reasoningChars": 1526,
+      "ttftMs": 821.3843659999984,
+      "ttfaMs": 3096.492542,
+      "totalMs": 5912.126779999999,
+      "usage": {
+        "completion_tokens": 916,
+        "prompt_tokens": 3838,
+        "total_tokens": 4754,
+        "completion_tokens_details": {
+          "reasoning_tokens": 381
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/running/gnu-parallel"
+      ],
+      "retrieved": [
+        "hpc/running/gnu-parallel",
+        "hpc/getting-started",
+        "data/scratch-filesystem",
+        "hpc/running/script-examples",
+        "hpc/software/ml/pytorch"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 2,
+        "grounded": true,
+        "reason": "Recommends GNU Parallel inside a SLURM allocation for many independent tasks, links to the GNU Parallel page, and its commands and flags match the docs; it does not explicitly say to avoid submitting 500 separate jobs, but the approach clearly implies it."
+      }
+    },
+    {
+      "caseId": "s04-lrc-vs-cloud-vs-nrp",
+      "category": "synthesis",
+      "turn": 0,
+      "run": 0,
+      "q": "When should I use Lawrencium vs AWS/GCP vs the National Research Platform?",
+      "pages": [
+        "hpc/index",
+        "cloud",
+        "nrp"
+      ],
+      "answer": "Based on the provided documentation:\n\n*   **Lawrencium**: Use this for high performance computing (HPC) [Project Accounts](https://scienceit-docs.lbl.gov/hpc/accounts/project-accounts/) and as a way to meet midrange computing requirements for Berkeley Lab [High Performance Computing](https://scienceit-docs.lbl.gov/hpc/).\n*   **AWS/GCP**: Use cloud computing for quickly bringing up computing infrastructure, handling bursty workloads (such as data releases), or utilizing tools for workflow orchestration, search, and machine learning [Cloud Services](https://scienceit-docs.lbl.gov/cloud/).\n*   **National Research Platform (NRP)**: I couldn't find information in the documentation regarding when to use the NRP versus other services; it is only mentioned as a topic for training [Recent Trainings](https://scienceit-docs.lbl.gov/help/training/#recent-trainings).\n\nFor further guidance, please contact the HPC help desk at scienceithelp@lbl.gov.",
+      "reasoningChars": 1478,
+      "ttftMs": 828.4150599999994,
+      "ttfaMs": 16183.905962999997,
+      "totalMs": 16357.008997999998,
+      "usage": {
+        "completion_tokens": 578,
+        "prompt_tokens": 2541,
+        "total_tokens": 3119,
+        "completion_tokens_details": {
+          "reasoning_tokens": 354
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/accounts/project-accounts",
+        "hpc",
+        "cloud",
+        "help/training"
+      ],
+      "retrieved": [
+        "help/training",
+        "cloud",
+        "hpc/acknowledgement",
+        "hpc/accounts/project-accounts",
+        "hpc",
+        "data/globus"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 1,
+        "grounded": false,
+        "reason": "The answer is thin on Lawrencium (no Slurm or PCA/condo/recharge) and AWS/GCP (no master payer or pay-per-use), and it falsely claims the docs lack NRP information when the docs describe NRP as a community Kubernetes platform."
+      }
+    },
+    {
+      "caseId": "a01-job-wont-start",
+      "category": "ambiguous",
+      "turn": 0,
+      "run": 0,
+      "q": "My job won't start.",
+      "pages": [
+        "hpc/running/monitor-jobs",
+        "hpc/running/slurm-overview"
+      ],
+      "answer": "To check the status of your job and determine why it may not be starting, you can use the following commands:\n\n*   **Check your jobs in the queue:** Use `squeue -u $USER` to list the jobs pertaining to your username [Slurm Overview](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/), [Monitor Jobs › Monitoring the status of running batch jobs](https://scienceit-docs.lbl.gov/hpc/running/monitor-jobs/#monitoring-the-status-of-running-batch-jobs).\n*   **View queue status:** Use `sinfo` to view the current status of the queues [Slurm Overview](https://scienceit-docs.lbl.gov/hpc/running/slurm-overview/).\n\nI couldn't find specific troubleshooting steps for why a job won't start in the provided documentation. Please contact the HPC help desk at scienceithelp@lbl.gov for further assistance.",
+      "reasoningChars": 1636,
+      "ttftMs": 1437.960432999993,
+      "ttfaMs": 3329.910834999995,
+      "totalMs": 4476.943303999993,
+      "usage": {
+        "completion_tokens": 690,
+        "prompt_tokens": 3024,
+        "total_tokens": 3714,
+        "completion_tokens_details": {
+          "reasoning_tokens": 477
+        }
+      },
+      "finishReason": "stop",
+      "cited": [
+        "hpc/running/slurm-overview",
+        "hpc/running/monitor-jobs"
+      ],
+      "retrieved": [
+        "hpc/running/monitor-jobs",
+        "hpc/software/containers/apptainer",
+        "hpc/running/slurm-overview",
+        "hpc/openondemand/overview",
+        "hpc/software/ml/ray"
+      ],
+      "leakedReasoning": false,
+      "checks": {
+        "pass": true,
+        "failed": []
+      },
+      "judge": {
+        "score": 1,
+        "grounded": true,
+        "reason": "Suggests valid squeue/sinfo commands and the help desk without inventing facts, but omits checking the pending REASON and verifying account/partition/QoS via sacctmgr, and asks no clarifying question."
+      }
+    }
+  ]
+}

@@ -9,7 +9,7 @@ compatibility_date = "2025-01-01"
 # CBorg's OpenAI-compatible gateway. Confirm in the CBorg docs.
 CBORG_BASE_URL = "https://api.cborg.lbl.gov"
 # TODO: confirm the current model IDs in the CBorg docs before deploying.
-CBORG_MODEL = "lbl/cborg-mini-fast"
+CBORG_MODEL = "lbl/cborg-coder-fast"
 # Where the Worker fetches the documentation text (cached for 1 hour).
 LLMS_FULL_URL = "https://scienceit-docs.lbl.gov/llms-full.txt"
 # Comma-separated list of origins allowed to call /chat (no trailing slashes).
@@ -25,7 +25,7 @@ MAX_MESSAGES = "20"
 MAX_MESSAGE_CHARS = "4000"
 MAX_PAYLOAD_BYTES = "60000"
 # Cap on generated tokens per reply.
-MAX_OUTPUT_TOKENS = "1000"
+MAX_OUTPUT_TOKENS = "3000"
 # Upstream timeouts, in milliseconds. UPSTREAM_TIMEOUT_MS bounds the wait for
 # CBorg's response headers only, not the length of the stream that follows, so
 # raising MAX_OUTPUT_TOKENS does not require raising this.
@@ -37,14 +37,14 @@ UPSTREAM_TIMEOUT_MS = "90000"
 #   shadow - answer with full context, also run retrieval and log the result
 #   rag    - answer from retrieved sources; falls back to full if no index yet
 # Switching back to full is the rollback: no redeploy of anything else needed.
-RETRIEVAL_MODE = "shadow"
+RETRIEVAL_MODE = "rag"
 # CBorg embedding model, used both by the indexer and for queries. Changing it
 # makes the indexer re-embed everything on its next run.
 EMBED_MODEL = "lbl/nomic-embed-text"
 # Page list for the indexer. Defaults to LLMS_FULL_URL with llms.txt swapped in.
 LLMS_TXT_URL = "https://scienceit-docs.lbl.gov/llms.txt"
 # Token budgets (estimated at 4 chars/token).
-RAG_CONTEXT_TOKENS = "4000"
+RAG_CONTEXT_TOKENS = "15000"
 RAG_MAX_PER_PAGE = "3"
 MAX_HISTORY_TOKENS = "3000"
 # Past this the query embedding is abandoned and retrieval uses keywords only.
@@ -81,8 +81,8 @@ simple = { limit = 120, period = 60 }
 # Retrieval index: chunks + vectors, written by the cron indexer and read on
 # each request (cached in memory per isolate). Create the namespace once with
 #   npx wrangler kv namespace create RAG_INDEX
-# and paste the id it prints here. `wrangler dev` uses a local store and
-# ignores the id.
+# and paste the id it prints here. `wrangler dev` uses a local store (under
+# .wrangler/state), kept per id: after changing the id, re-run the indexer.
 [[kv_namespaces]]
 binding = "RAG_INDEX"
 id = "544f1ae3d3f24199826e8ed29ef76471"
